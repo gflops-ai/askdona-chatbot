@@ -1297,9 +1297,9 @@ var AskDona = (function (exports) {
   background: ${({ active, positive }) => active
     ? (positive ? '#10b981' : '#ef4444')
     : 'var(--askdona-background)'};
-  color: ${({ active, positive }) => active
+  color: ${({ active }) => active
     ? 'white'
-    : (positive ? '#059669' : '#374151') // Unified darker colors for better visibility
+    : '#374151' // Same color for both buttons when inactive
 };
   cursor: pointer;
   transition: all 0.2s;
@@ -1307,7 +1307,7 @@ var AskDona = (function (exports) {
   svg {
     opacity: 1;
     color: inherit;
-    fill: ${({ positive }) => positive ? 'currentColor' : 'none'};  // ThumbsUp filled, ThumbsDown outlined
+    fill: none;  // Both icons outlined (not filled)
     stroke: currentColor;
     stroke-width: 2;
   }
@@ -1316,9 +1316,9 @@ var AskDona = (function (exports) {
     background: ${({ active, positive }) => active
     ? (positive ? '#059669' : '#dc2626')
     : 'var(--askdona-bg-hover)'};
-    color: ${({ active, positive }) => active
+    color: ${({ active }) => active
     ? 'white'
-    : (positive ? '#059669' : '#374151')};
+    : '#374151'};
     border-color: ${({ active, positive }) => active
     ? (positive ? '#059669' : '#dc2626')
     : (positive ? '#10b981' : '#6b7280')};
@@ -1464,7 +1464,7 @@ var AskDona = (function (exports) {
 `;
 
   // API configuration with environment variable support
-  const API_BASE_URL = "http://localhost:3001/api/embed/v1";
+  const API_BASE_URL = "http://localhost:3000/api/embed/v1";
   // Log the API URL being used
   console.log('[AskDona] Using API URL:', API_BASE_URL);
 
@@ -6325,7 +6325,7 @@ var AskDona = (function (exports) {
                               content: msg.content,
                               createdAt: msg.createdAt,
                               id: msg.id
-                          })), onBack: () => onModeSwitch('ask-ai'), onSendMessage: (message) => onSendMessage(message), baseUrl: window.location.origin })) : null }), u$2(Footer, { children: [u$2(FooterText, { children: ["Powered by ", u$2(FooterLink, { href: "https://askdona.com", target: "_blank", style: "color: inherit; text-decoration: none;", children: "AskDona" })] }), u$2(FooterDisclaimer, { children: config.language === 'ja' ? (u$2(k$1, { children: u$2("div", { children: "RAG\u30B7\u30B9\u30C6\u30E0\u306F\u8AA4\u3063\u305F\u60C5\u5831\u3092\u63D0\u4F9B\u3059\u308B\u3053\u3068\u304C\u3042\u308A\u307E\u3059\u3002\u91CD\u8981\u306A\u60C5\u5831\u306F\u3054\u81EA\u8EAB\u3067\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002" }) })) : (u$2(k$1, { children: [u$2("div", { children: "Boost mode analyzes more documents from multiple perspectives. It takes longer than normal mode." }), u$2("div", { children: "RAG systems may provide incorrect information. Please verify important information yourself." })] })) })] })] }) }));
+                          })), onBack: () => onModeSwitch('ask-ai'), onSendMessage: (message) => onSendMessage(message), baseUrl: window.location.origin })) : null }), u$2(Footer, { children: [u$2(FooterText, { children: ["Powered by ", u$2(FooterLink, { href: "https://askdona.com", target: "_blank", style: "color: inherit; text-decoration: none;", children: "AskDona" })] }), u$2(FooterDisclaimer, { children: config.language === 'ja' ? (u$2(k$1, { children: [u$2("div", { children: "Boost\u30E2\u30FC\u30C9\u306F\u3001\u3088\u308A\u591A\u89D2\u7684\u306A\u8996\u70B9\u304B\u3089\u591A\u304F\u306E\u6587\u66F8\u3092\u5206\u6790\u3057\u3066\u56DE\u7B54\u3057\u307E\u3059\u3002\u901A\u5E38\u30E2\u30FC\u30C9\u3088\u308A\u56DE\u7B54\u751F\u6210\u307E\u3067\u306B\u6642\u9593\u304C\u304B\u304B\u308A\u307E\u3059\u3002" }), u$2("div", { children: "RAG\u30B7\u30B9\u30C6\u30E0\u306F\u8AA4\u3063\u305F\u60C5\u5831\u3092\u63D0\u4F9B\u3059\u308B\u3053\u3068\u304C\u3042\u308A\u307E\u3059\u3002\u91CD\u8981\u306A\u60C5\u5831\u306F\u3054\u81EA\u8EAB\u3067\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002" })] })) : (u$2(k$1, { children: [u$2("div", { children: "Boost mode analyzes more documents from multiple perspectives. It takes longer than normal mode." }), u$2("div", { children: "RAG systems may provide incorrect information. Please verify important information yourself." })] })) })] })] }) }));
   }
   // Styled components
   const Overlay = j$1('div') `
