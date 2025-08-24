@@ -1464,7 +1464,7 @@ var AskDona = (function (exports) {
 `;
 
   // API configuration with environment variable support
-  const API_BASE_URL = "http://localhost:3000/api/embed/v1";
+  const API_BASE_URL = "https://app.askdona.com/api/embed/v1";
   // Log the API URL being used
   console.log('[AskDona] Using API URL:', API_BASE_URL);
 
