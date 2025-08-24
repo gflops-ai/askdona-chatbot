@@ -5360,7 +5360,7 @@ var AskDona = (function (exports) {
       // Start SSE streaming for questionnaire-based job
       const startQuestionnaireJobStream = (jobId) => {
           console.log('[Deep Research] Starting questionnaire job stream:', jobId);
-          const eventSource = new EventSource(`http://localhost:3000/api/embed/v1/deep-research/stream/${jobId}`);
+          const eventSource = new EventSource(`${API_BASE_URL}/deep-research/stream/${jobId}`);
           eventSource.addEventListener('deep-research-start', (event) => {
               try {
                   const data = JSON.parse(event.data);
@@ -6094,8 +6094,7 @@ var AskDona = (function (exports) {
           let intervalId;
           const pollStatus = async () => {
               try {
-                  // Use localhost:3000 for API calls in development (askdona dev server)
-                  const apiBaseUrl = baseUrl.includes('127.0.0.1') || baseUrl.includes('5500') ? 'http://localhost:3000' : baseUrl;
+                  const apiBaseUrl = API_BASE_URL.replace('/api/embed/v1', '');
                   // Use the actual secure session ID from useSecureSession
                   const actualSessionId = (session === null || session === void 0 ? void 0 : session.sessionId) || sessionId;
                   const response = await fetch(`${apiBaseUrl}/api/embed/v1/rag-deep-research/status?sessionId=${actualSessionId}`);
@@ -6155,8 +6154,7 @@ var AskDona = (function (exports) {
               if (!secureSessionToken) {
                   throw new Error('Failed to get valid session token');
               }
-              // Use localhost:3000 for API calls in development (askdona dev server)
-              const apiBaseUrl = baseUrl.includes('127.0.0.1') || baseUrl.includes('5500') ? 'http://localhost:3000' : baseUrl;
+              const apiBaseUrl = API_BASE_URL.replace('/api/embed/v1', '');
               // Use the actual secure session ID from useSecureSession
               const actualSessionId = (session === null || session === void 0 ? void 0 : session.sessionId) || sessionId;
               const response = await fetch(`${apiBaseUrl}/api/embed/v1/rag-deep-research/executor`, {
@@ -7125,7 +7123,7 @@ var AskDona = (function (exports) {
                   }
               };
               console.log('[AskDona] Submitting feedback with payload:', feedbackPayload);
-              const response = await fetch(`http://localhost:3000/api/embed/v1/feedback`, {
+              const response = await fetch(`${API_BASE_URL}/feedback`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
