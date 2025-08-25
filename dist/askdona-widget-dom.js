@@ -3371,9 +3371,13 @@ var AskDona = (function (exports) {
               }
           };
       }, [theme]);
-      if (!isValid) {
+      if (!isValid && authError) {
           console.error('[AskDona] Authentication failed:', authError);
           return null;
+      }
+      // Show loading state while authentication is in progress
+      if (!isValid && !authError) {
+          return null; // Still loading, don't render anything yet
       }
       const handleOpen = () => {
           setState(prev => ({ ...prev, isOpen: true }));
