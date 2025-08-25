@@ -2478,7 +2478,7 @@ var AskDona = (function (exports) {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 1rem;
-  background: var(--askdona-primary);
+  background: #353a5c !important;
   color: white;
   border: none;
   cursor: pointer;
@@ -3399,6 +3399,14 @@ var AskDona = (function (exports) {
           clearChat();
           setState(prev => ({ ...prev, showIntro: true }));
       };
+      // Debug logging
+      console.log('[AskDona] Widget render state:', {
+          isOpen: state.isOpen,
+          showLauncher: !state.isOpen,
+          showModal: state.isOpen,
+          isValid,
+          authError
+      });
       return (u$2(WidgetContainer, { children: [!state.isOpen && (u$2(LauncherButton, { onClick: handleOpen, position: finalConfig.position || 'bottom-right' })), state.isOpen && (u$2(Modal, { isOpen: state.isOpen, onClose: handleClose, currentMode: state.currentMode, onModeSwitch: handleModeSwitch, messages: state.messages, isLoading: state.isLoading, streamingContent: state.streamingContent, onSendMessage: handleSendMessage, error: state.error, config: finalConfig, currentState: currentState, boostMode: state.boostMode, onBoostModeChange: handleBoostModeChange, sessionId: sessionId, onFeedbackSubmit: submitFeedback, onClearChat: handleClearChat, showIntro: state.showIntro }))] }));
   });
   // Display name for debugging
