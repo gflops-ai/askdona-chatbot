@@ -910,7 +910,7 @@ var AskDona = (function (exports) {
           (_a = messagesEndRef.current) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: 'smooth' });
       }, [messages, streamingContent]);
       return (u$2(MessagesContainer, { children: [messages.map((message, idx) => {
-                  var _a, _b, _c;
+                  var _a, _b, _c, _d, _e;
                   // Debug message rendering
                   console.log('[AskDona] Rendering message:', {
                       id: message.id,
@@ -923,7 +923,7 @@ var AskDona = (function (exports) {
                       console.log('[AskDona] Skipping empty assistant message');
                       return null;
                   }
-                  return (u$2(Message, { isUser: message.role === 'user', children: message.role === 'user' ? (u$2(UserBubble, { children: message.content })) : (u$2(AssistantMessage, { children: [u$2(AssistantAvatar, { children: u$2(MessageCircle, { size: 16, color: "white" }) }), u$2(AssistantBubble, { children: [u$2(MarkdownContent, { children: renderMarkdown(message.content || '', false) }), u$2(MessageFeedback, { messageId: message.id, sessionId: sessionId, feedback: (_c = message.metadata) === null || _c === void 0 ? void 0 : _c.feedback, onFeedbackSubmit: onFeedbackSubmit, config: config })] })] })) }, message.id || idx));
+                  return (u$2(Message, { isUser: message.role === 'user', children: message.role === 'user' ? (u$2(UserMessageContainer, { children: [u$2(UserBubble, { children: message.content }), ((_c = message.metadata) === null || _c === void 0 ? void 0 : _c.mode) === 'boost' && (u$2(BoostBadge, { children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] })) : (u$2(AssistantMessage, { children: [u$2(AssistantAvatar, { children: u$2(MessageCircle, { size: 16, color: "white" }) }), u$2(AssistantBubble, { children: [u$2(MarkdownContent, { children: renderMarkdown(message.content || '', false) }), u$2(MessageFeedback, { messageId: message.id, sessionId: sessionId, feedback: (_d = message.metadata) === null || _d === void 0 ? void 0 : _d.feedback, onFeedbackSubmit: onFeedbackSubmit, config: config }), ((_e = message.metadata) === null || _e === void 0 ? void 0 : _e.mode) === 'boost' && (u$2(BoostBadge, { assistant: true, children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] })] })) }, message.id || idx));
               }).filter(Boolean), isLoading && streamingContent && streamingContent.trim() && (u$2(Message, { isUser: false, children: u$2(AssistantMessage, { children: [u$2(AssistantAvatar, { children: u$2(MessageCircle, { size: 16, color: "white" }) }), u$2(AssistantBubble, { children: [u$2(StreamingIndicator, { children: config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...' }), u$2(MarkdownContent, { children: (() => {
                                           try {
                                               return renderMarkdown(streamingContent || '', true);
@@ -947,8 +947,14 @@ var AskDona = (function (exports) {
   justify-content: ${props => props.isUser ? 'flex-end' : 'flex-start'};
   align-items: flex-start;
 `;
-  const UserBubble = j$1('div') `
+  const UserMessageContainer = j$1('div') `
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
   max-width: 70%;
+`;
+  const UserBubble = j$1('div') `
   padding: 1rem 1.25rem;
   background: var(--askdona-primary);
   color: white;
@@ -1460,6 +1466,32 @@ var AskDona = (function (exports) {
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+`;
+  const BoostBadge = j$1('div') `
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: #1D3D5E;
+  color: white;
+  margin-top: ${props => props.assistant ? '0.75rem' : '0'};
+  
+  svg {
+    opacity: 0.9;
+  }
+  
+  span {
+    font-size: 0.7rem;
+    letter-spacing: 0.025em;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background: #FFE699;
+    color: black;
   }
 `;
 
@@ -2239,7 +2271,9 @@ var AskDona = (function (exports) {
           ]);
       return (u$2(Container$7, { children: [u$2(MessagesArea$1, { children: [shouldShowIntro ? (u$2(IntroContainer, { children: [u$2(IntroIcon, { children: u$2(MessageCircle, { size: 24, color: "white" }) }), u$2(IntroTitle, { children: config.introTitle || (config.language === 'ja' ? 'こんにちは！' : 'Hi there!') }), u$2(IntroText, { children: config.introMessage || (config.language === 'ja'
                                       ? 'AskDona AIアシスタントです。ドキュメントや情報について何でもお聞きください。'
-                                      : "I'm AskDona AI assistant. Ask me anything about your documents and information.") }), u$2(ExampleSection, { children: [u$2(ExampleTitle, { children: config.language === 'ja' ? '質問例' : 'Example Questions' }), u$2(ExampleButtons, { children: exampleQuestions.map((question, idx) => (u$2(ExampleButton, { onClick: () => handleQuestionClick(question), children: question }, idx))) })] })] })) : (u$2(MessageList, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, config: config, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit })), isLoading && currentState && currentState !== 'idle' && (u$2(StatusIndicator, { children: [u$2(StatusDot, {}), u$2(StatusText, { children: statusMessages[currentState] || currentState })] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
+                                      : "I'm AskDona AI assistant. Ask me anything about your documents and information.") }), u$2(ExampleSection, { children: [u$2(ExampleTitle, { children: config.language === 'ja' ? '質問例' : 'Example Questions' }), u$2(ExampleButtons, { children: exampleQuestions.map((question, idx) => (u$2(ExampleButton, { onClick: () => handleQuestionClick(question), children: question }, idx))) })] })] })) : (u$2(MessageList, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, config: config, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit })), isLoading && (u$2(StatusIndicator, { children: [u$2(StatusHeader$1, { children: [u$2(StatusDot, {}), u$2(StatusText, { children: streamingContent.trim()
+                                              ? (config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...')
+                                              : (statusMessages[currentState] || (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { currentState: currentState, isLoading: isLoading }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
                               ? `エラーが発生しました: ${error.message}`
                               : `Error: ${error.message}` }))] }), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: [u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => setInput(e.target.value), onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
                                   ? '質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)'
@@ -2350,15 +2384,20 @@ var AskDona = (function (exports) {
   // Status indicator components - matches askdona repo style
   const StatusIndicator = j$1('div') `
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
   margin: 1rem 0;
   background: var(--askdona-background);
   border: 1px solid var(--askdona-border);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-size: 0.875rem;
   color: var(--askdona-text-secondary);
+`;
+  const StatusHeader$1 = j$1('div') `
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;
   const StatusDot = j$1('div') `
   width: 8px;
@@ -2380,6 +2419,48 @@ var AskDona = (function (exports) {
 `;
   const StatusText = j$1('span') `
   font-weight: 500;
+`;
+  const ProgressBarContainer$1 = j$1('div') `
+  width: 100%;
+  height: 6px;
+  background: var(--askdona-border);
+  border-radius: 3px;
+  overflow: hidden;
+`;
+  const ProgressBar$3 = j$1('div') `
+  height: 100%;
+  background: linear-gradient(90deg, var(--askdona-primary), var(--askdona-primary-light));
+  border-radius: 3px;
+  transition: width 1.2s ease-in-out;
+  position: relative;
+  width: 0%;
+  
+  ${({ currentState, isLoading }) => {
+    if (!isLoading) {
+        return 'width: 0%;';
+    }
+    if (!currentState || currentState === 'idle') {
+        return 'width: 0%;';
+    }
+    switch (currentState) {
+        case 'thinking':
+            return 'width: 20%;';
+        case 'searching':
+            return 'width: 40%;';
+        case 'synthesizing':
+            return 'width: 60%;';
+        case 'answering':
+            return 'width: 80%;';
+        case 'executing_functions':
+            return 'width: 70%;';
+        case 'processing_function_results':
+            return 'width: 85%;';
+        case 'complete':
+            return 'width: 100%;';
+        default:
+            return 'width: 0%;';
+    }
+}}
 `;
   const InputArea = j$1('div') `
   padding: 1rem 1.5rem;
@@ -2712,8 +2793,9 @@ var AskDona = (function (exports) {
       // Search history hook
       const { recentQueries, addSearchHistory } = useSearchHistory(config.chatflowId);
       y(() => {
-          var _a;
-          (_a = searchInputRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+          if (searchInputRef.current && typeof searchInputRef.current.focus === 'function') {
+              searchInputRef.current.focus();
+          }
       }, []);
       // Execute search API call
       const executeSearch = q$1(async (searchQuery) => {
@@ -2809,10 +2891,11 @@ var AskDona = (function (exports) {
           executeSearch(suggestion);
       };
       const handleClearInput = () => {
-          var _a;
           setQuery('');
           setShowSuggestions(false);
-          (_a = searchInputRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+          if (searchInputRef.current && typeof searchInputRef.current.focus === 'function') {
+              searchInputRef.current.focus();
+          }
       };
       const handleFilterChange = (newFilters) => {
           setFilters(newFilters);
@@ -6318,7 +6401,7 @@ var AskDona = (function (exports) {
               onClose();
           }
       };
-      return (u$2(Overlay, { onClick: handleOverlayClick, displayMode: displayMode, children: u$2(ModalContainer, { ref: modalRef, displayMode: displayMode, children: [u$2(Header, { children: [u$2(Title, { children: config.language === 'ja' ? 'AskDona' : 'AskDona' }), u$2(HeaderActions, { children: [currentMode === 'ask-ai' && onClearChat && messages.length > 0 && (u$2(RefreshButton, { onClick: onClearChat, disabled: isLoading, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', children: u$2(RefreshCw, { size: 14 }) })), u$2(ModeButton, { active: currentMode === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AI に質問' : 'Ask AI' }), u$2(ModeButton, { active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), config.enableRagDeepResearch && (u$2(ModeButton, { active: currentMode === 'rag-deep-research', onClick: () => onModeSwitch('rag-deep-research'), children: [u$2(Microscope, { size: 14, style: { marginRight: '4px' } }), config.language === 'ja' ? 'RAG Deep Research' : 'RAG Deep Research'] })), displayMode !== 'fullscreen' && (u$2(CloseButton, { onClick: onClose, children: "\u00D7" }))] })] }), u$2(Content, { children: currentMode === 'ask-ai' ? (u$2(ChatView, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, onSendMessage: onSendMessage, error: error, config: config, currentState: currentState, boostMode: boostMode, onBoostModeChange: onBoostModeChange, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit, showIntro: showIntro, metadataFilters: metadataFilters, onMetadataFiltersChange: onMetadataFiltersChange })) : currentMode === 'search' ? (u$2(SearchView, { config: config })) : currentMode === 'deep-research' ? (u$2(DeepResearchViewNew, { chatflowId: config.chatflowId, onClose: () => onModeSwitch('ask-ai'), isVisible: currentMode === 'deep-research' })) : currentMode === 'rag-deep-research' && config.enableRagDeepResearch ? (u$2(RAGDeepResearchView, { chatFlowId: config.chatflowId, sessionId: sessionId, messages: messages.map(msg => ({
+      return (u$2(Overlay, { onClick: handleOverlayClick, displayMode: displayMode, children: u$2(ModalContainer, { ref: modalRef, displayMode: displayMode, children: [u$2(Header, { children: [u$2(Title, { children: config.language === 'ja' ? 'AskDona' : 'AskDona' }), u$2(HeaderActions, { children: [currentMode === 'ask-ai' && onClearChat && messages.length > 0 && (u$2(RefreshButton, { onClick: onClearChat, disabled: isLoading, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', children: u$2(RefreshCw, { size: 14 }) })), u$2(ModeButton, { active: currentMode === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AI に質問' : 'Ask AI' }), u$2(ModeButton, { active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), config.enableRagDeepResearch && (u$2(ModeButton, { active: currentMode === 'rag-deep-research', onClick: () => onModeSwitch('rag-deep-research'), children: [u$2(Microscope, { size: 14, style: { marginRight: '4px' } }), config.language === 'ja' ? 'RAG Deep Research' : 'RAG Deep Research'] })), displayMode !== 'fullscreen' && (u$2(CloseButton, { onClick: onClose, children: "\u00D7" }))] })] }), u$2(Content, { children: currentMode === 'ask-ai' ? (u$2(ChatView, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, onSendMessage: onSendMessage, error: error, config: config, currentState: currentState, boostMode: boostMode, onBoostModeChange: onBoostModeChange, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit, showIntro: showIntro, metadataFilters: metadataFilters, onMetadataFiltersChange: onMetadataFiltersChange })) : currentMode === 'search' ? (u$2(SearchView, { config: config }, "search-view")) : currentMode === 'deep-research' ? (u$2(DeepResearchViewNew, { chatflowId: config.chatflowId, onClose: () => onModeSwitch('ask-ai'), isVisible: currentMode === 'deep-research' })) : currentMode === 'rag-deep-research' && config.enableRagDeepResearch ? (u$2(RAGDeepResearchView, { chatFlowId: config.chatflowId, sessionId: sessionId, messages: messages.map(msg => ({
                               role: msg.role,
                               content: msg.content,
                               createdAt: msg.createdAt,
@@ -7010,6 +7093,9 @@ var AskDona = (function (exports) {
                   role: 'assistant',
                   content: '',
                   createdAt: new Date().toISOString(),
+                  metadata: {
+                      mode: boostMode ? 'boost' : 'standard'
+                  }
               };
               console.log('[AskDona] Message IDs:', { userMessageId: userMessage.id, assistantMessageId: assistantMessage.id });
               // Store reference for later use
@@ -7043,7 +7129,11 @@ var AskDona = (function (exports) {
                           // Store metadata to be applied when streaming completes
                           try {
                               const metadata = JSON.parse(chunk.data);
-                              metadataRef.current = { docMetadata: metadata, mode: boostMode ? 'boost' : 'standard' };
+                              metadataRef.current = {
+                                  ...metadataRef.current,
+                                  docMetadata: metadata,
+                                  mode: boostMode ? 'boost' : 'standard'
+                              };
                           }
                           catch (e) {
                               console.warn('[AskDona] Failed to parse metadata:', e);
@@ -7075,7 +7165,10 @@ var AskDona = (function (exports) {
                       const finalMessage = {
                           ...assistantMessageRef.current,
                           content: accumulatedContentRef.current.trim(),
-                          metadata: metadataRef.current || assistantMessageRef.current.metadata
+                          metadata: {
+                              ...assistantMessageRef.current.metadata,
+                              ...metadataRef.current
+                          }
                       };
                       return [...prev, finalMessage];
                   });
