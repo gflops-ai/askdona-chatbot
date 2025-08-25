@@ -1652,7 +1652,7 @@ var AskDona = (function (exports) {
   background: white;
   padding: 16px;
 `;
-  const CardHeader$1 = j$1('div') `
+  const CardHeader = j$1('div') `
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1738,7 +1738,7 @@ var AskDona = (function (exports) {
       const handleRemove = q$1(() => {
           onFilterRemove(filter.key);
       }, [filter.key, onFilterRemove]);
-      return (u$2(CardContainer, { children: [u$2(CardHeader$1, { children: [u$2(KeyName$1, { children: [u$2(Tag, { size: 14 }), filter.key, keyData.isCustom && (u$2("span", { style: {
+      return (u$2(CardContainer, { children: [u$2(CardHeader, { children: [u$2(KeyName$1, { children: [u$2(Tag, { size: 14 }), filter.key, keyData.isCustom && (u$2("span", { style: {
                                       fontSize: '10px',
                                       color: '#6b7280',
                                       background: '#f3f4f6',
@@ -2901,32 +2901,18 @@ var AskDona = (function (exports) {
           setFilters(newFilters);
           setCurrentPage(1);
       };
-      const handlePageChange = (page) => {
+      const scrollToSearchResults = q$1(() => {
+          // Find the results container and scroll to it
+          const resultsHeader = document.querySelector('[data-search-results-header]');
+          if (resultsHeader) {
+              resultsHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+      }, []);
+      const handlePageChange = q$1((page) => {
           setCurrentPage(page);
-      };
-      // File icon component
-      const FileIcon = ({ fileFormat }) => {
-          const getIconStyle = (format) => {
-              switch (format.toLowerCase()) {
-                  case 'pdf':
-                      return { color: '#ef4444' }; // red
-                  case 'docx':
-                  case 'doc':
-                      return { color: '#3b82f6' }; // blue
-                  case 'xlsx':
-                  case 'xls':
-                      return { color: '#10b981' }; // green
-                  case 'pptx':
-                  case 'ppt':
-                      return { color: '#f97316' }; // orange
-                  case 'html':
-                      return { color: '#8b5cf6' }; // purple
-                  default:
-                      return { color: 'var(--askdona-text-secondary)' };
-              }
-          };
-          return (u$2(FileIconContainer, { style: getIconStyle(fileFormat), children: u$2("svg", { width: "20", height: "20", fill: "currentColor", viewBox: "0 0 24 24", children: [u$2("path", { d: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" }), u$2("path", { d: "M14 2v6h6" })] }) }));
-      };
+          // Scroll to the top of search results after page change
+          setTimeout(scrollToSearchResults, 100);
+      }, [scrollToSearchResults]);
       const highlightQuery = (text) => {
           if (!query.trim())
               return u$2(k$1, { children: text });
@@ -2958,7 +2944,7 @@ var AskDona = (function (exports) {
                                   }, onBlur: () => {
                                       // Delay hiding suggestions to allow clicking on them
                                       setTimeout(() => setShowSuggestions(false), 150);
-                                  }, placeholder: config.language === 'ja' ? '検索キーワードを入力...' : 'Enter search keywords...' }), query && (u$2(ClearButton, { onClick: handleClearInput, title: config.language === 'ja' ? 'クリア' : 'Clear', children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }) }) }))] }), u$2(SearchButton, { onClick: handleSearch, disabled: !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', children: isSearching ? (u$2(SearchSpinner, {})) : (u$2("svg", { width: "20", height: "20", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) })) }), showSuggestions && recentQueries.length > 0 && (u$2(SuggestionsDropdown, { children: [u$2(SuggestionHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(SuggestionItem, { onClick: () => handleSuggestionSelect(recentQuery), children: [u$2(SuggestionIcon, { children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" }) }) }), u$2(SuggestionText, { children: recentQuery })] }, index)))] }))] }), searchResponse && (u$2(ResultsHeader, { children: [u$2(ResultsCount, { children: [config.language === 'ja' ? '検索結果' : 'Search Results', ": ", filteredResults.length.toLocaleString(), " ", config.language === 'ja' ? '件' : 'items', ((_a = filters.categories) === null || _a === void 0 ? void 0 : _a.length) || ((_b = filters.fileTypes) === null || _b === void 0 ? void 0 : _b.length) ? (u$2(FilteredBadge, { children: config.language === 'ja' ? 'フィルタ適用済' : 'Filtered' })) : null] }), u$2(SearchTime, { children: [config.language === 'ja' ? '検索時間' : 'Search time', ": ", searchResponse.searchTime, "ms"] })] })), searchResponse && tabs.length > 1 && (u$2(TabsContainer$1, { children: tabs.map(tab => (u$2(Tab, { active: tab.id === 'all' || Boolean(filters.fileTypes && filters.fileTypes.includes(tab.id)), onClick: () => {
+                                  }, placeholder: config.language === 'ja' ? '検索キーワードを入力...' : 'Enter search keywords...' }), query && (u$2(ClearButton, { onClick: handleClearInput, title: config.language === 'ja' ? 'クリア' : 'Clear', children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }) }) }))] }), u$2(SearchButton, { onClick: handleSearch, disabled: !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', children: isSearching ? (u$2(SearchSpinner, {})) : (u$2("svg", { width: "20", height: "20", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) })) }), showSuggestions && recentQueries.length > 0 && (u$2(SuggestionsDropdown, { children: [u$2(SuggestionHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(SuggestionItem, { onClick: () => handleSuggestionSelect(recentQuery), children: [u$2(SuggestionIcon, { children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" }) }) }), u$2(SuggestionText, { children: recentQuery })] }, index)))] }))] }), searchResponse && (u$2(ResultsHeader, { "data-search-results-header": true, children: [u$2(ResultsCount, { children: [config.language === 'ja' ? '検索結果' : 'Search Results', ": ", filteredResults.length.toLocaleString(), " ", config.language === 'ja' ? '件' : 'items', ((_a = filters.categories) === null || _a === void 0 ? void 0 : _a.length) || ((_b = filters.fileTypes) === null || _b === void 0 ? void 0 : _b.length) ? (u$2(FilteredBadge, { children: config.language === 'ja' ? 'フィルタ適用済' : 'Filtered' })) : null] }), u$2(SearchTime, { children: [config.language === 'ja' ? '検索時間' : 'Search time', ": ", searchResponse.searchTime, "ms"] })] })), searchResponse && tabs.length > 1 && (u$2(TabsContainer$1, { children: tabs.map(tab => (u$2(Tab, { active: tab.id === 'all' || Boolean(filters.fileTypes && filters.fileTypes.includes(tab.id)), onClick: () => {
                           if (tab.id === 'all') {
                               handleFilterChange({});
                           }
@@ -2967,7 +2953,7 @@ var AskDona = (function (exports) {
                           }
                       }, children: [tab.label, u$2(TabCount, { children: ["(", tab.count, ")"] })] }, tab.id))) })), u$2(ResultsContainer, { children: isSearching ? (u$2(LoadingContainer$1, { children: [u$2(LoadingSpinner, {}), u$2(LoadingText$1, { children: config.language === 'ja' ? '検索中...' : 'Searching...' })] })) : error ? (u$2(ErrorContainer$1, { children: [u$2(ErrorIcon$1, { children: "\u26A0\uFE0F" }), u$2(ErrorText$1, { children: config.language === 'ja' ? '検索エラー' : 'Search Error' }), u$2(ErrorDetails, { children: error })] })) : query && filteredResults.length === 0 && searchResponse ? (u$2(NoResults, { children: config.language === 'ja'
                           ? `"${query}" に一致する結果が見つかりませんでした`
-                          : `No results found for "${query}"` })) : paginatedResults.length > 0 ? (u$2(k$1, { children: [u$2(ResultsList, { children: paginatedResults.map(result => (u$2(SearchResultCardStyled, { children: [u$2(CardHeader, { children: u$2("div", { className: "file-header", children: [u$2(FileIcon, { fileFormat: result.fileFormat }), u$2("div", { className: "file-info", children: [result.fileMetadata.url ? (u$2("a", { href: result.fileMetadata.url, target: "_blank", rel: "noopener noreferrer", className: "file-title-link", children: highlightQuery(result.fileName) })) : (u$2(FileTitle, { children: highlightQuery(result.fileName) })), u$2(FileFormat, { children: result.fileFormat.toUpperCase() })] })] }) }), u$2(CardContent, { children: (result.fileMetadata.category || result.fileMetadata.subCategory) && (u$2(BadgeContainer, { children: [result.fileMetadata.category && (u$2(Badge, { variant: "secondary", children: result.fileMetadata.category })), result.fileMetadata.subCategory && (u$2(Badge, { variant: "outline", children: result.fileMetadata.subCategory }))] })) })] }, result.fileId))) }), totalPages > 1 && (u$2(PaginationContainer, { children: [u$2(PaginationButton, { onClick: () => handlePageChange(currentPage - 1), disabled: currentPage <= 1, children: config.language === 'ja' ? '前へ' : 'Previous' }), u$2(PageInfo, { children: [currentPage, " / ", totalPages] }), u$2(PaginationButton, { onClick: () => handlePageChange(currentPage + 1), disabled: currentPage >= totalPages, children: config.language === 'ja' ? '次へ' : 'Next' })] }))] })) : (u$2(EmptyState, { children: [u$2(EmptyIcon, { children: "\uD83D\uDD0D" }), u$2(EmptyText, { children: config.language === 'ja'
+                          : `No results found for "${query}"` })) : paginatedResults.length > 0 ? (u$2(k$1, { children: [u$2(ResultsList, { children: paginatedResults.map(result => (u$2(SearchResultCardStyled, { children: u$2(CardContent, { children: [u$2(ResultTitle$1, { children: result.fileMetadata.url ? (u$2("a", { href: result.fileMetadata.url, target: "_blank", rel: "noopener noreferrer", children: highlightQuery(result.fileMetadata.title || result.fileName) })) : (u$2("span", { children: highlightQuery(result.fileMetadata.title || result.fileName) })) }), u$2(MetadataRow, { children: [u$2("strong", { children: config.language === 'ja' ? 'フォーマット:' : 'Format:' }), ' ', result.fileFormat.toUpperCase()] }), result.fileMetadata.body && (u$2(BodySection, { children: [u$2("strong", { children: config.language === 'ja' ? '本文:' : 'Content:' }), u$2(BodyText, { children: highlightQuery(result.fileMetadata.body) })] }))] }) }, result.fileId))) }), totalPages > 1 && (u$2(PaginationContainer, { children: [u$2(PaginationButton, { onClick: () => handlePageChange(currentPage - 1), disabled: currentPage <= 1, children: config.language === 'ja' ? '前へ' : 'Previous' }), u$2(PageInfo, { children: [currentPage, " / ", totalPages] }), u$2(PaginationButton, { onClick: () => handlePageChange(currentPage + 1), disabled: currentPage >= totalPages, children: config.language === 'ja' ? '次へ' : 'Next' })] }))] })) : (u$2(EmptyState, { children: [u$2(EmptyIcon, { children: "\uD83D\uDD0D" }), u$2(EmptyText, { children: config.language === 'ja'
                                   ? '検索キーワードを入力してください'
                                   : 'Enter a search term to see results' })] })) })] }));
   }
@@ -3258,90 +3244,67 @@ var AskDona = (function (exports) {
 `;
   // New styled components for SearchResultCard layout
   const SearchResultCardStyled = j$1('div') `
-  border: 1px solid var(--askdona-border);
-  border-radius: 0.75rem;
-  background: var(--askdona-background);
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
   transition: all 0.2s;
   
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: var(--askdona-primary);
-  }
-`;
-  const CardHeader = j$1('div') `
-  padding: 1.5rem 1.5rem 1rem;
-  
-  .file-header {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-  }
-  
-  .file-info {
-    flex: 1;
-    min-width: 0;
-  }
-  
-  .file-title-link {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--askdona-text);
-    text-decoration: none;
-    transition: color 0.2s;
-    
-    &:hover {
-      color: var(--askdona-primary);
-    }
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 `;
   const CardContent = j$1('div') `
-  padding: 0 1.5rem 1.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-`;
-  const FileIconContainer = j$1('div') `
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  flex-shrink: 0;
-`;
-  const FileTitle = j$1('h3') `
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin: 0;
-  color: var(--askdona-text);
-`;
-  const FileFormat = j$1('p') `
-  font-size: 0.875rem;
-  color: var(--askdona-text-secondary);
-  margin: 0.25rem 0 0;
-`;
-  const BadgeContainer = j$1('div') `
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
 `;
-  const Badge = j$1('span') `
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 500;
+  const ResultTitle$1 = j$1('h4') `
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
   
-  ${props => props.variant === 'secondary' ? `
-    background: var(--askdona-surface);
+  a {
+    color: #1a73e8;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  span {
     color: var(--askdona-text);
-    border: 1px solid var(--askdona-border);
-  ` : `
-    background: transparent;
-    color: var(--askdona-text-secondary);
-    border: 1px solid var(--askdona-border);
-  `}
+  }
+`;
+  const MetadataRow = j$1('p') `
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+  color: #5f6368;
+  
+  strong {
+    color: #202124;
+  }
+`;
+  const BodySection = j$1('div') `
+  margin-top: 0.5rem;
+  
+  strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #202124;
+    font-size: 0.875rem;
+  }
+`;
+  const BodyText = j$1('p') `
+  margin: 0;
+  font-size: 0.875rem;
+  color: #5f6368;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
   // Search suggestions styles
   const SuggestionsDropdown = j$1('div') `
