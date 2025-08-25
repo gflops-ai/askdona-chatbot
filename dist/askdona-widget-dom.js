@@ -3441,13 +3441,13 @@ var AskDona = (function (exports) {
   // Inject base styles
   function injectStyles(shadowRoot) {
       const styleId = 'askdona-widget-styles';
-      const targetRoot = shadowRoot || document;
+      const targetRoot = document;
       // Check if styles already exist
       if (targetRoot.getElementById && targetRoot.getElementById(styleId)) {
           return;
       }
       // Handle font loading for both document head and shadow DOM
-      if (!shadowRoot) {
+      {
           // Preload Instrument Serif font with preconnect for better performance
           const fontId = 'askdona-font-preload';
           if (!document.getElementById(fontId)) {
@@ -3483,7 +3483,7 @@ var AskDona = (function (exports) {
     @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block');
     
     /* Complete CSS Reset for Shadow DOM isolation */
-    ${shadowRoot ? ':host' : '#askdona-widget-container'} {
+    ${'#askdona-widget-container'} {
       /* Reset all inherited styles */
       all: initial !important;
       /* Core container styles */
@@ -3493,9 +3493,9 @@ var AskDona = (function (exports) {
       isolation: isolate !important;
     }
     
-    ${shadowRoot ? ':host *' : '#askdona-widget-container *'}, 
-    ${shadowRoot ? ':host *:before' : '#askdona-widget-container *:before'}, 
-    ${shadowRoot ? ':host *:after' : '#askdona-widget-container *:after'} {
+    ${'#askdona-widget-container *'}, 
+    ${'#askdona-widget-container *:before'}, 
+    ${'#askdona-widget-container *:after'} {
       /* Comprehensive reset */
       all: unset !important;
       box-sizing: border-box !important;
@@ -3604,50 +3604,46 @@ var AskDona = (function (exports) {
     }
     
     /* Custom scrollbar styles */
-    ${shadowRoot ? ':host *::-webkit-scrollbar' : '#askdona-widget-container *::-webkit-scrollbar'} {
+    ${'#askdona-widget-container *::-webkit-scrollbar'} {
       width: 6px !important;
       height: 6px !important;
     }
     
-    ${shadowRoot ? ':host *::-webkit-scrollbar-track' : '#askdona-widget-container *::-webkit-scrollbar-track'} {
+    ${'#askdona-widget-container *::-webkit-scrollbar-track'} {
       background: transparent !important;
     }
     
-    ${shadowRoot ? ':host *::-webkit-scrollbar-thumb' : '#askdona-widget-container *::-webkit-scrollbar-thumb'} {
+    ${'#askdona-widget-container *::-webkit-scrollbar-thumb'} {
       background: rgba(0, 0, 0, 0.2) !important;
       border-radius: 3px !important;
     }
     
-    ${shadowRoot ? ':host *::-webkit-scrollbar-thumb:hover' : '#askdona-widget-container *::-webkit-scrollbar-thumb:hover'} {
+    ${'#askdona-widget-container *::-webkit-scrollbar-thumb:hover'} {
       background: rgba(0, 0, 0, 0.3) !important;
     }
     
     /* Accessibility: Respect user's motion preferences */
     @media (prefers-reduced-motion: reduce) {
-      ${shadowRoot ? ':host *' : '#askdona-widget-container *'} {
+      ${'#askdona-widget-container *'} {
         animation: none !important;
         transition: none !important;
       }
     }
     
     /* Prevent any external CSS from affecting our component */
-    ${shadowRoot ? ':host' : '#askdona-widget-container'} {
+    ${'#askdona-widget-container'} {
       color-scheme: light !important;
     }
   `;
       style.textContent = cssContent;
       // Append to appropriate root
-      if (shadowRoot) {
-          shadowRoot.appendChild(style);
-      }
-      else {
+      {
           document.head.appendChild(style);
       }
   }
 
   // Global instance management
   let widgetRef = b();
-  let shadowRoot = null;
   // Main initialization function
   async function init(config) {
       try {
@@ -3704,25 +3700,19 @@ var AskDona = (function (exports) {
               container.id = 'askdona-widget-container';
               document.body.appendChild(container);
           }
-          // Create Shadow DOM for complete style isolation
-          if (!shadowRoot) {
-              shadowRoot = container.attachShadow({ mode: 'open' });
-          }
-          // Create shadow container
-          const shadowContainer = document.createElement('div');
-          shadowContainer.id = 'askdona-shadow-container';
-          shadowRoot.appendChild(shadowContainer);
-          // Inject base styles into Shadow DOM
-          injectStyles(shadowRoot);
+          // Temporarily disable Shadow DOM for debugging
+          // TODO: Re-enable Shadow DOM after fixing rendering issues
+          // Inject base styles
+          injectStyles();
           // Apply custom CSS if provided
           if (enhancedConfig.customCSS) {
               const styleTag = document.createElement('link');
               styleTag.rel = 'stylesheet';
               styleTag.href = enhancedConfig.customCSS;
-              shadowRoot.appendChild(styleTag);
+              document.head.appendChild(styleTag);
           }
-          // Render widget with enhanced config inside Shadow DOM
-          E$1(u$2(Widget, { ref: widgetRef, config: enhancedConfig }), shadowContainer);
+          // Render widget with enhanced config
+          E$1(u$2(Widget, { ref: widgetRef, config: enhancedConfig }), container);
           // Call ready callback
           if (enhancedConfig.onReady) {
               // Slight delay to ensure ref is set
@@ -3749,16 +3739,10 @@ var AskDona = (function (exports) {
   function destroy() {
       const container = document.getElementById('askdona-widget-container');
       if (container) {
-          if (shadowRoot) {
-              const shadowContainer = shadowRoot.getElementById('askdona-shadow-container');
-              if (shadowContainer) {
-                  E$1(null, shadowContainer);
-              }
-          }
+          E$1(null, container);
           container.remove();
       }
       widgetRef = b();
-      shadowRoot = null;
   }
   // Open widget programmatically
   function open() {
