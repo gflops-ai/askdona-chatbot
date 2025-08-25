@@ -2469,6 +2469,7 @@ var AskDona = (function (exports) {
 `;
 
   function LauncherButton({ onClick, position }) {
+      console.log('[AskDona] LauncherButton rendering with position:', position);
       return (u$2(Button, { onClick: onClick, position: position, children: u$2("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: u$2("path", { d: "M8 12H8.01M12 12H12.01M16 12H16.01M21 12C21 16.9706 16.9706 21 12 21C10.4077 21 8.88275 20.5699 7.5389 19.7447L3 21L4.25553 16.4611C3.43012 15.1173 3 13.5923 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }) }) }));
   }
   const Button = j$1('button') `
