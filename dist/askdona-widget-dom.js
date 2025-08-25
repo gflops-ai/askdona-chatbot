@@ -3809,14 +3809,17 @@ var AskDona = (function (exports) {
           });
       }
   }
-  // Global API
-  window.AskDona = {
-      init,
-      destroy,
-      open,
-      close,
-      sendMessage,
-  };
+  // Ensure AskDona is available immediately
+  if (typeof window !== 'undefined') {
+      // Initialize immediately to prevent "AskDona is not defined" errors
+      window.AskDona = {
+          init,
+          destroy,
+          open,
+          close,
+          sendMessage,
+      };
+  }
 
   exports.close = close;
   exports.destroy = destroy;
