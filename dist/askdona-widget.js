@@ -3,6 +3,235 @@ var AskDona = (function (exports) {
 
   var n$1,l$2,u$3,i$2,r$1,o$2,e$2,f$3,c$2,s$2,a$2,p$2={},v$1=[],y$1=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,w$1=Array.isArray;function d$2(n,l){for(var u in l)n[u]=l[u];return n}function g$2(n){n&&n.parentNode&&n.parentNode.removeChild(n);}function _$1(l,u,t){var i,r,o,e={};for(o in u)"key"==o?i=u[o]:"ref"==o?r=u[o]:e[o]=u[o];if(arguments.length>2&&(e.children=arguments.length>3?n$1.call(arguments,2):t),"function"==typeof l&&null!=l.defaultProps)for(o in l.defaultProps) void 0===e[o]&&(e[o]=l.defaultProps[o]);return m$2(l,e,i,r,null)}function m$2(n,t,i,r,o){var e={type:n,props:t,key:i,ref:r,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:null==o?++u$3:o,__i:-1,__u:0};return null==o&&null!=l$2.vnode&&l$2.vnode(e),e}function b(){return {current:null}}function k$1(n){return n.children}function x(n,l){this.props=n,this.context=l;}function S(n,l){if(null==l)return n.__?S(n.__,n.__i+1):null;for(var u;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e)return u.__e;return "function"==typeof n.type?S(n):null}function C$1(n){var l,u;if(null!=(n=n.__)&&null!=n.__c){for(n.__e=n.__c.base=null,l=0;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e){n.__e=n.__c.base=u.__e;break}return C$1(n)}}function M(n){(!n.__d&&(n.__d=true)&&i$2.push(n)&&!$.__r++||r$1!=l$2.debounceRendering)&&((r$1=l$2.debounceRendering)||o$2)($);}function $(){for(var n,u,t,r,o,f,c,s=1;i$2.length;)i$2.length>s&&i$2.sort(e$2),n=i$2.shift(),s=i$2.length,n.__d&&(t=void 0,o=(r=(u=n).__v).__e,f=[],c=[],u.__P&&((t=d$2({},r)).__v=r.__v+1,l$2.vnode&&l$2.vnode(t),O(u.__P,t,r,u.__n,u.__P.namespaceURI,32&r.__u?[o]:null,f,null==o?S(r):o,!!(32&r.__u),c),t.__v=r.__v,t.__.__k[t.__i]=t,z$1(f,t,c),t.__e!=o&&C$1(t)));$.__r=0;}function I(n,l,u,t,i,r,o,e,f,c,s){var a,h,y,w,d,g,_=t&&t.__k||v$1,m=l.length;for(f=P$1(u,l,_,f,m),a=0;a<m;a++)null!=(y=u.__k[a])&&(h=-1==y.__i?p$2:_[y.__i]||p$2,y.__i=a,g=O(n,y,h,i,r,o,e,f,c,s),w=y.__e,y.ref&&h.ref!=y.ref&&(h.ref&&q$2(h.ref,null,y),s.push(y.ref,y.__c||w,y)),null==d&&null!=w&&(d=w),4&y.__u||h.__k===y.__k?f=A$2(y,f,n):"function"==typeof y.type&&void 0!==g?f=g:w&&(f=w.nextSibling),y.__u&=-7);return u.__e=d,f}function P$1(n,l,u,t,i){var r,o,e,f,c,s=u.length,a=s,h=0;for(n.__k=new Array(i),r=0;r<i;r++)null!=(o=l[r])&&"boolean"!=typeof o&&"function"!=typeof o?(f=r+h,(o=n.__k[r]="string"==typeof o||"number"==typeof o||"bigint"==typeof o||o.constructor==String?m$2(null,o,null,null,null):w$1(o)?m$2(k$1,{children:o},null,null,null):null==o.constructor&&o.__b>0?m$2(o.type,o.props,o.key,o.ref?o.ref:null,o.__v):o).__=n,o.__b=n.__b+1,e=null,-1!=(c=o.__i=L(o,u,f,a))&&(a--,(e=u[c])&&(e.__u|=2)),null==e||null==e.__v?(-1==c&&(i>s?h--:i<s&&h++),"function"!=typeof o.type&&(o.__u|=4)):c!=f&&(c==f-1?h--:c==f+1?h++:(c>f?h--:h++,o.__u|=4))):n.__k[r]=null;if(a)for(r=0;r<s;r++)null!=(e=u[r])&&0==(2&e.__u)&&(e.__e==t&&(t=S(e)),B$2(e,e));return t}function A$2(n,l,u){var t,i;if("function"==typeof n.type){for(t=n.__k,i=0;t&&i<t.length;i++)t[i]&&(t[i].__=n,l=A$2(t[i],l,u));return l}n.__e!=l&&(l&&n.type&&!u.contains(l)&&(l=S(n)),u.insertBefore(n.__e,l||null),l=n.__e);do{l=l&&l.nextSibling;}while(null!=l&&8==l.nodeType);return l}function H$1(n,l){return l=l||[],null==n||"boolean"==typeof n||(w$1(n)?n.some(function(n){H$1(n,l);}):l.push(n)),l}function L(n,l,u,t){var i,r,o=n.key,e=n.type,f=l[u];if(null===f&&null==n.key||f&&o==f.key&&e==f.type&&0==(2&f.__u))return u;if(t>(null!=f&&0==(2&f.__u)?1:0))for(i=u-1,r=u+1;i>=0||r<l.length;){if(i>=0){if((f=l[i])&&0==(2&f.__u)&&o==f.key&&e==f.type)return i;i--;}if(r<l.length){if((f=l[r])&&0==(2&f.__u)&&o==f.key&&e==f.type)return r;r++;}}return  -1}function T$2(n,l,u){"-"==l[0]?n.setProperty(l,null==u?"":u):n[l]=null==u?"":"number"!=typeof u||y$1.test(l)?u:u+"px";}function j$3(n,l,u,t,i){var r,o;n:if("style"==l)if("string"==typeof u)n.style.cssText=u;else {if("string"==typeof t&&(n.style.cssText=t=""),t)for(l in t)u&&l in u||T$2(n.style,l,"");if(u)for(l in u)t&&u[l]==t[l]||T$2(n.style,l,u[l]);}else if("o"==l[0]&&"n"==l[1])r=l!=(l=l.replace(f$3,"$1")),o=l.toLowerCase(),l=o in n||"onFocusOut"==l||"onFocusIn"==l?o.slice(2):l.slice(2),n.l||(n.l={}),n.l[l+r]=u,u?t?u.u=t.u:(u.u=c$2,n.addEventListener(l,r?a$2:s$2,r)):n.removeEventListener(l,r?a$2:s$2,r);else {if("http://www.w3.org/2000/svg"==i)l=l.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");else if("width"!=l&&"height"!=l&&"href"!=l&&"list"!=l&&"form"!=l&&"tabIndex"!=l&&"download"!=l&&"rowSpan"!=l&&"colSpan"!=l&&"role"!=l&&"popover"!=l&&l in n)try{n[l]=null==u?"":u;break n}catch(n){}"function"==typeof u||(null==u||false===u&&"-"!=l[4]?n.removeAttribute(l):n.setAttribute(l,"popover"==l&&1==u?"":u));}}function F$2(n){return function(u){if(this.l){var t=this.l[u.type+n];if(null==u.t)u.t=c$2++;else if(u.t<t.u)return;return t(l$2.event?l$2.event(u):u)}}}function O(n,u,t,i,r,o,e,f,c,s){var a,h,p,v,y,_,m,b,S,C,M,$,P,A,H,L,T,j=u.type;if(null!=u.constructor)return null;128&t.__u&&(c=!!(32&t.__u),o=[f=u.__e=t.__e]),(a=l$2.__b)&&a(u);n:if("function"==typeof j)try{if(b=u.props,S="prototype"in j&&j.prototype.render,C=(a=j.contextType)&&i[a.__c],M=a?C?C.props.value:a.__:i,t.__c?m=(h=u.__c=t.__c).__=h.__E:(S?u.__c=h=new j(b,M):(u.__c=h=new x(b,M),h.constructor=j,h.render=D$2),C&&C.sub(h),h.props=b,h.state||(h.state={}),h.context=M,h.__n=i,p=h.__d=!0,h.__h=[],h._sb=[]),S&&null==h.__s&&(h.__s=h.state),S&&null!=j.getDerivedStateFromProps&&(h.__s==h.state&&(h.__s=d$2({},h.__s)),d$2(h.__s,j.getDerivedStateFromProps(b,h.__s))),v=h.props,y=h.state,h.__v=u,p)S&&null==j.getDerivedStateFromProps&&null!=h.componentWillMount&&h.componentWillMount(),S&&null!=h.componentDidMount&&h.__h.push(h.componentDidMount);else {if(S&&null==j.getDerivedStateFromProps&&b!==v&&null!=h.componentWillReceiveProps&&h.componentWillReceiveProps(b,M),!h.__e&&null!=h.shouldComponentUpdate&&!1===h.shouldComponentUpdate(b,h.__s,M)||u.__v==t.__v){for(u.__v!=t.__v&&(h.props=b,h.state=h.__s,h.__d=!1),u.__e=t.__e,u.__k=t.__k,u.__k.some(function(n){n&&(n.__=u);}),$=0;$<h._sb.length;$++)h.__h.push(h._sb[$]);h._sb=[],h.__h.length&&e.push(h);break n}null!=h.componentWillUpdate&&h.componentWillUpdate(b,h.__s,M),S&&null!=h.componentDidUpdate&&h.__h.push(function(){h.componentDidUpdate(v,y,_);});}if(h.context=M,h.props=b,h.__P=n,h.__e=!1,P=l$2.__r,A=0,S){for(h.state=h.__s,h.__d=!1,P&&P(u),a=h.render(h.props,h.state,h.context),H=0;H<h._sb.length;H++)h.__h.push(h._sb[H]);h._sb=[];}else do{h.__d=!1,P&&P(u),a=h.render(h.props,h.state,h.context),h.state=h.__s;}while(h.__d&&++A<25);h.state=h.__s,null!=h.getChildContext&&(i=d$2(d$2({},i),h.getChildContext())),S&&!p&&null!=h.getSnapshotBeforeUpdate&&(_=h.getSnapshotBeforeUpdate(v,y)),L=a,null!=a&&a.type===k$1&&null==a.key&&(L=N$1(a.props.children)),f=I(n,w$1(L)?L:[L],u,t,i,r,o,e,f,c,s),h.base=u.__e,u.__u&=-161,h.__h.length&&e.push(h),m&&(h.__E=h.__=null);}catch(n){if(u.__v=null,c||null!=o)if(n.then){for(u.__u|=c?160:128;f&&8==f.nodeType&&f.nextSibling;)f=f.nextSibling;o[o.indexOf(f)]=null,u.__e=f;}else for(T=o.length;T--;)g$2(o[T]);else u.__e=t.__e,u.__k=t.__k;l$2.__e(n,u,t);}else null==o&&u.__v==t.__v?(u.__k=t.__k,u.__e=t.__e):f=u.__e=V$1(t.__e,u,t,i,r,o,e,c,s);return (a=l$2.diffed)&&a(u),128&u.__u?void 0:f}function z$1(n,u,t){for(var i=0;i<t.length;i++)q$2(t[i],t[++i],t[++i]);l$2.__c&&l$2.__c(u,n),n.some(function(u){try{n=u.__h,u.__h=[],n.some(function(n){n.call(u);});}catch(n){l$2.__e(n,u.__v);}});}function N$1(n){return "object"!=typeof n||null==n||n.__b&&n.__b>0?n:w$1(n)?n.map(N$1):d$2({},n)}function V$1(u,t,i,r,o,e,f,c,s){var a,h,v,y,d,_,m,b=i.props,k=t.props,x=t.type;if("svg"==x?o="http://www.w3.org/2000/svg":"math"==x?o="http://www.w3.org/1998/Math/MathML":o||(o="http://www.w3.org/1999/xhtml"),null!=e)for(a=0;a<e.length;a++)if((d=e[a])&&"setAttribute"in d==!!x&&(x?d.localName==x:3==d.nodeType)){u=d,e[a]=null;break}if(null==u){if(null==x)return document.createTextNode(k);u=document.createElementNS(o,x,k.is&&k),c&&(l$2.__m&&l$2.__m(t,e),c=false),e=null;}if(null==x)b===k||c&&u.data==k||(u.data=k);else {if(e=e&&n$1.call(u.childNodes),b=i.props||p$2,!c&&null!=e)for(b={},a=0;a<u.attributes.length;a++)b[(d=u.attributes[a]).name]=d.value;for(a in b)if(d=b[a],"children"==a);else if("dangerouslySetInnerHTML"==a)v=d;else if(!(a in k)){if("value"==a&&"defaultValue"in k||"checked"==a&&"defaultChecked"in k)continue;j$3(u,a,null,d,o);}for(a in k)d=k[a],"children"==a?y=d:"dangerouslySetInnerHTML"==a?h=d:"value"==a?_=d:"checked"==a?m=d:c&&"function"!=typeof d||b[a]===d||j$3(u,a,d,b[a],o);if(h)c||v&&(h.__html==v.__html||h.__html==u.innerHTML)||(u.innerHTML=h.__html),t.__k=[];else if(v&&(u.innerHTML=""),I("template"==t.type?u.content:u,w$1(y)?y:[y],t,i,r,"foreignObject"==x?"http://www.w3.org/1999/xhtml":o,e,f,e?e[0]:i.__k&&S(i,0),c,s),null!=e)for(a=e.length;a--;)g$2(e[a]);c||(a="value","progress"==x&&null==_?u.removeAttribute("value"):null!=_&&(_!==u[a]||"progress"==x&&!_||"option"==x&&_!=b[a])&&j$3(u,a,_,b[a],o),a="checked",null!=m&&m!=u[a]&&j$3(u,a,m,b[a],o));}return u}function q$2(n,u,t){try{if("function"==typeof n){var i="function"==typeof n.__u;i&&n.__u(),i&&null==u||(n.__u=n(u));}else n.current=u;}catch(n){l$2.__e(n,t);}}function B$2(n,u,t){var i,r;if(l$2.unmount&&l$2.unmount(n),(i=n.ref)&&(i.current&&i.current!=n.__e||q$2(i,null,u)),null!=(i=n.__c)){if(i.componentWillUnmount)try{i.componentWillUnmount();}catch(n){l$2.__e(n,u);}i.base=i.__P=null;}if(i=n.__k)for(r=0;r<i.length;r++)i[r]&&B$2(i[r],u,t||"function"!=typeof n.type);t||g$2(n.__e),n.__c=n.__=n.__e=void 0;}function D$2(n,l,u){return this.constructor(n,u)}function E$1(u,t,i){var r,o,e,f;t==document&&(t=document.documentElement),l$2.__&&l$2.__(u,t),o=(r="function"=="undefined")?null:t.__k,e=[],f=[],O(t,u=(t).__k=_$1(k$1,null,[u]),o||p$2,p$2,t.namespaceURI,o?null:t.firstChild?n$1.call(t.childNodes):null,e,o?o.__e:t.firstChild,r,f),z$1(e,u,f);}n$1=v$1.slice,l$2={__e:function(n,l,u,t){for(var i,r,o;l=l.__;)if((i=l.__c)&&!i.__)try{if((r=i.constructor)&&null!=r.getDerivedStateFromError&&(i.setState(r.getDerivedStateFromError(n)),o=i.__d),null!=i.componentDidCatch&&(i.componentDidCatch(n,t||{}),o=i.__d),o)return i.__E=i}catch(l){n=l;}throw n}},u$3=0,x.prototype.setState=function(n,l){var u;u=null!=this.__s&&this.__s!=this.state?this.__s:this.__s=d$2({},this.state),"function"==typeof n&&(n=n(d$2({},u),this.props)),n&&d$2(u,n),null!=n&&this.__v&&(l&&this._sb.push(l),M(this));},x.prototype.forceUpdate=function(n){this.__v&&(this.__e=true,n&&this.__h.push(n),M(this));},x.prototype.render=k$1,i$2=[],o$2="function"==typeof Promise?Promise.prototype.then.bind(Promise.resolve()):setTimeout,e$2=function(n,l){return n.__v.__b-l.__v.__b},$.__r=0,f$3=/(PointerCapture)$|Capture$/i,c$2=0,s$2=F$2(false),a$2=F$2(true);
 
+  // Generate unique ID
+  // Validate configuration
+  function validateConfig(config) {
+      if (!config.chatflowId) {
+          return {
+              isValid: false,
+              error: 'chatflowId is required',
+          };
+      }
+      if (config.theme && !['light', 'dark', 'auto'].includes(config.theme)) {
+          return {
+              isValid: false,
+              error: 'Invalid theme. Must be "light", "dark", or "auto"',
+          };
+      }
+      if (config.position && !['bottom-right', 'bottom-left'].includes(config.position)) {
+          return {
+              isValid: false,
+              error: 'Invalid position. Must be "bottom-right" or "bottom-left"',
+          };
+      }
+      if (config.language && !['ja', 'en'].includes(config.language)) {
+          return {
+              isValid: false,
+              error: 'Invalid language. Must be "ja" or "en"',
+          };
+      }
+      return { isValid: true };
+  }
+
+  // src/utils/security.ts
+  // Setup security headers and CSP
+  function setupSecurityHeaders() {
+      // Add Content Security Policy meta tag
+      if (!document.querySelector('meta[name="askdona-csp"]')) {
+          const cspMeta = document.createElement('meta');
+          cspMeta.name = 'askdona-csp';
+          cspMeta.content = [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "connect-src 'self' https://api.askdona.com wss://api.askdona.com",
+              "font-src 'self' data:",
+              "frame-ancestors 'none'",
+          ].join('; ');
+          document.head.appendChild(cspMeta);
+      }
+  }
+  // Generate secure random ID
+  function generateSecureId() {
+      if (window.crypto && window.crypto.randomUUID) {
+          return window.crypto.randomUUID();
+      }
+      // Fallback for older browsers
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          const r = Math.random() * 16 | 0;
+          const v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+      });
+  }
+  // Prevent clickjacking
+  function preventClickjacking() {
+      if (window.self !== window.top) {
+          // We're in an iframe, check if it's allowed
+          try {
+              // Try to access parent document - will throw if different origin
+              window.parent.document; // Access check only, no assignment needed
+              // If we can access it, we're same-origin, which is allowed
+          }
+          catch (e) {
+              // Different origin, log warning
+              console.warn('[AskDona] Widget loaded in cross-origin iframe');
+          }
+      }
+  }
+  // Initialize security measures
+  if (typeof window !== 'undefined') {
+      preventClickjacking();
+  }
+
+  // API configuration with environment variable support
+  const API_BASE_URL = "https://app.askdona.com/api/embed/v1";
+  // Log the API URL being used
+  console.log('[AskDona] Using API URL:', API_BASE_URL);
+
+  const API_TIMEOUT = 30000; // 30 seconds
+  // Helper function for API requests
+  async function apiRequest(endpoint, options = {}) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
+      try {
+          // Only set Content-Type for non-GET requests
+          const headers = {
+              'X-Widget-Version': '1.0.0',
+              ...(options.headers || {}),
+          };
+          // Add Content-Type only for POST/PUT/PATCH requests
+          if (options.method && ['POST', 'PUT', 'PATCH'].includes(options.method)) {
+              headers['Content-Type'] = 'application/json';
+          }
+          const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+              ...options,
+              signal: controller.signal,
+              headers,
+          });
+          clearTimeout(timeoutId);
+          if (!response.ok) {
+              const error = await response.json().catch(() => ({ message: 'Request failed' }));
+              throw new Error(error.message || `HTTP ${response.status}`);
+          }
+          return await response.json();
+      }
+      catch (error) {
+          clearTimeout(timeoutId);
+          if (error.name === 'AbortError') {
+              throw new Error('Request timeout');
+          }
+          throw error;
+      }
+  }
+  // Validate chatflow and get settings
+  async function validateChatflow(chatflowId) {
+      try {
+          const response = await apiRequest(`/validate/${chatflowId}`, {
+              method: 'POST',
+              body: JSON.stringify({
+                  origin: window.location.origin,
+              }),
+          });
+          return response;
+      }
+      catch (error) {
+          return {
+              isValid: false,
+              error: error.message,
+          };
+      }
+  }
+  // Get full embed configuration
+  async function getEmbedConfig(chatflowId) {
+      try {
+          const response = await apiRequest(`/welcome/${chatflowId}`);
+          return response;
+      }
+      catch (error) {
+          console.error('[AskDona] Failed to fetch embed config:', error);
+          return null;
+      }
+  }
+  // Search function
+  async function searchDocuments(chatflowId, query) {
+      try {
+          const response = await apiRequest(`/search/${chatflowId}`, {
+              method: 'POST',
+              body: JSON.stringify(query),
+          });
+          return response;
+      }
+      catch (error) {
+          throw error;
+      }
+  }
+  // ============================
+  // METADATA FILTERING API
+  // ============================
+  // Check if metadata filtering is enabled for a chatflow
+  async function checkMetadataFiltering(chatflowId) {
+      try {
+          const response = await apiRequest(`/metadata/${chatflowId}/check`, {
+              method: 'GET',
+          });
+          return response;
+      }
+      catch (error) {
+          console.error('[AskDona] Failed to check metadata filtering:', error);
+          return {
+              enable_metadata_filtering: false,
+              error: error.message,
+          };
+      }
+  }
+  // Get available metadata keys and values for a chatflow
+  async function getMetadataKeys(chatflowId) {
+      try {
+          const response = await apiRequest(`/metadata/${chatflowId}/keys`, {
+              method: 'GET',
+          });
+          return response;
+      }
+      catch (error) {
+          console.error('[AskDona] Failed to fetch metadata keys:', error);
+          return {
+              success: false,
+              error: error.message,
+          };
+      }
+  }
+  // Generate follow-up questions for Deep Research
+  async function generateFollowUpQuestions(query) {
+      try {
+          const response = await apiRequest('/deep-research/follow-up', {
+              method: 'POST',
+              body: JSON.stringify({ query }),
+          });
+          return response;
+      }
+      catch (error) {
+          return {
+              success: false,
+              questions: [],
+              error: error.message,
+          };
+      }
+  }
+  // Start Deep Research with questionnaire answers
+  async function startDeepResearchWithAnswers(params) {
+      try {
+          const response = await apiRequest('/deep-research/start-with-answers', {
+              method: 'POST',
+              body: JSON.stringify(params),
+          });
+          return response;
+      }
+      catch (error) {
+          throw error;
+      }
+  }
+
   var f$2=0;function u$2(e,t,n,o,i,u){t||(t={});var a,c,p=t;if("ref"in p)for(c in p={},t)"ref"==c?a=t[c]:p[c]=t[c];var l={type:e,props:p,key:n,ref:a,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:--f$2,__i:-1,__u:0,__source:i,__self:u};if("function"==typeof e&&(a=e.defaultProps))for(c in a) void 0===p[c]&&(p[c]=a[c]);return l$2.vnode&&l$2.vnode(l),l}
 
   var t$1,r,u$1,i$1,o$1=0,f$1=[],c$1=l$2,e$1=c$1.__b,a$1=c$1.__r,v=c$1.diffed,l$1=c$1.__c,m$1=c$1.unmount,s$1=c$1.__;function p$1(n,t){c$1.__h&&c$1.__h(r,n,o$1||t),o$1=0;var u=r.__H||(r.__H={__:[],__h:[]});return n>=u.__.length&&u.__.push({}),u.__[n]}function d$1(n){return o$1=1,h$1(D$1,n)}function h$1(n,u,i){var o=p$1(t$1++,2);if(o.t=n,!o.__c&&(o.__=[i?i(u):D$1(void 0,u),function(n){var t=o.__N?o.__N[0]:o.__[0],r=o.t(t,n);t!==r&&(o.__N=[r,o.__[1]],o.__c.setState({}));}],o.__c=r,!r.__f)){var f=function(n,t,r){if(!o.__c.__H)return  true;var u=o.__c.__H.__.filter(function(n){return !!n.__c});if(u.every(function(n){return !n.__N}))return !c||c.call(this,n,t,r);var i=o.__c.props!==n;return u.forEach(function(n){if(n.__N){var t=n.__[0];n.__=n.__N,n.__N=void 0,t!==n.__[0]&&(i=true);}}),c&&c.call(this,n,t,r)||i};r.__f=true;var c=r.shouldComponentUpdate,e=r.componentWillUpdate;r.componentWillUpdate=function(n,t,r){if(this.__e){var u=c;c=void 0,f(n,t,r),c=u;}e&&e.call(this,n,t,r);},r.shouldComponentUpdate=f;}return o.__N||o.__}function y(n,u){var i=p$1(t$1++,3);!c$1.__s&&C(i.__H,u)&&(i.__=n,i.u=u,r.__H.__h.push(i));}function _(n,u){var i=p$1(t$1++,4);!c$1.__s&&C(i.__H,u)&&(i.__=n,i.u=u,r.__h.push(i));}function A$1(n){return o$1=5,T$1(function(){return {current:n}},[])}function F$1(n,t,r){o$1=6,_(function(){if("function"==typeof n){var r=n(t());return function(){n(null),r&&"function"==typeof r&&r();}}if(n)return n.current=t(),function(){return n.current=null}},null==r?r:r.concat(n));}function T$1(n,r){var u=p$1(t$1++,7);return C(u.__H,r)&&(u.__=n(),u.__H=r,u.__h=n),u.__}function q$1(n,t){return o$1=8,T$1(function(){return n},t)}function j$2(){for(var n;n=f$1.shift();)if(n.__P&&n.__H)try{n.__H.__h.forEach(z),n.__H.__h.forEach(B$1),n.__H.__h=[];}catch(t){n.__H.__h=[],c$1.__e(t,n.__v);}}c$1.__b=function(n){r=null,e$1&&e$1(n);},c$1.__=function(n,t){n&&t.__k&&t.__k.__m&&(n.__m=t.__k.__m),s$1&&s$1(n,t);},c$1.__r=function(n){a$1&&a$1(n),t$1=0;var i=(r=n.__c).__H;i&&(u$1===r?(i.__h=[],r.__h=[],i.__.forEach(function(n){n.__N&&(n.__=n.__N),n.u=n.__N=void 0;})):(i.__h.forEach(z),i.__h.forEach(B$1),i.__h=[],t$1=0)),u$1=r;},c$1.diffed=function(n){v&&v(n);var t=n.__c;t&&t.__H&&(t.__H.__h.length&&(1!==f$1.push(t)&&i$1===c$1.requestAnimationFrame||((i$1=c$1.requestAnimationFrame)||w)(j$2)),t.__H.__.forEach(function(n){n.u&&(n.__H=n.u),n.u=void 0;})),u$1=r=null;},c$1.__c=function(n,t){t.some(function(n){try{n.__h.forEach(z),n.__h=n.__h.filter(function(n){return !n.__||B$1(n)});}catch(r){t.some(function(n){n.__h&&(n.__h=[]);}),t=[],c$1.__e(r,n.__v);}}),l$1&&l$1(n,t);},c$1.unmount=function(n){m$1&&m$1(n);var t,r=n.__c;r&&r.__H&&(r.__H.__.forEach(function(n){try{z(n);}catch(n){t=n;}}),r.__H=void 0,t&&c$1.__e(t,r.__v));};var k="function"==typeof requestAnimationFrame;function w(n){var t,r=function(){clearTimeout(u),k&&cancelAnimationFrame(t),setTimeout(n);},u=setTimeout(r,35);k&&(t=requestAnimationFrame(r));}function z(n){var t=r,u=n.__c;"function"==typeof u&&(n.__c=void 0,u()),r=t;}function B$1(n){var t=r;n.__c=n.__(),r=t;}function C(n,t){return !n||n.length!==t.length||t.some(function(t,r){return t!==n[r]})}function D$1(n,t){return "function"==typeof t?t(n):t}
@@ -422,6 +651,19 @@ var AskDona = (function (exports) {
    */
 
 
+  const Plus = createLucideIcon("plus", [
+    ["path", { d: "M5 12h14", key: "1ays0h" }],
+    ["path", { d: "M12 5v14", key: "s699le" }]
+  ]);
+
+  /**
+   * @license lucide-preact v0.525.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+
+
   const RefreshCw = createLucideIcon("refresh-cw", [
     ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
     ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
@@ -707,7 +949,9 @@ var AskDona = (function (exports) {
           setShowPopup(false);
           setSelectedRating(null);
       };
-      return (u$2(k$1, { children: [u$2(FeedbackContainer, { children: [u$2(FeedbackLabel, { children: config.language === 'ja' ? 'この回答は役に立ちましたか？' : 'Was this answer helpful?' }), u$2(FeedbackButtons, { children: [u$2(FeedbackButton, { onClick: () => handleRatingClick('THUMBS_UP'), active: (currentFeedback === null || currentFeedback === void 0 ? void 0 : currentFeedback.rating) === 'THUMBS_UP', disabled: !!currentFeedback, positive: true, title: config.language === 'ja' ? '役に立った' : 'Helpful', children: u$2(ThumbsUp, { size: 14 }) }), u$2(FeedbackButton, { onClick: () => handleRatingClick('THUMBS_DOWN'), active: (currentFeedback === null || currentFeedback === void 0 ? void 0 : currentFeedback.rating) === 'THUMBS_DOWN', disabled: !!currentFeedback, positive: false, title: config.language === 'ja' ? '役に立たなかった' : 'Not helpful', children: u$2(ThumbsDown, { size: 14 }) })] }), currentFeedback && (u$2(FeedbackThankYou, { children: config.language === 'ja' ? 'フィードバックをありがとうございます！' : 'Thank you for your feedback!' }))] }), u$2(FeedbackPopup, { isOpen: showPopup, onClose: handlePopupClose, onSubmit: handleFeedbackSubmit, rating: selectedRating, config: config })] }));
+      return (u$2(k$1, { children: [u$2(FeedbackContainer, { children: [u$2(FeedbackLabel, { children: config.language === 'ja'
+                              ? 'この回答は役に立ちましたか？ 更なる改善のため、ぜひフィードバックをお願いします。'
+                              : 'Was this answer helpful? For further improvements, please share your feedback.' }), u$2(FeedbackButtons, { children: [u$2(FeedbackButton, { onClick: () => handleRatingClick('THUMBS_UP'), active: (currentFeedback === null || currentFeedback === void 0 ? void 0 : currentFeedback.rating) === 'THUMBS_UP', disabled: !!currentFeedback, positive: true, title: config.language === 'ja' ? '役に立った' : 'Helpful', children: u$2(ThumbsUp, { size: 14 }) }), u$2(FeedbackButton, { onClick: () => handleRatingClick('THUMBS_DOWN'), active: (currentFeedback === null || currentFeedback === void 0 ? void 0 : currentFeedback.rating) === 'THUMBS_DOWN', disabled: !!currentFeedback, positive: false, title: config.language === 'ja' ? '役に立たなかった' : 'Not helpful', children: u$2(ThumbsDown, { size: 14 }) })] }), currentFeedback && (u$2(FeedbackThankYou, { children: config.language === 'ja' ? 'フィードバックをありがとうございます！' : 'Thank you for your feedback!' }))] }), u$2(FeedbackPopup, { isOpen: showPopup, onClose: handlePopupClose, onSubmit: handleFeedbackSubmit, rating: selectedRating, config: config })] }));
   }
   // Enhanced markdown renderer with table support
   function renderMarkdown(text, isStreaming = false) {
@@ -923,17 +1167,19 @@ var AskDona = (function (exports) {
                       console.log('[AskDona] Skipping empty assistant message');
                       return null;
                   }
-                  return (u$2(Message, { isUser: message.role === 'user', children: message.role === 'user' ? (u$2(UserMessageContainer, { children: [u$2(UserBubble, { children: message.content }), ((_c = message.metadata) === null || _c === void 0 ? void 0 : _c.mode) === 'boost' && (u$2(BoostBadge, { children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] })) : (u$2(AssistantMessage, { children: [u$2(AssistantAvatar, { children: u$2(MessageCircle, { size: 16, color: "white" }) }), u$2(AssistantBubble, { children: [u$2(MarkdownContent, { children: renderMarkdown(message.content || '', false) }), u$2(MessageFeedback, { messageId: message.id, sessionId: sessionId, feedback: (_d = message.metadata) === null || _d === void 0 ? void 0 : _d.feedback, onFeedbackSubmit: onFeedbackSubmit, config: config }), ((_e = message.metadata) === null || _e === void 0 ? void 0 : _e.mode) === 'boost' && (u$2(BoostBadge, { assistant: true, children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] })] })) }, message.id || idx));
-              }).filter(Boolean), isLoading && streamingContent && streamingContent.trim() && (u$2(Message, { isUser: false, children: u$2(AssistantMessage, { children: [u$2(AssistantAvatar, { children: u$2(MessageCircle, { size: 16, color: "white" }) }), u$2(AssistantBubble, { children: [u$2(StreamingIndicator, { children: config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...' }), u$2(MarkdownContent, { children: (() => {
-                                          try {
-                                              return renderMarkdown(streamingContent || '', true);
-                                          }
-                                          catch (error) {
-                                              console.error('[AskDona] Markdown rendering error during streaming:', error);
-                                              // Fallback to simple text rendering
-                                              return u$2("p", { children: streamingContent || '' });
-                                          }
-                                      })() })] })] }) })), u$2("div", { ref: messagesEndRef })] }));
+                  return (u$2(k$1, { children: [u$2(Message, { isUser: message.role === 'user', children: message.role === 'user' ? (u$2(UserMessageContainer, { children: [u$2(UserBubble, { children: message.content }), ((_c = message.metadata) === null || _c === void 0 ? void 0 : _c.mode) === 'boost' && (u$2(BoostBadge, { children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] })) : (u$2(k$1, { children: u$2(AssistantMessage, { children: u$2(AssistantBubble, { children: [u$2(MarkdownContent, { children: renderMarkdown(message.content || '', false) }), ((_d = message.metadata) === null || _d === void 0 ? void 0 : _d.mode) === 'boost' && (u$2(BoostBadge, { assistant: true, children: [u$2(Timer, { size: 12 }), u$2("span", { children: "Boost" })] }))] }) }) })) }, message.id || idx), message.role === 'assistant' && (
+                          // Independent feedback message bubble shown after every assistant answer
+                          u$2(Message, { isUser: false, children: u$2(AssistantMessage, { children: u$2(AssistantBubble, { children: u$2(MessageFeedback, { messageId: message.id, sessionId: sessionId, feedback: (_e = message.metadata) === null || _e === void 0 ? void 0 : _e.feedback, onFeedbackSubmit: onFeedbackSubmit, config: config }) }) }) }, `${message.id}-feedback`))] }));
+              }).filter(Boolean), isLoading && streamingContent && streamingContent.trim() && (u$2(Message, { isUser: false, children: u$2(AssistantMessage, { children: u$2(AssistantBubble, { children: [u$2(StreamingIndicator, { children: config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...' }), u$2(MarkdownContent, { children: (() => {
+                                      try {
+                                          return renderMarkdown(streamingContent || '', true);
+                                      }
+                                      catch (error) {
+                                          console.error('[AskDona] Markdown rendering error during streaming:', error);
+                                          // Fallback to simple text rendering
+                                          return u$2("p", { children: streamingContent || '' });
+                                      }
+                                  })() })] }) }) })), u$2("div", { ref: messagesEndRef })] }));
   }
   // Styled components
   const MessagesContainer = j$1('div') `
@@ -969,18 +1215,6 @@ var AskDona = (function (exports) {
   gap: 0.75rem;
   max-width: 85%;
 `;
-  const AssistantAvatar = j$1('div') `
-  width: 2rem;
-  height: 2rem;
-  background: var(--askdona-primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 1rem;
-  margin-top: 0.25rem;
-`;
   const AssistantBubble = j$1('div') `
   flex: 1;
   padding: 1rem 1.25rem;
@@ -993,8 +1227,17 @@ var AskDona = (function (exports) {
   color: var(--askdona-text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 `;
+  // Feedback uses the same bubble padding as normal assistant messages
   const MarkdownContent = j$1('div') `
   line-height: 1.6;
+  
+  /* Ensure no extra top/bottom spacing inside bubble */
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+  > *:last-child {
+    margin-bottom: 0 !important;
+  }
   
   /* Enhanced paragraph styles */
   p {
@@ -1279,11 +1522,10 @@ var AskDona = (function (exports) {
   const FeedbackContainer = j$1('div') `
   margin-top: 12px;
   padding: 8px 0;
-  border-top: 1px solid var(--askdona-border);
 `;
   const FeedbackLabel = j$1('div') `
-  font-size: 12px;
-  color: var(--askdona-text-secondary);
+  font-size: inherit;
+  color: var(--askdona-text); /* use normal text color */
   margin-bottom: 6px;
   font-weight: 500;
 `;
@@ -1494,154 +1736,6 @@ var AskDona = (function (exports) {
     color: black;
   }
 `;
-
-  // API configuration with environment variable support
-  const API_BASE_URL = "https://app.askdona.com/api/embed/v1";
-  // Log the API URL being used
-  console.log('[AskDona] Using API URL:', API_BASE_URL);
-
-  const API_TIMEOUT = 30000; // 30 seconds
-  // Helper function for API requests
-  async function apiRequest(endpoint, options = {}) {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
-      try {
-          // Only set Content-Type for non-GET requests
-          const headers = {
-              'X-Widget-Version': '1.0.0',
-              ...(options.headers || {}),
-          };
-          // Add Content-Type only for POST/PUT/PATCH requests
-          if (options.method && ['POST', 'PUT', 'PATCH'].includes(options.method)) {
-              headers['Content-Type'] = 'application/json';
-          }
-          const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-              ...options,
-              signal: controller.signal,
-              headers,
-          });
-          clearTimeout(timeoutId);
-          if (!response.ok) {
-              const error = await response.json().catch(() => ({ message: 'Request failed' }));
-              throw new Error(error.message || `HTTP ${response.status}`);
-          }
-          return await response.json();
-      }
-      catch (error) {
-          clearTimeout(timeoutId);
-          if (error.name === 'AbortError') {
-              throw new Error('Request timeout');
-          }
-          throw error;
-      }
-  }
-  // Validate chatflow and get settings
-  async function validateChatflow(chatflowId) {
-      try {
-          const response = await apiRequest(`/validate/${chatflowId}`, {
-              method: 'POST',
-              body: JSON.stringify({
-                  origin: window.location.origin,
-              }),
-          });
-          return response;
-      }
-      catch (error) {
-          return {
-              isValid: false,
-              error: error.message,
-          };
-      }
-  }
-  // Get full embed configuration
-  async function getEmbedConfig(chatflowId) {
-      try {
-          const response = await apiRequest(`/welcome/${chatflowId}`);
-          return response;
-      }
-      catch (error) {
-          console.error('[AskDona] Failed to fetch embed config:', error);
-          return null;
-      }
-  }
-  // Search function
-  async function searchDocuments(chatflowId, query) {
-      try {
-          const response = await apiRequest(`/search/${chatflowId}`, {
-              method: 'POST',
-              body: JSON.stringify(query),
-          });
-          return response;
-      }
-      catch (error) {
-          throw error;
-      }
-  }
-  // ============================
-  // METADATA FILTERING API
-  // ============================
-  // Check if metadata filtering is enabled for a chatflow
-  async function checkMetadataFiltering(chatflowId) {
-      try {
-          const response = await apiRequest(`/metadata/${chatflowId}/check`, {
-              method: 'GET',
-          });
-          return response;
-      }
-      catch (error) {
-          console.error('[AskDona] Failed to check metadata filtering:', error);
-          return {
-              enable_metadata_filtering: false,
-              error: error.message,
-          };
-      }
-  }
-  // Get available metadata keys and values for a chatflow
-  async function getMetadataKeys(chatflowId) {
-      try {
-          const response = await apiRequest(`/metadata/${chatflowId}/keys`, {
-              method: 'GET',
-          });
-          return response;
-      }
-      catch (error) {
-          console.error('[AskDona] Failed to fetch metadata keys:', error);
-          return {
-              success: false,
-              error: error.message,
-          };
-      }
-  }
-  // Generate follow-up questions for Deep Research
-  async function generateFollowUpQuestions(query) {
-      try {
-          const response = await apiRequest('/deep-research/follow-up', {
-              method: 'POST',
-              body: JSON.stringify({ query }),
-          });
-          return response;
-      }
-      catch (error) {
-          return {
-              success: false,
-              questions: [],
-              error: error.message,
-          };
-      }
-  }
-  // Start Deep Research with questionnaire answers
-  async function startDeepResearchWithAnswers(params) {
-      try {
-          const response = await apiRequest('/deep-research/start-with-answers', {
-              method: 'POST',
-              body: JSON.stringify(params),
-          });
-          return response;
-      }
-      catch (error) {
-          throw error;
-      }
-  }
 
   // ============================
   // STYLED COMPONENTS
@@ -1884,7 +1978,7 @@ var AskDona = (function (exports) {
   overflow-y: auto;
   min-height: 0;
 `;
-  const SearchInput$1 = j$1('input') `
+  const SearchInput = j$1('input') `
   width: 100%;
   padding: 8px 12px 8px 36px;
   border: 1px solid #e2e8f0;
@@ -2041,7 +2135,7 @@ var AskDona = (function (exports) {
                                                       if (!keyData)
                                                           return null;
                                                       return (u$2(FilterCard, { filter: filter, keyData: keyData, onFilterChange: handleFilterChange, onFilterRemove: handleFilterRemove }, filter.key));
-                                                  }) })) : (u$2(EmptyState$1, { children: [u$2(Funnel, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: "\u307E\u3060\u30D5\u30A3\u30EB\u30BF\u30FC\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u307E\u305B\u3093" }), u$2("div", { style: { fontSize: '14px' }, children: "\u53F3\u5074\u304B\u3089\u7D5E\u308A\u8FBC\u307F\u9805\u76EE\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044" })] })) })] }), u$2(Column, { children: [u$2(ColumnTitle, { children: "\u5229\u7528\u53EF\u80FD\u306A\u7D5E\u308A\u8FBC\u307F" }), u$2(SearchInput$1, { type: "text", placeholder: "\u7D5E\u308A\u8FBC\u307F\u6761\u4EF6\u3092\u691C\u7D22...", value: searchTerm, onChange: (e) => setSearchTerm(e.target.value) }), u$2(ScrollableArea, { children: isLoading ? (u$2(LoadingState, { children: [u$2(LoaderCircle, {}), "\u8AAD\u307F\u8FBC\u307F\u4E2D..."] })) : error ? (u$2(ErrorState, { children: [u$2(CircleAlert, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: "\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3057\u307E\u3057\u305F" }), u$2("div", { style: { fontSize: '14px' }, children: error })] })) : filteredKeys.length > 0 ? (u$2("div", { children: filteredKeys.map(keyData => (u$2(KeyButton, { onClick: () => handleKeySelect(keyData.key), children: [u$2(KeyName, { children: keyData.key }), u$2(KeyInfo, { children: [keyData.values.length, "\u500B\u306E\u5024 \u2022 ", keyData.count, "\u4EF6\u306E\u30D5\u30A1\u30A4\u30EB", u$2("br", {}), "\u4F8B: ", keyData.values.slice(0, 3).join(', '), keyData.values.length > 3 && '...'] })] }, keyData.key))) })) : (u$2(EmptyState$1, { children: [u$2(Search, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: searchTerm ? '検索結果がありません' : 'すべてのメタデータキーが選択済みです' })] })) })] })] })] }), u$2("div", { style: {
+                                                  }) })) : (u$2(EmptyState$1, { children: [u$2(Funnel, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: "\u307E\u3060\u30D5\u30A3\u30EB\u30BF\u30FC\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u307E\u305B\u3093" }), u$2("div", { style: { fontSize: '14px' }, children: "\u53F3\u5074\u304B\u3089\u7D5E\u308A\u8FBC\u307F\u9805\u76EE\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044" })] })) })] }), u$2(Column, { children: [u$2(ColumnTitle, { children: "\u5229\u7528\u53EF\u80FD\u306A\u7D5E\u308A\u8FBC\u307F" }), u$2(SearchInput, { type: "text", placeholder: "\u7D5E\u308A\u8FBC\u307F\u6761\u4EF6\u3092\u691C\u7D22...", value: searchTerm, onChange: (e) => setSearchTerm(e.target.value) }), u$2(ScrollableArea, { children: isLoading ? (u$2(LoadingState, { children: [u$2(LoaderCircle, {}), "\u8AAD\u307F\u8FBC\u307F\u4E2D..."] })) : error ? (u$2(ErrorState, { children: [u$2(CircleAlert, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: "\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3057\u307E\u3057\u305F" }), u$2("div", { style: { fontSize: '14px' }, children: error })] })) : filteredKeys.length > 0 ? (u$2("div", { children: filteredKeys.map(keyData => (u$2(KeyButton, { onClick: () => handleKeySelect(keyData.key), children: [u$2(KeyName, { children: keyData.key }), u$2(KeyInfo, { children: [keyData.values.length, "\u500B\u306E\u5024 \u2022 ", keyData.count, "\u4EF6\u306E\u30D5\u30A1\u30A4\u30EB", u$2("br", {}), "\u4F8B: ", keyData.values.slice(0, 3).join(', '), keyData.values.length > 3 && '...'] })] }, keyData.key))) })) : (u$2(EmptyState$1, { children: [u$2(Search, {}), u$2("div", { style: { fontWeight: 500, marginBottom: '4px' }, children: searchTerm ? '検索結果がありません' : 'すべてのメタデータキーが選択済みです' })] })) })] })] })] }), u$2("div", { style: {
                           padding: '16px 20px',
                           borderTop: '1px solid #e2e8f0',
                           display: 'flex',
@@ -2072,19 +2166,20 @@ var AskDona = (function (exports) {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 8px;
-  border: 1px solid #e2e8f0;
+  padding: 6px 8px; /* Match Boost */
+  border: 1px solid var(--askdona-border);
   border-radius: 16px;
-  background: ${props => props.hasActiveFilters ? '#3b82f6' : '#ffffff'};
-  color: ${props => props.hasActiveFilters ? '#ffffff' : '#64748b'};
+  background: ${props => props.hasActiveFilters ? '#3b82f6' : 'var(--askdona-background)'};
+  color: ${props => props.hasActiveFilters ? '#ffffff' : 'var(--askdona-text-secondary)'};
   font-size: 12px;
   font-weight: 500;
+  line-height: 1;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
-    background: ${props => props.hasActiveFilters ? '#2563eb' : '#f1f5f9'};
-    border-color: ${props => props.hasActiveFilters ? '#2563eb' : '#cbd5e1'};
+    background: ${props => props.hasActiveFilters ? '#2563eb' : 'var(--askdona-border)'};
+    border-color: ${props => props.hasActiveFilters ? '#2563eb' : 'var(--askdona-text-secondary)'};
   }
   
   &:disabled {
@@ -2189,7 +2284,7 @@ var AskDona = (function (exports) {
       complete: "完了",
       error: "エラーが発生しました"
   };
-  function ChatView({ messages, isLoading, streamingContent, onSendMessage, error, config, currentState, boostMode = false, onBoostModeChange, sessionId, onFeedbackSubmit, showIntro: externalShowIntro, metadataFilters = null, onMetadataFiltersChange, }) {
+  function ChatView({ messages, isLoading, streamingContent, onSendMessage, error, config, currentState, boostMode = false, onBoostModeChange, sessionId, onFeedbackSubmit, showIntro: externalShowIntro, metadataFilters = null, onMetadataFiltersChange, currentMode, onModeSwitch, onClearChat, }) {
       // Debug state flow - CRITICAL for troubleshooting streaming
       console.log('[AskDona] ChatView render:', {
           messagesCount: messages.length,
@@ -2211,6 +2306,7 @@ var AskDona = (function (exports) {
       };
       const [showIntro, setShowIntro] = d$1(messages.length === 0);
       const [isComposing, setIsComposing] = d$1(false);
+      const [isExpanded, setIsExpanded] = d$1(false);
       const inputRef = A$1(null);
       // Use external showIntro prop if provided, otherwise use internal state logic
       const shouldShowIntro = externalShowIntro !== undefined ? externalShowIntro : showIntro;
@@ -2219,9 +2315,24 @@ var AskDona = (function (exports) {
               setShowIntro(false);
           }
       }, [messages, externalShowIntro]);
+      // Autosize setup (pre-reference behavior)
+      const baseMinHeight = 32; // px
+      const autoResize = () => {
+          const el = inputRef.current;
+          if (!el)
+              return;
+          const maxHeight = baseMinHeight * 3;
+          el.style.height = 'auto';
+          const newHeight = Math.min(el.scrollHeight, maxHeight);
+          el.style.height = `${newHeight}px`;
+          el.style.overflowY = el.scrollHeight > maxHeight ? 'auto' : 'hidden';
+          el.style.lineHeight = newHeight <= baseMinHeight ? `${baseMinHeight}px` : '1.5';
+      };
       y(() => {
           if (!isLoading && inputRef.current && typeof inputRef.current.focus === 'function') {
               inputRef.current.focus();
+              inputRef.current.style.minHeight = `${baseMinHeight}px`;
+              autoResize();
           }
       }, [isLoading]);
       const handleSubmit = (e) => {
@@ -2275,31 +2386,11 @@ var AskDona = (function (exports) {
                                               ? (config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...')
                                               : (statusMessages[currentState] || (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { currentState: currentState, isLoading: isLoading }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
                               ? `エラーが発生しました: ${error.message}`
-                              : `Error: ${error.message}` }))] }), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: [u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => setInput(e.target.value), onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
-                                  ? '質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)'
-                                  : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }), u$2(BottomToolbar, { boostMode: boostMode, children: [u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
-                                                  ? 'Boostモードは、より多角的な視点から多くの文書を分析して回答します。'
-                                                  : 'Boost mode analyzes more documents from multiple perspectives for comprehensive answers.', children: [u$2(BoostIcon, { active: boostMode, children: u$2(Timer, { size: 14 }) }), u$2(BoostLabel, { children: "Boost" })] }))] }), u$2("button", { onClick: handleSubmit, disabled: !input.trim() || isLoading, title: config.language === 'ja' ? 'Ctrl+Enter または ⌘+Enter で送信' : 'Ctrl+Enter or ⌘+Enter to send', type: "button", style: {
-                                          width: '32px',
-                                          height: '32px',
-                                          borderRadius: '50%',
-                                          border: 'none',
-                                          background: !input.trim() || isLoading ? 'var(--askdona-border)' : 'var(--askdona-primary)',
-                                          color: 'white',
-                                          cursor: !input.trim() || isLoading ? 'not-allowed' : 'pointer',
-                                          display: 'flex',
-                                          alignItems: 'center',
-                                          justifyContent: 'center',
-                                          transition: 'all 0.2s',
-                                      }, onMouseEnter: (e) => {
-                                          if (input.trim() && !isLoading) {
-                                              e.currentTarget.style.background = 'var(--askdona-primary-dark)';
-                                              e.currentTarget.style.transform = 'scale(1.05)';
-                                          }
-                                      }, onMouseLeave: (e) => {
-                                          e.currentTarget.style.background = !input.trim() || isLoading ? 'var(--askdona-border)' : 'var(--askdona-primary)';
-                                          e.currentTarget.style.transform = 'scale(1)';
-                                      }, children: u$2(ArrowUp, { size: 16, color: getIconColor() }) })] })] }) })] }));
+                              : `Error: ${error.message}` }))] }), (onModeSwitch) && (u$2(LocalTabs$1, { children: u$2(TabsLeft, { children: [u$2(LocalTabButton$1, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton$1, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), onClearChat && (currentMode || 'ask-ai') === 'ask-ai' && messages.length > 0 && (u$2(LocalRefreshButton, { type: "button", onClick: onClearChat, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', "aria-label": config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', disabled: isLoading, children: u$2(RefreshCw, { size: 14 }) }))] }) })), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: [u$2(TopBar, { expanded: isExpanded, children: [u$2(ToggleButton, { onClick: () => setIsExpanded(prev => !prev), "aria-label": isExpanded ? (config.language === 'ja' ? '閉じる' : 'Close') : (config.language === 'ja' ? '開く' : 'Open'), title: isExpanded ? (config.language === 'ja' ? '閉じる' : 'Close') : (config.language === 'ja' ? '開く' : 'Open'), disabled: isLoading, children: isExpanded ? u$2(X$1, { size: 16 }) : u$2(Plus, { size: 16 }) }), u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => { setInput(e.target.value); autoResize(); }, onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
+                                          ? '質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)'
+                                          : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }), u$2(SendIconButton, { onClick: handleSubmit, disabled: !input.trim() || isLoading, title: config.language === 'ja' ? 'Ctrl+Enter または ⌘+Enter で送信' : 'Ctrl+Enter or ⌘+Enter to send', type: "button", "data-askdona-button": "send", "data-disabled": !input.trim() || isLoading, children: u$2(ArrowUp, { size: 16, color: getIconColor() }) })] }), isExpanded && (u$2(BottomToolbar, { boostMode: boostMode, children: u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
+                                              ? 'Boostモードは、より多角的な視点から多くの文書を分析して回答します。'
+                                              : 'Boost mode analyzes more documents from multiple perspectives for comprehensive answers.', children: [u$2(BoostIcon, { active: boostMode, children: u$2(Timer, { size: 14 }) }), u$2(BoostLabel, { children: "Boost" })] }))] }) }))] }) })] }));
   }
   // Styled components
   const Container$7 = j$1('div') `
@@ -2307,6 +2398,72 @@ var AskDona = (function (exports) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+`;
+  const LocalTabs$1 = j$1('div') `
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem 0.25rem;
+  flex-shrink: 0;
+  align-items: center;
+`;
+  const TabsLeft = j$1('div') `
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1;
+`;
+  const LocalTabButton$1 = j$1('button') `
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  transition: all 0.2s;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: ${props => props.active ? 'var(--askdona-primary)' : 'var(--askdona-text-secondary)'};
+
+  &:hover {
+    color: ${props => props.active ? 'var(--askdona-primary)' : 'var(--askdona-text)'};
+    background: ${props => props.active ? 'transparent' : 'var(--askdona-background)'};
+  }
+
+  ${props => props.active && `
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.35rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--askdona-primary);
+    }
+  `}
+`;
+  const LocalRefreshButton = j$1('button') `
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--askdona-border);
+  background: transparent;
+  color: var(--askdona-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover:not(:disabled) {
+    background: var(--askdona-background);
+    color: var(--askdona-text);
+    border-color: var(--askdona-primary);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
   const MessagesArea$1 = j$1('div') `
   flex: 1;
@@ -2421,7 +2578,7 @@ var AskDona = (function (exports) {
   font-weight: 500;
 `;
   const ProgressBarContainer$1 = j$1('div') `
-  width: 100%;
+  width: 30%;
   height: 6px;
   background: var(--askdona-border);
   border-radius: 3px;
@@ -2434,6 +2591,13 @@ var AskDona = (function (exports) {
   transition: width 1.2s ease-in-out;
   position: relative;
   width: 0%;
+  transform-origin: left center;
+  animation: ${({ isLoading }) => isLoading ? 'wobble 1.6s ease-in-out infinite alternate' : 'none'};
+  
+  @keyframes wobble {
+    0% { transform: scaleX(0.98); }
+    100% { transform: scaleX(1.02); }
+  }
   
   ${({ currentState, isLoading }) => {
     if (!isLoading) {
@@ -2467,6 +2631,7 @@ var AskDona = (function (exports) {
   border-top: 1px solid var(--askdona-border);
   flex-shrink: 0;
 `;
+  // (Removed BottomFade overlay; restored original layout without fade)
   // Bottom toolbar for input actions
   const BottomToolbar = j$1('div') `
   display: flex;
@@ -2550,35 +2715,85 @@ var AskDona = (function (exports) {
     }
   `}
   
-  &:focus-within {
-    ${({ boostMode }) => !boostMode && `
-      textarea {
-        border-color: var(--askdona-primary);
-      }
-      
-      > div {
-        border-color: var(--askdona-primary);
-      }
-    `}
+`;
+  const TopBar = j$1('div') `
+  display: flex;
+  align-items: center;
+  gap: 0rem; /* tighter spacing between + button and input */
+  padding: 0.5rem;
+  border: 1px solid var(--askdona-border);
+  border-radius: ${({ expanded }) => expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'};
+  background: var(--askdona-background);
+  transition: all 0.2s;
+  ${({ expanded }) => expanded && 'border-bottom: none;'}
+`;
+  const ToggleButton = j$1('button') `
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--askdona-background);
+  color: var(--askdona-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* center handled by TopBar align-items */
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover:not(:disabled) {
+    background: var(--askdona-bg-hover);
+    color: var(--askdona-text);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+`;
+  const SendIconButton = j$1('button') `
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--askdona-primary);
+  color: white;
+  /* center handled by TopBar align-items */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  
+  &[data-disabled="true"] {
+    background: var(--askdona-border);
+    cursor: not-allowed;
+  }
+  
+  &:hover:not([data-disabled="true"]) {
+    background: var(--askdona-primary-dark);
+    transform: scale(1.05);
   }
 `;
   const TextArea$1 = j$1('textarea') `
-  width: 100%;
-  padding: 0.75rem 1rem 0.5rem 1rem;
-  border: 1px solid var(--askdona-border);
-  border-radius: 0.75rem 0.75rem 0 0;
+  flex: 1;
+  width: auto;
+  padding: 0 0.5rem; /* no vertical padding for true vertical centering */
+  border: none;
+  border-radius: 0;
   font-size: 0.875rem;
   resize: none;
   outline: none;
   transition: all 0.2s;
-  background: var(--askdona-background);
+  background: transparent;
   color: var(--askdona-text);
-  min-height: 48px;
-  max-height: 120px;
-  overflow-y: auto;
+  min-height: ${32}px;
+  max-height: ${32 * 3}px;
+  line-height: ${32}px; /* center single-line & placeholder by default */
+  overflow-y: hidden;
   position: relative;
   z-index: 1;
-  border-bottom: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   
   ${({ boostMode }) => boostMode && `
     border-color: transparent;
@@ -2597,6 +2812,7 @@ var AskDona = (function (exports) {
   
   &::placeholder {
     color: var(--askdona-text-secondary);
+    font-family: inherit;
   }
 `;
 
@@ -2778,26 +2994,68 @@ var AskDona = (function (exports) {
       };
   }
 
-  const RESULTS_PER_PAGE = 10;
-  function SearchView({ config }) {
+  // Load all results in one request (no page limit for now)
+  function SearchView({ config, currentMode, onModeSwitch }) {
       var _a, _b;
       const [query, setQuery] = d$1('');
       const [searchResponse, setSearchResponse] = d$1(null);
       const [allResults, setAllResults] = d$1([]);
       const [filters, setFilters] = d$1({});
       const [isSearching, setIsSearching] = d$1(false);
+      // Infinite scroll disabled for now
       const [error, setError] = d$1(null);
-      const [currentPage, setCurrentPage] = d$1(1);
-      const [showSuggestions, setShowSuggestions] = d$1(false);
+      // const [offset, setOffset] = useState(0);
+      // const [hasMore, setHasMore] = useState(true);
+      // Suggestions dropdown removed; show recent chips above instead
       const searchInputRef = A$1(null);
+      const [isComposing, setIsComposing] = d$1(false);
       // Search history hook
       const { recentQueries, addSearchHistory } = useSearchHistory(config.chatflowId);
+      // Persist only the latest search in localStorage per chatflowId
+      const STORAGE_KEY = `askdona_widget_last_search_${config.chatflowId}`;
+      const saveLastSearch = q$1((q, resp) => {
+          try {
+              const payload = {
+                  query: q,
+                  response: resp,
+                  savedAt: Date.now(),
+              };
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+          }
+          catch (e) {
+              console.warn('[AskDona][Search] Failed to persist last search:', e);
+          }
+      }, [STORAGE_KEY]);
+      const loadLastSearch = q$1(() => {
+          try {
+              const raw = localStorage.getItem(STORAGE_KEY);
+              if (!raw)
+                  return null;
+              const data = JSON.parse(raw);
+              if (!data || typeof data !== 'object')
+                  return null;
+              return data;
+          }
+          catch (e) {
+              console.warn('[AskDona][Search] Failed to load last search:', e);
+              return null;
+          }
+      }, [STORAGE_KEY]);
       y(() => {
           if (searchInputRef.current && typeof searchInputRef.current.focus === 'function') {
               searchInputRef.current.focus();
           }
-      }, []);
-      // Execute search API call
+          // Restore last search on mount (single latest)
+          const last = loadLastSearch();
+          if (last && last.response) {
+              setQuery(last.query || '');
+              setSearchResponse(last.response);
+              setAllResults(last.response.results || []);
+              setFilters({});
+              // with unlimited load, no offset/hasMore tracking needed
+          }
+      }, [loadLastSearch]);
+      // New search: fetch all results in one request (no page limit for now)
       const executeSearch = q$1(async (searchQuery) => {
           var _a;
           if (!searchQuery.trim()) {
@@ -2805,25 +3063,22 @@ var AskDona = (function (exports) {
               setAllResults([]);
               return;
           }
+          setFilters({});
           setIsSearching(true);
           setError(null);
-          setFilters({});
-          setCurrentPage(1);
-          setShowSuggestions(false);
           const startTime = Date.now();
           try {
               const searchRequestBody = {
                   query: searchQuery,
                   filters: {},
-                  limit: 50,
-                  offset: 0
+                  // no limit/offset to fetch all
               };
-              const searchResult = await searchDocuments(config.chatflowId, searchRequestBody);
-              setSearchResponse(searchResult);
-              setAllResults(searchResult.results || []);
-              // Add to search history
+              const resp = await searchDocuments(config.chatflowId, searchRequestBody);
+              setSearchResponse(resp);
+              setAllResults(resp.results || []);
+              saveLastSearch(searchQuery, resp);
               const searchTime = Date.now() - startTime;
-              addSearchHistory(searchQuery, ((_a = searchResult.results) === null || _a === void 0 ? void 0 : _a.length) || 0, searchTime);
+              addSearchHistory(searchQuery, ((_a = resp.results) === null || _a === void 0 ? void 0 : _a.length) || 0, searchTime);
           }
           catch (err) {
               setError(err instanceof Error ? err.message : 'Unknown error occurred');
@@ -2833,7 +3088,7 @@ var AskDona = (function (exports) {
           finally {
               setIsSearching(false);
           }
-      }, [config.chatflowId, addSearchHistory]);
+      }, [config.chatflowId, addSearchHistory, saveLastSearch]);
       // Handle search button click or Enter key
       const handleSearch = q$1(() => {
           if (query.trim()) {
@@ -2843,15 +3098,28 @@ var AskDona = (function (exports) {
       }, [query, executeSearch]);
       // Handle keyboard shortcuts
       const handleKeyDown = q$1((e) => {
-          if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+          // Ignore shortcuts during IME composition
+          if (isComposing)
+              return;
+          // Match ChatView: submit only on Ctrl+Enter / Cmd+Enter
+          if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
               e.preventDefault();
               handleSearch();
           }
-          else if (e.key === 'Enter') {
-              e.preventDefault();
-              handleSearch();
-          }
-      }, [handleSearch]);
+      }, [handleSearch, isComposing]);
+      // Autosize text area like ChatView
+      const baseMinHeight = 32;
+      const autoResize = () => {
+          const el = searchInputRef.current;
+          if (!el)
+              return;
+          const maxHeight = baseMinHeight * 3;
+          el.style.height = 'auto';
+          const newHeight = Math.min(el.scrollHeight, maxHeight);
+          el.style.height = `${newHeight}px`;
+          el.style.overflowY = el.scrollHeight > maxHeight ? 'auto' : 'hidden';
+          el.style.lineHeight = newHeight <= baseMinHeight ? `${baseMinHeight}px` : '1.5';
+      };
       // Client-side filtering
       const filteredResults = T$1(() => {
           if (!allResults.length)
@@ -2873,13 +3141,8 @@ var AskDona = (function (exports) {
           }
           return filtered;
       }, [allResults, filters]);
-      // Pagination
-      const paginatedResults = T$1(() => {
-          const start = (currentPage - 1) * RESULTS_PER_PAGE;
-          const end = start + RESULTS_PER_PAGE;
-          return filteredResults.slice(start, end);
-      }, [filteredResults, currentPage]);
-      const totalPages = Math.ceil(filteredResults.length / RESULTS_PER_PAGE);
+      // Visible results (all loaded so far; further filtered client-side)
+      const paginatedResults = T$1(() => filteredResults, [filteredResults]);
       const handleInputChange = (e) => {
           const value = e.target.value;
           setQuery(value);
@@ -2887,32 +3150,14 @@ var AskDona = (function (exports) {
       };
       const handleSuggestionSelect = (suggestion) => {
           setQuery(suggestion);
-          setShowSuggestions(false);
           executeSearch(suggestion);
       };
-      const handleClearInput = () => {
-          setQuery('');
-          setShowSuggestions(false);
-          if (searchInputRef.current && typeof searchInputRef.current.focus === 'function') {
-              searchInputRef.current.focus();
-          }
-      };
+      // Clear input helper (not currently used)
       const handleFilterChange = (newFilters) => {
           setFilters(newFilters);
-          setCurrentPage(1);
       };
-      const scrollToSearchResults = q$1(() => {
-          // Find the results container and scroll to it
-          const resultsHeader = document.querySelector('[data-search-results-header]');
-          if (resultsHeader) {
-              resultsHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-      }, []);
-      const handlePageChange = q$1((page) => {
-          setCurrentPage(page);
-          // Scroll to the top of search results after page change
-          setTimeout(scrollToSearchResults, 100);
-      }, [scrollToSearchResults]);
+      // Removed scrollToSearchResults (not used with infinite scroll)
+      // Infinite scroll disabled for now
       const highlightQuery = (text) => {
           if (!query.trim())
               return u$2(k$1, { children: text });
@@ -2937,14 +3182,7 @@ var AskDona = (function (exports) {
           }));
           return [allTab, ...fileTypeTabs];
       }, [searchResponse, filteredResults.length, config.language]);
-      return (u$2(Container$6, { children: [u$2(SearchInputContainer, { children: [u$2(SearchInputWrapper, { children: [u$2(SearchInput, { ref: searchInputRef, type: "text", value: query, onInput: handleInputChange, onKeyDown: handleKeyDown, onFocus: () => {
-                                      if (recentQueries.length > 0) {
-                                          setShowSuggestions(true);
-                                      }
-                                  }, onBlur: () => {
-                                      // Delay hiding suggestions to allow clicking on them
-                                      setTimeout(() => setShowSuggestions(false), 150);
-                                  }, placeholder: config.language === 'ja' ? '検索キーワードを入力...' : 'Enter search keywords...' }), query && (u$2(ClearButton, { onClick: handleClearInput, title: config.language === 'ja' ? 'クリア' : 'Clear', children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }) }) }))] }), u$2(SearchButton, { onClick: handleSearch, disabled: !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', children: isSearching ? (u$2(SearchSpinner, {})) : (u$2("svg", { width: "20", height: "20", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) })) }), showSuggestions && recentQueries.length > 0 && (u$2(SuggestionsDropdown, { children: [u$2(SuggestionHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(SuggestionItem, { onClick: () => handleSuggestionSelect(recentQuery), children: [u$2(SuggestionIcon, { children: u$2("svg", { width: "16", height: "16", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: u$2("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" }) }) }), u$2(SuggestionText, { children: recentQuery })] }, index)))] }))] }), searchResponse && (u$2(ResultsHeader, { "data-search-results-header": true, children: [u$2(ResultsCount, { children: [config.language === 'ja' ? '検索結果' : 'Search Results', ": ", filteredResults.length.toLocaleString(), " ", config.language === 'ja' ? '件' : 'items', ((_a = filters.categories) === null || _a === void 0 ? void 0 : _a.length) || ((_b = filters.fileTypes) === null || _b === void 0 ? void 0 : _b.length) ? (u$2(FilteredBadge, { children: config.language === 'ja' ? 'フィルタ適用済' : 'Filtered' })) : null] }), u$2(SearchTime, { children: [config.language === 'ja' ? '検索時間' : 'Search time', ": ", searchResponse.searchTime, "ms"] })] })), searchResponse && tabs.length > 1 && (u$2(TabsContainer$1, { children: tabs.map(tab => (u$2(Tab, { active: tab.id === 'all' || Boolean(filters.fileTypes && filters.fileTypes.includes(tab.id)), onClick: () => {
+      return (u$2(Container$6, { children: [searchResponse && (u$2(ResultsHeader, { "data-search-results-header": true, children: [u$2(ResultsCount, { children: [config.language === 'ja' ? '検索結果' : 'Search Results', ": ", filteredResults.length.toLocaleString(), " ", config.language === 'ja' ? '件' : 'items', ((_a = filters.categories) === null || _a === void 0 ? void 0 : _a.length) || ((_b = filters.fileTypes) === null || _b === void 0 ? void 0 : _b.length) ? (u$2(FilteredBadge, { children: config.language === 'ja' ? 'フィルタ適用済' : 'Filtered' })) : null] }), u$2(SearchTime, { children: [config.language === 'ja' ? '検索時間' : 'Search time', ": ", searchResponse.searchTime, "ms"] })] })), searchResponse && tabs.length > 1 && (u$2(TabsContainer$1, { children: tabs.map(tab => (u$2(Tab, { active: tab.id === 'all' || Boolean(filters.fileTypes && filters.fileTypes.includes(tab.id)), onClick: () => {
                           if (tab.id === 'all') {
                               handleFilterChange({});
                           }
@@ -2953,9 +3191,9 @@ var AskDona = (function (exports) {
                           }
                       }, children: [tab.label, u$2(TabCount, { children: ["(", tab.count, ")"] })] }, tab.id))) })), u$2(ResultsContainer, { children: isSearching ? (u$2(LoadingContainer$1, { children: [u$2(LoadingSpinner, {}), u$2(LoadingText$1, { children: config.language === 'ja' ? '検索中...' : 'Searching...' })] })) : error ? (u$2(ErrorContainer$1, { children: [u$2(ErrorIcon$1, { children: "\u26A0\uFE0F" }), u$2(ErrorText$1, { children: config.language === 'ja' ? '検索エラー' : 'Search Error' }), u$2(ErrorDetails, { children: error })] })) : query && filteredResults.length === 0 && searchResponse ? (u$2(NoResults, { children: config.language === 'ja'
                           ? `"${query}" に一致する結果が見つかりませんでした`
-                          : `No results found for "${query}"` })) : paginatedResults.length > 0 ? (u$2(k$1, { children: [u$2(ResultsList, { children: paginatedResults.map(result => (u$2(SearchResultCardStyled, { children: u$2(CardContent, { children: [u$2(ResultTitle$1, { children: result.fileMetadata.url ? (u$2("a", { href: result.fileMetadata.url, target: "_blank", rel: "noopener noreferrer", children: highlightQuery(result.fileMetadata.title || result.fileName) })) : (u$2("span", { children: highlightQuery(result.fileMetadata.title || result.fileName) })) }), u$2(MetadataRow, { children: [u$2("strong", { children: config.language === 'ja' ? 'フォーマット:' : 'Format:' }), ' ', result.fileFormat.toUpperCase()] }), result.fileMetadata.body && (u$2(BodySection, { children: [u$2("strong", { children: config.language === 'ja' ? '本文:' : 'Content:' }), u$2(BodyText, { children: highlightQuery(result.fileMetadata.body) })] }))] }) }, result.fileId))) }), totalPages > 1 && (u$2(PaginationContainer, { children: [u$2(PaginationButton, { onClick: () => handlePageChange(currentPage - 1), disabled: currentPage <= 1, children: config.language === 'ja' ? '前へ' : 'Previous' }), u$2(PageInfo, { children: [currentPage, " / ", totalPages] }), u$2(PaginationButton, { onClick: () => handlePageChange(currentPage + 1), disabled: currentPage >= totalPages, children: config.language === 'ja' ? '次へ' : 'Next' })] }))] })) : (u$2(EmptyState, { children: [u$2(EmptyIcon, { children: "\uD83D\uDD0D" }), u$2(EmptyText, { children: config.language === 'ja'
+                          : `No results found for "${query}"` })) : paginatedResults.length > 0 ? (u$2(k$1, { children: u$2(ResultsList, { children: paginatedResults.map(result => (u$2(SearchResultCardStyled, { children: u$2(CardContent, { children: [u$2(ResultTitle$1, { children: result.fileMetadata.url ? (u$2("a", { href: result.fileMetadata.url, target: "_blank", rel: "noopener noreferrer", children: highlightQuery(result.fileMetadata.title || result.fileName) })) : (u$2("span", { children: highlightQuery(result.fileMetadata.title || result.fileName) })) }), u$2(MetadataRow, { children: [u$2("strong", { children: config.language === 'ja' ? 'フォーマット:' : 'Format:' }), ' ', result.fileFormat.toUpperCase()] }), result.fileMetadata.body && (u$2(BodySection, { children: [u$2("strong", { children: config.language === 'ja' ? '本文:' : 'Content:' }), u$2(BodyText, { children: highlightQuery(result.fileMetadata.body) })] }))] }) }, result.fileId))) }) })) : (u$2(EmptyState, { children: [u$2(EmptyIcon, { children: "\uD83D\uDD0D" }), u$2(EmptyText, { children: config.language === 'ja'
                                   ? '検索キーワードを入力してください'
-                                  : 'Enter a search term to see results' })] })) })] }));
+                                  : 'Enter a search term to see results' })] })) }), onModeSwitch && (u$2(LocalTabs, { children: [u$2(LocalTabButton, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' })] })), u$2(SearchInputContainer, { children: u$2(ComposerWrapper, { children: u$2(ComposerInputContainer, { children: [recentQueries.length > 0 && (u$2(RecentQueriesBar, { children: [u$2(RecentHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), u$2(RecentChips, { children: recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(RecentChip, { onClick: () => handleSuggestionSelect(recentQuery), children: recentQuery }, index))) })] })), u$2(ComposerTopBar, { children: [u$2(ComposerTextArea, { ref: searchInputRef, value: query, onInput: (e) => { handleInputChange(e); autoResize(); }, onKeyDown: handleKeyDown, onCompositionStart: () => setIsComposing(true), onCompositionEnd: () => setIsComposing(false), placeholder: config.language === 'ja' ? '検索キーワードを入力...' : 'Enter search keywords...', rows: 1 }), u$2(ComposerSendButton, { onClick: handleSearch, "data-disabled": !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', type: "button", children: isSearching ? u$2(SearchSpinner, {}) : u$2(ArrowUp, { size: 16, color: 'white' }) })] })] }) }) })] }));
   }
   // Styled components
   const Container$6 = j$1('div') `
@@ -2964,84 +3202,154 @@ var AskDona = (function (exports) {
   flex-direction: column;
   overflow: hidden;
 `;
-  const SearchInputContainer = j$1('div') `
-  position: relative;
-  padding: 1.25rem 1.5rem 1rem;
+  // Local tabs (same style as ChatView)
+  const LocalTabs = j$1('div') `
   display: flex;
   gap: 0.5rem;
-`;
-  const SearchInputWrapper = j$1('div') `
-  flex: 1;
+  padding: 0.5rem 1.5rem 0.25rem; /* align underline position with ChatView */
+  flex-shrink: 0;
+  align-items: center; /* match ChatView */
   position: relative;
+  z-index: 2; /* ensure tab underline renders above input separator */
 `;
-  const SearchInput = j$1('input') `
-  width: 100%;
-  padding: 0.75rem 1rem;
-  padding-right: 2.5rem;
-  border: 1px solid var(--askdona-border);
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  outline: none;
+  const LocalTabButton = j$1('button') `
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.8125rem;
   transition: all 0.2s;
-  background: var(--askdona-background);
-  color: var(--askdona-text);
-  
-  &:focus {
-    border-color: var(--askdona-primary);
-    box-shadow: 0 0 0 3px rgba(var(--askdona-primary-rgb), 0.1);
-  }
-  
-  &::placeholder {
-    color: var(--askdona-text-secondary);
-  }
-`;
-  const ClearButton = j$1('button') `
-  position: absolute;
-  right: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
+  position: relative;
+  background: transparent;
   border: none;
-  padding: 0.25rem;
   cursor: pointer;
-  color: var(--askdona-text-secondary);
-  transition: color 0.2s;
-  border-radius: 0.25rem;
-  
+  color: ${props => props.active ? 'var(--askdona-primary)' : 'var(--askdona-text-secondary)'};
+
   &:hover {
+    color: ${props => props.active ? 'var(--askdona-primary)' : 'var(--askdona-text)'};
+    background: ${props => props.active ? 'transparent' : 'var(--askdona-background)'};
+  }
+
+  ${props => props.active && `
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.35rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--askdona-primary);
+      z-index: 3; /* above any following horizontal rules/borders */
+    }
+  `}
+`;
+  // Composer styles adapted from ChatView for consistent UI
+  const ComposerWrapper = j$1('div') `
+  position: relative;
+  width: 100%;
+`;
+  const ComposerInputContainer = j$1('div') `
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+  // Recent queries above input
+  const RecentQueriesBar = j$1('div') `
+  padding: 0.25rem 0.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+  const RecentHeader = j$1('div') `
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--askdona-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+`;
+  const RecentChips = j$1('div') `
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+`;
+  const RecentChip = j$1('button') `
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--askdona-border);
+  border-radius: 9999px;
+  background: var(--askdona-background);
+  color: var(--askdona-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--askdona-bg-hover);
     color: var(--askdona-text);
-    background: var(--askdona-surface);
+    border-color: var(--askdona-primary);
   }
 `;
-  const SearchButton = j$1('button') `
-  padding: 0.75rem;
+  const ComposerTopBar = j$1('div') `
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
   border: 1px solid var(--askdona-border);
-  border-radius: 0.75rem;
+  border-radius: ${({ expanded }) => expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'};
+  background: var(--askdona-background);
+  transition: all 0.2s;
+  ${({ expanded }) => expanded && 'border-bottom: none;'}
+`;
+  const ComposerSendButton = j$1('button') `
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
   background: var(--askdona-primary);
   color: white;
   cursor: pointer;
-  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 3rem;
+  transition: all 0.2s;
   
-  &:hover:not(:disabled) {
-    background: var(--askdona-primary-dark);
-    transform: translateY(-1px);
-  }
-  
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  &[data-disabled="true"] {
     background: var(--askdona-border);
+    cursor: not-allowed;
   }
   
-  svg {
-    width: 20px;
-    height: 20px;
+  &:hover:not([data-disabled="true"]) {
+    background: var(--askdona-primary-dark);
+    transform: scale(1.05);
   }
 `;
+  const ComposerTextArea = j$1('textarea') `
+  flex: 1;
+  width: auto;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: 0;
+  font-size: 0.875rem;
+  resize: none;
+  outline: none;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--askdona-text);
+  min-height: 32px;
+  max-height: 96px; /* 3x */
+  line-height: 32px;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+`;
+  const SearchInputContainer = j$1('div') `
+  position: relative;
+  padding: 1rem 1.5rem; /* match ChatView InputArea spacing */
+  border-top: 1px solid var(--askdona-border);
+  flex-shrink: 0;
+`;
+  // legacy search input styles removed (unified composer is used)
   const SearchSpinner = j$1('div') `
   width: 20px;
   height: 20px;
@@ -3209,39 +3517,9 @@ var AskDona = (function (exports) {
   color: var(--askdona-text-secondary);
   margin: 0;
 `;
-  const PaginationContainer = j$1('div') `
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-top: 1px solid var(--askdona-border);
-  margin-top: 1rem;
-`;
-  const PaginationButton = j$1('button') `
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--askdona-border);
-  border-radius: 0.5rem;
-  background: var(--askdona-background);
-  color: var(--askdona-text);
-  cursor: pointer;
-  font-size: 0.875rem;
-  transition: all 0.2s;
-  
-  &:hover:not(:disabled) {
-    background: var(--askdona-surface);
-    border-color: var(--askdona-primary);
-  }
-  
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`;
-  const PageInfo = j$1('span') `
-  font-size: 0.875rem;
-  color: var(--askdona-text-secondary);
-`;
+  /* removed pagination styles: container */
+  /* removed pagination styles: button */
+  /* removed pagination styles: page info */
   // New styled components for SearchResultCard layout
   const SearchResultCardStyled = j$1('div') `
   background: white;
@@ -3305,58 +3583,6 @@ var AskDona = (function (exports) {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
-  // Search suggestions styles
-  const SuggestionsDropdown = j$1('div') `
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: var(--askdona-background);
-  border: 1px solid var(--askdona-border);
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-height: 16rem;
-  overflow-y: auto;
-  margin-top: 0.25rem;
-`;
-  const SuggestionHeader = j$1('div') `
-  padding: 0.75rem 1rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--askdona-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-`;
-  const SuggestionItem = j$1('button') `
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  
-  &:hover {
-    background: var(--askdona-surface);
-  }
-`;
-  const SuggestionIcon = j$1('div') `
-  color: var(--askdona-text-secondary);
-  flex-shrink: 0;
-`;
-  const SuggestionText = j$1('span') `
-  font-size: 0.875rem;
-  color: var(--askdona-text);
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
   function DeepResearchQuestionnaire({ originalQuery, questions, onSubmit, onBack, isSubmitting = false, error }) {
@@ -6364,7 +6590,7 @@ var AskDona = (function (exports) {
               onClose();
           }
       };
-      return (u$2(Overlay, { onClick: handleOverlayClick, displayMode: displayMode, children: u$2(ModalContainer, { ref: modalRef, displayMode: displayMode, children: [u$2(Header, { children: [u$2(Title, { children: config.language === 'ja' ? 'AskDona' : 'AskDona' }), u$2(HeaderActions, { children: [currentMode === 'ask-ai' && onClearChat && messages.length > 0 && (u$2(RefreshButton, { onClick: onClearChat, disabled: isLoading, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', children: u$2(RefreshCw, { size: 14 }) })), u$2(ModeButton, { active: currentMode === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AI に質問' : 'Ask AI' }), u$2(ModeButton, { active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), config.enableRagDeepResearch && (u$2(ModeButton, { active: currentMode === 'rag-deep-research', onClick: () => onModeSwitch('rag-deep-research'), children: [u$2(Microscope, { size: 14, style: { marginRight: '4px' } }), config.language === 'ja' ? 'RAG Deep Research' : 'RAG Deep Research'] })), displayMode !== 'fullscreen' && (u$2(CloseButton, { onClick: onClose, children: "\u00D7" }))] })] }), u$2(Content, { children: currentMode === 'ask-ai' ? (u$2(ChatView, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, onSendMessage: onSendMessage, error: error, config: config, currentState: currentState, boostMode: boostMode, onBoostModeChange: onBoostModeChange, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit, showIntro: showIntro, metadataFilters: metadataFilters, onMetadataFiltersChange: onMetadataFiltersChange })) : currentMode === 'search' ? (u$2(SearchView, { config: config }, "search-view")) : currentMode === 'deep-research' ? (u$2(DeepResearchViewNew, { chatflowId: config.chatflowId, onClose: () => onModeSwitch('ask-ai'), isVisible: currentMode === 'deep-research' })) : currentMode === 'rag-deep-research' && config.enableRagDeepResearch ? (u$2(RAGDeepResearchView, { chatFlowId: config.chatflowId, sessionId: sessionId, messages: messages.map(msg => ({
+      return (u$2(Overlay, { onClick: handleOverlayClick, displayMode: displayMode, children: u$2(ModalContainer, { ref: modalRef, displayMode: displayMode, children: [u$2(Header, { children: [u$2(Title, { children: config.language === 'ja' ? 'AskDona' : 'AskDona' }), u$2(HeaderActions, { children: [config.enableRagDeepResearch && (u$2(ModeButton, { active: currentMode === 'rag-deep-research', onClick: () => onModeSwitch('rag-deep-research'), children: [u$2(Microscope, { size: 14, style: { marginRight: '4px' } }), config.language === 'ja' ? 'RAG Deep Research' : 'RAG Deep Research'] })), displayMode !== 'fullscreen' && (u$2(CloseButton, { onClick: onClose, children: "\u00D7" }))] })] }), u$2(Content, { children: currentMode === 'ask-ai' ? (u$2(ChatView, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, onSendMessage: onSendMessage, error: error, config: config, currentState: currentState, boostMode: boostMode, onBoostModeChange: onBoostModeChange, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit, showIntro: showIntro, metadataFilters: metadataFilters, onMetadataFiltersChange: onMetadataFiltersChange, onClearChat: onClearChat, currentMode: currentMode, onModeSwitch: (mode) => onModeSwitch(mode) })) : currentMode === 'search' ? (u$2(SearchView, { config: config, currentMode: currentMode, onModeSwitch: onModeSwitch }, "search-view")) : currentMode === 'deep-research' ? (u$2(DeepResearchViewNew, { chatflowId: config.chatflowId, onClose: () => onModeSwitch('ask-ai'), isVisible: currentMode === 'deep-research' })) : currentMode === 'rag-deep-research' && config.enableRagDeepResearch ? (u$2(RAGDeepResearchView, { chatFlowId: config.chatflowId, sessionId: sessionId, messages: messages.map(msg => ({
                               role: msg.role,
                               content: msg.content,
                               createdAt: msg.createdAt,
@@ -6445,44 +6671,6 @@ var AskDona = (function (exports) {
       background: var(--askdona-primary);
     }
   `}
-`;
-  const RefreshButton = j$1('button') `
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 0.375rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  font-size: 0.875rem;
-  color: var(--askdona-text);
-  
-  svg {
-    color: inherit;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    opacity: 1;
-  }
-  
-  &:hover:not(:disabled) {
-    background: var(--askdona-background);
-    transform: rotate(180deg);
-    color: var(--askdona-primary);
-    
-    svg {
-      color: inherit;
-      stroke: currentColor;
-    }
-  }
-  
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
 `;
   const CloseButton = j$1('button') `
   width: 1.75rem;
@@ -6620,57 +6808,6 @@ var AskDona = (function (exports) {
           }
       }, [chatflowId]);
       return result;
-  }
-
-  // src/utils/security.ts
-  // Setup security headers and CSP
-  function setupSecurityHeaders() {
-      // Add Content Security Policy meta tag
-      if (!document.querySelector('meta[name="askdona-csp"]')) {
-          const cspMeta = document.createElement('meta');
-          cspMeta.name = 'askdona-csp';
-          cspMeta.content = [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
-              "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https:",
-              "connect-src 'self' https://api.askdona.com wss://api.askdona.com",
-              "font-src 'self' data:",
-              "frame-ancestors 'none'",
-          ].join('; ');
-          document.head.appendChild(cspMeta);
-      }
-  }
-  // Generate secure random ID
-  function generateSecureId() {
-      if (window.crypto && window.crypto.randomUUID) {
-          return window.crypto.randomUUID();
-      }
-      // Fallback for older browsers
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-          const r = Math.random() * 16 | 0;
-          const v = c === 'x' ? r : (r & 0x3 | 0x8);
-          return v.toString(16);
-      });
-  }
-  // Prevent clickjacking
-  function preventClickjacking() {
-      if (window.self !== window.top) {
-          // We're in an iframe, check if it's allowed
-          try {
-              // Try to access parent document - will throw if different origin
-              window.parent.document; // Access check only, no assignment needed
-              // If we can access it, we're same-origin, which is allowed
-          }
-          catch (e) {
-              // Different origin, log warning
-              console.warn('[AskDona] Widget loaded in cross-origin iframe');
-          }
-      }
-  }
-  // Initialize security measures
-  if (typeof window !== 'undefined') {
-      preventClickjacking();
   }
 
   async function streamChat({ chatflowId, sessionId, message, messages, boostMode = false, userMessageId, assistantMessageId, metadataFilters, signal, onChunk, }) {
@@ -7471,115 +7608,235 @@ var AskDona = (function (exports) {
   // Display name for debugging
   Widget.displayName = 'Widget';
 
-  // Generate unique ID
-  // Validate configuration
-  function validateConfig(config) {
-      if (!config.chatflowId) {
-          return {
-              isValid: false,
-              error: 'chatflowId is required',
-          };
-      }
-      if (config.theme && !['light', 'dark', 'auto'].includes(config.theme)) {
-          return {
-              isValid: false,
-              error: 'Invalid theme. Must be "light", "dark", or "auto"',
-          };
-      }
-      if (config.position && !['bottom-right', 'bottom-left'].includes(config.position)) {
-          return {
-              isValid: false,
-              error: 'Invalid position. Must be "bottom-right" or "bottom-left"',
-          };
-      }
-      if (config.language && !['ja', 'en'].includes(config.language)) {
-          return {
-              isValid: false,
-              error: 'Invalid language. Must be "ja" or "en"',
-          };
-      }
-      return { isValid: true };
-  }
-  // Inject base styles
-  function injectStyles() {
-      const styleId = 'askdona-widget-styles';
-      // Check if styles already exist
-      if (document.getElementById(styleId)) {
-          return;
-      }
-      // Preload Instrument Serif font with preconnect for better performance
-      const fontId = 'askdona-font-preload';
-      if (!document.getElementById(fontId)) {
-          // Preconnect to Google Fonts
-          const preconnect1 = document.createElement('link');
-          preconnect1.rel = 'preconnect';
-          preconnect1.href = 'https://fonts.googleapis.com';
-          document.head.appendChild(preconnect1);
-          const preconnect2 = document.createElement('link');
-          preconnect2.rel = 'preconnect';
-          preconnect2.href = 'https://fonts.gstatic.com';
-          preconnect2.crossOrigin = 'anonymous';
-          document.head.appendChild(preconnect2);
-          // Preload specific font files
-          const preload = document.createElement('link');
-          preload.id = fontId;
-          preload.rel = 'preload';
-          preload.as = 'style';
-          preload.href = 'https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block';
-          document.head.appendChild(preload);
-          // Load stylesheet
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block';
-          document.head.appendChild(link);
-      }
-      const style = document.createElement('style');
-      style.id = styleId;
-      style.textContent = `
-    /* Load Instrument Serif directly in CSS to prevent FOUT */
-    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block');
-    
-    #askdona-widget-container {
-      position: relative;
-      z-index: 999999;
-    }
-    
-    #askdona-widget-container * {
-      box-sizing: border-box;
-    }
-    
-    #askdona-widget-container *::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    
-    #askdona-widget-container *::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
-    #askdona-widget-container *::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 3px;
-    }
-    
-    #askdona-widget-container *::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 0, 0, 0.3);
-    }
-    
-    @media (prefers-reduced-motion: reduce) {
-      #askdona-widget-container * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  `;
-      document.head.appendChild(style);
+  // Minimal base styles scoped to Shadow DOM
+  const baseShadowStyles = `
+  /* Ensure font available within shadow */
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block');
+  :host {
+    all: initial;
+    contain: content;
+    position: fixed;
+    inset: auto;
+    z-index: 999999; /* Keep on top of most sites */
   }
 
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Scoped scrollbar styling */
+  *::-webkit-scrollbar { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }
+  *::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+`;
+  // Attribute names for the element
+  const ATTRS = [
+      'chatflow-id',
+      'theme',
+      'position',
+      'primary-color',
+      'language',
+      'display-mode',
+      'custom-css',
+      'debug',
+      // Self-hosted font URLs
+      'instrument-serif-regular',
+      'instrument-serif-600'
+  ];
+  class AskDonaElement extends HTMLElement {
+      constructor() {
+          super(...arguments);
+          this.widgetRef = b();
+          this.initialised = false;
+      }
+      static get observedAttributes() { return ATTRS; }
+      connectedCallback() {
+          if (this.initialised)
+              return;
+          this.initialised = true;
+          // Attach Shadow DOM
+          this.shadow = this.attachShadow({ mode: 'open' });
+          // Base scoped styles
+          const base = document.createElement('style');
+          base.textContent = baseShadowStyles;
+          this.shadow.appendChild(base);
+          // If self-hosted font URLs are provided, inject @font-face using them; otherwise fall back to Google Fonts
+          const w400 = this.getAttribute('instrument-serif-regular');
+          const w600 = this.getAttribute('instrument-serif-600');
+          if (w400 || w600) {
+              // Preload hints
+              if (w400) {
+                  const preload400 = document.createElement('link');
+                  preload400.rel = 'preload';
+                  preload400.as = 'font';
+                  preload400.href = w400;
+                  preload400.type = 'font/woff2';
+                  preload400.crossOrigin = 'anonymous';
+                  this.shadow.appendChild(preload400);
+              }
+              if (w600) {
+                  const preload600 = document.createElement('link');
+                  preload600.rel = 'preload';
+                  preload600.as = 'font';
+                  preload600.href = w600;
+                  preload600.type = 'font/woff2';
+                  preload600.crossOrigin = 'anonymous';
+                  this.shadow.appendChild(preload600);
+              }
+              const fontStyle = document.createElement('style');
+              fontStyle.textContent = `
+        ${w400 ? `@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('${w400}') format('woff2'); }` : ''}
+        ${w600 ? `@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 600; font-display: swap; src: url('${w600}') format('woff2'); }` : ''}
+      `;
+              this.shadow.appendChild(fontStyle);
+          }
+          else {
+              // Load Instrument Serif font within the shadow tree via Google Fonts
+              const fontLink = document.createElement('link');
+              fontLink.rel = 'stylesheet';
+              fontLink.href = 'https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block';
+              this.shadow.appendChild(fontLink);
+              // Best-effort: also ensure font is available globally (improves compatibility)
+              const FONT_LINK_ID = 'askdona-font-global';
+              if (!document.getElementById(FONT_LINK_ID)) {
+                  // Preconnects
+                  const pc1 = document.createElement('link');
+                  pc1.rel = 'preconnect';
+                  pc1.href = 'https://fonts.googleapis.com';
+                  document.head.appendChild(pc1);
+                  const pc2 = document.createElement('link');
+                  pc2.rel = 'preconnect';
+                  pc2.href = 'https://fonts.gstatic.com';
+                  pc2.crossOrigin = 'anonymous';
+                  document.head.appendChild(pc2);
+                  const headFont = document.createElement('link');
+                  headFont.id = FONT_LINK_ID;
+                  headFont.rel = 'stylesheet';
+                  headFont.href = 'https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block';
+                  document.head.appendChild(headFont);
+              }
+          }
+          // Best-effort: also ensure font is available globally (improves compatibility)
+          const FONT_LINK_ID = 'askdona-font-global';
+          if (!document.getElementById(FONT_LINK_ID)) {
+              // Preconnects
+              const pc1 = document.createElement('link');
+              pc1.rel = 'preconnect';
+              pc1.href = 'https://fonts.googleapis.com';
+              document.head.appendChild(pc1);
+              const pc2 = document.createElement('link');
+              pc2.rel = 'preconnect';
+              pc2.href = 'https://fonts.gstatic.com';
+              pc2.crossOrigin = 'anonymous';
+              document.head.appendChild(pc2);
+              const headFont = document.createElement('link');
+              headFont.id = FONT_LINK_ID;
+              headFont.rel = 'stylesheet';
+              headFont.href = 'https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block';
+              document.head.appendChild(headFont);
+          }
+          // Create a style tag for goober to target inside Shadow DOM
+          this.gooberStyleEl = document.createElement('style');
+          this.gooberStyleEl.id = '_goober';
+          this.gooberStyleEl.appendChild(document.createTextNode(' '));
+          this.shadow.appendChild(this.gooberStyleEl);
+          // Direct goober default target into this Shadow Root
+          // Note: This is global and assumes single widget instance per page.
+          // Avoids refactoring all styled() usages to bind a target.
+          window._goober = this.gooberStyleEl;
+          // Mount point for Preact
+          this.mountPoint = document.createElement('div');
+          this.shadow.appendChild(this.mountPoint);
+          // Positioning if used as floating launcher/modal
+          this.applyPosition();
+          // Apply any custom CSS if provided
+          const customCss = this.getAttribute('custom-css');
+          if (customCss) {
+              const link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = customCss;
+              this.shadow.appendChild(link);
+          }
+          this.renderWidget();
+      }
+      disconnectedCallback() {
+          // Clean up render tree
+          if (this.mountPoint) {
+              E$1(null, this.mountPoint);
+          }
+          // If we set goober target to this style, unset it
+          if (window._goober === this.gooberStyleEl) {
+              try {
+                  delete window._goober;
+              }
+              catch (_a) {
+                  window._goober = null;
+              }
+          }
+      }
+      attributeChangedCallback(_name, _old, _new) {
+          // Re-apply position and rerender on any attribute change
+          this.applyPosition();
+          this.renderWidget();
+      }
+      // Public API methods to control the widget
+      open() { var _a; (_a = this.widgetRef.current) === null || _a === void 0 ? void 0 : _a.open(); }
+      close() { var _a; (_a = this.widgetRef.current) === null || _a === void 0 ? void 0 : _a.close(); }
+      sendMessage(message) { var _a; (_a = this.widgetRef.current) === null || _a === void 0 ? void 0 : _a.sendMessage(message); }
+      applyPosition() {
+          const position = this.getAttribute('position') || 'bottom-right';
+          const displayMode = this.getAttribute('display-mode') || 'modal';
+          // Only position when not fullscreen
+          if (displayMode === 'fullscreen') {
+              this.style.position = 'fixed';
+              this.style.inset = '0';
+              return;
+          }
+          this.style.position = 'fixed';
+          this.style.bottom = '20px';
+          this.style.left = position === 'bottom-left' ? '20px' : '';
+          this.style.right = position === 'bottom-right' ? '20px' : '';
+      }
+      getConfig() {
+          const chatflowId = this.getAttribute('chatflow-id') || '';
+          if (!chatflowId)
+              return null;
+          const cfg = {
+              chatflowId,
+              theme: this.getAttribute('theme') || undefined,
+              position: this.getAttribute('position') || undefined,
+              primaryColor: this.getAttribute('primary-color') || undefined,
+              language: this.getAttribute('language') || undefined,
+              displayMode: this.getAttribute('display-mode') || undefined,
+              // Note: customCSS is handled above via <link> injection scoped to shadow
+              debug: this.hasAttribute('debug') ? this.getAttribute('debug') === 'true' : undefined,
+          };
+          return cfg;
+      }
+      renderWidget() {
+          const cfg = this.getConfig();
+          if (!cfg)
+              return;
+          E$1(u$2(Widget, { ref: this.widgetRef, config: cfg }), this.mountPoint);
+      }
+  }
+  function defineAskDonaElement() {
+      if (!customElements.get('askdona-widget')) {
+          customElements.define('askdona-widget', AskDonaElement);
+      }
+  }
+
+  // src/index.tsx
   // Global instance management
   let widgetRef = b();
   // Main initialization function
   async function init(config) {
+      var _a, _b;
       try {
           // Validate configuration
           const validationResult = validateConfig(config);
@@ -7631,24 +7888,34 @@ var AskDona = (function (exports) {
                   }
               }
           }
-          // Create container if not exists
-          let container = document.getElementById('askdona-widget-container');
-          if (!container) {
-              container = document.createElement('div');
-              container.id = 'askdona-widget-container';
-              document.body.appendChild(container);
+          // Ensure custom element is defined
+          defineAskDonaElement();
+          // Create or reuse the custom element host
+          let host = document.querySelector('askdona-widget');
+          if (!host) {
+              host = document.createElement('askdona-widget');
+              document.body.appendChild(host);
           }
-          // Inject base styles
-          injectStyles();
-          // Apply custom CSS if provided
-          if (enhancedConfig.customCSS) {
-              const styleTag = document.createElement('link');
-              styleTag.rel = 'stylesheet';
-              styleTag.href = enhancedConfig.customCSS;
-              document.head.appendChild(styleTag);
-          }
-          // Render widget with enhanced config
-          E$1(u$2(Widget, { ref: widgetRef, config: enhancedConfig }), container);
+          // Map config to element attributes
+          host.setAttribute('chatflow-id', enhancedConfig.chatflowId);
+          if (enhancedConfig.theme)
+              host.setAttribute('theme', enhancedConfig.theme);
+          if (enhancedConfig.position)
+              host.setAttribute('position', enhancedConfig.position);
+          if (enhancedConfig.primaryColor)
+              host.setAttribute('primary-color', enhancedConfig.primaryColor);
+          if (enhancedConfig.language)
+              host.setAttribute('language', enhancedConfig.language);
+          if (enhancedConfig.displayMode)
+              host.setAttribute('display-mode', enhancedConfig.displayMode);
+          if (enhancedConfig.customCSS)
+              host.setAttribute('custom-css', enhancedConfig.customCSS);
+          if ((_a = enhancedConfig.instrumentSerif) === null || _a === void 0 ? void 0 : _a.w400)
+              host.setAttribute('instrument-serif-regular', enhancedConfig.instrumentSerif.w400);
+          if ((_b = enhancedConfig.instrumentSerif) === null || _b === void 0 ? void 0 : _b.w600)
+              host.setAttribute('instrument-serif-600', enhancedConfig.instrumentSerif.w600);
+          if (enhancedConfig.debug)
+              host.setAttribute('debug', String(!!enhancedConfig.debug));
           // Call ready callback
           if (enhancedConfig.onReady) {
               // Slight delay to ensure ref is set
@@ -7673,42 +7940,43 @@ var AskDona = (function (exports) {
   }
   // Destroy widget
   function destroy() {
-      const container = document.getElementById('askdona-widget-container');
-      if (container) {
-          E$1(null, container);
-          container.remove();
+      const host = document.querySelector('askdona-widget');
+      if (host && host.parentNode) {
+          host.parentNode.removeChild(host);
       }
       widgetRef = b();
   }
   // Open widget programmatically
   function open() {
-      if (widgetRef.current) {
-          widgetRef.current.open();
-      }
-      else {
-          console.warn('[AskDona] Widget not initialized');
-      }
+      const host = document.querySelector('askdona-widget');
+      if (host && typeof host.open === 'function')
+          return host.open();
+      if (widgetRef.current)
+          return widgetRef.current.open();
+      console.warn('[AskDona] Widget not initialized');
   }
   // Close widget programmatically
   function close() {
-      if (widgetRef.current) {
-          widgetRef.current.close();
-      }
-      else {
-          console.warn('[AskDona] Widget not initialized');
-      }
+      const host = document.querySelector('askdona-widget');
+      if (host && typeof host.close === 'function')
+          return host.close();
+      if (widgetRef.current)
+          return widgetRef.current.close();
+      console.warn('[AskDona] Widget not initialized');
   }
   // Send message programmatically
   function sendMessage(message) {
-      if (widgetRef.current) {
-          widgetRef.current.sendMessage(message);
-      }
-      else {
-          console.warn('[AskDona] Widget not initialized');
-      }
+      const host = document.querySelector('askdona-widget');
+      if (host && typeof host.sendMessage === 'function')
+          return host.sendMessage(message);
+      if (widgetRef.current)
+          return widgetRef.current.sendMessage(message);
+      console.warn('[AskDona] Widget not initialized');
   }
   // Auto-initialize if script tag has data attributes
   if (typeof window !== 'undefined') {
+      // Ensure custom element exists for auto-init path
+      defineAskDonaElement();
       const script = document.currentScript;
       if (script && script.dataset.chatflowId) {
           window.addEventListener('DOMContentLoaded', async () => {
