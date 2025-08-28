@@ -6812,9 +6812,11 @@ var AskDona = (function (exports) {
 
   async function streamChat({ chatflowId, sessionId, message, messages, boostMode = false, userMessageId, assistantMessageId, metadataFilters, signal, onChunk, }) {
       var _a;
-      console.log('[AskDona] Starting fetch request to:', `${API_BASE_URL}/chat/${chatflowId}`);
-      console.log('[AskDona] Request body:', { userQuestion: message, sessionId, boostMode, metadataFilters });
-      const response = await fetch(`${API_BASE_URL}/chat/${chatflowId}`, {
+      const variant = boostMode ? 'boost' : 'standard';
+      const url = `${API_BASE_URL}/chat/${chatflowId}/${variant}`;
+      console.log('[AskDona] Starting fetch request to:', url);
+      console.log('[AskDona] Request body:', { userQuestion: message, sessionId, boostMode, metadataFilters, variant });
+      const response = await fetch(url, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
