@@ -143,9 +143,10 @@ var AskDona = (function (exports) {
       }
   }
   // Get full embed configuration
-  async function getEmbedConfig(chatflowId) {
+  async function getEmbedConfig(chatflowId, language) {
       try {
-          const response = await apiRequest(`/welcome/${chatflowId}`);
+          const langQuery = language ? `?language=${encodeURIComponent(language)}` : '';
+          const response = await apiRequest(`/welcome/${chatflowId}${langQuery}`);
           return response;
       }
       catch (error) {
@@ -2214,7 +2215,7 @@ var AskDona = (function (exports) {
   // ============================
   // COMPONENT
   // ============================
-  function MetadataFilterButton({ chatflowId, filters, onFiltersChange, disabled = false, className }) {
+  function MetadataFilterButton({ chatflowId, filters, onFiltersChange, disabled = false, className, language = 'ja' }) {
       var _a;
       const [isDialogOpen, setIsDialogOpen] = d$1(false);
       const [isLoading, setIsLoading] = d$1(false);
@@ -2332,7 +2333,9 @@ var AskDona = (function (exports) {
       if (isEnabled !== true) {
           return null;
       }
-      return (u$2(k$1, { children: [u$2(FilterButton, { hasActiveFilters: hasActiveFilters, onClick: handleButtonClick, disabled: isButtonDisabled, className: className, type: "button", title: isCheckingSupport ? 'Checking filter availability...' : 'Filter results', children: [u$2(FilterIcon, {}), u$2("span", { children: "\u7D5E\u308A\u8FBC\u307F" }), hasActiveFilters && (u$2(FilterBadge, { children: activeFiltersCount }))] }), isDialogOpen && (u$2(MetadataFilterDialog, { isOpen: isDialogOpen, onClose: handleDialogClose, metadataKeys: metadataKeys, filters: filters, onFiltersChange: onFiltersChange, isLoading: isLoading, error: error }))] }));
+      return (u$2(k$1, { children: [u$2(FilterButton, { hasActiveFilters: hasActiveFilters, onClick: handleButtonClick, disabled: isButtonDisabled, className: className, type: "button", title: isCheckingSupport
+                      ? (language === 'ja' ? 'フィルタ機能を確認中...' : 'Checking filter availability...')
+                      : (language === 'ja' ? '結果を絞り込む' : 'Filter results'), children: [u$2(FilterIcon, {}), u$2("span", { children: language === 'ja' ? '絞り込み' : 'Filter' }), hasActiveFilters && (u$2(FilterBadge, { children: activeFiltersCount }))] }), isDialogOpen && (u$2(MetadataFilterDialog, { isOpen: isDialogOpen, onClose: handleDialogClose, metadataKeys: metadataKeys, filters: filters, onFiltersChange: onFiltersChange, isLoading: isLoading, error: error }))] }));
   }
 
   // src/hooks/useMonotonicProgress.ts
@@ -2489,16 +2492,28 @@ var AskDona = (function (exports) {
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 
-  // Status message mapping - matches askdona repo
+  // Status message mapping by language
   const statusMessages = {
-      thinking: "考え中...",
-      searching: "データベースを検索中...",
-      synthesizing: "情報を整理中...",
-      answering: "回答を生成中...",
-      executing_functions: "ツールを実行中...",
-      processing_function_results: "実行結果を処理中...",
-      complete: "完了",
-      error: "エラーが発生しました"
+      ja: {
+          thinking: "考え中...",
+          searching: "データベースを検索中...",
+          synthesizing: "情報を整理中...",
+          answering: "回答を生成中...",
+          executing_functions: "ツールを実行中...",
+          processing_function_results: "実行結果を処理中...",
+          complete: "完了",
+          error: "エラーが発生しました"
+      },
+      en: {
+          thinking: "Thinking...",
+          searching: "Searching the database...",
+          synthesizing: "Organizing information...",
+          answering: "Generating answer...",
+          executing_functions: "Running tools...",
+          processing_function_results: "Processing tool results...",
+          complete: "Complete",
+          error: "An error occurred"
+      }
   };
   function ChatView({ messages, isLoading, streamingContent, onSendMessage, error, config, currentState, boostMode = false, onBoostModeChange, sessionId, onFeedbackSubmit, showIntro: externalShowIntro, metadataFilters = null, onMetadataFiltersChange, currentMode, onModeSwitch, onClearChat, }) {
       // Debug state flow - CRITICAL for troubleshooting streaming
@@ -2605,11 +2620,13 @@ var AskDona = (function (exports) {
                                       ? 'AskDona AIアシスタントです。ドキュメントや情報について何でもお聞きください。'
                                       : "I'm AskDona AI assistant. Ask me anything about your documents and information.") }), u$2(ExampleSection, { children: [u$2(ExampleTitle, { children: config.language === 'ja' ? '質問例' : 'Example Questions' }), u$2(ExampleButtons, { children: exampleQuestions.map((question, idx) => (u$2(ExampleButton, { onClick: () => handleQuestionClick(question), children: question }, idx))) })] })] })) : (u$2(MessageList, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, config: config, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit })), isLoading && (u$2(StatusIndicator, { children: [u$2(StatusHeader$1, { children: [u$2(StatusDot, {}), u$2(StatusText, { children: streamingContent.trim()
                                               ? (config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...')
-                                              : (statusMessages[displayState] || statusMessages[currentState] || (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { progress: progress }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
+                                              : (statusMessages[(config.language || 'ja')][displayState] ||
+                                                  statusMessages[(config.language || 'ja')][currentState || ''] ||
+                                                  (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { progress: progress }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
                               ? `エラーが発生しました: ${error.message}`
                               : `Error: ${error.message}` }))] }), (onModeSwitch) && (u$2(LocalTabs$1, { children: u$2(TabsLeft$1, { children: [u$2(LocalTabButton$1, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton$1, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), onClearChat && (currentMode || 'ask-ai') === 'ask-ai' && messages.length > 0 && (u$2(LocalRefreshButton$1, { type: "button", onClick: onClearChat, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', "aria-label": config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', disabled: isLoading, children: u$2(RefreshCw, { size: 14 }) }))] }) })), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: u$2(InputBar, { children: [u$2(InputRow, { children: u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => { setInput(e.target.value); autoResize(); }, onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
                                           ? '質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)'
-                                          : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }) }), u$2(ControlsInline, { children: [u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
+                                          : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }) }), u$2(ControlsInline, { children: [u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading, language: (config.language || 'ja') })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
                                                       ? 'Boostモードは、より多角的な視点から多くの文書を分析して回答します。'
                                                       : 'Boost mode analyzes more documents from multiple perspectives for comprehensive answers.', children: [u$2(BoostIcon, { active: boostMode, children: u$2(Timer, { size: 14 }) }), u$2(BoostLabel, { children: "Boost" })] }))] }), u$2(SendIconButton, { onClick: handleSubmit, disabled: !input.trim() || isLoading, title: config.language === 'ja' ? 'Ctrl+Enter または ⌘+Enter で送信' : 'Ctrl+Enter or ⌘+Enter to send', type: "button", "data-askdona-button": "send", "data-disabled": !input.trim() || isLoading, children: u$2(ArrowUp, { size: 16, color: getIconColor() }) })] })] }) }) })] }));
   }
@@ -8097,7 +8114,7 @@ var AskDona = (function (exports) {
           // Fetch embed configuration from API
           let embedConfig = null;
           try {
-              embedConfig = await getEmbedConfig(config.chatflowId);
+              embedConfig = await getEmbedConfig(config.chatflowId, config.language);
           }
           catch (error) {
               console.warn('[AskDona] Failed to fetch embed config, using defaults:', error);
