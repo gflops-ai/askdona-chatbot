@@ -7751,19 +7751,62 @@ var AskDona = (function (exports) {
           metadataFilters: null,
       });
       const { isValid, error: authError, config: serverConfig } = useAuth(config.chatflowId);
-      // Merge server config with client config (server config takes precedence)
-      const finalConfig = serverConfig ? {
+      // Welcome-based embed configuration (from /welcome)
+      const [welcomeConfig, setWelcomeConfig] = d$1(null);
+      y(() => {
+          // Fetch welcome embed config with language awareness
+          getEmbedConfig(config.chatflowId, config.language)
+              .then((resp) => {
+              if (resp && resp.embedConfig) {
+                  setWelcomeConfig(resp.embedConfig);
+              }
+          })
+              .catch(() => {
+              // Non-fatal; fall back to validate/config
+              setWelcomeConfig(null);
+          });
+      }, [config.chatflowId, config.language]);
+      // Build final configuration preferring welcome values for display content
+      const finalConfig = {
           ...config,
-          introTitle: serverConfig.introTitle,
-          introMessage: serverConfig.introMessage,
-          exampleQuestions: serverConfig.exampleQuestions,
-          theme: serverConfig.theme,
-          position: serverConfig.position,
-          primaryColor: serverConfig.primaryColor,
-          defaultBoostMode: serverConfig.defaultBoostMode,
-          allowBoostModeToggle: serverConfig.allowBoostModeToggle,
-          displayMode: config.displayMode, // Keep the original displayMode from config
-      } : config;
+      };
+      if (welcomeConfig) {
+          if (welcomeConfig.introTitle)
+              finalConfig.introTitle = welcomeConfig.introTitle;
+          if (welcomeConfig.introMessage)
+              finalConfig.introMessage = welcomeConfig.introMessage;
+          if (welcomeConfig.exampleQuestions)
+              finalConfig.exampleQuestions = welcomeConfig.exampleQuestions;
+          if (welcomeConfig.appearanceSettings) {
+              finalConfig.primaryColor = (welcomeConfig.appearanceSettings.primaryColor || undefined);
+              finalConfig.theme = welcomeConfig.appearanceSettings.theme || finalConfig.theme;
+              finalConfig.position = welcomeConfig.appearanceSettings.position || finalConfig.position;
+              finalConfig.displayMode = welcomeConfig.appearanceSettings.displayMode || finalConfig.displayMode;
+          }
+          if (welcomeConfig.featureFlags) {
+              if (typeof welcomeConfig.featureFlags.enableBoostMode === 'boolean') {
+                  finalConfig.defaultBoostMode = !!welcomeConfig.featureFlags.enableBoostMode;
+              }
+              if (typeof welcomeConfig.featureFlags.allowBoostModeToggle === 'boolean') {
+                  finalConfig.allowBoostModeToggle = !!welcomeConfig.featureFlags.allowBoostModeToggle;
+              }
+              if (typeof welcomeConfig.featureFlags.enableRagDeepResearch === 'boolean') {
+                  finalConfig.enableRagDeepResearch = !!welcomeConfig.featureFlags.enableRagDeepResearch;
+              }
+          }
+      }
+      else if (serverConfig) {
+          // Fallback to validate config when welcome not available
+          finalConfig.introTitle = serverConfig.introTitle;
+          finalConfig.introMessage = serverConfig.introMessage;
+          finalConfig.exampleQuestions = serverConfig.exampleQuestions;
+          finalConfig.theme = serverConfig.theme;
+          finalConfig.position = serverConfig.position;
+          finalConfig.primaryColor = serverConfig.primaryColor;
+          finalConfig.defaultBoostMode = serverConfig.defaultBoostMode;
+          finalConfig.allowBoostModeToggle = serverConfig.allowBoostModeToggle;
+          finalConfig.displayMode = config.displayMode;
+      }
       const theme = getTheme(finalConfig.theme || 'light', finalConfig.primaryColor);
       const { messages, sendMessage, isLoading, streamingContent, error: chatError, currentState, sessionId, submitFeedback, clearChat } = useChat(config.chatflowId);
       // Update state when chat hook values change
