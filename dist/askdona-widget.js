@@ -651,19 +651,6 @@ var AskDona = (function (exports) {
    */
 
 
-  const Plus = createLucideIcon("plus", [
-    ["path", { d: "M5 12h14", key: "1ays0h" }],
-    ["path", { d: "M12 5v14", key: "s699le" }]
-  ]);
-
-  /**
-   * @license lucide-preact v0.525.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-
-
   const RefreshCw = createLucideIcon("refresh-cw", [
     ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
     ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
@@ -1859,6 +1846,16 @@ var AskDona = (function (exports) {
   align-items: center;
   justify-content: center;
   padding: 16px;
+  animation: fadeIn 0.15s ease-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
   const DialogContent = j$1('div') `
   background: white;
@@ -1869,6 +1866,18 @@ var AskDona = (function (exports) {
   max-height: 80vh;
   display: flex;
   flex-direction: column;
+  animation: scaleIn 0.15s ease-out;
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
 `;
   const DialogHeader = j$1('div') `
   padding: 12px 20px;
@@ -2210,67 +2219,274 @@ var AskDona = (function (exports) {
       const [isDialogOpen, setIsDialogOpen] = d$1(false);
       const [isLoading, setIsLoading] = d$1(false);
       const [metadataKeys, setMetadataKeys] = d$1([]);
-      const [isEnabled, setIsEnabled] = d$1(false);
+      const [isEnabled, setIsEnabled] = d$1(null); // null = checking, true/false = result
+      const [isCheckingSupport, setIsCheckingSupport] = d$1(false); // Start false, check after mount
       const [error, setError] = d$1(null);
+      const [hasFetchedKeys, setHasFetchedKeys] = d$1(false);
       // Calculate active filters count
       const activeFiltersCount = ((_a = filters === null || filters === void 0 ? void 0 : filters.filters) === null || _a === void 0 ? void 0 : _a.reduce((count, filter) => { var _a; return count + (((_a = filter.selectedValues) === null || _a === void 0 ? void 0 : _a.length) || 0); }, 0)) || 0;
       const hasActiveFilters = activeFiltersCount > 0;
-      // Check if metadata filtering is enabled
+      // Check if metadata filtering is enabled (in background, delayed to prevent blocking)
       y(() => {
+          let mounted = true;
           const checkSupport = async () => {
+              // Small delay to allow UI to render first
+              await new Promise(resolve => setTimeout(resolve, 10));
+              if (!mounted)
+                  return;
+              setIsCheckingSupport(true);
               try {
                   console.log('[AskDona] Checking metadata filtering support for:', chatflowId);
                   const result = await checkMetadataFiltering(chatflowId);
                   console.log('[AskDona] Metadata filtering check result:', result);
-                  setIsEnabled(result.enable_metadata_filtering);
-                  setError(null);
+                  if (mounted) {
+                      setIsEnabled(result.enable_metadata_filtering);
+                      setError(null);
+                  }
               }
               catch (err) {
                   console.error('[AskDona] Failed to check metadata filtering:', err);
-                  setIsEnabled(false);
-                  setError(err.message);
+                  if (mounted) {
+                      setIsEnabled(false);
+                      setError(err.message);
+                  }
+              }
+              finally {
+                  if (mounted) {
+                      setIsCheckingSupport(false);
+                  }
               }
           };
           if (chatflowId) {
               checkSupport();
           }
+          return () => {
+              mounted = false;
+          };
       }, [chatflowId]);
-      // Fetch metadata keys when dialog opens
-      const handleButtonClick = q$1(async () => {
-          if (!isEnabled)
-              return;
+      // Open dialog immediately, regardless of support status
+      const handleButtonClick = q$1(() => {
+          // Always open dialog immediately
           setIsDialogOpen(true);
-          setIsLoading(true);
+          // Set loading if we're still checking support or haven't fetched keys yet
+          if (isCheckingSupport || !hasFetchedKeys) {
+              setIsLoading(true);
+          }
           setError(null);
-          try {
-              console.log('[AskDona] Fetching metadata keys for:', chatflowId);
-              const result = await getMetadataKeys(chatflowId);
-              console.log('[AskDona] Metadata keys result:', result);
-              if (result.success && result.metadataKeys) {
-                  setMetadataKeys(result.metadataKeys);
-              }
-              else {
-                  setError(result.error || 'Failed to fetch metadata keys');
-                  setMetadataKeys([]);
-              }
+      }, [isCheckingSupport, hasFetchedKeys]);
+      // Fetch metadata keys after dialog opens and support is confirmed
+      y(() => {
+          if (!isDialogOpen || hasFetchedKeys)
+              return;
+          // If still checking support, wait
+          if (isCheckingSupport) {
+              console.log('[AskDona] Waiting for support check to complete...');
+              return;
           }
-          catch (err) {
-              console.error('[AskDona] Failed to fetch metadata keys:', err);
-              setError(err.message);
-              setMetadataKeys([]);
-          }
-          finally {
+          // If not enabled, show error
+          if (isEnabled === false) {
+              setError('メタデータフィルタリングはこのチャットフローで利用できません');
               setIsLoading(false);
+              setHasFetchedKeys(true);
+              return;
           }
-      }, [chatflowId, isEnabled]);
+          const fetchMetadataKeys = async () => {
+              try {
+                  console.log('[AskDona] Fetching metadata keys for:', chatflowId);
+                  const result = await getMetadataKeys(chatflowId);
+                  console.log('[AskDona] Metadata keys result:', result);
+                  if (result.success && result.metadataKeys) {
+                      setMetadataKeys(result.metadataKeys);
+                  }
+                  else {
+                      setError(result.error || 'Failed to fetch metadata keys');
+                      setMetadataKeys([]);
+                  }
+                  setHasFetchedKeys(true);
+              }
+              catch (err) {
+                  console.error('[AskDona] Failed to fetch metadata keys:', err);
+                  setError(err.message);
+                  setMetadataKeys([]);
+                  setHasFetchedKeys(true);
+              }
+              finally {
+                  setIsLoading(false);
+              }
+          };
+          fetchMetadataKeys();
+      }, [isDialogOpen, chatflowId, hasFetchedKeys, isCheckingSupport, isEnabled]);
       const handleDialogClose = q$1(() => {
           setIsDialogOpen(false);
+          // Reset state for next time
+          setMetadataKeys([]);
+          setIsLoading(false);
+          setError(null);
+          setHasFetchedKeys(false);
       }, []);
-      // Don't render if metadata filtering is not enabled
-      if (!isEnabled) {
+      // Button is only disabled when explicitly disabled
+      // Never disable for permission checking - handle that in the modal
+      const isButtonDisabled = disabled;
+      // Strict display: render button only when explicitly enabled
+      // While checking (isEnabled === null) or disabled (false), hide the button
+      if (isEnabled !== true) {
           return null;
       }
-      return (u$2(k$1, { children: [u$2(FilterButton, { hasActiveFilters: hasActiveFilters, onClick: handleButtonClick, disabled: disabled, className: className, type: "button", children: [u$2(FilterIcon, {}), u$2("span", { children: "\u7D5E\u308A\u8FBC\u307F" }), hasActiveFilters && (u$2(FilterBadge, { children: activeFiltersCount }))] }), isDialogOpen && (u$2(MetadataFilterDialog, { isOpen: isDialogOpen, onClose: handleDialogClose, metadataKeys: metadataKeys, filters: filters, onFiltersChange: onFiltersChange, isLoading: isLoading, error: error }))] }));
+      return (u$2(k$1, { children: [u$2(FilterButton, { hasActiveFilters: hasActiveFilters, onClick: handleButtonClick, disabled: isButtonDisabled, className: className, type: "button", title: isCheckingSupport ? 'Checking filter availability...' : 'Filter results', children: [u$2(FilterIcon, {}), u$2("span", { children: "\u7D5E\u308A\u8FBC\u307F" }), hasActiveFilters && (u$2(FilterBadge, { children: activeFiltersCount }))] }), isDialogOpen && (u$2(MetadataFilterDialog, { isOpen: isDialogOpen, onClose: handleDialogClose, metadataKeys: metadataKeys, filters: filters, onFiltersChange: onFiltersChange, isLoading: isLoading, error: error }))] }));
+  }
+
+  // src/hooks/useMonotonicProgress.ts
+  // Hard caps for progress per visible state to prevent early overshoot
+  const STATE_MAX_PROGRESS = {
+      idle: 0,
+      initializing: 10,
+      thinking: 22,
+      searching: 42,
+      synthesizing: 58,
+      processing: 72,
+      streaming: 88,
+      answering: 90,
+      finalizing: 96,
+      completing: 98,
+      complete: 100,
+      error: 100
+  };
+  // Define checkpoint timings for standard mode (21s total)
+  const STANDARD_CHECKPOINTS = [
+      { time: 0, minProgress: 5, label: 'initializing' },
+      { time: 2000, minProgress: 12, label: 'thinking' },
+      { time: 5000, minProgress: 20, label: 'searching' },
+      { time: 9000, minProgress: 32, label: 'synthesizing' },
+      { time: 13000, minProgress: 48, label: 'processing' },
+      { time: 16000, minProgress: 64, label: 'answering' },
+      { time: 18000, minProgress: 76, label: 'finalizing' },
+      { time: 20000, minProgress: 88, label: 'completing' },
+      { time: 21000, minProgress: 96, label: 'complete' },
+  ];
+  // Define checkpoint timings for boost mode
+  // Requirement: Only 'answering' takes longer; other phases match standard timing
+  const BOOST_CHECKPOINTS = [
+      // Match standard up to 'processing'
+      { time: 0, minProgress: 5, label: 'initializing' },
+      { time: 2000, minProgress: 12, label: 'thinking' },
+      { time: 5000, minProgress: 20, label: 'searching' },
+      { time: 9000, minProgress: 32, label: 'synthesizing' },
+      { time: 13000, minProgress: 48, label: 'processing' },
+      // Start answering at the same time as standard, but stretch only this phase
+      { time: 16000, minProgress: 64, label: 'answering' },
+      // Extend 'answering' duration; subsequent phases keep standard-like short durations
+      { time: 29000, minProgress: 76, label: 'finalizing' }, // ~+13s answering phase
+      { time: 31000, minProgress: 88, label: 'completing' }, // ~+2s
+      { time: 32000, minProgress: 96, label: 'complete' }, // ~+1s
+  ];
+  function useMonotonicProgress({ isLoading, boostMode = false, currentState }) {
+      const [progress, setProgress] = d$1(0);
+      const [displayState, setDisplayState] = d$1(currentState || 'idle');
+      const startTimeRef = A$1(null);
+      const lastProgressRef = A$1(0);
+      const animationFrameRef = A$1(null);
+      const checkpoints = boostMode ? BOOST_CHECKPOINTS : STANDARD_CHECKPOINTS;
+      const totalDuration = checkpoints[checkpoints.length - 1].time;
+      y(() => {
+          if (isLoading && !startTimeRef.current) {
+              // Start tracking time when loading begins
+              startTimeRef.current = Date.now();
+              lastProgressRef.current = 0;
+              setProgress(checkpoints[0].minProgress);
+          }
+          else if (!isLoading) {
+              // Reset when loading stops
+              startTimeRef.current = null;
+              lastProgressRef.current = 0;
+              setProgress(0);
+              setDisplayState('idle');
+              if (animationFrameRef.current) {
+                  cancelAnimationFrame(animationFrameRef.current);
+              }
+          }
+      }, [isLoading, checkpoints]);
+      y(() => {
+          if (!isLoading || !startTimeRef.current)
+              return;
+          const updateProgress = () => {
+              var _a, _b;
+              const elapsed = Date.now() - startTimeRef.current;
+              // Find the appropriate checkpoint
+              let targetProgress = 0;
+              let currentLabel = 'processing';
+              for (let i = checkpoints.length - 1; i >= 0; i--) {
+                  if (elapsed >= checkpoints[i].time) {
+                      const checkpoint = checkpoints[i];
+                      // Calculate progress between this checkpoint and the next
+                      if (i < checkpoints.length - 1) {
+                          const nextCheckpoint = checkpoints[i + 1];
+                          const segmentDuration = nextCheckpoint.time - checkpoint.time;
+                          const segmentElapsed = elapsed - checkpoint.time;
+                          const segmentProgress = Math.min(segmentElapsed / segmentDuration, 1);
+                          targetProgress = checkpoint.minProgress +
+                              (nextCheckpoint.minProgress - checkpoint.minProgress) * segmentProgress;
+                      }
+                      else {
+                          // Last checkpoint
+                          targetProgress = checkpoint.minProgress;
+                      }
+                      currentLabel = checkpoint.label || 'processing';
+                      break;
+                  }
+              }
+              // Apply easing for smoother visual progression
+              const easedProgress = easeInOutQuad(Math.min(elapsed / totalDuration, 1)) * 98;
+              // Use the maximum of eased progress and checkpoint-based progress
+              // This ensures we never go backwards
+              const finalProgress = Math.max(targetProgress, easedProgress, lastProgressRef.current);
+              // Cap at 98% until actually complete
+              let cappedProgress = Math.min(finalProgress, 98);
+              // Apply state-based maximum to stretch early phases
+              const labelKey = (currentLabel || 'processing').toLowerCase();
+              const currentKey = (currentState || '').toLowerCase();
+              const labelMax = (_a = STATE_MAX_PROGRESS[labelKey]) !== null && _a !== void 0 ? _a : 72; // conservative default
+              const stateMax = currentKey ? ((_b = STATE_MAX_PROGRESS[currentKey]) !== null && _b !== void 0 ? _b : 72) : 100;
+              const effectiveMax = Math.min(labelMax, stateMax);
+              cappedProgress = Math.min(cappedProgress, effectiveMax);
+              // Only update if progress has increased
+              if (cappedProgress > lastProgressRef.current) {
+                  lastProgressRef.current = cappedProgress;
+                  setProgress(cappedProgress);
+              }
+              // Update display state based on current checkpoint
+              setDisplayState(currentLabel);
+              // Continue animation if still loading and not at max
+              if (isLoading && cappedProgress < 98) {
+                  animationFrameRef.current = requestAnimationFrame(updateProgress);
+              }
+          };
+          updateProgress();
+          return () => {
+              if (animationFrameRef.current) {
+                  cancelAnimationFrame(animationFrameRef.current);
+              }
+          };
+      }, [isLoading, checkpoints, totalDuration, currentState]);
+      // For answering phase, optionally ensure a minimum visible progress
+      // Only apply when the displayed phase has reached 'answering' to avoid premature jumps
+      y(() => {
+          if (currentState === 'answering' && displayState === 'answering') {
+              const minAnsweringProgress = 90;
+              if (lastProgressRef.current < minAnsweringProgress) {
+                  lastProgressRef.current = minAnsweringProgress;
+                  setProgress(minAnsweringProgress);
+              }
+          }
+      }, [currentState, displayState]);
+      return {
+          progress,
+          displayState,
+          isProgressing: isLoading
+      };
+  }
+  // Easing function for smooth acceleration/deceleration
+  function easeInOutQuad(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 
   // Status message mapping - matches askdona repo
@@ -2294,6 +2510,12 @@ var AskDona = (function (exports) {
           currentState
       });
       const [input, setInput] = d$1('');
+      // Use monotonic progress hook
+      const { progress, displayState } = useMonotonicProgress({
+          isLoading,
+          boostMode,
+          currentState
+      });
       // Get computed styles for dynamic icon color
       const getIconColor = () => {
           var _a;
@@ -2306,7 +2528,6 @@ var AskDona = (function (exports) {
       };
       const [showIntro, setShowIntro] = d$1(messages.length === 0);
       const [isComposing, setIsComposing] = d$1(false);
-      const [isExpanded, setIsExpanded] = d$1(false);
       const inputRef = A$1(null);
       // Use external showIntro prop if provided, otherwise use internal state logic
       const shouldShowIntro = externalShowIntro !== undefined ? externalShowIntro : showIntro;
@@ -2384,13 +2605,13 @@ var AskDona = (function (exports) {
                                       ? 'AskDona AIアシスタントです。ドキュメントや情報について何でもお聞きください。'
                                       : "I'm AskDona AI assistant. Ask me anything about your documents and information.") }), u$2(ExampleSection, { children: [u$2(ExampleTitle, { children: config.language === 'ja' ? '質問例' : 'Example Questions' }), u$2(ExampleButtons, { children: exampleQuestions.map((question, idx) => (u$2(ExampleButton, { onClick: () => handleQuestionClick(question), children: question }, idx))) })] })] })) : (u$2(MessageList, { messages: messages, isLoading: isLoading, streamingContent: streamingContent, config: config, sessionId: sessionId, onFeedbackSubmit: onFeedbackSubmit })), isLoading && (u$2(StatusIndicator, { children: [u$2(StatusHeader$1, { children: [u$2(StatusDot, {}), u$2(StatusText, { children: streamingContent.trim()
                                               ? (config.language === 'ja' ? 'リアルタイム応答中...' : 'Streaming response...')
-                                              : (statusMessages[currentState] || (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { currentState: currentState, isLoading: isLoading }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
+                                              : (statusMessages[displayState] || statusMessages[currentState] || (config.language === 'ja' ? '処理中...' : 'Processing...')) })] }), !streamingContent.trim() && (u$2(ProgressBarContainer$1, { children: u$2(ProgressBar$3, { progress: progress }) }))] })), error && (u$2(ErrorMessage$2, { children: config.language === 'ja'
                               ? `エラーが発生しました: ${error.message}`
-                              : `Error: ${error.message}` }))] }), (onModeSwitch) && (u$2(LocalTabs$1, { children: u$2(TabsLeft, { children: [u$2(LocalTabButton$1, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton$1, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), onClearChat && (currentMode || 'ask-ai') === 'ask-ai' && messages.length > 0 && (u$2(LocalRefreshButton, { type: "button", onClick: onClearChat, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', "aria-label": config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', disabled: isLoading, children: u$2(RefreshCw, { size: 14 }) }))] }) })), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: [u$2(TopBar, { expanded: isExpanded, children: [u$2(ToggleButton, { onClick: () => setIsExpanded(prev => !prev), "aria-label": isExpanded ? (config.language === 'ja' ? '閉じる' : 'Close') : (config.language === 'ja' ? '開く' : 'Open'), title: isExpanded ? (config.language === 'ja' ? '閉じる' : 'Close') : (config.language === 'ja' ? '開く' : 'Open'), disabled: isLoading, children: isExpanded ? u$2(X$1, { size: 16 }) : u$2(Plus, { size: 16 }) }), u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => { setInput(e.target.value); autoResize(); }, onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
+                              : `Error: ${error.message}` }))] }), (onModeSwitch) && (u$2(LocalTabs$1, { children: u$2(TabsLeft$1, { children: [u$2(LocalTabButton$1, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton$1, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), onClearChat && (currentMode || 'ask-ai') === 'ask-ai' && messages.length > 0 && (u$2(LocalRefreshButton$1, { type: "button", onClick: onClearChat, title: config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', "aria-label": config.language === 'ja' ? '新しいセッションを開始' : 'Start new session', disabled: isLoading, children: u$2(RefreshCw, { size: 14 }) }))] }) })), u$2(InputArea, { children: u$2(InputContainer, { boostMode: boostMode, children: u$2(InputBar, { children: [u$2(InputRow, { children: u$2(TextArea$1, { ref: inputRef, value: input, onChange: (e) => { setInput(e.target.value); autoResize(); }, onKeyDown: handleKeyDownWithIME, onCompositionStart: handleCompositionStart, onCompositionEnd: handleCompositionEnd, placeholder: config.language === 'ja'
                                           ? '質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)'
-                                          : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }), u$2(SendIconButton, { onClick: handleSubmit, disabled: !input.trim() || isLoading, title: config.language === 'ja' ? 'Ctrl+Enter または ⌘+Enter で送信' : 'Ctrl+Enter or ⌘+Enter to send', type: "button", "data-askdona-button": "send", "data-disabled": !input.trim() || isLoading, children: u$2(ArrowUp, { size: 16, color: getIconColor() }) })] }), isExpanded && (u$2(BottomToolbar, { boostMode: boostMode, children: u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
-                                              ? 'Boostモードは、より多角的な視点から多くの文書を分析して回答します。'
-                                              : 'Boost mode analyzes more documents from multiple perspectives for comprehensive answers.', children: [u$2(BoostIcon, { active: boostMode, children: u$2(Timer, { size: 14 }) }), u$2(BoostLabel, { children: "Boost" })] }))] }) }))] }) })] }));
+                                          : 'Ask me anything... (Ctrl+Enter or ⌘+Enter to send)', disabled: isLoading, rows: 1, boostMode: boostMode }) }), u$2(ControlsInline, { children: [u$2("div", { style: { display: 'flex', alignItems: 'center', gap: '0.5rem' }, children: [config.chatflowId && onMetadataFiltersChange && (u$2(MetadataFilterButton, { chatflowId: config.chatflowId, filters: metadataFilters, onFiltersChange: onMetadataFiltersChange, disabled: isLoading })), config.allowBoostModeToggle && onBoostModeChange && (u$2(BoostToggle, { onClick: () => onBoostModeChange(!boostMode), disabled: isLoading, active: boostMode, title: config.language === 'ja'
+                                                      ? 'Boostモードは、より多角的な視点から多くの文書を分析して回答します。'
+                                                      : 'Boost mode analyzes more documents from multiple perspectives for comprehensive answers.', children: [u$2(BoostIcon, { active: boostMode, children: u$2(Timer, { size: 14 }) }), u$2(BoostLabel, { children: "Boost" })] }))] }), u$2(SendIconButton, { onClick: handleSubmit, disabled: !input.trim() || isLoading, title: config.language === 'ja' ? 'Ctrl+Enter または ⌘+Enter で送信' : 'Ctrl+Enter or ⌘+Enter to send', type: "button", "data-askdona-button": "send", "data-disabled": !input.trim() || isLoading, children: u$2(ArrowUp, { size: 16, color: getIconColor() }) })] })] }) }) })] }));
   }
   // Styled components
   const Container$7 = j$1('div') `
@@ -2405,13 +2626,27 @@ var AskDona = (function (exports) {
   padding: 0.5rem 1.5rem 0.25rem;
   flex-shrink: 0;
   align-items: center;
+  /* tabs aligned left by default */
 `;
-  const TabsLeft = j$1('div') `
+  const TabsLeft$1 = j$1('div') `
   display: flex;
   gap: 0.5rem;
   align-items: center;
   flex: 1;
 `;
+  // // Fixed controls toolbar (replaces old ExpandedToolbar)
+  // const ControlsToolbar = styled('div')<{ boostMode?: boolean }>`
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   padding: 0.5rem 1.5rem;
+  //   background: var(--askdona-background);
+  //   border-bottom: 1px solid var(--askdona-border);
+  //   transition: all 0.2s;
+  //   ${({ boostMode }) => boostMode && `
+  //     border-color: var(--askdona-border);
+  //   `}
+  // `;
   const LocalTabButton$1 = j$1('button') `
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
@@ -2441,7 +2676,7 @@ var AskDona = (function (exports) {
     }
   `}
 `;
-  const LocalRefreshButton = j$1('button') `
+  const LocalRefreshButton$1 = j$1('button') `
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -2588,43 +2823,27 @@ var AskDona = (function (exports) {
   height: 100%;
   background: linear-gradient(90deg, var(--askdona-primary), var(--askdona-primary-light));
   border-radius: 3px;
-  transition: width 1.2s ease-in-out;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  width: 0%;
+  width: ${({ progress }) => `${progress}%`};
   transform-origin: left center;
-  animation: ${({ isLoading }) => isLoading ? 'wobble 1.6s ease-in-out infinite alternate' : 'none'};
   
-  @keyframes wobble {
-    0% { transform: scaleX(0.98); }
-    100% { transform: scaleX(1.02); }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+    animation: shimmer 2s infinite;
   }
   
-  ${({ currentState, isLoading }) => {
-    if (!isLoading) {
-        return 'width: 0%;';
-    }
-    if (!currentState || currentState === 'idle') {
-        return 'width: 0%;';
-    }
-    switch (currentState) {
-        case 'thinking':
-            return 'width: 20%;';
-        case 'searching':
-            return 'width: 40%;';
-        case 'synthesizing':
-            return 'width: 60%;';
-        case 'answering':
-            return 'width: 80%;';
-        case 'executing_functions':
-            return 'width: 70%;';
-        case 'processing_function_results':
-            return 'width: 85%;';
-        case 'complete':
-            return 'width: 100%;';
-        default:
-            return 'width: 0%;';
-    }
-}}
+  @keyframes shimmer {
+    0% { transform: translateX(-20px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(0); opacity: 0; }
+  }
 `;
   const InputArea = j$1('div') `
   padding: 1rem 1.5rem;
@@ -2632,22 +2851,7 @@ var AskDona = (function (exports) {
   flex-shrink: 0;
 `;
   // (Removed BottomFade overlay; restored original layout without fade)
-  // Bottom toolbar for input actions
-  const BottomToolbar = j$1('div') `
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-  background: var(--askdona-background);
-  border-radius: 0 0 0.75rem 0.75rem;
-  border: 1px solid var(--askdona-border);
-  border-top: none;
-  transition: all 0.2s;
-  
-  ${({ boostMode }) => boostMode && `
-    border-color: transparent;
-  `}
-`;
+  // (Expanded toolbar removed; controls moved into tabs bar)
   // Boost Mode Components
   const BoostToggle = j$1('button') `
   display: flex;
@@ -2714,43 +2918,33 @@ var AskDona = (function (exports) {
       z-index: -1;
     }
   `}
-  
 `;
-  const TopBar = j$1('div') `
+  const InputBar = j$1('div') `
   display: flex;
-  align-items: center;
-  gap: 0rem; /* tighter spacing between + button and input */
+  flex-direction: column;
+  gap: 0.25rem;
   padding: 0.5rem;
   border: 1px solid var(--askdona-border);
-  border-radius: ${({ expanded }) => expanded ? '0.75rem 0.75rem 0 0' : '0.75rem'};
+  border-radius: 0.75rem;
   background: var(--askdona-background);
   transition: all 0.2s;
-  ${({ expanded }) => expanded && 'border-bottom: none;'}
+  position: relative;
+  z-index: 1;
 `;
-  const ToggleButton = j$1('button') `
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  background: var(--askdona-background);
-  color: var(--askdona-text-secondary);
+  const InputRow = j$1('div') `
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* center handled by TopBar align-items */
-  cursor: pointer;
-  transition: all 0.2s;
-  
-  &:hover:not(:disabled) {
-    background: var(--askdona-bg-hover);
-    color: var(--askdona-text);
-  }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  gap: 0.5rem;
+  width: 100%;
 `;
+  const ControlsInline = j$1('div') `
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+`;
+  // (Toggle button removed)
   const SendIconButton = j$1('button') `
   width: 32px;
   height: 32px;
@@ -2995,7 +3189,7 @@ var AskDona = (function (exports) {
   }
 
   // Load all results in one request (no page limit for now)
-  function SearchView({ config, currentMode, onModeSwitch }) {
+  function SearchView({ config, currentMode, onModeSwitch, onClearSearch }) {
       var _a, _b;
       const [query, setQuery] = d$1('');
       const [searchResponse, setSearchResponse] = d$1(null);
@@ -3152,7 +3346,28 @@ var AskDona = (function (exports) {
           setQuery(suggestion);
           executeSearch(suggestion);
       };
-      // Clear input helper (not currently used)
+      // Clear search state
+      const handleClearSearch = q$1(() => {
+          setQuery('');
+          setSearchResponse(null);
+          setAllResults([]);
+          setFilters({});
+          setError(null);
+          if (searchInputRef.current) {
+              searchInputRef.current.focus();
+          }
+          // Clear the persisted last search
+          try {
+              localStorage.removeItem(STORAGE_KEY);
+          }
+          catch (e) {
+              console.warn('[AskDona][Search] Failed to clear last search:', e);
+          }
+          // Call parent's clear handler if provided
+          if (onClearSearch) {
+              onClearSearch();
+          }
+      }, [STORAGE_KEY, onClearSearch]);
       const handleFilterChange = (newFilters) => {
           setFilters(newFilters);
       };
@@ -3192,8 +3407,8 @@ var AskDona = (function (exports) {
                       }, children: [tab.label, u$2(TabCount, { children: ["(", tab.count, ")"] })] }, tab.id))) })), u$2(ResultsContainer, { children: isSearching ? (u$2(LoadingContainer$1, { children: [u$2(LoadingSpinner, {}), u$2(LoadingText$1, { children: config.language === 'ja' ? '検索中...' : 'Searching...' })] })) : error ? (u$2(ErrorContainer$1, { children: [u$2(ErrorIcon$1, { children: "\u26A0\uFE0F" }), u$2(ErrorText$1, { children: config.language === 'ja' ? '検索エラー' : 'Search Error' }), u$2(ErrorDetails, { children: error })] })) : query && filteredResults.length === 0 && searchResponse ? (u$2(NoResults, { children: config.language === 'ja'
                           ? `"${query}" に一致する結果が見つかりませんでした`
                           : `No results found for "${query}"` })) : paginatedResults.length > 0 ? (u$2(k$1, { children: u$2(ResultsList, { children: paginatedResults.map(result => (u$2(SearchResultCardStyled, { children: u$2(CardContent, { children: [u$2(ResultTitle$1, { children: result.fileMetadata.url ? (u$2("a", { href: result.fileMetadata.url, target: "_blank", rel: "noopener noreferrer", children: highlightQuery(result.fileMetadata.title || result.fileName) })) : (u$2("span", { children: highlightQuery(result.fileMetadata.title || result.fileName) })) }), u$2(MetadataRow, { children: [u$2("strong", { children: config.language === 'ja' ? 'フォーマット:' : 'Format:' }), ' ', result.fileFormat.toUpperCase()] }), result.fileMetadata.body && (u$2(BodySection, { children: [u$2("strong", { children: config.language === 'ja' ? '本文:' : 'Content:' }), u$2(BodyText, { children: highlightQuery(result.fileMetadata.body) })] }))] }) }, result.fileId))) }) })) : (u$2(EmptyState, { children: [u$2(EmptyIcon, { children: "\uD83D\uDD0D" }), u$2(EmptyText, { children: config.language === 'ja'
-                                  ? '検索キーワードを入力してください'
-                                  : 'Enter a search term to see results' })] })) }), onModeSwitch && (u$2(LocalTabs, { children: [u$2(LocalTabButton, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' })] })), u$2(SearchInputContainer, { children: u$2(ComposerWrapper, { children: u$2(ComposerInputContainer, { children: [recentQueries.length > 0 && (u$2(RecentQueriesBar, { children: [u$2(RecentHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), u$2(RecentChips, { children: recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(RecentChip, { onClick: () => handleSuggestionSelect(recentQuery), children: recentQuery }, index))) })] })), u$2(ComposerTopBar, { children: [u$2(ComposerTextArea, { ref: searchInputRef, value: query, onInput: (e) => { handleInputChange(e); autoResize(); }, onKeyDown: handleKeyDown, onCompositionStart: () => setIsComposing(true), onCompositionEnd: () => setIsComposing(false), placeholder: config.language === 'ja' ? '検索キーワードを入力...' : 'Enter search keywords...', rows: 1 }), u$2(ComposerSendButton, { onClick: handleSearch, "data-disabled": !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', type: "button", children: isSearching ? u$2(SearchSpinner, {}) : u$2(ArrowUp, { size: 16, color: 'white' }) })] })] }) }) })] }));
+                                  ? '検索キーワードを入力してください (Ctrl+Enter または ⌘+Enter で送信)'
+                                  : 'Enter a search term to see results (Ctrl+Enter or ⌘+Enter to send)' })] })) }), onModeSwitch && (u$2(LocalTabs, { children: u$2(TabsLeft, { children: [u$2(LocalTabButton, { type: "button", active: (currentMode || 'ask-ai') === 'ask-ai', onClick: () => onModeSwitch('ask-ai'), children: config.language === 'ja' ? 'AIに質問' : 'Ask AI' }), u$2(LocalTabButton, { type: "button", active: currentMode === 'search', onClick: () => onModeSwitch('search'), children: config.language === 'ja' ? '検索' : 'Search' }), currentMode === 'search' && (query || searchResponse) && (u$2(LocalRefreshButton, { type: "button", onClick: handleClearSearch, title: config.language === 'ja' ? '検索をクリア' : 'Clear search', "aria-label": config.language === 'ja' ? '検索をクリア' : 'Clear search', disabled: isSearching, children: u$2(RefreshCw, { size: 14 }) }))] }) })), u$2(SearchInputContainer, { children: u$2(ComposerWrapper, { children: u$2(ComposerInputContainer, { children: [recentQueries.length > 0 && (u$2(RecentQueriesBar, { children: [u$2(RecentHeader, { children: config.language === 'ja' ? '最近の検索' : 'Recent searches' }), u$2(RecentChips, { children: recentQueries.slice(0, 8).map((recentQuery, index) => (u$2(RecentChip, { onClick: () => handleSuggestionSelect(recentQuery), children: recentQuery }, index))) })] })), u$2(ComposerTopBar, { children: [u$2(ComposerTextArea, { ref: searchInputRef, value: query, onInput: (e) => { handleInputChange(e); autoResize(); }, onKeyDown: handleKeyDown, onCompositionStart: () => setIsComposing(true), onCompositionEnd: () => setIsComposing(false), placeholder: config.language === 'ja' ? '検索キーワードを入力... (Ctrl+Enter または ⌘+Enter で送信)' : 'Enter search keywords... (Ctrl+Enter or ⌘+Enter to send)', rows: 1 }), u$2(ComposerSendButton, { onClick: handleSearch, "data-disabled": !query.trim() || isSearching, title: config.language === 'ja' ? '検索 (Enter または Ctrl+Enter)' : 'Search (Enter or Ctrl+Enter)', type: "button", children: isSearching ? u$2(SearchSpinner, {}) : u$2(ArrowUp, { size: 16, color: 'white' }) })] })] }) }) })] }));
   }
   // Styled components
   const Container$6 = j$1('div') `
@@ -3211,6 +3426,36 @@ var AskDona = (function (exports) {
   align-items: center; /* match ChatView */
   position: relative;
   z-index: 2; /* ensure tab underline renders above input separator */
+`;
+  const TabsLeft = j$1('div') `
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1;
+`;
+  const LocalRefreshButton = j$1('button') `
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--askdona-border);
+  background: transparent;
+  color: var(--askdona-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover:not(:disabled) {
+    background: var(--askdona-background);
+    color: var(--askdona-text);
+    border-color: var(--askdona-primary);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
   const LocalTabButton = j$1('button') `
   padding: 0.25rem 0.5rem;
@@ -3415,7 +3660,7 @@ var AskDona = (function (exports) {
   const ResultsList = j$1('div') `
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem; /* tighter spacing between cards */
 `;
   const Highlight = j$1('span') `
   background: rgba(var(--askdona-primary-rgb), 0.2);
@@ -3525,7 +3770,7 @@ var AskDona = (function (exports) {
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  margin-bottom: 0; /* rely on ResultsList gap for spacing */
   transition: all 0.2s;
   
   &:hover {
@@ -3533,13 +3778,13 @@ var AskDona = (function (exports) {
   }
 `;
   const CardContent = j$1('div') `
-  padding: 1rem;
+  padding: 0.75rem; /* slightly tighter */
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem; /* slightly tighter */
 `;
   const ResultTitle$1 = j$1('h4') `
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.25rem 0; /* tighter spacing below title */
   font-size: 1rem;
   
   a {
@@ -3556,12 +3801,14 @@ var AskDona = (function (exports) {
   }
 `;
   const MetadataRow = j$1('p') `
-  margin: 0.25rem 0;
-  font-size: 0.875rem;
-  color: #5f6368;
+  margin: 0; /* remove extra spacing */
+  font-size: 0.75rem; /* smaller row text */
+  color: var(--askdona-text-secondary); /* lighter overall */
   
   strong {
-    color: #202124;
+    color: var(--askdona-text-secondary); /* lighter label color */
+    font-size: 0.6875rem; /* even smaller label text */
+    opacity: 0.75; /* make label appear lighter */
   }
 `;
   const BodySection = j$1('div') `
