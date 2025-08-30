@@ -2498,20 +2498,20 @@ var AskDona = (function (exports) {
           thinking: "考え中...",
           searching: "データベースを検索中...",
           synthesizing: "情報を整理中...",
-          answering: "回答を生成中...",
+          answering: "推論中...",
           executing_functions: "ツールを実行中...",
           processing_function_results: "実行結果を処理中...",
-          complete: "完了",
+          complete: "情報を統合中...",
           error: "エラーが発生しました"
       },
       en: {
           thinking: "Thinking...",
           searching: "Searching the database...",
           synthesizing: "Organizing information...",
-          answering: "Generating answer...",
+          answering: "Reasoning...",
           executing_functions: "Running tools...",
           processing_function_results: "Processing tool results...",
-          complete: "Complete",
+          complete: "Synthesizing...",
           error: "An error occurred"
       }
   };
