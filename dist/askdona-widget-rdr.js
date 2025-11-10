@@ -587,7 +587,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   color: #64748b;
   padding-top: 8px;
   border-top: 1px solid #f1f5f9;
-`;function dr({filter:e,keyData:n,onFilterChange:r,onFilterRemove:o}){const t=ge(n=>{const o=e.selectedValues.includes(n)?e.selectedValues.filter(e=>e!==n):[...e.selectedValues,n];r({...e,selectedValues:o})},[e,r]),a=ge(()=>{o(e.key)},[e.key,o]);return W(er,{children:[W(nr,{children:[W(rr,{children:[W(dn,{size:14}),e.key,n.isCustom&&W("span",{style:{fontSize:"10px",color:"#6b7280",background:"#f3f4f6",padding:"2px 6px",borderRadius:"8px"},children:"カスタム"})]}),W(or,{onClick:a,title:"フィルターを削除",children:W(gn,{size:14})})]}),W(tr,{children:W(ar,{children:n.values.map(n=>{const r=e.selectedValues.includes(n);return W(ir,{isSelected:r,onClick:()=>t(n),children:[W(lr,{type:"checkbox",checked:r,onChange:()=>t(n)}),n]},n)})})}),W(sr,{children:e.selectedValues.length>0?W(k,{children:[W("strong",{children:[e.selectedValues.length,"個の値を選択中:"]}),W("br",{}),e.selectedValues.join(", "),W("br",{}),W("em",{children:"選択した値のいずれかを含むファイルが対象になります (OR条件)"})]}):W("em",{children:"値を選択してください"})})]})}const cr=Re("div")`
+`,dr=e=>e.replace(/[^a-zA-Z0-9_-]/g,"_");function cr({filter:e,keyData:n,onFilterChange:r,onFilterRemove:o}){const t=ge((n,o="input")=>{const t=e.selectedValues.includes(n)?e.selectedValues.filter(e=>e!==n):[...e.selectedValues,n];r({...e,selectedValues:t})},[e,r]),a=ge(()=>{o(e.key)},[e.key,o]);return W(er,{children:[W(nr,{children:[W(rr,{children:[W(dn,{size:14}),e.key,n.isCustom&&W("span",{style:{fontSize:"10px",color:"#6b7280",background:"#f3f4f6",padding:"2px 6px",borderRadius:"8px"},children:"カスタム"})]}),W(or,{onClick:a,title:"フィルターを削除",children:W(gn,{size:14})})]}),W(tr,{children:W(ar,{children:n.values.map(n=>{const r=e.selectedValues.includes(n),o=`metadata-filter-${dr(e.key)}-${dr(n)}`,a=`metadata-filter-${dr(e.key)}`;return W(ir,{isSelected:r,htmlFor:o,children:[W(lr,{type:"checkbox",checked:r,id:o,name:a,onChange:e=>{e.stopPropagation(),t(n,"checkbox")}}),n]},n)})})}),W(sr,{children:e.selectedValues.length>0?W(k,{children:[W("strong",{children:[e.selectedValues.length,"個の値を選択中:"]}),W("br",{}),e.selectedValues.join(", "),W("br",{}),W("em",{children:"選択した値のいずれかを含むファイルが対象になります (OR条件)"})]}):W("em",{children:"値を選択してください"})})]})}const ur=Re("div")`
   position: fixed;
   top: 0;
   left: 0;
@@ -609,7 +609,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       opacity: 1;
     }
   }
-`,ur=Re("div")`
+`,fr=Re("div")`
   background: white;
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -630,13 +630,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       opacity: 1;
     }
   }
-`,fr=Re("div")`
+`,pr=Re("div")`
   padding: 12px 20px;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-`,pr=Re("h2")`
+`,gr=Re("h2")`
   margin: 0;
   font-size: 16px;
   font-weight: 600;
@@ -644,7 +644,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   align-items: center;
   gap: 8px;
-`,gr=Re("button")`
+`,hr=Re("button")`
   padding: 8px;
   border: none;
   background: none;
@@ -656,36 +656,36 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: #f1f5f9;
     color: #334155;
   }
-`,hr=Re("div")`
+`,mr=Re("div")`
   flex: 1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-`,mr=Re("div")`
+`,vr=Re("div")`
   padding: 16px 20px;
   border-bottom: 1px solid #e2e8f0;
   background: #f8fafc;
-`,vr=Re("div")`
+`,br=Re("div")`
   margin-bottom: 16px;
-`,br=Re("label")`
+`,yr=Re("label")`
   font-size: 14px;
   font-weight: 500;
   color: #374151;
   margin-bottom: 8px;
   display: block;
-`,yr=Re("div")`
+`,kr=Re("div")`
   display: flex;
   gap: 16px;
-`,kr=Re("label")`
+`,xr=Re("label")`
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   font-size: 14px;
   color: #4b5563;
-`,xr=Re("input")`
+`,wr=Re("input")`
   margin: 0;
-`,wr=Re("button")`
+`,Sr=Re("button")`
   padding: 6px 12px;
   border: 1px solid #e2e8f0;
   background: white;
@@ -699,7 +699,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: #f8fafc;
     border-color: #cbd5e1;
   }
-`,Sr=Re("div")`
+`,_r=Re("div")`
   flex: 1;
   overflow: hidden;
   display: grid;
@@ -710,20 +710,20 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
-`,_r=Re("div")`
+`,zr=Re("div")`
   display: flex;
   flex-direction: column;
   min-height: 0;
-`,zr=Re("h3")`
+`,Cr=Re("h3")`
   font-size: 16px;
   font-weight: 600;
   color: #1e293b;
   margin: 0 0 16px 0;
-`,Cr=Re("div")`
+`,$r=Re("div")`
   flex: 1;
   overflow-y: auto;
   min-height: 0;
-`,$r=Re("input")`
+`,Mr=Re("input")`
   width: 100%;
   padding: 8px 12px 8px 36px;
   border: 1px solid #e2e8f0;
@@ -733,7 +733,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 24 24'%3E%3Cpath d='M21 20l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 12px center;
-`,Mr=Re("button")`
+`,Ar=Re("button")`
   width: 100%;
   padding: 12px;
   border: 1px solid #e2e8f0;
@@ -747,14 +747,14 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: #f8fafc;
     border-color: #cbd5e1;
   }
-`,Ar=Re("div")`
+`,jr=Re("div")`
   font-weight: 500;
   color: #1e293b;
   margin-bottom: 4px;
-`,jr=Re("div")`
+`,qr=Re("div")`
   font-size: 12px;
   color: #64748b;
-`,qr=Re("div")`
+`,Ir=Re("div")`
   text-align: center;
   color: #64748b;
   padding: 40px 20px;
@@ -765,7 +765,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     margin-bottom: 16px;
     color: #cbd5e1;
   }
-`,Ir=Re("div")`
+`,Dr=Re("div")`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -783,7 +783,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-`,Dr=Re("div")`
+`,Er=Re("div")`
   text-align: center;
   color: #ef4444;
   padding: 40px 20px;
@@ -793,7 +793,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     height: 48px;
     margin-bottom: 16px;
   }
-`;function Er({isOpen:e,onClose:n,metadataKeys:r,filters:o,onFiltersChange:t,isLoading:a,error:i}){const[l,s]=de(""),[d,c]=de(o||{filters:[],globalOperator:"AND"});ce(()=>{c(o||{filters:[],globalOperator:"AND"})},[o]);const u=ge(e=>{e.target===e.currentTarget&&n()},[n]),f=ge(()=>{const e=d.filters.some(e=>e.selectedValues.length>0);t(e?d:null),n()},[d,t,n]),p=ge(()=>{c({filters:[],globalOperator:"AND"})},[]),g=ge(e=>{const n={key:e,selectedValues:[],operator:"OR"};c(e=>({...e,filters:[...e.filters,n]}))},[]),h=ge(e=>{c(n=>({...n,filters:n.filters.filter(n=>n.key!==e)}))},[]),m=ge(e=>{c(n=>({...n,filters:n.filters.map(n=>n.key===e.key?e:n)}))},[]),v=ge(e=>{c(n=>({...n,globalOperator:e}))},[]),b=r.filter(e=>{const n=d.filters.some(n=>n.key===e.key);if(n)return!1;if(l){const n=l.toLowerCase();return e.key.toLowerCase().includes(n)||e.values.some(e=>e.toLowerCase().includes(n))}return!0});return e?W(cr,{onClick:u,children:W(ur,{onClick:e=>e.stopPropagation(),children:[W(fr,{children:[W(pr,{children:[W(en,{size:20}),"絞り込み設定",d.filters.length>0&&W("span",{style:{color:"#64748b",fontWeight:400,fontSize:"14px"},children:["(",d.filters.reduce((e,n)=>e+n.selectedValues.length,0),"件の条件)"]})]}),W(gr,{onClick:n,children:W(gn,{size:20})})]}),W(hr,{children:[d.filters.length>0&&W(mr,{children:[d.filters.length>1&&W(vr,{children:[W(br,{children:"フィルター間の関係"}),W(yr,{children:[W(kr,{children:[W(xr,{type:"radio",name:"globalOperator",checked:"AND"===d.globalOperator,onChange:()=>v("AND")}),"AND（すべての条件を満たす）"]}),W(kr,{children:[W(xr,{type:"radio",name:"globalOperator",checked:"OR"===d.globalOperator,onChange:()=>v("OR")}),"OR（いずれかの条件を満たす）"]})]})]}),W("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center"},children:[W("span",{style:{fontSize:"14px",color:"#64748b"},children:"文書のメタデータでフィルタリングして検索範囲を絞り込みます"}),d.filters.length>0&&W(wr,{onClick:p,children:"すべてクリア"})]})]}),W(Sr,{children:[W(_r,{children:[W(zr,{children:"設定済みフィルター"}),W(Cr,{children:d.filters.length>0?W("div",{style:{display:"flex",flexDirection:"column",gap:"12px"},children:d.filters.map(e=>{const n=r.find(n=>n.key===e.key);return n?W(dr,{filter:e,keyData:n,onFilterChange:m,onFilterRemove:h},e.key):null})}):W(qr,{children:[W(en,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:"まだフィルターが設定されていません"}),W("div",{style:{fontSize:"14px"},children:"右側から絞り込み項目を選択してください"})]})})]}),W(_r,{children:[W(zr,{children:"利用可能な絞り込み"}),W($r,{type:"text",placeholder:"絞り込み条件を検索...",value:l,onChange:e=>s(e.target.value)}),W(Cr,{children:a?W(Ir,{children:[W(on,{}),"読み込み中..."]}):i?W(Dr,{children:[W(Qe,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:"エラーが発生しました"}),W("div",{style:{fontSize:"14px"},children:i})]}):b.length>0?W("div",{children:b.map(e=>W(Mr,{onClick:()=>g(e.key),children:[W(Ar,{children:e.key}),W(jr,{children:[e.values.length,"個の値 • ",e.count,"件のファイル",W("br",{}),"例: ",e.values.slice(0,3).join(", "),e.values.length>3&&"..."]})]},e.key))}):W(qr,{children:[W(sn,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:l?"検索結果がありません":"すべてのメタデータキーが選択済みです"})]})})]})]})]}),W("div",{style:{padding:"16px 20px",borderTop:"1px solid #e2e8f0",display:"flex",justifyContent:"flex-end",gap:"8px"},children:[W("button",{onClick:n,style:{padding:"8px 16px",border:"1px solid #e2e8f0",background:"white",color:"#374151",borderRadius:"6px",cursor:"pointer"},children:"キャンセル"}),W("button",{onClick:f,style:{padding:"8px 16px",border:"none",background:"#3b82f6",color:"white",borderRadius:"6px",cursor:"pointer",fontWeight:"500"},children:"適用"})]})]})}):null}const Or=Re("button")`
+`;function Or({isOpen:e,onClose:n,metadataKeys:r,filters:o,onFiltersChange:t,isLoading:a,error:i}){const[l,s]=de(""),[d,c]=de(o||{filters:[],globalOperator:"AND"});ce(()=>{c(o||{filters:[],globalOperator:"AND"})},[o]);const u=ge(e=>{e.target===e.currentTarget&&n()},[n]),f=ge(()=>{const e=d.filters.some(e=>e.selectedValues.length>0);t(e?d:null),n()},[d,t,n]),p=ge(()=>{c({filters:[],globalOperator:"AND"})},[]),g=ge(e=>{const n={key:e,selectedValues:[],operator:"OR"};c(e=>({...e,filters:[...e.filters,n]}))},[]),h=ge(e=>{c(n=>({...n,filters:n.filters.filter(n=>n.key!==e)}))},[]),m=ge(e=>{c(n=>({...n,filters:n.filters.map(n=>n.key===e.key?e:n)}))},[]),v=ge(e=>{c(n=>({...n,globalOperator:e}))},[]),b=r.filter(e=>{const n=d.filters.some(n=>n.key===e.key);if(n)return!1;if(l){const n=l.toLowerCase();return e.key.toLowerCase().includes(n)||e.values.some(e=>e.toLowerCase().includes(n))}return!0});return e?W(ur,{onClick:u,children:W(fr,{onClick:e=>e.stopPropagation(),children:[W(pr,{children:[W(gr,{children:[W(en,{size:20}),"絞り込み設定",d.filters.length>0&&W("span",{style:{color:"#64748b",fontWeight:400,fontSize:"14px"},children:["(",d.filters.reduce((e,n)=>e+n.selectedValues.length,0),"件の条件)"]})]}),W(hr,{onClick:n,children:W(gn,{size:20})})]}),W(mr,{children:[d.filters.length>0&&W(vr,{children:[d.filters.length>1&&W(br,{children:[W(yr,{children:"フィルター間の関係"}),W(kr,{children:[W(xr,{children:[W(wr,{type:"radio",name:"globalOperator",checked:"AND"===d.globalOperator,onChange:()=>v("AND")}),"AND（すべての条件を満たす）"]}),W(xr,{children:[W(wr,{type:"radio",name:"globalOperator",checked:"OR"===d.globalOperator,onChange:()=>v("OR")}),"OR（いずれかの条件を満たす）"]})]})]}),W("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center"},children:[W("span",{style:{fontSize:"14px",color:"#64748b"},children:"文書のメタデータでフィルタリングして検索範囲を絞り込みます"}),d.filters.length>0&&W(Sr,{onClick:p,children:"すべてクリア"})]})]}),W(_r,{children:[W(zr,{children:[W(Cr,{children:"設定済みフィルター"}),W($r,{children:d.filters.length>0?W("div",{style:{display:"flex",flexDirection:"column",gap:"12px"},children:d.filters.map(e=>{const n=r.find(n=>n.key===e.key);return n?W(cr,{filter:e,keyData:n,onFilterChange:m,onFilterRemove:h},e.key):null})}):W(Ir,{children:[W(en,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:"まだフィルターが設定されていません"}),W("div",{style:{fontSize:"14px"},children:"右側から絞り込み項目を選択してください"})]})})]}),W(zr,{children:[W(Cr,{children:"利用可能な絞り込み"}),W(Mr,{type:"text",placeholder:"絞り込み条件を検索...",value:l,onChange:e=>s(e.target.value)}),W($r,{children:a?W(Dr,{children:[W(on,{}),"読み込み中..."]}):i?W(Er,{children:[W(Qe,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:"エラーが発生しました"}),W("div",{style:{fontSize:"14px"},children:i})]}):b.length>0?W("div",{children:b.map(e=>W(Ar,{onClick:()=>g(e.key),children:[W(jr,{children:e.key}),W(qr,{children:[e.values.length,"個の値 • ",e.count,"件のファイル",W("br",{}),"例: ",e.values.slice(0,3).join(", "),e.values.length>3&&"..."]})]},e.key))}):W(Ir,{children:[W(sn,{}),W("div",{style:{fontWeight:500,marginBottom:"4px"},children:l?"検索結果がありません":"すべてのメタデータキーが選択済みです"})]})})]})]})]}),W("div",{style:{padding:"16px 20px",borderTop:"1px solid #e2e8f0",display:"flex",justifyContent:"flex-end",gap:"8px"},children:[W("button",{onClick:n,style:{padding:"8px 16px",border:"1px solid #e2e8f0",background:"white",color:"#374151",borderRadius:"6px",cursor:"pointer"},children:"キャンセル"}),W("button",{onClick:f,style:{padding:"8px 16px",border:"none",background:"#3b82f6",color:"white",borderRadius:"6px",cursor:"pointer",fontWeight:"500"},children:"適用"})]})]})}):null}const Nr=Re("button")`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -817,7 +817,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.5;
     cursor: not-allowed;
   }
-`,Nr=Re("span")`
+`,Rr=Re("span")`
   background: rgba(255, 255, 255, 0.9);
   color: #1e40af;
   padding: 0px 4px;
@@ -827,27 +827,27 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   min-width: 14px;
   text-align: center;
   margin-left: 2px;
-`,Rr=Re(en)`
+`,Fr=Re(en)`
   width: 14px;
   height: 14px;
-`;function Fr({chatflowId:e,filters:n,onFiltersChange:r,disabled:o=!1,className:t,language:a="ja"}){var i;const[l,s]=de(!1),[d,c]=de(!1),[u,f]=de([]),[p,g]=de(null),[h,m]=de(!1),[v,b]=de(null),[y,x]=de(!1),w=(null===(i=null==n?void 0:n.filters)||void 0===i?void 0:i.reduce((e,n)=>{var r;return e+((null===(r=n.selectedValues)||void 0===r?void 0:r.length)||0)},0))||0,S=w>0;ce(()=>{let n=!0;const r=async()=>{if(await new Promise(e=>setTimeout(e,10)),n){m(!0);try{const r=await async function(e){try{return await J(`/metadata/${e}/check`,{method:"GET"})}catch(e){return{enable_metadata_filtering:!1,error:e.message}}}(e);n&&(g(r.enable_metadata_filtering),b(null))}catch(e){n&&(g(!1),b(e.message))}finally{n&&m(!1)}}};return e&&r(),()=>{n=!1}},[e]);const _=ge(()=>{s(!0),!h&&y||c(!0),b(null)},[h,y]);ce(()=>{if(!l||y)return;if(h)return;if(!1===p)return b("メタデータフィルタリングはこのチャットフローで利用できません"),c(!1),void x(!0);(async()=>{try{const n=await async function(e){try{return await J(`/metadata/${e}/keys`,{method:"GET"})}catch(e){return{success:!1,error:e.message}}}(e);n.success&&n.metadataKeys?f(n.metadataKeys):(b(n.error||"Failed to fetch metadata keys"),f([])),x(!0)}catch(e){b(e.message),f([]),x(!0)}finally{c(!1)}})()},[l,e,y,h,p]);const z=ge(()=>{s(!1),f([]),c(!1),b(null),x(!1)},[]);return!0!==p?null:W(k,{children:[W(Or,{hasActiveFilters:S,onClick:_,disabled:o,className:t,type:"button",title:h?"ja"===a?"フィルタ機能を確認中...":"Checking filter availability...":"ja"===a?"結果を絞り込む":"Filter results",children:[W(Rr,{}),W("span",{children:"ja"===a?"絞り込み":"Filter"}),S&&W(Nr,{children:w})]}),l&&W(Er,{isOpen:l,onClose:z,metadataKeys:u,filters:n,onFiltersChange:r,isLoading:d,error:v})]})}const Tr={idle:0,initializing:10,thinking:22,searching:42,synthesizing:58,processing:72,streaming:88,answering:90,finalizing:96,completing:98,complete:100,error:100},Pr=[{time:0,minProgress:5,label:"initializing"},{time:2e3,minProgress:12,label:"thinking"},{time:5e3,minProgress:20,label:"searching"},{time:9e3,minProgress:32,label:"synthesizing"},{time:13e3,minProgress:48,label:"processing"},{time:16e3,minProgress:64,label:"answering"},{time:18e3,minProgress:76,label:"finalizing"},{time:2e4,minProgress:88,label:"completing"},{time:21e3,minProgress:96,label:"complete"}],Lr=[{time:0,minProgress:5,label:"initializing"},{time:2e3,minProgress:12,label:"thinking"},{time:5e3,minProgress:20,label:"searching"},{time:9e3,minProgress:32,label:"synthesizing"},{time:13e3,minProgress:48,label:"processing"},{time:16e3,minProgress:64,label:"answering"},{time:29e3,minProgress:76,label:"finalizing"},{time:31e3,minProgress:88,label:"completing"},{time:32e3,minProgress:96,label:"complete"}];const Hr={ja:{thinking:"考え中...",searching:"データベースを検索中...",synthesizing:"情報を整理中...",answering:"推論中...",executing_functions:"ツールを実行中...",processing_function_results:"実行結果を処理中...",complete:"情報を統合中...",error:"エラーが発生しました"},en:{thinking:"Thinking...",searching:"Searching the database...",synthesizing:"Organizing information...",answering:"Reasoning...",executing_functions:"Running tools...",processing_function_results:"Processing tool results...",complete:"Synthesizing...",error:"An error occurred"}};function Ur({messages:e,isLoading:n,streamingContent:r,onSendMessage:o,error:t,config:a,currentState:i,chatMode:l="standard",onChatModeChange:s,sessionId:d,onFeedbackSubmit:c,showIntro:u,metadataFilters:f=null,onMetadataFiltersChange:p,currentMode:g,onModeSwitch:h,onClearChat:m}){const v=l||"standard",b="boost"===v,y="fast"===v,[x,w]=de(""),{progress:S,displayState:_}=function({isLoading:e,boostMode:n=!1,currentState:r}){const[o,t]=de(0),[a,i]=de(r||"idle"),l=fe(null),s=fe(0),d=fe(null),c=n?Lr:Pr,u=c[c.length-1].time;return ce(()=>{e&&!l.current?(l.current=Date.now(),s.current=0,t(c[0].minProgress)):e||(l.current=null,s.current=0,t(0),i("idle"),d.current&&cancelAnimationFrame(d.current))},[e,c]),ce(()=>{if(!e||!l.current)return;const n=()=>{var o,a;const f=Date.now()-l.current;let p=0,g="processing";for(let e=c.length-1;e>=0;e--)if(f>=c[e].time){const n=c[e];if(e<c.length-1){const r=c[e+1],o=r.time-n.time,t=f-n.time,a=Math.min(t/o,1);p=n.minProgress+(r.minProgress-n.minProgress)*a}else p=n.minProgress;g=n.label||"processing";break}const h=98*function(e){return e<.5?2*e*e:(4-2*e)*e-1}(Math.min(f/u,1)),m=Math.max(p,h,s.current);let v=Math.min(m,98);const b=(g||"processing").toLowerCase(),y=(r||"").toLowerCase(),k=null!==(o=Tr[b])&&void 0!==o?o:72,x=y?null!==(a=Tr[y])&&void 0!==a?a:72:100,w=Math.min(k,x);v=Math.min(v,w),v>s.current&&(s.current=v,t(v)),i(g),e&&v<98&&(d.current=requestAnimationFrame(n))};return n(),()=>{d.current&&cancelAnimationFrame(d.current)}},[e,c,u,r]),ce(()=>{if("answering"===r&&"answering"===a){const e=90;s.current<e&&(s.current=e,t(e))}},[r,a]),{progress:o,displayState:a,isProgressing:e}}({isLoading:n,boostMode:b,currentState:i}),[z,C]=de(0===e.length),[$,M]=de(!1),A=fe(null),j=void 0!==u?u:z;ce(()=>{void 0===u&&e.length>0&&C(!1)},[e,u]);const q=e=>{const n=e||A.current;if(!n)return;n.style.height="auto";const r=n.scrollHeight;n.style.height=`${r}px`,n.style.lineHeight=r<=32?"32px":"1.5"};ce(()=>{!n&&A.current&&"function"==typeof A.current.focus&&(A.current.focus(),A.current.style.minHeight="32px",q())},[n]);const I=e=>{null==e||e.preventDefault(),x.trim()&&!n&&(o(x.trim(),v,f),w(""))},D=e=>{if(!s)return;s(v===e?"standard":e)},E=a.exampleQuestions||("ja"===a.language?["RAGシステムについて教えてください","ドキュメントの検索方法は？","APIの使い方を教えてください"]:["What is RAG system?","How do I search documents?","How to use the API?"]);return W(Br,{children:[W(Zr,{children:[j?W(Gr,{children:[W(Kr,{children:W(tn,{size:24,color:"white"})}),W(Yr,{children:a.introTitle||("ja"===a.language?"こんにちは！":"Hi there!")}),a.introMessage?W(Xr,{dangerouslySetInnerHTML:{T:H(a.introMessage)}}):W(Xr,{children:"ja"===a.language?"AskDona AIアシスタントです。ドキュメントや情報について何でもお聞きください。":"I'm AskDona AI assistant. Ask me anything about your documents and information."}),W(eo,{children:[W(no,{children:"ja"===a.language?"質問例":"Example Questions"}),W(ro,{children:E.map((e,n)=>W(oo,{onClick:()=>(e=>{o(e,v,f)})(e),children:e},n))})]})]}):W(Sn,{messages:e,isLoading:n,streamingContent:r,config:a,sessionId:d,onFeedbackSubmit:c}),n&&W(ao,{children:[W(io,{children:[W(lo,{}),W(so,{children:r.trim()?"ja"===a.language?"リアルタイム応答中...":"Streaming response...":Hr[a.language||"ja"][_]||Hr[a.language||"ja"][i||""]||("ja"===a.language?"処理中...":"Processing...")})]}),!r.trim()&&W(co,{children:W(uo,{progress:S})})]}),t&&W(to,{children:"ja"===a.language?`エラーが発生しました: ${t.message}`:`Error: ${t.message}`})]}),h&&W(Jr,{children:W(Vr,{children:[W(Qr,{type:"button",active:"ask-ai"===(g||"ask-ai"),onClick:()=>h("ask-ai"),children:"ja"===a.language?"AIに質問":"Ask AI"}),W(Qr,{type:"button",active:"search"===g,onClick:()=>h("search"),children:"ja"===a.language?"検索":"Search"}),a.enableDeepResearch&&W(Qr,{type:"button",active:"deep-research"===g,onClick:()=>h("deep-research"),children:(a.language,"Deep Research")}),m&&"ask-ai"===(g||"ask-ai")&&e.length>0&&W(Wr,{type:"button",onClick:m,title:"ja"===a.language?"新しいセッションを開始":"Start new session","aria-label":"ja"===a.language?"新しいセッションを開始":"Start new session",disabled:n,children:W(ln,{size:14})})]})}),W(fo,{children:W(mo,{boostMode:b,children:W(vo,{children:[W(bo,{children:W(xo,{ref:A,value:x,onChange:e=>{const n=e.target;w(n.value),q(n)},onKeyDown:e=>{$||(e=>{"Enter"===e.key&&(e.ctrlKey||e.metaKey)&&(e.preventDefault(),I())})(e)},onCompositionStart:()=>{M(!0)},onCompositionEnd:()=>{M(!1)},placeholder:"ja"===a.language?"質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)":"Ask me anything... (Ctrl+Enter or ⌘+Enter to send)",disabled:n,rows:1,boostMode:b})}),W(yo,{children:[W("div",{style:{display:"flex",alignItems:"center",gap:"0.5rem"},children:[a.chatflowId&&p&&W(Fr,{chatflowId:a.chatflowId,filters:f,onFiltersChange:p,disabled:n,language:a.language||"ja"}),a.allowBoostModeToggle&&s&&W(k,{children:[W(po,{onClick:()=>D("fast"),disabled:n,active:y,title:"ja"===a.language?"Fastモードは、思考プロセスを簡素化して素早く回答します。":"Fast mode generates quicker answers with lighter reasoning.",children:[W(go,{active:y,children:W(hn,{size:14})}),W(ho,{children:"Fast"})]}),W(po,{onClick:()=>D("boost"),disabled:n,active:b,title:"ja"===a.language?"Boostモードは、より多角的な視点から多くの文書を分析して回答します。":"Boost mode analyzes more documents from multiple perspectives for comprehensive answers.",children:[W(go,{active:b,children:W(fn,{size:14})}),W(ho,{children:"Boost"})]})]})]}),W(ko,{onClick:I,disabled:!x.trim()||n,title:"ja"===a.language?"Ctrl+Enter または ⌘+Enter で送信":"Ctrl+Enter or ⌘+Enter to send",type:"button","data-askdona-button":"send","data-disabled":!x.trim()||n,children:W(Be,{size:16,color:(()=>{var e;if(!x.trim()||n){return(null===(e=getComputedStyle(document.documentElement).getPropertyValue("--askdona-text-secondary"))||void 0===e?void 0:e.trim())||"#6b6f8a"}return"white"})()})})]})]})})})]})}const Br=Re("div")`
+`;function Tr({chatflowId:e,filters:n,onFiltersChange:r,disabled:o=!1,className:t,language:a="ja"}){var i;const[l,s]=de(!1),[d,c]=de(!1),[u,f]=de([]),[p,g]=de(null),[h,m]=de(!1),[v,b]=de(null),[y,x]=de(!1),w=(null===(i=null==n?void 0:n.filters)||void 0===i?void 0:i.reduce((e,n)=>{var r;return e+((null===(r=n.selectedValues)||void 0===r?void 0:r.length)||0)},0))||0,S=w>0;ce(()=>{let n=!0;const r=async()=>{if(await new Promise(e=>setTimeout(e,10)),n){m(!0);try{const r=await async function(e){try{return await J(`/metadata/${e}/check`,{method:"GET"})}catch(e){return{enable_metadata_filtering:!1,error:e.message}}}(e);n&&(g(r.enable_metadata_filtering),b(null))}catch(e){n&&(g(!1),b(e.message))}finally{n&&m(!1)}}};return e&&r(),()=>{n=!1}},[e]);const _=ge(()=>{s(!0),!h&&y||c(!0),b(null)},[h,y]);ce(()=>{if(!l||y)return;if(h)return;if(!1===p)return b("メタデータフィルタリングはこのチャットフローで利用できません"),c(!1),void x(!0);(async()=>{try{const n=await async function(e){try{return await J(`/metadata/${e}/keys`,{method:"GET"})}catch(e){return{success:!1,error:e.message}}}(e);n.success&&n.metadataKeys?f(n.metadataKeys):(b(n.error||"Failed to fetch metadata keys"),f([])),x(!0)}catch(e){b(e.message),f([]),x(!0)}finally{c(!1)}})()},[l,e,y,h,p]);const z=ge(()=>{s(!1),f([]),c(!1),b(null),x(!1)},[]);return!0!==p?null:W(k,{children:[W(Nr,{hasActiveFilters:S,onClick:_,disabled:o,className:t,type:"button",title:h?"ja"===a?"フィルタ機能を確認中...":"Checking filter availability...":"ja"===a?"結果を絞り込む":"Filter results",children:[W(Fr,{}),W("span",{children:"ja"===a?"絞り込み":"Filter"}),S&&W(Rr,{children:w})]}),l&&W(Or,{isOpen:l,onClose:z,metadataKeys:u,filters:n,onFiltersChange:r,isLoading:d,error:v})]})}const Pr={idle:0,initializing:10,thinking:22,searching:42,synthesizing:58,processing:72,streaming:88,answering:90,finalizing:96,completing:98,complete:100,error:100},Lr=[{time:0,minProgress:5,label:"initializing"},{time:2e3,minProgress:12,label:"thinking"},{time:5e3,minProgress:20,label:"searching"},{time:9e3,minProgress:32,label:"synthesizing"},{time:13e3,minProgress:48,label:"processing"},{time:16e3,minProgress:64,label:"answering"},{time:18e3,minProgress:76,label:"finalizing"},{time:2e4,minProgress:88,label:"completing"},{time:21e3,minProgress:96,label:"complete"}],Hr=[{time:0,minProgress:5,label:"initializing"},{time:2e3,minProgress:12,label:"thinking"},{time:5e3,minProgress:20,label:"searching"},{time:9e3,minProgress:32,label:"synthesizing"},{time:13e3,minProgress:48,label:"processing"},{time:16e3,minProgress:64,label:"answering"},{time:29e3,minProgress:76,label:"finalizing"},{time:31e3,minProgress:88,label:"completing"},{time:32e3,minProgress:96,label:"complete"}];const Ur={ja:{thinking:"考え中...",searching:"データベースを検索中...",synthesizing:"情報を整理中...",answering:"推論中...",executing_functions:"ツールを実行中...",processing_function_results:"実行結果を処理中...",complete:"情報を統合中...",error:"エラーが発生しました"},en:{thinking:"Thinking...",searching:"Searching the database...",synthesizing:"Organizing information...",answering:"Reasoning...",executing_functions:"Running tools...",processing_function_results:"Processing tool results...",complete:"Synthesizing...",error:"An error occurred"}};function Br({messages:e,isLoading:n,streamingContent:r,onSendMessage:o,error:t,config:a,currentState:i,chatMode:l="standard",onChatModeChange:s,sessionId:d,onFeedbackSubmit:c,showIntro:u,metadataFilters:f=null,onMetadataFiltersChange:p,currentMode:g,onModeSwitch:h,onClearChat:m}){const v=l||"standard",b="boost"===v,y="fast"===v,[x,w]=de(""),{progress:S,displayState:_}=function({isLoading:e,boostMode:n=!1,currentState:r}){const[o,t]=de(0),[a,i]=de(r||"idle"),l=fe(null),s=fe(0),d=fe(null),c=n?Hr:Lr,u=c[c.length-1].time;return ce(()=>{e&&!l.current?(l.current=Date.now(),s.current=0,t(c[0].minProgress)):e||(l.current=null,s.current=0,t(0),i("idle"),d.current&&cancelAnimationFrame(d.current))},[e,c]),ce(()=>{if(!e||!l.current)return;const n=()=>{var o,a;const f=Date.now()-l.current;let p=0,g="processing";for(let e=c.length-1;e>=0;e--)if(f>=c[e].time){const n=c[e];if(e<c.length-1){const r=c[e+1],o=r.time-n.time,t=f-n.time,a=Math.min(t/o,1);p=n.minProgress+(r.minProgress-n.minProgress)*a}else p=n.minProgress;g=n.label||"processing";break}const h=98*function(e){return e<.5?2*e*e:(4-2*e)*e-1}(Math.min(f/u,1)),m=Math.max(p,h,s.current);let v=Math.min(m,98);const b=(g||"processing").toLowerCase(),y=(r||"").toLowerCase(),k=null!==(o=Pr[b])&&void 0!==o?o:72,x=y?null!==(a=Pr[y])&&void 0!==a?a:72:100,w=Math.min(k,x);v=Math.min(v,w),v>s.current&&(s.current=v,t(v)),i(g),e&&v<98&&(d.current=requestAnimationFrame(n))};return n(),()=>{d.current&&cancelAnimationFrame(d.current)}},[e,c,u,r]),ce(()=>{if("answering"===r&&"answering"===a){const e=90;s.current<e&&(s.current=e,t(e))}},[r,a]),{progress:o,displayState:a,isProgressing:e}}({isLoading:n,boostMode:b,currentState:i}),[z,C]=de(0===e.length),[$,M]=de(!1),A=fe(null),j=void 0!==u?u:z;ce(()=>{void 0===u&&e.length>0&&C(!1)},[e,u]);const q=e=>{const n=e||A.current;if(!n)return;n.style.height="auto";const r=n.scrollHeight;n.style.height=`${r}px`,n.style.lineHeight=r<=32?"32px":"1.5"};ce(()=>{!n&&A.current&&"function"==typeof A.current.focus&&(A.current.focus(),A.current.style.minHeight="32px",q())},[n]);const I=e=>{null==e||e.preventDefault(),x.trim()&&!n&&(o(x.trim(),v,f),w(""))},D=e=>{if(!s)return;s(v===e?"standard":e)},E=a.exampleQuestions||("ja"===a.language?["RAGシステムについて教えてください","ドキュメントの検索方法は？","APIの使い方を教えてください"]:["What is RAG system?","How do I search documents?","How to use the API?"]);return W(Jr,{children:[W(Gr,{children:[j?W(Kr,{children:[W(Yr,{children:W(tn,{size:24,color:"white"})}),W(Xr,{children:a.introTitle||("ja"===a.language?"こんにちは！":"Hi there!")}),a.introMessage?W(eo,{dangerouslySetInnerHTML:{T:H(a.introMessage)}}):W(eo,{children:"ja"===a.language?"AskDona AIアシスタントです。ドキュメントや情報について何でもお聞きください。":"I'm AskDona AI assistant. Ask me anything about your documents and information."}),W(no,{children:[W(ro,{children:"ja"===a.language?"質問例":"Example Questions"}),W(oo,{children:E.map((e,n)=>W(to,{onClick:()=>(e=>{o(e,v,f)})(e),children:e},n))})]})]}):W(Sn,{messages:e,isLoading:n,streamingContent:r,config:a,sessionId:d,onFeedbackSubmit:c}),n&&W(io,{children:[W(lo,{children:[W(so,{}),W(co,{children:r.trim()?"ja"===a.language?"リアルタイム応答中...":"Streaming response...":Ur[a.language||"ja"][_]||Ur[a.language||"ja"][i||""]||("ja"===a.language?"処理中...":"Processing...")})]}),!r.trim()&&W(uo,{children:W(fo,{progress:S})})]}),t&&W(ao,{children:"ja"===a.language?`エラーが発生しました: ${t.message}`:`Error: ${t.message}`})]}),h&&W(Vr,{children:W(Qr,{children:[W(Wr,{type:"button",active:"ask-ai"===(g||"ask-ai"),onClick:()=>h("ask-ai"),children:"ja"===a.language?"AIに質問":"Ask AI"}),W(Wr,{type:"button",active:"search"===g,onClick:()=>h("search"),children:"ja"===a.language?"検索":"Search"}),a.enableDeepResearch&&W(Wr,{type:"button",active:"deep-research"===g,onClick:()=>h("deep-research"),children:(a.language,"Deep Research")}),m&&"ask-ai"===(g||"ask-ai")&&e.length>0&&W(Zr,{type:"button",onClick:m,title:"ja"===a.language?"新しいセッションを開始":"Start new session","aria-label":"ja"===a.language?"新しいセッションを開始":"Start new session",disabled:n,children:W(ln,{size:14})})]})}),W(po,{children:W(vo,{boostMode:b,children:W(bo,{children:[W(yo,{children:W(wo,{ref:A,value:x,onChange:e=>{const n=e.target;w(n.value),q(n)},onKeyDown:e=>{$||(e=>{"Enter"===e.key&&(e.ctrlKey||e.metaKey)&&(e.preventDefault(),I())})(e)},onCompositionStart:()=>{M(!0)},onCompositionEnd:()=>{M(!1)},placeholder:"ja"===a.language?"質問を入力してください... (Ctrl+Enter または ⌘+Enter で送信)":"Ask me anything... (Ctrl+Enter or ⌘+Enter to send)",disabled:n,rows:1,boostMode:b})}),W(ko,{children:[W("div",{style:{display:"flex",alignItems:"center",gap:"0.5rem"},children:[a.chatflowId&&p&&W(Tr,{chatflowId:a.chatflowId,filters:f,onFiltersChange:p,disabled:n,language:a.language||"ja"}),a.allowBoostModeToggle&&s&&W(k,{children:[W(go,{onClick:()=>D("fast"),disabled:n,active:y,title:"ja"===a.language?"Fastモードは、思考プロセスを簡素化して素早く回答します。":"Fast mode generates quicker answers with lighter reasoning.",children:[W(ho,{active:y,children:W(hn,{size:14})}),W(mo,{children:"Fast"})]}),W(go,{onClick:()=>D("boost"),disabled:n,active:b,title:"ja"===a.language?"Boostモードは、より多角的な視点から多くの文書を分析して回答します。":"Boost mode analyzes more documents from multiple perspectives for comprehensive answers.",children:[W(ho,{active:b,children:W(fn,{size:14})}),W(mo,{children:"Boost"})]})]})]}),W(xo,{onClick:I,disabled:!x.trim()||n,title:"ja"===a.language?"Ctrl+Enter または ⌘+Enter で送信":"Ctrl+Enter or ⌘+Enter to send",type:"button","data-askdona-button":"send","data-disabled":!x.trim()||n,children:W(Be,{size:16,color:(()=>{var e;if(!x.trim()||n){return(null===(e=getComputedStyle(document.documentElement).getPropertyValue("--askdona-text-secondary"))||void 0===e?void 0:e.trim())||"#6b6f8a"}return"white"})()})})]})]})})})]})}const Jr=Re("div")`
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-`,Jr=Re("div")`
+`,Vr=Re("div")`
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1.5rem 0.25rem;
   flex-shrink: 0;
   align-items: center;
   /* tabs aligned left by default */
-`,Vr=Re("div")`
+`,Qr=Re("div")`
   display: flex;
   gap: 0.5rem;
   align-items: center;
   flex: 1;
-`,Qr=Re("button")`
+`,Wr=Re("button")`
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -865,7 +865,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   }
 
   ${e=>e.active&&"\n    &::after {\n      content: '';\n      position: absolute;\n      bottom: -0.35rem;\n      left: 0;\n      right: 0;\n      height: 2px;\n      background: var(--askdona-tab-accent, var(--askdona-primary));\n    }\n  "}
-`,Wr=Re("button")`
+`,Zr=Re("button")`
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -888,14 +888,14 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.5;
     cursor: not-allowed;
   }
-`,Zr=Re("div")`
+`,Gr=Re("div")`
   flex: 1;
   overflow-y: auto;
   padding: 1.5rem;
-`,Gr=Re("div")`
+`,Kr=Re("div")`
   text-align: center;
   padding: 2rem 0;
-`,Kr=Re("div")`
+`,Yr=Re("div")`
   width: 3rem;
   height: 3rem;
   background: var(--askdona-chat-icon, var(--askdona-primary));
@@ -905,32 +905,32 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   justify-content: center;
   margin: 0 auto 1rem;
   font-size: 1.5rem;
-`,Yr=Re("h3")`
+`,Xr=Re("h3")`
   font-size: 1.125rem;
   font-weight: 600;
   margin: 0 0 0.5rem;
   color: var(--askdona-text);
-`,Xr=Re("p")`
+`,eo=Re("p")`
   font-size: 0.875rem;
   color: var(--askdona-text-secondary);
   margin: 0 auto 2rem;
   max-width: 90%;
   line-height: 1.5;
-`,eo=Re("div")`
+`,no=Re("div")`
   margin-top: 2rem;
-`,no=Re("h4")`
+`,ro=Re("h4")`
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--askdona-text-secondary);
   margin: 0 0 1rem;
-`,ro=Re("div")`
+`,oo=Re("div")`
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
-`,oo=Re("button")`
+`,to=Re("button")`
   background: var(--askdona-background);
   border: 1px solid var(--askdona-border);
   padding: 0.625rem 1rem;
@@ -944,14 +944,14 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: var(--askdona-border);
     border-color: var(--askdona-text-secondary);
   }
-`,to=Re("div")`
+`,ao=Re("div")`
   background: rgba(239, 68, 68, 0.1);
   color: var(--askdona-error);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   margin: 1rem 0;
   font-size: 0.875rem;
-`,ao=Re("div")`
+`,io=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -962,11 +962,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   border-radius: 0.75rem;
   font-size: 0.875rem;
   color: var(--askdona-text-secondary);
-`,io=Re("div")`
+`,lo=Re("div")`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`,lo=Re("div")`
+`,so=Re("div")`
   width: 8px;
   height: 8px;
   background: var(--askdona-primary);
@@ -983,15 +983,15 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       transform: scale(1.1);
     }
   }
-`,so=Re("span")`
+`,co=Re("span")`
   font-weight: 500;
-`,co=Re("div")`
+`,uo=Re("div")`
   width: 30%;
   height: 6px;
   background: var(--askdona-border);
   border-radius: 3px;
   overflow: hidden;
-`,uo=Re("div")`
+`,fo=Re("div")`
   height: 100%;
   background: linear-gradient(90deg, var(--askdona-primary), var(--askdona-primary-light));
   border-radius: 3px;
@@ -1016,11 +1016,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     50% { opacity: 1; }
     100% { transform: translateX(0); opacity: 0; }
   }
-`,fo=Re("div")`
+`,po=Re("div")`
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--askdona-border);
   flex-shrink: 0;
-`,po=Re("button")`
+`,go=Re("button")`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1038,20 +1038,20 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.5;
     cursor: not-allowed;
   }
-`,go=Re("span")`
+`,ho=Re("span")`
   display: flex;
   align-items: center;
   opacity: ${({active:e})=>e?1:.8};
-`,ho=Re("span")`
+`,mo=Re("span")`
   font-weight: 500;
   font-size: 12px;
-`,mo=Re("div")`
+`,vo=Re("div")`
   position: relative;
   display: flex;
   flex-direction: column;
   
   ${({boostMode:e})=>e&&"\n    &::before {\n      content: '';\n      position: absolute;\n      top: -2px;\n      left: -2px;\n      right: -2px;\n      bottom: -2px;\n      background: linear-gradient(135deg, var(--askdona-primary), var(--askdona-primary-light));\n      border-radius: 0.875rem;\n      z-index: -1;\n    }\n  "}
-`,vo=Re("div")`
+`,bo=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -1064,18 +1064,18 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   z-index: 1;
   width: 100%;
   /* Removed max-width to allow full horizontal stretch */
-`,bo=Re("div")`
+`,yo=Re("div")`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-`,yo=Re("div")`
+`,ko=Re("div")`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
-`,ko=Re("button")`
+`,xo=Re("button")`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1102,7 +1102,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: var(--askdona-primary-dark);
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--askdona-primary) 20%, transparent);
   }
-`,xo=Re("textarea")`
+`,wo=Re("textarea")`
   flex: 1;
   width: auto;
   padding: 0 0.5rem; /* no vertical padding for true vertical centering */
@@ -1140,12 +1140,12 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     color: var(--askdona-text-secondary);
     font-family: inherit;
   }
-`;class wo{static getStorageKey(){return"askdona_search_history"}static getAllHistory(){try{const e=localStorage.getItem(this.getStorageKey());if(!e)return[];const n=JSON.parse(e),r=Date.now()-2592e6;return n.filter(e=>e.timestamp>r)}catch(e){return[]}}static saveHistory(e){try{const n=e.slice(0,50);localStorage.setItem(this.getStorageKey(),JSON.stringify(n))}catch(e){}}static addSearchHistory(e,n,r,o){const t={id:`${Date.now()}-${Math.random().toString(36).substr(2,9)}`,query:n.trim(),resultsCount:r,searchTime:o,timestamp:Date.now(),chatflowId:e},a=this.getAllHistory();a.unshift(t),this.saveHistory(a)}static getSearchHistory(e,n=20){return this.getAllHistory().filter(n=>n.chatflowId===e).slice(0,n)}static getRecentQueries(e,n=10,r=!0){const o=this.getSearchHistory(e,r?100:n);if(r){const e=new Set,r=[];for(const t of o){const o=t.query.toLowerCase();if(!e.has(o)&&(e.add(o),r.push(t.query),r.length>=n))break}return r}return o.map(e=>e.query)}static getPopularQueries(e,n=10){const r=this.getSearchHistory(e,1e3),o=new Map;return r.forEach(e=>{const n=e.query.toLowerCase();o.set(n,(o.get(n)||0)+1)}),Array.from(o.entries()).map(([e,n])=>{var o;return{query:(null===(o=r.find(n=>n.query.toLowerCase()===e))||void 0===o?void 0:o.query)||e,count:n}}).sort((e,n)=>n.count-e.count).slice(0,n)}static clearHistory(e){if(e){const n=this.getAllHistory().filter(n=>n.chatflowId!==e);this.saveHistory(n)}else localStorage.removeItem(this.getStorageKey())}static getHistoryStats(e){const n=this.getSearchHistory(e,1e3);if(0===n.length)return{totalSearches:0,uniqueQueries:0,avgResultsCount:0,avgSearchTime:0};const r=new Set(n.map(e=>e.query.toLowerCase())).size,o=n.reduce((e,n)=>e+n.resultsCount,0)/n.length,t=n.reduce((e,n)=>e+n.searchTime,0)/n.length;return{totalSearches:n.length,uniqueQueries:r,avgResultsCount:Math.round(o),avgSearchTime:Math.round(t)}}}function So({config:e,currentMode:n,onModeSwitch:r,onClearSearch:o}){var t,a;const[i,l]=de(""),[s,d]=de(null),[c,u]=de([]),[f,p]=de({}),[g,h]=de(!1),[m,v]=de(null),b=fe(null),[y,x]=de(!1),{recentQueries:w,addSearchHistory:S}=function(e,n={}){const{limit:r=20,uniqueQueries:o=!0,autoRefresh:t=!0}=n,[a,i]=de([]),[l,s]=de([]),d=ge(()=>{if(!e)return;const n=wo.getRecentQueries(e,r,o);i(n);const t=wo.getPopularQueries(e,10);s(t)},[e,r,o]);ce(()=>{t&&d()},[t,d]);const c=ge((n,r,o)=>{e&&n.trim()&&(wo.addSearchHistory(e,n,r,o),t&&d())},[e,t,d]),u=ge(()=>{e&&(wo.clearHistory(e),i([]),s([]))},[e]),f=ge(()=>e?wo.getHistoryStats(e):null,[e]);return{recentQueries:a,popularQueries:l,addSearchHistory:c,clearHistory:u,refresh:d,getStats:f}}(e.chatflowId),_=`askdona_widget_last_search_${e.chatflowId}`,z=ge((e,n)=>{try{const r={query:e,response:n,savedAt:Date.now()};localStorage.setItem(_,JSON.stringify(r))}catch(e){}},[_]),C=ge(()=>{try{const e=localStorage.getItem(_);if(!e)return null;const n=JSON.parse(e);return n&&"object"==typeof n?n:null}catch(e){return null}},[_]);ce(()=>{b.current&&"function"==typeof b.current.focus&&b.current.focus();const e=C();e&&e.response&&(l(e.query||""),d(e.response),u(e.response.results||[]),p({}))},[C]);const $=ge(async n=>{var r;if(!n.trim())return d(null),void u([]);p({}),h(!0),v(null);const o=Date.now();try{const t={query:n,filters:{}},a=await async function(e,n){try{return await J(`/search/${e}`,{method:"POST",body:JSON.stringify(n)})}catch(e){throw e}}(e.chatflowId,t);d(a),u(a.results||[]),z(n,a);const i=Date.now()-o;S(n,(null===(r=a.results)||void 0===r?void 0:r.length)||0,i)}catch(e){v(e instanceof Error?e.message:"Unknown error occurred"),d(null),u([])}finally{h(!1)}},[e.chatflowId,S,z]),M=ge(()=>{i.trim()&&$(i.trim())},[i,$]),A=ge(e=>{y||"Enter"===e.key&&(e.ctrlKey||e.metaKey)&&(e.preventDefault(),M())},[M,y]),j=pe(()=>{if(!c.length)return[];let e=[...c];return f.categories&&f.categories.length>0&&(e=e.filter(e=>{var n,r;const o=null===(n=e.fileMetadata)||void 0===n?void 0:n.category,t=null===(r=e.fileMetadata)||void 0===r?void 0:r.subCategory;return f.categories.includes(o||"")||f.categories.includes(t||"")})),f.fileTypes&&f.fileTypes.length>0&&(e=e.filter(e=>f.fileTypes.includes(e.fileFormat))),e},[c,f]),q=pe(()=>j,[j]),I=ge(()=>{l(""),d(null),u([]),p({}),v(null);{const e=b.current;e&&"function"==typeof e.focus&&e.focus()}try{localStorage.removeItem(_)}catch(e){}o&&o()},[_,o]),D=e=>{p(e)},E=e=>{if(!i.trim())return W(k,{children:e});return W(k,{children:e.split(new RegExp(`(${i})`,"gi")).map((e,n)=>e.toLowerCase()===i.toLowerCase()?W(Jo,{children:e},n):W("span",{children:e},n))})},O=pe(()=>{if(!s)return[];return[{id:"all",label:"ja"===e.language?"すべて":"All",count:j.length},...s.facets.fileTypes.map(e=>({id:e.value,label:e.value.toUpperCase(),count:e.count}))]},[s,j.length,e.language]);return W(_o,{children:[s&&W(Xo,{"data-search-results-header":!0,children:[W(et,{children:["ja"===e.language?"検索結果":"Search Results",": ",j.length.toLocaleString()," ","ja"===e.language?"件":"items",(null===(t=f.categories)||void 0===t?void 0:t.length)||(null===(a=f.fileTypes)||void 0===a?void 0:a.length)?W(nt,{children:"ja"===e.language?"フィルタ適用済":"Filtered"}):null]}),W(rt,{children:["ja"===e.language?"検索時間":"Search time",": ",s.searchTime,"ms"]})]}),s&&O.length>1&&W(Po,{children:O.map(e=>W(Lo,{active:"all"===e.id||Boolean(f.fileTypes&&f.fileTypes.includes(e.id)),onClick:()=>{"all"===e.id?D({}):D({fileTypes:[e.id]})},children:[e.label,W(Ho,{children:["(",e.count,")"]})]},e.id))}),W(Uo,{children:g?W(Vo,{children:[W(Qo,{}),W(Wo,{children:"ja"===e.language?"検索中...":"Searching..."})]}):m?W(ot,{children:[W(tt,{children:"⚠️"}),W(at,{children:"ja"===e.language?"検索エラー":"Search Error"}),W(it,{children:m})]}):i&&0===j.length&&s?W(Zo,{children:"ja"===e.language?`"${i}" に一致する結果が見つかりませんでした`:`No results found for "${i}"`}):q.length>0?W(k,{children:W(Bo,{children:q.map(n=>W(lt,{children:W(st,{children:[W(dt,{children:n.fileMetadata.url?W("a",{href:n.fileMetadata.url,target:"_blank",rel:"noopener noreferrer",children:E(n.fileMetadata.title||n.fileName)}):W("span",{children:E(n.fileMetadata.title||n.fileName)})}),W(ct,{children:[W("strong",{children:"ja"===e.language?"フォーマット:":"Format:"})," ",n.fileFormat.toUpperCase()]}),n.fileMetadata.body&&W(ut,{children:[W("strong",{children:"ja"===e.language?"本文:":"Content:"}),W(ft,{children:E(n.fileMetadata.body)})]})]})},n.fileId))})}):W(Go,{children:[W(Ko,{children:"🔍"}),W(Yo,{children:"ja"===e.language?"検索キーワードを入力してください (Ctrl+Enter または ⌘+Enter で送信)":"Enter a search term to see results (Ctrl+Enter or ⌘+Enter to send)"})]})}),r&&W(zo,{children:W(Co,{children:[W(Mo,{type:"button",active:"ask-ai"===(n||"ask-ai"),onClick:()=>r("ask-ai"),children:"ja"===e.language?"AIに質問":"Ask AI"}),W(Mo,{type:"button",active:"search"===n,onClick:()=>r("search"),children:"ja"===e.language?"検索":"Search"}),e.enableDeepResearch&&W(Mo,{type:"button",active:"deep-research"===n,onClick:()=>r("deep-research"),children:(e.language,"Deep Research")}),"search"===n&&(i||s)&&W($o,{type:"button",onClick:I,title:"ja"===e.language?"検索をクリア":"Clear search","aria-label":"ja"===e.language?"検索をクリア":"Clear search",disabled:g,children:W(ln,{size:14})})]})}),W(Fo,{children:W(Ao,{children:W(jo,{children:[w.length>0&&W(qo,{children:[W(Io,{children:"ja"===e.language?"最近の検索":"Recent searches"}),W(Do,{children:w.slice(0,8).map((e,n)=>W(Eo,{onClick:()=>{return l(n=e),void $(n);var n},children:e},n))})]}),W(Oo,{children:[W(Ro,{ref:b,value:i,onInput:e=>{(e=>{const n=e.target.value;l(n)})(e),(e=>{const n=e||b.current;if(!n)return;n.style.height="auto";const r=n.scrollHeight;n.style.height=`${r}px`,n.style.lineHeight=r<=32?"32px":"1.5"})(e.currentTarget)},onKeyDown:A,onCompositionStart:()=>x(!0),onCompositionEnd:()=>x(!1),placeholder:"ja"===e.language?"検索キーワードを入力... (Ctrl+Enter または ⌘+Enter で送信)":"Enter search keywords... (Ctrl+Enter or ⌘+Enter to send)",rows:1}),W(No,{onClick:M,"data-disabled":!i.trim()||g,title:"ja"===e.language?"検索 (Enter または Ctrl+Enter)":"Search (Enter or Ctrl+Enter)",type:"button",children:g?W(To,{}):W(Be,{size:16,color:"white"})})]})]})})})]})}const _o=Re("div")`
+`;class So{static getStorageKey(){return"askdona_search_history"}static getAllHistory(){try{const e=localStorage.getItem(this.getStorageKey());if(!e)return[];const n=JSON.parse(e),r=Date.now()-2592e6;return n.filter(e=>e.timestamp>r)}catch(e){return[]}}static saveHistory(e){try{const n=e.slice(0,50);localStorage.setItem(this.getStorageKey(),JSON.stringify(n))}catch(e){}}static addSearchHistory(e,n,r,o){const t={id:`${Date.now()}-${Math.random().toString(36).substr(2,9)}`,query:n.trim(),resultsCount:r,searchTime:o,timestamp:Date.now(),chatflowId:e},a=this.getAllHistory();a.unshift(t),this.saveHistory(a)}static getSearchHistory(e,n=20){return this.getAllHistory().filter(n=>n.chatflowId===e).slice(0,n)}static getRecentQueries(e,n=10,r=!0){const o=this.getSearchHistory(e,r?100:n);if(r){const e=new Set,r=[];for(const t of o){const o=t.query.toLowerCase();if(!e.has(o)&&(e.add(o),r.push(t.query),r.length>=n))break}return r}return o.map(e=>e.query)}static getPopularQueries(e,n=10){const r=this.getSearchHistory(e,1e3),o=new Map;return r.forEach(e=>{const n=e.query.toLowerCase();o.set(n,(o.get(n)||0)+1)}),Array.from(o.entries()).map(([e,n])=>{var o;return{query:(null===(o=r.find(n=>n.query.toLowerCase()===e))||void 0===o?void 0:o.query)||e,count:n}}).sort((e,n)=>n.count-e.count).slice(0,n)}static clearHistory(e){if(e){const n=this.getAllHistory().filter(n=>n.chatflowId!==e);this.saveHistory(n)}else localStorage.removeItem(this.getStorageKey())}static getHistoryStats(e){const n=this.getSearchHistory(e,1e3);if(0===n.length)return{totalSearches:0,uniqueQueries:0,avgResultsCount:0,avgSearchTime:0};const r=new Set(n.map(e=>e.query.toLowerCase())).size,o=n.reduce((e,n)=>e+n.resultsCount,0)/n.length,t=n.reduce((e,n)=>e+n.searchTime,0)/n.length;return{totalSearches:n.length,uniqueQueries:r,avgResultsCount:Math.round(o),avgSearchTime:Math.round(t)}}}function _o({config:e,currentMode:n,onModeSwitch:r,onClearSearch:o}){var t,a;const[i,l]=de(""),[s,d]=de(null),[c,u]=de([]),[f,p]=de({}),[g,h]=de(!1),[m,v]=de(null),b=fe(null),[y,x]=de(!1),{recentQueries:w,addSearchHistory:S}=function(e,n={}){const{limit:r=20,uniqueQueries:o=!0,autoRefresh:t=!0}=n,[a,i]=de([]),[l,s]=de([]),d=ge(()=>{if(!e)return;const n=So.getRecentQueries(e,r,o);i(n);const t=So.getPopularQueries(e,10);s(t)},[e,r,o]);ce(()=>{t&&d()},[t,d]);const c=ge((n,r,o)=>{e&&n.trim()&&(So.addSearchHistory(e,n,r,o),t&&d())},[e,t,d]),u=ge(()=>{e&&(So.clearHistory(e),i([]),s([]))},[e]),f=ge(()=>e?So.getHistoryStats(e):null,[e]);return{recentQueries:a,popularQueries:l,addSearchHistory:c,clearHistory:u,refresh:d,getStats:f}}(e.chatflowId),_=`askdona_widget_last_search_${e.chatflowId}`,z=ge((e,n)=>{try{const r={query:e,response:n,savedAt:Date.now()};localStorage.setItem(_,JSON.stringify(r))}catch(e){}},[_]),C=ge(()=>{try{const e=localStorage.getItem(_);if(!e)return null;const n=JSON.parse(e);return n&&"object"==typeof n?n:null}catch(e){return null}},[_]);ce(()=>{b.current&&"function"==typeof b.current.focus&&b.current.focus();const e=C();e&&e.response&&(l(e.query||""),d(e.response),u(e.response.results||[]),p({}))},[C]);const $=ge(async n=>{var r;if(!n.trim())return d(null),void u([]);p({}),h(!0),v(null);const o=Date.now();try{const t={query:n,filters:{}},a=await async function(e,n){try{return await J(`/search/${e}`,{method:"POST",body:JSON.stringify(n)})}catch(e){throw e}}(e.chatflowId,t);d(a),u(a.results||[]),z(n,a);const i=Date.now()-o;S(n,(null===(r=a.results)||void 0===r?void 0:r.length)||0,i)}catch(e){v(e instanceof Error?e.message:"Unknown error occurred"),d(null),u([])}finally{h(!1)}},[e.chatflowId,S,z]),M=ge(()=>{i.trim()&&$(i.trim())},[i,$]),A=ge(e=>{y||"Enter"===e.key&&(e.ctrlKey||e.metaKey)&&(e.preventDefault(),M())},[M,y]),j=pe(()=>{if(!c.length)return[];let e=[...c];return f.categories&&f.categories.length>0&&(e=e.filter(e=>{var n,r;const o=null===(n=e.fileMetadata)||void 0===n?void 0:n.category,t=null===(r=e.fileMetadata)||void 0===r?void 0:r.subCategory;return f.categories.includes(o||"")||f.categories.includes(t||"")})),f.fileTypes&&f.fileTypes.length>0&&(e=e.filter(e=>f.fileTypes.includes(e.fileFormat))),e},[c,f]),q=pe(()=>j,[j]),I=ge(()=>{l(""),d(null),u([]),p({}),v(null);{const e=b.current;e&&"function"==typeof e.focus&&e.focus()}try{localStorage.removeItem(_)}catch(e){}o&&o()},[_,o]),D=e=>{p(e)},E=e=>{if(!i.trim())return W(k,{children:e});return W(k,{children:e.split(new RegExp(`(${i})`,"gi")).map((e,n)=>e.toLowerCase()===i.toLowerCase()?W(Vo,{children:e},n):W("span",{children:e},n))})},O=pe(()=>{if(!s)return[];return[{id:"all",label:"ja"===e.language?"すべて":"All",count:j.length},...s.facets.fileTypes.map(e=>({id:e.value,label:e.value.toUpperCase(),count:e.count}))]},[s,j.length,e.language]);return W(zo,{children:[s&&W(et,{"data-search-results-header":!0,children:[W(nt,{children:["ja"===e.language?"検索結果":"Search Results",": ",j.length.toLocaleString()," ","ja"===e.language?"件":"items",(null===(t=f.categories)||void 0===t?void 0:t.length)||(null===(a=f.fileTypes)||void 0===a?void 0:a.length)?W(rt,{children:"ja"===e.language?"フィルタ適用済":"Filtered"}):null]}),W(ot,{children:["ja"===e.language?"検索時間":"Search time",": ",s.searchTime,"ms"]})]}),s&&O.length>1&&W(Lo,{children:O.map(e=>W(Ho,{active:"all"===e.id||Boolean(f.fileTypes&&f.fileTypes.includes(e.id)),onClick:()=>{"all"===e.id?D({}):D({fileTypes:[e.id]})},children:[e.label,W(Uo,{children:["(",e.count,")"]})]},e.id))}),W(Bo,{children:g?W(Qo,{children:[W(Wo,{}),W(Zo,{children:"ja"===e.language?"検索中...":"Searching..."})]}):m?W(tt,{children:[W(at,{children:"⚠️"}),W(it,{children:"ja"===e.language?"検索エラー":"Search Error"}),W(lt,{children:m})]}):i&&0===j.length&&s?W(Go,{children:"ja"===e.language?`"${i}" に一致する結果が見つかりませんでした`:`No results found for "${i}"`}):q.length>0?W(k,{children:W(Jo,{children:q.map(n=>W(st,{children:W(dt,{children:[W(ct,{children:n.fileMetadata.url?W("a",{href:n.fileMetadata.url,target:"_blank",rel:"noopener noreferrer",children:E(n.fileMetadata.title||n.fileName)}):W("span",{children:E(n.fileMetadata.title||n.fileName)})}),W(ut,{children:[W("strong",{children:"ja"===e.language?"フォーマット:":"Format:"})," ",n.fileFormat.toUpperCase()]}),n.fileMetadata.body&&W(ft,{children:[W("strong",{children:"ja"===e.language?"本文:":"Content:"}),W(pt,{children:E(n.fileMetadata.body)})]})]})},n.fileId))})}):W(Ko,{children:[W(Yo,{children:"🔍"}),W(Xo,{children:"ja"===e.language?"検索キーワードを入力してください (Ctrl+Enter または ⌘+Enter で送信)":"Enter a search term to see results (Ctrl+Enter or ⌘+Enter to send)"})]})}),r&&W(Co,{children:W($o,{children:[W(Ao,{type:"button",active:"ask-ai"===(n||"ask-ai"),onClick:()=>r("ask-ai"),children:"ja"===e.language?"AIに質問":"Ask AI"}),W(Ao,{type:"button",active:"search"===n,onClick:()=>r("search"),children:"ja"===e.language?"検索":"Search"}),e.enableDeepResearch&&W(Ao,{type:"button",active:"deep-research"===n,onClick:()=>r("deep-research"),children:(e.language,"Deep Research")}),"search"===n&&(i||s)&&W(Mo,{type:"button",onClick:I,title:"ja"===e.language?"検索をクリア":"Clear search","aria-label":"ja"===e.language?"検索をクリア":"Clear search",disabled:g,children:W(ln,{size:14})})]})}),W(To,{children:W(jo,{children:W(qo,{children:[w.length>0&&W(Io,{children:[W(Do,{children:"ja"===e.language?"最近の検索":"Recent searches"}),W(Eo,{children:w.slice(0,8).map((e,n)=>W(Oo,{onClick:()=>{return l(n=e),void $(n);var n},children:e},n))})]}),W(No,{children:[W(Fo,{ref:b,value:i,onInput:e=>{(e=>{const n=e.target.value;l(n)})(e),(e=>{const n=e||b.current;if(!n)return;n.style.height="auto";const r=n.scrollHeight;n.style.height=`${r}px`,n.style.lineHeight=r<=32?"32px":"1.5"})(e.currentTarget)},onKeyDown:A,onCompositionStart:()=>x(!0),onCompositionEnd:()=>x(!1),placeholder:"ja"===e.language?"検索キーワードを入力... (Ctrl+Enter または ⌘+Enter で送信)":"Enter search keywords... (Ctrl+Enter or ⌘+Enter to send)",rows:1}),W(Ro,{onClick:M,"data-disabled":!i.trim()||g,title:"ja"===e.language?"検索 (Enter または Ctrl+Enter)":"Search (Enter or Ctrl+Enter)",type:"button",children:g?W(Po,{}):W(Be,{size:16,color:"white"})})]})]})})})]})}const zo=Re("div")`
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-`,zo=Re("div")`
+`,Co=Re("div")`
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1.5rem 0.25rem; /* align underline position with ChatView */
@@ -1153,12 +1153,12 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   align-items: center; /* match ChatView */
   position: relative;
   z-index: 2; /* ensure tab underline renders above input separator */
-`,Co=Re("div")`
+`,$o=Re("div")`
   display: flex;
   gap: 0.5rem;
   align-items: center;
   flex: 1;
-`,$o=Re("button")`
+`,Mo=Re("button")`
   width: 28px;
   height: 28px;
   border-radius: 6px;
@@ -1181,7 +1181,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.5;
     cursor: not-allowed;
   }
-`,Mo=Re("button")`
+`,Ao=Re("button")`
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -1199,31 +1199,31 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   }
 
   ${e=>e.active&&"\n    &::after {\n      content: '';\n      position: absolute;\n      bottom: -0.35rem;\n      left: 0;\n      right: 0;\n      height: 2px;\n      background: var(--askdona-tab-accent, var(--askdona-primary));\n      z-index: 3; /* above any following horizontal rules/borders */\n    }\n  "}
-`,Ao=Re("div")`
+`,jo=Re("div")`
   position: relative;
   width: 100%;
-`,jo=Re("div")`
+`,qo=Re("div")`
   position: relative;
   display: flex;
   flex-direction: column;
-`,qo=Re("div")`
+`,Io=Re("div")`
   padding: 0.25rem 0.25rem 0.25rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`,Io=Re("div")`
+`,Do=Re("div")`
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--askdona-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.025em;
-`,Do=Re("div")`
+`,Eo=Re("div")`
   display: flex;
   gap: 0.375rem;
   flex-wrap: wrap;
   align-items: center;
   flex: 1;
-`,Eo=Re("button")`
+`,Oo=Re("button")`
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--askdona-border);
   border-radius: 9999px;
@@ -1238,7 +1238,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     color: var(--askdona-text);
     border-color: var(--askdona-primary);
   }
-`,Oo=Re("div")`
+`,No=Re("div")`
   display: flex;
   align-items: flex-end; /* keep send button at bottom when textarea grows */
   gap: 0.5rem;
@@ -1250,7 +1250,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   ${({expanded:e})=>e&&"border-bottom: none;"}
   width: 100%;
   /* Removed max-width to allow full horizontal stretch */
-`,No=Re("button")`
+`,Ro=Re("button")`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1277,7 +1277,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: var(--askdona-primary-dark);
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--askdona-primary) 20%, transparent);
   }
-`,Ro=Re("textarea")`
+`,Fo=Re("textarea")`
   flex: 1;
   width: auto;
   padding: 0 0.5rem;
@@ -1297,12 +1297,12 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   position: relative;
   z-index: 1;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-`,Fo=Re("div")`
+`,To=Re("div")`
   position: relative;
   padding: 1rem 1.5rem; /* match ChatView InputArea spacing */
   border-top: 1px solid var(--askdona-border);
   flex-shrink: 0;
-`,To=Re("div")`
+`,Po=Re("div")`
   width: 20px;
   height: 20px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -1313,7 +1313,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
-`,Po=Re("div")`
+`,Lo=Re("div")`
   display: flex;
   gap: 1.5rem;
   padding: 0 1.5rem;
@@ -1324,7 +1324,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &::-webkit-scrollbar {
     height: 0;
   }
-`,Lo=Re("button")`
+`,Ho=Re("button")`
   padding: 0.75rem 0;
   border: none;
   background: none;
@@ -1341,30 +1341,30 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   }
   
   ${e=>e.active&&"\n    &::after {\n      content: '';\n      position: absolute;\n      bottom: -1px;\n      left: 0;\n      right: 0;\n      height: 2px;\n      background: var(--askdona-tab-accent, var(--askdona-primary));\n    }\n  "}
-`,Ho=Re("span")`
+`,Uo=Re("span")`
   font-size: 0.75rem;
   color: var(--askdona-text-secondary);
   margin-left: 0.25rem;
-`,Uo=Re("div")`
+`,Bo=Re("div")`
   flex: 1;
   overflow-y: auto;
   padding: 1rem 1.5rem;
-`,Bo=Re("div")`
+`,Jo=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.5rem; /* tighter spacing between cards */
-`,Jo=Re("span")`
+`,Vo=Re("span")`
   background: rgba(var(--askdona-primary-rgb), 0.2);
   padding: 0 0.125rem;
   border-radius: 0.125rem;
   font-weight: 500;
-`,Vo=Re("div")`
+`,Qo=Re("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem;
-`,Qo=Re("div")`
+`,Wo=Re("div")`
   width: 2rem;
   height: 2rem;
   border: 2px solid var(--askdona-border);
@@ -1375,34 +1375,34 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
-`,Wo=Re("p")`
+`,Zo=Re("p")`
   margin-top: 1rem;
   font-size: 0.875rem;
   color: var(--askdona-text-secondary);
-`,Zo=Re("div")`
-  text-align: center;
-  padding: 3rem;
-  color: var(--askdona-text-secondary);
-  font-size: 0.875rem;
 `,Go=Re("div")`
   text-align: center;
   padding: 3rem;
+  color: var(--askdona-text-secondary);
+  font-size: 0.875rem;
 `,Ko=Re("div")`
+  text-align: center;
+  padding: 3rem;
+`,Yo=Re("div")`
   font-size: 3rem;
   margin-bottom: 1rem;
   opacity: 0.5;
-`,Yo=Re("p")`
+`,Xo=Re("p")`
   color: var(--askdona-text-secondary);
   font-size: 0.875rem;
   margin: 0;
-`,Xo=Re("div")`
+`,et=Re("div")`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem;
   border-bottom: 1px solid var(--askdona-border);
   background: var(--askdona-surface);
-`,et=Re("h3")`
+`,nt=Re("h3")`
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
@@ -1410,34 +1410,34 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`,nt=Re("span")`
+`,rt=Re("span")`
   background: var(--askdona-primary);
   color: white;
   font-size: 0.75rem;
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: 500;
-`,rt=Re("p")`
+`,ot=Re("p")`
   font-size: 0.75rem;
   color: var(--askdona-text-secondary);
   margin: 0;
-`,ot=Re("div")`
+`,tt=Re("div")`
   text-align: center;
   padding: 3rem;
   color: var(--askdona-error);
-`,tt=Re("div")`
+`,at=Re("div")`
   font-size: 2rem;
   margin-bottom: 1rem;
-`,at=Re("h3")`
+`,it=Re("h3")`
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 0.5rem;
   color: var(--askdona-error);
-`,it=Re("p")`
+`,lt=Re("p")`
   font-size: 0.875rem;
   color: var(--askdona-text-secondary);
   margin: 0;
-`,lt=Re("div")`
+`,st=Re("div")`
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1447,12 +1447,12 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-`,st=Re("div")`
+`,dt=Re("div")`
   padding: 0.75rem; /* slightly tighter */
   display: flex;
   flex-direction: column;
   gap: 0.375rem; /* slightly tighter */
-`,dt=Re("h4")`
+`,ct=Re("h4")`
   margin: 0 0 0.25rem 0; /* tighter spacing below title */
   font-size: 1rem;
   
@@ -1468,7 +1468,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   span {
     color: var(--askdona-text);
   }
-`,ct=Re("p")`
+`,ut=Re("p")`
   margin: 0; /* remove extra spacing */
   font-size: 0.75rem; /* smaller row text */
   color: var(--askdona-text-secondary); /* lighter overall */
@@ -1478,7 +1478,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     font-size: 0.6875rem; /* even smaller label text */
     opacity: 0.75; /* make label appear lighter */
   }
-`,ut=Re("div")`
+`,ft=Re("div")`
   margin-top: 0.5rem;
   
   strong {
@@ -1487,7 +1487,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     color: #202124;
     font-size: 0.875rem;
   }
-`,ft=Re("p")`
+`,pt=Re("p")`
   margin: 0;
   font-size: 0.875rem;
   color: #5f6368;
@@ -1496,7 +1496,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`,pt=["follow-up","research-outline","search","extraction","new-angles","synthesis"],gt={planning:"research-outline",outline:"research-outline",brainstorming:"research-outline","collecting-sources":"search",collecting_sources:"search",sourcing:"search","source-analysis":"extraction","analyzing-sources":"extraction","report-drafting":"synthesis","drafting-report":"synthesis","finalizing-report":"synthesis"};function ht(e){if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}return null}const mt={"follow-up":"依頼内容の整理","research-outline":"調査の計画",search:"情報収集",extraction:"情報分析","new-angles":"追加の調査",synthesis:"調査レポート作成"},vt={"follow-up":"ご質問の対象となる調査領域を特定しています","research-outline":"包括的な調査レポートを作成するための調査内容を作成しています",search:"インターネット上に公開されている情報を対象に情報を取得しています",extraction:"調査に必要な情報を特定し、分析しています","new-angles":"より多くの情報を収集しています",synthesis:"調査で収集した情報をもとに最終的なアウトプットを作成しています"},bt={"follow-up":W(sn,{className:"icon"}),"research-outline":W(an,{className:"icon"}),search:W(nn,{className:"icon"}),extraction:W(Ke,{className:"icon"}),"new-angles":W(Je,{className:"icon"}),synthesis:W(Ye,{className:"icon"})},yt={"Connecting with AskDona Servers...":"AskDonaサーバーに接続中...","Connected to AskDona Server":"AskDonaサーバーに接続しました","Analyzing requirements...":"要件を分析中...","Generating research plan...":"調査計画を生成中...","Creating execution strategy...":"実行戦略を作成中...","Starting research tasks...":"調査タスクを開始中...","Generating final report...":"最終レポートを生成中...","Creating visualizations...":"ビジュアライゼーションを作成中...","Creating final message...":"最終メッセージを作成中...","Deep research completed successfully":"Deep Researchが正常に完了しました","Error occurred during deep research":"Deep Research中にエラーが発生しました","Initializing research...":"調査を初期化中...","Processing research data...":"調査データを処理中...","Finalizing research results...":"調査結果を最終確認中...","Questionnaire ready for user.":"フォローアップ質問票にご回答ください。"};function kt({task:e,onRetry:n,progressOverride:r,stageOverride:o,statusOverride:t,messageOverride:a,updatedAtOverride:i}){var l,s,d,c,u,f,p,g,h,m;const v=function(e,n){var r,o;const t="number"==typeof n?n:null,a="number"==typeof e.progress?e.progress:ht(e.progress),i=e.progress_data?ht(e.progress_data.progress):null,l=null!==(o=null!==(r=null!=t?t:"number"==typeof a?a:null)&&void 0!==r?r:i)&&void 0!==o?o:0,s=l<=1?100*l:l;return Math.min(100,Math.max(0,s))}(e,r),b=("string"==typeof o&&""!==o.trim()?o:null!==(d=null!==(s=null===(l=e.progress_data)||void 0===l?void 0:l.stage)&&void 0!==s?s:e.stage)&&void 0!==d?d:null)||null,y="questionnaire_pending"===b?"follow-up":function(e){if(!e)return null;const n=e.trim();if(!n)return null;const r=gt[n.toLowerCase()];return null!=r?r:n}(b),k=null!=y?y:"questionnaire_pending"===b?"follow-up":b,x=null!=t?t:e.status,w=mt[k||""]||"Deep Research実行中",S=pe(()=>{var n,r,o;const t=null!==(o=null!==(r=null!=a?a:null===(n=e.progress_data)||void 0===n?void 0:n.message)&&void 0!==r?r:e.message)&&void 0!==o?o:"";if(k&&vt[k])return vt[k];if(yt[t])return yt[t];const i=t.match(/Completed (\d+) of (\d+) research tasks/);return i?`調査タスク${i[2]}件中${i[1]}件完了...`:t.startsWith("Failed to start job:")?t.replace("Failed to start job:","ジョブの開始に失敗しました:"):t||"依頼内容に基づいて調査を開始しています"},[a,e.message,null===(c=e.progress_data)||void 0===c?void 0:c.message,k]),_="failed"===x,z="completed"===x?"調査完了":"failed"===x?"調査中に問題が起こりました":w,C="failed"===x?null!==(p=null!==(f=null!=a?a:null===(u=e.progress_data)||void 0===u?void 0:u.message)&&void 0!==f?f:e.message)&&void 0!==p?p:"調査中にエラーが起こりました":"completed"===x?"調査が完了しました。調査結果を以下に表示します。":S;return W(St,{"data-status":x,children:[W(_t,{children:[W("div",{children:[W(zt,{children:z}),W(Ct,{children:C})]}),"in-progress"===x&&W($t,{"data-status":x,children:"調査中..."})]}),W(Mt,{children:[W(At,{children:[W("span",{children:"調査ステータス"}),W(jt,{children:[Math.round(v),"%"]})]}),W(qt,{children:W(It,{style:{width:`${Math.round(v)}%`},"data-status":x})}),W(Dt,{children:pt.map(e=>W(Et,{"data-state":xt(e,k),children:[W("span",{className:"icon",children:bt[e]}),W("span",{children:mt[e]})]},e))})]}),W(Ot,{"data-status":x,children:[W(Nt,{children:bt[k||"synthesis"]||W(on,{className:"icon"})}),W(Rt,{children:[W(Ft,{children:w}),W(Tt,{children:S}),W(Pt,{children:["更新日時: ",wt(null!==(h=null!=i?i:null===(g=e.progress_data)||void 0===g?void 0:g.timestamp)&&void 0!==h?h:e.updated_at)]})]})]}),_&&W(Lt,{children:[W(pn,{className:"icon"}),W("div",{children:[W("strong",{children:"調査が完了できませんでした"}),W("p",{children:null!==(m=null!=a?a:e.message)&&void 0!==m?m:"時間をおいて再度お試しください。"})]}),W(Ht,{onClick:n,children:"再試行"})]})]})}function xt(e,n){if(!n)return"idle";if(e===n)return"current";const r=pt.indexOf(n),o=pt.indexOf(e);return-1===r||-1===o?"idle":o<r?"done":"idle"}function wt(e){return e?new Date(e).toLocaleString("ja-JP"):"-"}const St=Re("div")`
+`,gt=["follow-up","research-outline","search","extraction","new-angles","synthesis"],ht={planning:"research-outline",outline:"research-outline",brainstorming:"research-outline","collecting-sources":"search",collecting_sources:"search",sourcing:"search","source-analysis":"extraction","analyzing-sources":"extraction","report-drafting":"synthesis","drafting-report":"synthesis","finalizing-report":"synthesis"};function mt(e){if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}return null}const vt={"follow-up":"依頼内容の整理","research-outline":"調査の計画",search:"情報収集",extraction:"情報分析","new-angles":"追加の調査",synthesis:"調査レポート作成"},bt={"follow-up":"ご質問の対象となる調査領域を特定しています","research-outline":"包括的な調査レポートを作成するための調査内容を作成しています",search:"インターネット上に公開されている情報を対象に情報を取得しています",extraction:"調査に必要な情報を特定し、分析しています","new-angles":"より多くの情報を収集しています",synthesis:"調査で収集した情報をもとに最終的なアウトプットを作成しています"},yt={"follow-up":W(sn,{className:"icon"}),"research-outline":W(an,{className:"icon"}),search:W(nn,{className:"icon"}),extraction:W(Ke,{className:"icon"}),"new-angles":W(Je,{className:"icon"}),synthesis:W(Ye,{className:"icon"})},kt={"Connecting with AskDona Servers...":"AskDonaサーバーに接続中...","Connected to AskDona Server":"AskDonaサーバーに接続しました","Analyzing requirements...":"要件を分析中...","Generating research plan...":"調査計画を生成中...","Creating execution strategy...":"実行戦略を作成中...","Starting research tasks...":"調査タスクを開始中...","Generating final report...":"最終レポートを生成中...","Creating visualizations...":"ビジュアライゼーションを作成中...","Creating final message...":"最終メッセージを作成中...","Deep research completed successfully":"Deep Researchが正常に完了しました","Error occurred during deep research":"Deep Research中にエラーが発生しました","Initializing research...":"調査を初期化中...","Processing research data...":"調査データを処理中...","Finalizing research results...":"調査結果を最終確認中...","Questionnaire ready for user.":"フォローアップ質問票にご回答ください。"};function xt({task:e,onRetry:n,progressOverride:r,stageOverride:o,statusOverride:t,messageOverride:a,updatedAtOverride:i}){var l,s,d,c,u,f,p,g,h,m;const v=function(e,n){var r,o;const t="number"==typeof n?n:null,a="number"==typeof e.progress?e.progress:mt(e.progress),i=e.progress_data?mt(e.progress_data.progress):null,l=null!==(o=null!==(r=null!=t?t:"number"==typeof a?a:null)&&void 0!==r?r:i)&&void 0!==o?o:0,s=l<=1?100*l:l;return Math.min(100,Math.max(0,s))}(e,r),b=("string"==typeof o&&""!==o.trim()?o:null!==(d=null!==(s=null===(l=e.progress_data)||void 0===l?void 0:l.stage)&&void 0!==s?s:e.stage)&&void 0!==d?d:null)||null,y="questionnaire_pending"===b?"follow-up":function(e){if(!e)return null;const n=e.trim();if(!n)return null;const r=ht[n.toLowerCase()];return null!=r?r:n}(b),k=null!=y?y:"questionnaire_pending"===b?"follow-up":b,x=null!=t?t:e.status,w=vt[k||""]||"Deep Research実行中",S=pe(()=>{var n,r,o;const t=null!==(o=null!==(r=null!=a?a:null===(n=e.progress_data)||void 0===n?void 0:n.message)&&void 0!==r?r:e.message)&&void 0!==o?o:"";if(k&&bt[k])return bt[k];if(kt[t])return kt[t];const i=t.match(/Completed (\d+) of (\d+) research tasks/);return i?`調査タスク${i[2]}件中${i[1]}件完了...`:t.startsWith("Failed to start job:")?t.replace("Failed to start job:","ジョブの開始に失敗しました:"):t||"依頼内容に基づいて調査を開始しています"},[a,e.message,null===(c=e.progress_data)||void 0===c?void 0:c.message,k]),_="failed"===x,z="completed"===x?"調査完了":"failed"===x?"調査中に問題が起こりました":w,C="failed"===x?null!==(p=null!==(f=null!=a?a:null===(u=e.progress_data)||void 0===u?void 0:u.message)&&void 0!==f?f:e.message)&&void 0!==p?p:"調査中にエラーが起こりました":"completed"===x?"調査が完了しました。調査結果を以下に表示します。":S;return W(_t,{"data-status":x,children:[W(zt,{children:[W("div",{children:[W(Ct,{children:z}),W($t,{children:C})]}),"in-progress"===x&&W(Mt,{"data-status":x,children:"調査中..."})]}),W(At,{children:[W(jt,{children:[W("span",{children:"調査ステータス"}),W(qt,{children:[Math.round(v),"%"]})]}),W(It,{children:W(Dt,{style:{width:`${Math.round(v)}%`},"data-status":x})}),W(Et,{children:gt.map(e=>W(Ot,{"data-state":wt(e,k),children:[W("span",{className:"icon",children:yt[e]}),W("span",{children:vt[e]})]},e))})]}),W(Nt,{"data-status":x,children:[W(Rt,{children:yt[k||"synthesis"]||W(on,{className:"icon"})}),W(Ft,{children:[W(Tt,{children:w}),W(Pt,{children:S}),W(Lt,{children:["更新日時: ",St(null!==(h=null!=i?i:null===(g=e.progress_data)||void 0===g?void 0:g.timestamp)&&void 0!==h?h:e.updated_at)]})]})]}),_&&W(Ht,{children:[W(pn,{className:"icon"}),W("div",{children:[W("strong",{children:"調査が完了できませんでした"}),W("p",{children:null!==(m=null!=a?a:e.message)&&void 0!==m?m:"時間をおいて再度お試しください。"})]}),W(Ut,{onClick:n,children:"再試行"})]})]})}function wt(e,n){if(!n)return"idle";if(e===n)return"current";const r=gt.indexOf(n),o=gt.indexOf(e);return-1===r||-1===o?"idle":o<r?"done":"idle"}function St(e){return e?new Date(e).toLocaleString("ja-JP"):"-"}const _t=Re("div")`
   border: 1px solid var(--askdona-border);
   border-radius: 18px;
   background: var(--askdona-background);
@@ -1505,21 +1505,21 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   flex-direction: column;
   gap: 1.25rem;
   font-size: var(--rag-dr-font-body, 0.76rem);
-`,_t=Re("div")`
+`,zt=Re("div")`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-`,zt=Re("h3")`
+`,Ct=Re("h3")`
   margin: 0;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   font-weight: 600;
   color: var(--askdona-text);
-`,Ct=Re("p")`
+`,$t=Re("p")`
   margin: 0.2rem 0 0;
   font-size: var(--rag-dr-font-small, 0.7rem);
   color: var(--askdona-text-secondary);
-`,$t=Re("span")`
+`,Mt=Re("span")`
   align-self: flex-start;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
@@ -1555,11 +1555,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       rgba(var(--askdona-error-rgb, 239, 68, 68), 0.75)
     );
   }
-`,Mt=Re("div")`
+`,At=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-`,At=Re("div")`
+`,jt=Re("div")`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -1567,16 +1567,16 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   span {
     font-size: var(--rag-dr-font-subheading, 0.8rem);
   }
-`,jt=Re("span")`
+`,qt=Re("span")`
   font-size: var(--rag-dr-font-progress, 1.6rem);
   font-weight: 700;
   color: var(--askdona-text);
-`,qt=Re("div")`
+`,It=Re("div")`
   height: 10px;
   border-radius: 999px;
   background: rgba(var(--askdona-primary-rgb, 16, 49, 111), 0.12);
   overflow: hidden;
-`,It=Re("div")`
+`,Dt=Re("div")`
   height: 100%;
   border-radius: 999px;
   background: linear-gradient(
@@ -1600,11 +1600,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       rgba(var(--askdona-error-rgb, 239, 68, 68), 0.75)
     );
   }
-`,Dt=Re("div")`
+`,Et=Re("div")`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-`,Et=Re("div")`
+`,Ot=Re("div")`
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -1634,7 +1634,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: rgba(var(--askdona-primary-rgb, 37, 99, 235), 0.08);
     color: var(--askdona-text-secondary, #475569);
   }
-`,Ot=Re("div")`
+`,Nt=Re("div")`
   display: flex;
   gap: 1rem;
   padding: 1.2rem;
@@ -1648,7 +1648,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &[data-status='failed'] {
     background: rgba(var(--askdona-error-rgb, 239, 68, 68), 0.12);
   }
-`,Nt=Re("div")`
+`,Rt=Re("div")`
   width: 48px;
   height: 48px;
   border-radius: 14px;
@@ -1662,23 +1662,23 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 22px;
     height: 22px;
   }
-`,Rt=Re("div")`
+`,Ft=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-`,Ft=Re("div")`
+`,Tt=Re("div")`
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   font-weight: 600;
   color: var(--askdona-text);
-`,Tt=Re("p")`
+`,Pt=Re("p")`
   margin: 0;
   font-size: var(--rag-dr-font-small, 0.7rem);
   line-height: 1.5;
   color: var(--askdona-text-secondary);
-`,Pt=Re("span")`
+`,Lt=Re("span")`
   font-size: var(--rag-dr-font-xs, 0.62rem);
   color: var(--askdona-text-secondary);
-`,Lt=Re("div")`
+`,Ht=Re("div")`
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -1701,7 +1701,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     color: var(--askdona-text-secondary, #64748b);
     font-size: var(--rag-dr-font-body, 0.76rem);
   }
-`,Ht=Re("button")`
+`,Ut=Re("button")`
   margin-left: auto;
   border: none;
   border-radius: 999px;
@@ -1711,7 +1711,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   font-weight: 600;
   font-size: var(--rag-dr-font-body, 0.76rem);
   cursor: pointer;
-`;const Ut="フォローアップ質問",Bt="以下の質問に回答すると、Deep Research が自動的に進行します。",Jt="combinedAnswer";function Vt(e,n){var r,o,t,a,i,l;if("string"==typeof e)return{id:`question-${n+1}`,prompt:e.trim()||`質問 ${n+1}`,required:!0};const s=null!==(t=null!==(o=null!==(r=e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:e.prompt)&&void 0!==t?t:`質問 ${n+1}`;return{id:null!==(a=e.id)&&void 0!==a?a:`question-${n+1}`,prompt:s,placeholder:e.placeholder,required:Boolean(null===(l=null!==(i=e.required)&&void 0!==i?i:e.isRequired)||void 0===l||l),helpText:e.helpText}}function Qt({questionnaireJson:e,onSubmit:n,isReadOnly:r=!1,isSubmitLocked:o=!1,submitLockLabel:t,submittedAnswers:a}){var i;const[l,s]=de(null),[d,c]=de(""),[u,f]=de(null),[p,g]=de(null),[h,m]=de(!1);ce(()=>{if(!e||""===e.trim())return g("質問票データが提供されていません。"),void s(null);try{const n=function(e){var n,r,o,t;if(!e)throw new Error("質問票データが空です");if("string"==typeof e){const n=e.trim();if(!n)throw new Error("質問票データが空です");return{title:Ut,introduction:Bt,questions:[Vt(n,0)]}}if(Array.isArray(e)){if(0===e.length)throw new Error("質問票に質問が含まれていません");return{title:Ut,introduction:Bt,questions:e.map((e,n)=>Vt(e,n))}}const a=e,i=(null===(n=a.title)||void 0===n?void 0:n.trim())||Ut,l=(null===(r=a.introduction)||void 0===r?void 0:r.trim())||(null===(o=a.description)||void 0===o?void 0:o.trim())||Bt,s=Array.isArray(a.questions)?a.questions:[];if(0===s.length)throw new Error("質問票に質問が含まれていません");return{title:i,introduction:l,estimatedCompletionTime:(null===(t=a.estimatedCompletionTime)||void 0===t?void 0:t.trim())||void 0,questions:s.map((e,n)=>Vt(e,n))}}(JSON.parse(e));s(n),g(null),c(function(e,n){return n?"string"==typeof n[Jt]?n[Jt]:e.questions.map((e,r)=>{const o=n[e.id];return o&&"string"==typeof o&&o.trim()?`${r+1}. ${o.trim()}`:null}).filter(Boolean).join("\n\n"):""}(n,a)),f(null)}catch(e){g(e instanceof Error?e.message:"質問票データの解析に失敗しました。"),s(null),c("")}},[e,a]);const v=pe(()=>{if(!l)return!1;return!(l.questions.some(e=>!1!==e.required)&&!r)||d.trim().length>0},[d,l,r]),b=ge(e=>{c(e),u&&f(null)},[u]),y=ge(async e=>{if(e.preventDefault(),r||o||h||!l)return;if(l.questions.some(e=>!1!==e.required)&&0===d.trim().length)f("この項目は必須です");else try{m(!0);const e=function(e,n){const r=["#### 調査質問票への回答",""];return r.push("**質問一覧:**"),r.push(""),e.questions.forEach((e,n)=>{r.push(`${n+1}. ${e.prompt}`)}),r.push(""),r.push("**回答:**"),r.push(""),r.push(n.trim()?n.trim():"回答がありません"),r.push(""),r.join("\n")}(l,d);await n(e)}catch(e){}finally{m(!1)}},[d,r,o,h,n,l]),k=ge(e=>{if(!e.metaKey&&!e.ctrlKey||"Enter"!==e.key)return;if(r||o||h||!l)return;e.preventDefault();const n=e.currentTarget,t=(null==n?void 0:n.form)||null;t?"function"==typeof t.requestSubmit?t.requestSubmit():t.dispatchEvent(new Event("submit",{cancelable:!0,bubbles:!0})):y(e)},[y,r,o,h,l]);return p?W(ma,{children:[W(va,{children:W(pn,{size:20})}),W(ba,{children:[W(ya,{children:"質問票の読み込み中に問題が発生しました"}),W(ka,{children:p||"時間をおいて再度お試しください。"})]})]}):l?W(Wt,{children:[W(Zt,{children:[W(Gt,{children:W(an,{size:18})}),W(Kt,{children:[W(Yt,{children:[l.title,r&&W(Xt,{children:"送信済み"})]}),W(ea,{children:null!==(i=l.introduction)&&void 0!==i?i:Bt}),W(na,{children:"回答は任意ですが、背景や目的を詳しく共有いただくと、より的確な調査が可能になります。"}),l.estimatedCompletionTime&&W(ra,{children:[W(Ze,{size:14}),W("span",{children:l.estimatedCompletionTime})]})]})]}),W("form",{onSubmit:y,children:[W(oa,{children:W(ta,{children:[W(aa,{children:`フォローアップ質問 (${l.questions.length} 件)`}),W(ia,{children:W("ul",{children:l.questions.map((e,n)=>W("li",{children:[W("span",{className:"question-index",children:[n+1,"."]}),W("span",{className:"question-text",children:e.prompt})]},e.id))})})]})}),W(sa,{children:[W(da,{children:[l.questions.some(e=>!1!==e.required)?"上記の質問にまとめて回答してください":"任意回答 (必要に応じてご記入ください)",!r&&l.questions.some(e=>!1!==e.required)&&W(la,{children:"*"})]}),W(ca,{value:d,onInput:e=>b(e.target.value),onKeyDown:k,placeholder:"質問への回答をこちらにご入力ください (Ctrl+Enter または ⌘+Enter で送信)",rows:6,disabled:r||h,"data-error":u?"true":"false"}),u&&W(ua,{children:u})]}),!r&&W(fa,{children:[W(pa,{type:"submit",disabled:!v||h,"data-locked":o&&!h?"true":"false",children:h?"送信中...":"調査質問票を送信"}),o&&t&&!h&&W(ga,{children:[W(Ze,{size:14}),W("span",{children:t})]})]}),r&&W(ha,{children:[W(We,{size:16}),W("span",{children:"送信済みの回答を表示しています"})]})]})]}):W(xa,{children:[W(an,{size:18}),W("span",{children:"質問票を読み込んでいます..."})]})}const Wt=Re("div")`
+`;const Bt="フォローアップ質問",Jt="以下の質問に回答すると、Deep Research が自動的に進行します。",Vt="combinedAnswer";function Qt(e,n){var r,o,t,a,i,l;if("string"==typeof e)return{id:`question-${n+1}`,prompt:e.trim()||`質問 ${n+1}`,required:!0};const s=null!==(t=null!==(o=null!==(r=e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:e.prompt)&&void 0!==t?t:`質問 ${n+1}`;return{id:null!==(a=e.id)&&void 0!==a?a:`question-${n+1}`,prompt:s,placeholder:e.placeholder,required:Boolean(null===(l=null!==(i=e.required)&&void 0!==i?i:e.isRequired)||void 0===l||l),helpText:e.helpText}}function Wt({questionnaireJson:e,onSubmit:n,isReadOnly:r=!1,isSubmitLocked:o=!1,submitLockLabel:t,submittedAnswers:a}){var i;const[l,s]=de(null),[d,c]=de(""),[u,f]=de(null),[p,g]=de(null),[h,m]=de(!1);ce(()=>{if(!e||""===e.trim())return g("質問票データが提供されていません。"),void s(null);try{const n=function(e){var n,r,o,t;if(!e)throw new Error("質問票データが空です");if("string"==typeof e){const n=e.trim();if(!n)throw new Error("質問票データが空です");return{title:Bt,introduction:Jt,questions:[Qt(n,0)]}}if(Array.isArray(e)){if(0===e.length)throw new Error("質問票に質問が含まれていません");return{title:Bt,introduction:Jt,questions:e.map((e,n)=>Qt(e,n))}}const a=e,i=(null===(n=a.title)||void 0===n?void 0:n.trim())||Bt,l=(null===(r=a.introduction)||void 0===r?void 0:r.trim())||(null===(o=a.description)||void 0===o?void 0:o.trim())||Jt,s=Array.isArray(a.questions)?a.questions:[];if(0===s.length)throw new Error("質問票に質問が含まれていません");return{title:i,introduction:l,estimatedCompletionTime:(null===(t=a.estimatedCompletionTime)||void 0===t?void 0:t.trim())||void 0,questions:s.map((e,n)=>Qt(e,n))}}(JSON.parse(e));s(n),g(null),c(function(e,n){return n?"string"==typeof n[Vt]?n[Vt]:e.questions.map((e,r)=>{const o=n[e.id];return o&&"string"==typeof o&&o.trim()?`${r+1}. ${o.trim()}`:null}).filter(Boolean).join("\n\n"):""}(n,a)),f(null)}catch(e){g(e instanceof Error?e.message:"質問票データの解析に失敗しました。"),s(null),c("")}},[e,a]);const v=pe(()=>{if(!l)return!1;return!(l.questions.some(e=>!1!==e.required)&&!r)||d.trim().length>0},[d,l,r]),b=ge(e=>{c(e),u&&f(null)},[u]),y=ge(async e=>{if(e.preventDefault(),r||o||h||!l)return;if(l.questions.some(e=>!1!==e.required)&&0===d.trim().length)f("この項目は必須です");else try{m(!0);const e=function(e,n){const r=["#### 調査質問票への回答",""];return r.push("**質問一覧:**"),r.push(""),e.questions.forEach((e,n)=>{r.push(`${n+1}. ${e.prompt}`)}),r.push(""),r.push("**回答:**"),r.push(""),r.push(n.trim()?n.trim():"回答がありません"),r.push(""),r.join("\n")}(l,d);await n(e)}catch(e){}finally{m(!1)}},[d,r,o,h,n,l]),k=ge(e=>{if(!e.metaKey&&!e.ctrlKey||"Enter"!==e.key)return;if(r||o||h||!l)return;e.preventDefault();const n=e.currentTarget,t=(null==n?void 0:n.form)||null;t?"function"==typeof t.requestSubmit?t.requestSubmit():t.dispatchEvent(new Event("submit",{cancelable:!0,bubbles:!0})):y(e)},[y,r,o,h,l]);return p?W(va,{children:[W(ba,{children:W(pn,{size:20})}),W(ya,{children:[W(ka,{children:"質問票の読み込み中に問題が発生しました"}),W(xa,{children:p||"時間をおいて再度お試しください。"})]})]}):l?W(Zt,{children:[W(Gt,{children:[W(Kt,{children:W(an,{size:18})}),W(Yt,{children:[W(Xt,{children:[l.title,r&&W(ea,{children:"送信済み"})]}),W(na,{children:null!==(i=l.introduction)&&void 0!==i?i:Jt}),W(ra,{children:"回答は任意ですが、背景や目的を詳しく共有いただくと、より的確な調査が可能になります。"}),l.estimatedCompletionTime&&W(oa,{children:[W(Ze,{size:14}),W("span",{children:l.estimatedCompletionTime})]})]})]}),W("form",{onSubmit:y,children:[W(ta,{children:W(aa,{children:[W(ia,{children:`フォローアップ質問 (${l.questions.length} 件)`}),W(la,{children:W("ul",{children:l.questions.map((e,n)=>W("li",{children:[W("span",{className:"question-index",children:[n+1,"."]}),W("span",{className:"question-text",children:e.prompt})]},e.id))})})]})}),W(da,{children:[W(ca,{children:[l.questions.some(e=>!1!==e.required)?"上記の質問にまとめて回答してください":"任意回答 (必要に応じてご記入ください)",!r&&l.questions.some(e=>!1!==e.required)&&W(sa,{children:"*"})]}),W(ua,{value:d,onInput:e=>b(e.target.value),onKeyDown:k,placeholder:"質問への回答をこちらにご入力ください (Ctrl+Enter または ⌘+Enter で送信)",rows:6,disabled:r||h,"data-error":u?"true":"false"}),u&&W(fa,{children:u})]}),!r&&W(pa,{children:[W(ga,{type:"submit",disabled:!v||h,"data-locked":o&&!h?"true":"false",children:h?"送信中...":"調査質問票を送信"}),o&&t&&!h&&W(ha,{children:[W(Ze,{size:14}),W("span",{children:t})]})]}),r&&W(ma,{children:[W(We,{size:16}),W("span",{children:"送信済みの回答を表示しています"})]})]})]}):W(wa,{children:[W(an,{size:18}),W("span",{children:"質問票を読み込んでいます..."})]})}const Zt=Re("div")`
   border-radius: 18px;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   background: linear-gradient(
@@ -1723,13 +1723,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-`,Zt=Re("div")`
+`,Gt=Re("div")`
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
   border-bottom: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   background: var(--askdona-surface, #ffffff);
-`,Gt=Re("div")`
+`,Kt=Re("div")`
   width: 48px;
   height: 48px;
   border-radius: 16px;
@@ -1742,9 +1742,9 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   align-items: center;
   justify-content: center;
   color: var(--askdona-background, #ffffff);
-`,Kt=Re("div")`
+`,Yt=Re("div")`
   flex: 1;
-`,Yt=Re("h3")`
+`,Xt=Re("h3")`
   margin: 0;
   font-size: 0.95rem;
   font-weight: 600;
@@ -1752,24 +1752,24 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`,Xt=Re("span")`
+`,ea=Re("span")`
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
   font-size: 0.7rem;
   background: rgba(var(--askdona-success-rgb, 16, 185, 129), 0.12);
   color: rgba(var(--askdona-success-rgb, 16, 185, 129), 0.8);
   border: 1px solid rgba(var(--askdona-success-rgb, 16, 185, 129), 0.35);
-`,ea=Re("p")`
+`,na=Re("p")`
   margin: 0.35rem 0 0;
   font-size: 0.8rem;
   line-height: 1.5;
   color: var(--askdona-text-secondary, #475569);
-`,na=Re("p")`
+`,ra=Re("p")`
   margin: 0.5rem 0 0;
   font-size: 0.75rem;
   line-height: 1.5;
   color: var(--askdona-text-secondary, #64748b);
-`,ra=Re("div")`
+`,oa=Re("div")`
   margin-top: 0.75rem;
   display: inline-flex;
   align-items: center;
@@ -1779,23 +1779,23 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   font-size: 0.75rem;
   background: rgba(var(--askdona-primary-rgb, 37, 99, 235), 0.1);
   color: var(--askdona-primary, #2563eb);
-`,oa=Re("div")`
+`,ta=Re("div")`
   padding: 1.25rem 1.5rem 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-`,ta=Re("div")`
+`,aa=Re("div")`
   padding: 1.25rem;
   border-radius: 14px;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.1));
   background: var(--askdona-surface, #ffffff);
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
-`,aa=Re("div")`
+`,ia=Re("div")`
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--askdona-text-secondary, #475569);
   margin-bottom: 0.6rem;
-`,ia=Re("div")`
+`,la=Re("div")`
   ul {
     list-style: none;
     margin: 0;
@@ -1822,22 +1822,22 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   .question-text {
     flex: 1;
   }
-`,la=Re("span")`
+`,sa=Re("span")`
   color: var(--askdona-error, #dc2626);
   margin-left: 0.35rem;
-`,sa=Re("div")`
+`,da=Re("div")`
   padding: 0 1.5rem 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-`,da=Re("div")`
+`,ca=Re("div")`
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--askdona-text, #0f172a);
   display: flex;
   align-items: center;
   gap: 0.4rem;
-`,ca=Re("textarea")`
+`,ua=Re("textarea")`
   margin-top: 0.9rem;
   width: 100%;
   min-height: 120px;
@@ -1866,17 +1866,17 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.65;
     cursor: not-allowed;
   }
-`,ua=Re("div")`
+`,fa=Re("div")`
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: var(--askdona-error, #dc2626);
-`,fa=Re("div")`
+`,pa=Re("div")`
   padding: 1.25rem 1.5rem 1.6rem;
   border-top: 1px solid rgba(15, 23, 42, 0.1);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-`,pa=Re("button")`
+`,ga=Re("button")`
   border-radius: 12px;
   padding: 0.95rem 1.25rem;
   border: none;
@@ -1905,13 +1905,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &[data-locked='true'] {
     cursor: wait;
   }
-`,ga=Re("div")`
+`,ha=Re("div")`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
   color: var(--askdona-text-secondary, #475569);
-`,ha=Re("div")`
+`,ma=Re("div")`
   margin: 0 1.5rem 1.5rem;
   border-radius: 12px;
   border: 1px dashed rgba(var(--askdona-success-rgb, 16, 185, 129), 0.4);
@@ -1922,7 +1922,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   gap: 0.6rem;
   font-size: 0.85rem;
   color: rgba(var(--askdona-success-rgb, 16, 185, 129), 0.85);
-`,ma=Re("div")`
+`,va=Re("div")`
   border-radius: 16px;
   border: 1px solid rgba(var(--askdona-error-rgb, 239, 68, 68), 0.3);
   background: rgba(var(--askdona-error-rgb, 239, 68, 68), 0.12);
@@ -1930,7 +1930,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   gap: 0.75rem;
   align-items: center;
-`,va=Re("div")`
+`,ba=Re("div")`
   width: 36px;
   height: 36px;
   border-radius: 12px;
@@ -1939,18 +1939,18 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   align-items: center;
   justify-content: center;
-`,ba=Re("div")`
+`,ya=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`,ya=Re("div")`
+`,ka=Re("div")`
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--askdona-error, #dc2626);
-`,ka=Re("div")`
+`,xa=Re("div")`
   font-size: 0.85rem;
   color: var(--askdona-error, #dc2626);
-`,xa=Re("div")`
+`,wa=Re("div")`
   border-radius: 16px;
   border: 1px dashed rgba(var(--askdona-primary-rgb, 37, 99, 235), 0.3);
   padding: 1.1rem 1.3rem;
@@ -1959,7 +1959,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   gap: 0.6rem;
   color: var(--askdona-text-secondary, #475569);
   font-size: 0.85rem;
-`,wa=["analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_ready"],Sa={analyzing_topic:{icon:e=>W(rn,{...e}),label:{ja:"調査トピックを分析中",en:"Analyzing the topic"},description:{ja:"調査要件と目的を整理しています。",en:"Reviewing your request to understand the research focus."}},probing_searches:{icon:e=>W(sn,{...e}),label:{ja:"探索的検索を実行中",en:"Running exploratory searches"},description:{ja:"関連情報を特定するための探索を行っています。",en:"Exploring knowledge sources to surface useful context."}},preparing_questionnaire:{icon:e=>W(an,{...e}),label:{ja:"質問を準備中",en:"Preparing clarifying questions"},description:{ja:"調査精度を高める質問票を生成しています。",en:"Drafting targeted follow-up questions before starting research."}},questionnaire_ready:{icon:e=>W(We,{...e}),label:{ja:"質問の準備が完了しました",en:"Questionnaire is ready"},description:{ja:"質問票への回答をお待ちしています。",en:"Please answer the questionnaire to continue."}}},_a={ja:{preparingTitle:"質問票を準備しています",preparingSubtitle:"調査開始前に必要なフォローアップ質問を生成しています。",readyTitle:"質問票の準備ができました",readySubtitle:"以下の質問に回答すると調査が自動的に開始されます。",failureTitle:"質問票の生成に失敗しました",failureSubtitle:"しばらく待ってからもう一度お試しください。",progressLabel:"進捗",stagesLabel:"準備ステップ",updatedAtLabel:"更新日時",fallbackMessage:"質問票が生成されるまで少々お待ちください。",activeChip:"生成中...",readyChip:"準備完了",failedChip:"エラー",waitingStatus:"接続中"},en:{preparingTitle:"Preparing follow-up questionnaire",preparingSubtitle:"We are generating focused questions before the research begins.",readyTitle:"Questionnaire is ready",readySubtitle:"Answer the questions below to automatically continue the research.",failureTitle:"Failed to build questionnaire",failureSubtitle:"Please wait a moment and try again.",progressLabel:"Progress",stagesLabel:"Preparation steps",updatedAtLabel:"Last updated",fallbackMessage:"Please hold tight while we prepare the questionnaire.",activeChip:"Preparing…",readyChip:"Ready",failedChip:"Error",waitingStatus:"Connecting"}},za={"follow-up":"analyzing_topic",questionnaire_pending:"preparing_questionnaire",questionnaire_ready:"questionnaire_ready","research-outline":"probing_searches",search:"probing_searches",extraction:"preparing_questionnaire","new-angles":"preparing_questionnaire"},Ca={"Connecting with AskDona Servers...":{ja:"AskDonaサーバーに接続中...",en:"Connecting with AskDona servers…"},"Connected to AskDona Server":{ja:"AskDonaサーバーに接続しました",en:"Connected to AskDona server"},"Analyzing topic...":{ja:"トピックを分析中...",en:"Analyzing the topic…"},"Analyzing the research topic to identify key themes.":{ja:"主要なテーマを特定するために調査トピックを分析しています。",en:"Analyzing the research topic to identify key themes."},"Performing probing searches on internal documents.":{ja:"関連情報を特定するために探索的検索を実行しています。",en:"Performing probing searches on internal documents."},"Preparing clarifying questions based on findings.":{ja:"調査結果に基づいてフォローアップ質問を準備しています。",en:"Preparing clarifying questions based on findings."},"Questionnaire Ready":{ja:"質問票の準備が完了しました",en:"Questionnaire ready"},"Initializing Deep Research...":{ja:"Deep Researchを初期化しています...",en:"Initializing deep research…"},"Initializing research environment...":{ja:"調査環境を初期化中...",en:"Initializing the research environment…"},"Processing your request...":{ja:"リクエストを処理しています...",en:"Processing your request…"},"Finalizing questionnaire...":{ja:"質問票を最終確認中...",en:"Finalizing questionnaire…"}};function $a({task:e,isJapanese:n=!0,progressOverride:r,stageOverride:o,statusOverride:t,messageOverride:a,updatedAtOverride:i}){var l,s,d;const c=n?"ja":"en",u=_a[c],f="number"==typeof r?r:"number"==typeof(null==e?void 0:e.progress)?e.progress:(null==e?void 0:e.progress_data)?(e=>{if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}return null})(e.progress_data.progress):null,p="number"==typeof f?f:null,g=null!==p?Math.min(100,Math.max(0,p<=1?100*p:p)):null,h="failed"===(null!=t?t:null==e?void 0:e.status)||"questionnaire_generation_failed"===(null!=o?o:null==e?void 0:e.stage),m="questionnaire_ready"===(null!=t?t:null==e?void 0:e.status),v=pe(()=>{var n,r,t;if(m)return"questionnaire_ready";const a=null!==(t=null!==(r=null!=o?o:null===(n=null==e?void 0:e.progress_data)||void 0===n?void 0:n.stage)&&void 0!==r?r:null==e?void 0:e.stage)&&void 0!==t?t:null;return a&&za[a]?za[a]:null!==g?g>=75?"preparing_questionnaire":g>=35?"probing_searches":"analyzing_topic":"analyzing_topic"},[null==e?void 0:e.stage,m,g]),b=wa.indexOf(v),y=b>=0?b:0,k=pe(()=>{if(h)return null!==g?g:0;if(m)return 100;if(null!==g)return Math.max(5,Math.min(99,g));const e=Math.round(y/(wa.length-1)*100);return Math.max(10,Math.min(95,e))},[g,y,m,h]),x=pe(()=>{var n,r,o,t;const i=(null!==(o=null!==(r=null!=a?a:null===(n=null==e?void 0:e.progress_data)||void 0===n?void 0:n.message)&&void 0!==r?r:null==e?void 0:e.message)&&void 0!==o?o:"").trim();if(!i)return u.fallbackMessage;const l=(null===(t=i.split("\n")[0])||void 0===t?void 0:t.trim())||i,s=Ca[l];return s?s[c]:l},[null==e?void 0:e.message,c,u.fallbackMessage]),w=Sa[v],S=x||w.description[c],_=h?u.failureTitle:m?u.readyTitle:u.preparingTitle,z=h?u.failureSubtitle:m?u.readySubtitle:u.preparingSubtitle,C=h?u.failedChip:m?u.readyChip:u.activeChip,$=h?"failed":m?"ready":"active",M=null!==(d=null!==(s=null!=i?i:null===(l=null==e?void 0:e.progress_data)||void 0===l?void 0:l.timestamp)&&void 0!==s?s:null==e?void 0:e.updated_at)&&void 0!==d?d:null,A=M?new Date(M).toLocaleString(n?"ja-JP":void 0):"—";return W(Ma,{"data-status":$,children:[W(Aa,{children:[W("div",{children:[W(ja,{children:_}),W(qa,{children:z})]}),W(Ia,{"data-variant":$,children:C})]}),W(Da,{children:[W(Ea,{children:[W("span",{children:u.progressLabel}),W("strong",{children:[Math.round(k),"%"]})]}),W(Oa,{children:W(Na,{"data-status":$,style:{width:`${Math.round(k)}%`}})})]}),W(Ra,{children:u.stagesLabel}),W(Fa,{children:wa.map((e,n)=>{const r=Sa[e],o=function(e,n,r){if(e<n)return"done";if(e===n)return r?"done":"current";return r?"done":"upcoming"}(n,y,m);return W(Ta,{"data-state":o,children:[W(Pa,{"data-state":o,children:r.icon({className:"icon"})}),W(La,{children:[W(Ha,{children:r.label[c]}),W(Ua,{children:r.description[c]})]})]},e)})}),W(Ba,{"data-status":$,children:[W(Ja,{children:w.icon({className:"icon"})}),W(Va,{children:[W(Qa,{children:w.label[c]}),W(Wa,{children:S||u.fallbackMessage}),W(Za,{children:[W(Ze,{size:14}),W("span",{children:[u.updatedAtLabel,": ",A]})]})]})]}),h&&W(Ga,{children:[W(pn,{size:18}),W("div",{children:[W("strong",{children:u.failureTitle}),W("p",{children:S})]})]})]})}const Ma=Re("div")`
+`,Sa=["analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_ready"],_a={analyzing_topic:{icon:e=>W(rn,{...e}),label:{ja:"調査トピックを分析中",en:"Analyzing the topic"},description:{ja:"調査要件と目的を整理しています。",en:"Reviewing your request to understand the research focus."}},probing_searches:{icon:e=>W(sn,{...e}),label:{ja:"探索的検索を実行中",en:"Running exploratory searches"},description:{ja:"関連情報を特定するための探索を行っています。",en:"Exploring knowledge sources to surface useful context."}},preparing_questionnaire:{icon:e=>W(an,{...e}),label:{ja:"質問を準備中",en:"Preparing clarifying questions"},description:{ja:"調査精度を高める質問票を生成しています。",en:"Drafting targeted follow-up questions before starting research."}},questionnaire_ready:{icon:e=>W(We,{...e}),label:{ja:"質問の準備が完了しました",en:"Questionnaire is ready"},description:{ja:"質問票への回答をお待ちしています。",en:"Please answer the questionnaire to continue."}}},za={ja:{preparingTitle:"質問票を準備しています",preparingSubtitle:"調査開始前に必要なフォローアップ質問を生成しています。",readyTitle:"質問票の準備ができました",readySubtitle:"以下の質問に回答すると調査が自動的に開始されます。",failureTitle:"質問票の生成に失敗しました",failureSubtitle:"しばらく待ってからもう一度お試しください。",progressLabel:"進捗",stagesLabel:"準備ステップ",updatedAtLabel:"更新日時",fallbackMessage:"質問票が生成されるまで少々お待ちください。",activeChip:"生成中...",readyChip:"準備完了",failedChip:"エラー",waitingStatus:"接続中"},en:{preparingTitle:"Preparing follow-up questionnaire",preparingSubtitle:"We are generating focused questions before the research begins.",readyTitle:"Questionnaire is ready",readySubtitle:"Answer the questions below to automatically continue the research.",failureTitle:"Failed to build questionnaire",failureSubtitle:"Please wait a moment and try again.",progressLabel:"Progress",stagesLabel:"Preparation steps",updatedAtLabel:"Last updated",fallbackMessage:"Please hold tight while we prepare the questionnaire.",activeChip:"Preparing…",readyChip:"Ready",failedChip:"Error",waitingStatus:"Connecting"}},Ca={"follow-up":"analyzing_topic",questionnaire_pending:"preparing_questionnaire",questionnaire_ready:"questionnaire_ready","research-outline":"probing_searches",search:"probing_searches",extraction:"preparing_questionnaire","new-angles":"preparing_questionnaire"},$a={"Connecting with AskDona Servers...":{ja:"AskDonaサーバーに接続中...",en:"Connecting with AskDona servers…"},"Connected to AskDona Server":{ja:"AskDonaサーバーに接続しました",en:"Connected to AskDona server"},"Analyzing topic...":{ja:"トピックを分析中...",en:"Analyzing the topic…"},"Analyzing the research topic to identify key themes.":{ja:"主要なテーマを特定するために調査トピックを分析しています。",en:"Analyzing the research topic to identify key themes."},"Performing probing searches on internal documents.":{ja:"関連情報を特定するために探索的検索を実行しています。",en:"Performing probing searches on internal documents."},"Preparing clarifying questions based on findings.":{ja:"調査結果に基づいてフォローアップ質問を準備しています。",en:"Preparing clarifying questions based on findings."},"Questionnaire Ready":{ja:"質問票の準備が完了しました",en:"Questionnaire ready"},"Initializing Deep Research...":{ja:"Deep Researchを初期化しています...",en:"Initializing deep research…"},"Initializing research environment...":{ja:"調査環境を初期化中...",en:"Initializing the research environment…"},"Processing your request...":{ja:"リクエストを処理しています...",en:"Processing your request…"},"Finalizing questionnaire...":{ja:"質問票を最終確認中...",en:"Finalizing questionnaire…"}};function Ma({task:e,isJapanese:n=!0,progressOverride:r,stageOverride:o,statusOverride:t,messageOverride:a,updatedAtOverride:i}){var l,s,d;const c=n?"ja":"en",u=za[c],f="number"==typeof r?r:"number"==typeof(null==e?void 0:e.progress)?e.progress:(null==e?void 0:e.progress_data)?(e=>{if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}return null})(e.progress_data.progress):null,p="number"==typeof f?f:null,g=null!==p?Math.min(100,Math.max(0,p<=1?100*p:p)):null,h="failed"===(null!=t?t:null==e?void 0:e.status)||"questionnaire_generation_failed"===(null!=o?o:null==e?void 0:e.stage),m="questionnaire_ready"===(null!=t?t:null==e?void 0:e.status),v=pe(()=>{var n,r,t;if(m)return"questionnaire_ready";const a=null!==(t=null!==(r=null!=o?o:null===(n=null==e?void 0:e.progress_data)||void 0===n?void 0:n.stage)&&void 0!==r?r:null==e?void 0:e.stage)&&void 0!==t?t:null;return a&&Ca[a]?Ca[a]:null!==g?g>=75?"preparing_questionnaire":g>=35?"probing_searches":"analyzing_topic":"analyzing_topic"},[null==e?void 0:e.stage,m,g]),b=Sa.indexOf(v),y=b>=0?b:0,k=pe(()=>{if(h)return null!==g?g:0;if(m)return 100;if(null!==g)return Math.max(5,Math.min(99,g));const e=Math.round(y/(Sa.length-1)*100);return Math.max(10,Math.min(95,e))},[g,y,m,h]),x=pe(()=>{var n,r,o,t;const i=(null!==(o=null!==(r=null!=a?a:null===(n=null==e?void 0:e.progress_data)||void 0===n?void 0:n.message)&&void 0!==r?r:null==e?void 0:e.message)&&void 0!==o?o:"").trim();if(!i)return u.fallbackMessage;const l=(null===(t=i.split("\n")[0])||void 0===t?void 0:t.trim())||i,s=$a[l];return s?s[c]:l},[null==e?void 0:e.message,c,u.fallbackMessage]),w=_a[v],S=x||w.description[c],_=h?u.failureTitle:m?u.readyTitle:u.preparingTitle,z=h?u.failureSubtitle:m?u.readySubtitle:u.preparingSubtitle,C=h?u.failedChip:m?u.readyChip:u.activeChip,$=h?"failed":m?"ready":"active",M=null!==(d=null!==(s=null!=i?i:null===(l=null==e?void 0:e.progress_data)||void 0===l?void 0:l.timestamp)&&void 0!==s?s:null==e?void 0:e.updated_at)&&void 0!==d?d:null,A=M?new Date(M).toLocaleString(n?"ja-JP":void 0):"—";return W(Aa,{"data-status":$,children:[W(ja,{children:[W("div",{children:[W(qa,{children:_}),W(Ia,{children:z})]}),W(Da,{"data-variant":$,children:C})]}),W(Ea,{children:[W(Oa,{children:[W("span",{children:u.progressLabel}),W("strong",{children:[Math.round(k),"%"]})]}),W(Na,{children:W(Ra,{"data-status":$,style:{width:`${Math.round(k)}%`}})})]}),W(Fa,{children:u.stagesLabel}),W(Ta,{children:Sa.map((e,n)=>{const r=_a[e],o=function(e,n,r){if(e<n)return"done";if(e===n)return r?"done":"current";return r?"done":"upcoming"}(n,y,m);return W(Pa,{"data-state":o,children:[W(La,{"data-state":o,children:r.icon({className:"icon"})}),W(Ha,{children:[W(Ua,{children:r.label[c]}),W(Ba,{children:r.description[c]})]})]},e)})}),W(Ja,{"data-status":$,children:[W(Va,{children:w.icon({className:"icon"})}),W(Qa,{children:[W(Wa,{children:w.label[c]}),W(Za,{children:S||u.fallbackMessage}),W(Ga,{children:[W(Ze,{size:14}),W("span",{children:[u.updatedAtLabel,": ",A]})]})]})]}),h&&W(Ka,{children:[W(pn,{size:18}),W("div",{children:[W("strong",{children:u.failureTitle}),W("p",{children:S})]})]})]})}const Aa=Re("div")`
   border: 1px solid var(--askdona-border);
   border-radius: 18px;
   background: var(--askdona-background);
@@ -1968,21 +1968,21 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   flex-direction: column;
   gap: 1.25rem;
   font-size: var(--rag-dr-font-body, 0.76rem);
-`,Aa=Re("div")`
+`,ja=Re("div")`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-`,ja=Re("h3")`
+`,qa=Re("h3")`
   margin: 0;
   font-size: var(--rag-dr-font-title, 0.92rem);
   font-weight: 600;
   color: var(--askdona-text);
-`,qa=Re("p")`
+`,Ia=Re("p")`
   margin: 0.2rem 0 0;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   color: var(--askdona-text-secondary);
-`,Ia=Re("span")`
+`,Da=Re("span")`
   align-self: flex-start;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
@@ -2010,11 +2010,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       rgba(var(--askdona-error-rgb, 239, 68, 68), 0.7)
     );
   }
-`,Da=Re("div")`
+`,Ea=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-`,Ea=Re("div")`
+`,Oa=Re("div")`
   display: flex;
   justify-content: space-between;
   font-size: var(--rag-dr-font-body, 0.76rem);
@@ -2024,13 +2024,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     color: var(--askdona-text);
     font-size: var(--rag-dr-font-heading, 0.88rem);
   }
-`,Oa=Re("div")`
+`,Na=Re("div")`
   position: relative;
   height: 8px;
   background: rgba(var(--askdona-primary-rgb, 37, 99, 235), 0.1);
   border-radius: 999px;
   overflow: hidden;
-`,Na=Re("div")`
+`,Ra=Re("div")`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -2046,19 +2046,19 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &[data-status='failed'] {
     background: var(--askdona-error, #dc2626);
   }
-`,Ra=Re("div")`
+`,Fa=Re("div")`
   font-size: var(--rag-dr-font-small, 0.7rem);
   font-weight: 600;
   color: var(--askdona-text-secondary);
   letter-spacing: 0.01em;
-`,Fa=Re("div")`
+`,Ta=Re("div")`
   display: grid;
   gap: 0.75rem;
 
   @media (min-width: 720px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-`,Ta=Re("div")`
+`,Pa=Re("div")`
   display: flex;
   gap: 0.75rem;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
@@ -2087,7 +2087,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 16px;
     height: 16px;
   }
-`,Pa=Re("div")`
+`,La=Re("div")`
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -2108,18 +2108,18 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: rgba(var(--askdona-primary-rgb, 37, 99, 235), 0.08);
     color: var(--askdona-text-secondary, #94a3b8);
   }
-`,La=Re("div")`
+`,Ha=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`,Ha=Re("div")`
+`,Ua=Re("div")`
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   font-weight: 600;
   color: var(--askdona-text);
-`,Ua=Re("div")`
+`,Ba=Re("div")`
   font-size: var(--rag-dr-font-small, 0.7rem);
   color: var(--askdona-text-secondary);
-`,Ba=Re("div")`
+`,Ja=Re("div")`
   display: flex;
   gap: 0.85rem;
   padding: 1rem;
@@ -2127,7 +2127,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   background: var(--askdona-surface, #ffffff);
   align-items: flex-start;
-`,Ja=Re("div")`
+`,Va=Re("div")`
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -2142,21 +2142,21 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 18px;
     height: 18px;
   }
-`,Va=Re("div")`
+`,Qa=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-`,Qa=Re("div")`
+`,Wa=Re("div")`
   font-weight: 600;
   font-size: var(--rag-dr-font-heading, 0.88rem);
   color: var(--askdona-text);
-`,Wa=Re("p")`
+`,Za=Re("p")`
   margin: 0;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   color: var(--askdona-text-secondary);
   line-height: 1.5;
   white-space: pre-line;
-`,Za=Re("div")`
+`,Ga=Re("div")`
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -2167,7 +2167,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 14px;
     height: 14px;
   }
-`,Ga=Re("div")`
+`,Ka=Re("div")`
   display: flex;
   gap: 0.75rem;
   padding: 0.85rem 1rem;
@@ -2186,7 +2186,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     font-size: var(--rag-dr-font-body, 0.76rem);
     color: var(--askdona-error, #dc2626);
   }
-`;function Ka(){try{const e={userAgent:navigator.userAgent||"",language:navigator.language||"",screenResolution:`${screen.width}x${screen.height}`,timezoneOffset:(new Date).getTimezoneOffset(),platform:navigator.platform||"",cookieEnabled:navigator.cookieEnabled,localStorageEnabled:(()=>{try{const e="__localStorage_test__";return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})()},n=document.createElement("canvas"),r=n.getContext("2d");let o="";r&&(n.width=200,n.height=50,r.textBaseline="alphabetic",r.fillStyle="#f60",r.fillRect(125,1,62,20),r.fillStyle="#069",r.font="11pt Arial",r.fillText("AskDona Browser Fingerprint 🔍",2,15),r.fillStyle="rgba(102, 204, 0, 0.7)",r.font="18pt Arial",r.fillText("Deep Research",4,45),o=n.toDataURL().substring(0,100));const t=[e.userAgent,e.language,e.screenResolution,e.timezoneOffset.toString(),e.platform,e.cookieEnabled.toString(),e.localStorageEnabled.toString(),o].join("|");let a=0;for(let e=0;e<t.length;e++){a=(a<<5)-a+t.charCodeAt(e),a&=a}return`fp_${Math.abs(a).toString(36).padStart(8,"0")+Date.now().toString(36).slice(-4)}`}catch(e){return`fp_${Math.random().toString(36).substring(2,15)}`}}class Ya{constructor(){this.browserFingerprint=this.getOrCreateFingerprint()}getOrCreateFingerprint(){const e="askdona_browser_fingerprint";try{let n=localStorage.getItem(e);return n||(n=Ka(),localStorage.setItem(e,n)),n}catch(e){return Ka()}}getBrowserFingerprint(){return this.browserFingerprint}checkLocalLimits(e,n){const r=[];let o,t=!0;for(const a of n){const n=this.checkSingleLocalLimit(e,a);r.push(n),!n.allowed&&t&&(t=!1,o=n.limitType)}return{allowed:t,blockedBy:o,localChecks:r}}checkSingleLocalLimit(e,n){const r=this.getLimitKey(n),o=`${Ya.STORAGE_PREFIX}${e}_${r}`;let t=this.getLimitData(o);new Date(t.resetTime)<=new Date&&(t=this.createNewLimitPeriod(n),this.saveLimitData(o,t));const a=t.count<n.limit;return{limitType:this.getLimitTypeString(n),allowed:a,currentCount:t.count,maxCount:n.limit,resetTime:new Date(t.resetTime)}}recordLocalUsage(e,n){for(const r of n){const n=this.getLimitKey(r),o=`${Ya.STORAGE_PREFIX}${e}_${n}`,t=this.getLimitData(o);t.count++,this.saveLimitData(o,t)}}getTodayUsage(e){const n=`${Ya.STORAGE_PREFIX}${e}_daily`,r=this.getLimitData(n);return new Date(r.resetTime)>new Date?r.count:0}clearLocalLimits(e){try{const n=[];for(let r=0;r<localStorage.length;r++){const o=localStorage.key(r);o&&o.startsWith(`${Ya.STORAGE_PREFIX}${e}_`)&&n.push(o)}n.forEach(e=>localStorage.removeItem(e))}catch(e){}}getLimitData(e){try{const n=localStorage.getItem(e);if(n)return JSON.parse(n)}catch(e){}return{count:0,resetTime:new Date(Date.now()+864e5).toISOString(),period:"daily"}}saveLimitData(e,n){try{localStorage.setItem(e,JSON.stringify(n))}catch(e){}}createNewLimitPeriod(e){return{count:0,resetTime:this.calculateNextLocalReset(e).toISOString(),period:this.getLimitKey(e)}}calculateNextLocalReset(e){const n=new Date,r=new Date(n);switch(e.period){case"daily":r.setDate(n.getDate()+1),r.setHours(0,0,0,0);break;case"weekly":const o=(8-n.getDay())%7||7;r.setDate(n.getDate()+o),r.setHours(0,0,0,0);break;case"monthly":r.setMonth(n.getMonth()+1,1),r.setHours(0,0,0,0);break;case"yearly":r.setFullYear(n.getFullYear()+1,0,1),r.setHours(0,0,0,0);break;default:e.customDays&&(r.setDate(n.getDate()+e.customDays),r.setHours(0,0,0,0))}return r}getLimitKey(e){return e.customDays?`custom_${e.customDays}d`:e.period}getLimitTypeString(e){return e.customDays?`custom-${e.customDays}d`:e.period}}Ya.STORAGE_PREFIX="askdona_browser_limit_";const Xa="askdona.ragDeepResearch",ei=(e,n)=>`${Xa}.${e}.${n}`,ni=e=>`${Xa}.${e}.__index__`,ri=e=>{let n=0;for(let r=0;r<e.length;r+=1)n=(n<<5)-n+e.charCodeAt(r),n|=0;return(n>>>0).toString(16)},oi=e=>{const n=(e=>{var n,r,o,t;const{version:a,chatflowId:i,sessionId:l,userQuestion:s,phase:d,questionnaireJson:c,questionnaireSignature:u,questionnaireSummary:f,finalReport:p,currentTask:g,lastUpdated:h}=e,m={version:a,chatflowId:i,sessionId:l,lastUpdated:h,phase:null!=d?d:null,userQuestion:null!=s?s:null,questionnaireJsonHash:c?ri(c):null,questionnaireSignature:null!=u?u:null,questionnaireSummary:f?{submittedAt:f.submittedAt,responseHash:ri(f.formattedMarkdown)}:null,finalReport:p?{createdAt:p.createdAt,completionMessage:null!==(n=p.completionMessage)&&void 0!==n?n:null,contentHash:ri(p.content),rawContentHash:ri(p.rawContent)}:null,currentTask:g?{id:g.id,status:g.status,stage:g.stage,progress:null!==(r=g.progress)&&void 0!==r?r:null,updated_at:g.updated_at,research_id:null!==(o=g.research_id)&&void 0!==o?o:null,questionnaire_signature:null!==(t=g.questionnaire_signature)&&void 0!==t?t:null}:null};return JSON.stringify(m)})(e);return ri(n)},ti=e=>{if("undefined"==typeof window)return[];const n=localStorage.getItem(ni(e));if(!n)return[];try{const r=JSON.parse(n);return Array.isArray(r)?r.filter(e=>"string"==typeof(null==e?void 0:e.sessionId)):(localStorage.removeItem(ni(e)),[])}catch(n){return localStorage.removeItem(ni(e)),[]}},ai=(e,n)=>{if("undefined"==typeof window)return;const r=ni(e);if(n.length)try{localStorage.setItem(r,JSON.stringify(n.slice(0,25)))}catch(e){}else localStorage.removeItem(r)},ii=(e,n)=>{if("undefined"==typeof window)return;const r=ti(e).filter(e=>e.sessionId!==n);ai(e,r)};function li(e,n){if("undefined"==typeof window)return null;const r=localStorage.getItem(ei(e,n));if(!r)return ii(e,n),null;try{const o=JSON.parse(r);if(!o)return null;if(1!==o.version)return localStorage.removeItem(ei(e,n)),ii(e,n),null;if(!o.integrity)return localStorage.removeItem(ei(e,n)),ii(e,n),null;const{integrity:t,...a}=o;return t!==oi(a)?(localStorage.removeItem(ei(e,n)),ii(e,n),null):o}catch(r){return localStorage.removeItem(ei(e,n)),ii(e,n),null}}function si(e,n,r){if("undefined"==typeof window)return;const o=ei(e,n);if(!r)return localStorage.removeItem(o),void ii(e,n);try{const n={...r,lastUpdated:(new Date).toISOString()},t=oi(n),a={...n,integrity:t};localStorage.setItem(o,JSON.stringify(a)),((e,n)=>{var r,o,t;if("undefined"==typeof window)return;const a=ti(e).filter(e=>e.sessionId!==n.sessionId),i=[{sessionId:n.sessionId,lastUpdated:n.lastUpdated,userQuestion:n.userQuestion,phase:null!==(r=n.phase)&&void 0!==r?r:null,finalReportCreatedAt:null!==(t=null===(o=n.finalReport)||void 0===o?void 0:o.createdAt)&&void 0!==t?t:null,hasFinalReport:Boolean(n.finalReport)},...a].sort((e,n)=>e.lastUpdated||n.lastUpdated?e.lastUpdated?n.lastUpdated?n.lastUpdated.localeCompare(e.lastUpdated):-1:1:0);ai(e,i)})(e,n)}catch(e){}}function di(e,n){const r=li(e,n);return r?r.sessionId!==n?null:r:null}function ci(e,n){if("undefined"==typeof window)return;if(n)return localStorage.removeItem(ei(e,n)),void ii(e,n);ti(e).forEach(n=>{localStorage.removeItem(ei(e,n.sessionId))}),localStorage.removeItem(ni(e))}function ui(e){return ti(e).map(e=>{var n,r;return{sessionId:e.sessionId,userQuestion:e.userQuestion,lastUpdated:e.lastUpdated,finalReportCreatedAt:null!==(n=e.finalReportCreatedAt)&&void 0!==n?n:null,hasFinalReport:Boolean(e.hasFinalReport),phase:null!==(r=e.phase)&&void 0!==r?r:null}})}const fi="DEEP_RESEARCH:COMPLETED",pi="***DEEP_RESEARCH_COMPLETION_CONTAINER_START***",gi="***DEEP_RESEARCH_COMPLETION_CONTAINER_END***",hi="\x3c!-- VISUALIZATION_DATA_START --\x3e",mi="\x3c!-- VISUALIZATION_DATA_END --\x3e",vi="***DEEP_RESEARCH_QUESTIONNAIRE_START***",bi="***DEEP_RESEARCH_QUESTIONNAIRE_END***",yi="DEEP_RESEARCH:FOLLOWUP_QUESTIONS",ki=32,xi=["pending","in-progress","questionnaire_pending","questionnaire_ready"],wi=new Set(["pending","in-progress","questionnaire_pending"]),Si=new Set(["pending","in-progress"]),_i=new Set(["questionnaire_pending","questionnaire_ready"]),zi=new Set(["follow-up","analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_pending","questionnaire_ready","questionnaire_generation_failed"]),Ci=new Set(["follow-up","analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_pending"]),$i=Re("div")`
+`;function Ya(){try{const e={userAgent:navigator.userAgent||"",language:navigator.language||"",screenResolution:`${screen.width}x${screen.height}`,timezoneOffset:(new Date).getTimezoneOffset(),platform:navigator.platform||"",cookieEnabled:navigator.cookieEnabled,localStorageEnabled:(()=>{try{const e="__localStorage_test__";return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})()},n=document.createElement("canvas"),r=n.getContext("2d");let o="";r&&(n.width=200,n.height=50,r.textBaseline="alphabetic",r.fillStyle="#f60",r.fillRect(125,1,62,20),r.fillStyle="#069",r.font="11pt Arial",r.fillText("AskDona Browser Fingerprint 🔍",2,15),r.fillStyle="rgba(102, 204, 0, 0.7)",r.font="18pt Arial",r.fillText("Deep Research",4,45),o=n.toDataURL().substring(0,100));const t=[e.userAgent,e.language,e.screenResolution,e.timezoneOffset.toString(),e.platform,e.cookieEnabled.toString(),e.localStorageEnabled.toString(),o].join("|");let a=0;for(let e=0;e<t.length;e++){a=(a<<5)-a+t.charCodeAt(e),a&=a}return`fp_${Math.abs(a).toString(36).padStart(8,"0")+Date.now().toString(36).slice(-4)}`}catch(e){return`fp_${Math.random().toString(36).substring(2,15)}`}}class Xa{constructor(){this.browserFingerprint=this.getOrCreateFingerprint()}getOrCreateFingerprint(){const e="askdona_browser_fingerprint";try{let n=localStorage.getItem(e);return n||(n=Ya(),localStorage.setItem(e,n)),n}catch(e){return Ya()}}getBrowserFingerprint(){return this.browserFingerprint}checkLocalLimits(e,n){const r=[];let o,t=!0;for(const a of n){const n=this.checkSingleLocalLimit(e,a);r.push(n),!n.allowed&&t&&(t=!1,o=n.limitType)}return{allowed:t,blockedBy:o,localChecks:r}}checkSingleLocalLimit(e,n){const r=this.getLimitKey(n),o=`${Xa.STORAGE_PREFIX}${e}_${r}`;let t=this.getLimitData(o);new Date(t.resetTime)<=new Date&&(t=this.createNewLimitPeriod(n),this.saveLimitData(o,t));const a=t.count<n.limit;return{limitType:this.getLimitTypeString(n),allowed:a,currentCount:t.count,maxCount:n.limit,resetTime:new Date(t.resetTime)}}recordLocalUsage(e,n){for(const r of n){const n=this.getLimitKey(r),o=`${Xa.STORAGE_PREFIX}${e}_${n}`,t=this.getLimitData(o);t.count++,this.saveLimitData(o,t)}}getTodayUsage(e){const n=`${Xa.STORAGE_PREFIX}${e}_daily`,r=this.getLimitData(n);return new Date(r.resetTime)>new Date?r.count:0}clearLocalLimits(e){try{const n=[];for(let r=0;r<localStorage.length;r++){const o=localStorage.key(r);o&&o.startsWith(`${Xa.STORAGE_PREFIX}${e}_`)&&n.push(o)}n.forEach(e=>localStorage.removeItem(e))}catch(e){}}getLimitData(e){try{const n=localStorage.getItem(e);if(n)return JSON.parse(n)}catch(e){}return{count:0,resetTime:new Date(Date.now()+864e5).toISOString(),period:"daily"}}saveLimitData(e,n){try{localStorage.setItem(e,JSON.stringify(n))}catch(e){}}createNewLimitPeriod(e){return{count:0,resetTime:this.calculateNextLocalReset(e).toISOString(),period:this.getLimitKey(e)}}calculateNextLocalReset(e){const n=new Date,r=new Date(n);switch(e.period){case"daily":r.setDate(n.getDate()+1),r.setHours(0,0,0,0);break;case"weekly":const o=(8-n.getDay())%7||7;r.setDate(n.getDate()+o),r.setHours(0,0,0,0);break;case"monthly":r.setMonth(n.getMonth()+1,1),r.setHours(0,0,0,0);break;case"yearly":r.setFullYear(n.getFullYear()+1,0,1),r.setHours(0,0,0,0);break;default:e.customDays&&(r.setDate(n.getDate()+e.customDays),r.setHours(0,0,0,0))}return r}getLimitKey(e){return e.customDays?`custom_${e.customDays}d`:e.period}getLimitTypeString(e){return e.customDays?`custom-${e.customDays}d`:e.period}}Xa.STORAGE_PREFIX="askdona_browser_limit_";const ei="askdona.ragDeepResearch",ni=(e,n)=>`${ei}.${e}.${n}`,ri=e=>`${ei}.${e}.__index__`,oi=e=>{let n=0;for(let r=0;r<e.length;r+=1)n=(n<<5)-n+e.charCodeAt(r),n|=0;return(n>>>0).toString(16)},ti=e=>{const n=(e=>{var n,r,o,t;const{version:a,chatflowId:i,sessionId:l,userQuestion:s,phase:d,questionnaireJson:c,questionnaireSignature:u,questionnaireSummary:f,finalReport:p,currentTask:g,lastUpdated:h}=e,m={version:a,chatflowId:i,sessionId:l,lastUpdated:h,phase:null!=d?d:null,userQuestion:null!=s?s:null,questionnaireJsonHash:c?oi(c):null,questionnaireSignature:null!=u?u:null,questionnaireSummary:f?{submittedAt:f.submittedAt,responseHash:oi(f.formattedMarkdown)}:null,finalReport:p?{createdAt:p.createdAt,completionMessage:null!==(n=p.completionMessage)&&void 0!==n?n:null,contentHash:oi(p.content),rawContentHash:oi(p.rawContent)}:null,currentTask:g?{id:g.id,status:g.status,stage:g.stage,progress:null!==(r=g.progress)&&void 0!==r?r:null,updated_at:g.updated_at,research_id:null!==(o=g.research_id)&&void 0!==o?o:null,questionnaire_signature:null!==(t=g.questionnaire_signature)&&void 0!==t?t:null}:null};return JSON.stringify(m)})(e);return oi(n)},ai=e=>{if("undefined"==typeof window)return[];const n=localStorage.getItem(ri(e));if(!n)return[];try{const r=JSON.parse(n);return Array.isArray(r)?r.filter(e=>"string"==typeof(null==e?void 0:e.sessionId)):(localStorage.removeItem(ri(e)),[])}catch(n){return localStorage.removeItem(ri(e)),[]}},ii=(e,n)=>{if("undefined"==typeof window)return;const r=ri(e);if(n.length)try{localStorage.setItem(r,JSON.stringify(n.slice(0,25)))}catch(e){}else localStorage.removeItem(r)},li=(e,n)=>{if("undefined"==typeof window)return;const r=ai(e).filter(e=>e.sessionId!==n);ii(e,r)};function si(e,n){if("undefined"==typeof window)return null;const r=localStorage.getItem(ni(e,n));if(!r)return li(e,n),null;try{const o=JSON.parse(r);if(!o)return null;if(1!==o.version)return localStorage.removeItem(ni(e,n)),li(e,n),null;if(!o.integrity)return localStorage.removeItem(ni(e,n)),li(e,n),null;const{integrity:t,...a}=o;return t!==ti(a)?(localStorage.removeItem(ni(e,n)),li(e,n),null):o}catch(r){return localStorage.removeItem(ni(e,n)),li(e,n),null}}function di(e,n,r){if("undefined"==typeof window)return;const o=ni(e,n);if(!r)return localStorage.removeItem(o),void li(e,n);try{const n={...r,lastUpdated:(new Date).toISOString()},t=ti(n),a={...n,integrity:t};localStorage.setItem(o,JSON.stringify(a)),((e,n)=>{var r,o,t;if("undefined"==typeof window)return;const a=ai(e).filter(e=>e.sessionId!==n.sessionId),i=[{sessionId:n.sessionId,lastUpdated:n.lastUpdated,userQuestion:n.userQuestion,phase:null!==(r=n.phase)&&void 0!==r?r:null,finalReportCreatedAt:null!==(t=null===(o=n.finalReport)||void 0===o?void 0:o.createdAt)&&void 0!==t?t:null,hasFinalReport:Boolean(n.finalReport)},...a].sort((e,n)=>e.lastUpdated||n.lastUpdated?e.lastUpdated?n.lastUpdated?n.lastUpdated.localeCompare(e.lastUpdated):-1:1:0);ii(e,i)})(e,n)}catch(e){}}function ci(e,n){const r=si(e,n);return r?r.sessionId!==n?null:r:null}function ui(e,n){if("undefined"==typeof window)return;if(n)return localStorage.removeItem(ni(e,n)),void li(e,n);ai(e).forEach(n=>{localStorage.removeItem(ni(e,n.sessionId))}),localStorage.removeItem(ri(e))}function fi(e){return ai(e).map(e=>{var n,r;return{sessionId:e.sessionId,userQuestion:e.userQuestion,lastUpdated:e.lastUpdated,finalReportCreatedAt:null!==(n=e.finalReportCreatedAt)&&void 0!==n?n:null,hasFinalReport:Boolean(e.hasFinalReport),phase:null!==(r=e.phase)&&void 0!==r?r:null}})}const pi="DEEP_RESEARCH:COMPLETED",gi="***DEEP_RESEARCH_COMPLETION_CONTAINER_START***",hi="***DEEP_RESEARCH_COMPLETION_CONTAINER_END***",mi="\x3c!-- VISUALIZATION_DATA_START --\x3e",vi="\x3c!-- VISUALIZATION_DATA_END --\x3e",bi="***DEEP_RESEARCH_QUESTIONNAIRE_START***",yi="***DEEP_RESEARCH_QUESTIONNAIRE_END***",ki="DEEP_RESEARCH:FOLLOWUP_QUESTIONS",xi=32,wi=["pending","in-progress","questionnaire_pending","questionnaire_ready"],Si=new Set(["pending","in-progress","questionnaire_pending"]),_i=new Set(["pending","in-progress"]),zi=new Set(["questionnaire_pending","questionnaire_ready"]),Ci=new Set(["follow-up","analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_pending","questionnaire_ready","questionnaire_generation_failed"]),$i=new Set(["follow-up","analyzing_topic","probing_searches","preparing_questionnaire","questionnaire_pending"]),Mi=Re("div")`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -2198,43 +2198,43 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   --rag-dr-font-small: 0.7rem;
   --rag-dr-font-xs: 0.62rem;
   --rag-dr-font-progress: 1.6rem;
-`,Mi=Re("div")`
+`,Ai=Re("div")`
   flex: 1;
   overflow-y: auto;
   padding: 1rem;
-`,Ai=Re("div")`
-  margin-bottom: 2rem;
 `,ji=Re("div")`
+  margin-bottom: 2rem;
+`,qi=Re("div")`
   background: var(--askdona-surface, #ffffff);
   border-radius: 12px;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   padding: 1.5rem;
   margin-bottom: 2rem;
-`,qi=Re("p")`
+`,Ii=Re("p")`
   margin: 0.4rem 0 0;
   color: var(--askdona-text-secondary, #6b7280);
   font-size: var(--rag-dr-font-subheading, 0.8rem);
-`,Ii=Re("div")`
+`,Di=Re("div")`
   padding: 1rem;
   border: 1px dashed var(--askdona-border, rgba(71, 85, 105, 0.35));
   border-radius: 8px;
   color: var(--askdona-text-secondary, #6b7280);
   text-align: center;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
-`,Di=Re("p")`
-  margin-top: 0.75rem;
-  font-size: var(--rag-dr-font-body, 0.76rem);
-  color: var(--askdona-text-secondary, #6b7280);
 `,Ei=Re("p")`
   margin-top: 0.75rem;
   font-size: var(--rag-dr-font-body, 0.76rem);
+  color: var(--askdona-text-secondary, #6b7280);
+`,Oi=Re("p")`
+  margin-top: 0.75rem;
+  font-size: var(--rag-dr-font-body, 0.76rem);
   color: var(--askdona-error, #dc2626);
-`;function Oi(e,n,r){return!(!e||!_i.has(e))||(!(!n||!zi.has(n))||"questionnaire"===r)}const Ni={planning:"research-outline",outline:"research-outline","research-plan":"research-outline",brainstorming:"research-outline","collecting-sources":"search",collecting_sources:"search",sourcing:"search","source-collection":"search","source-analysis":"extraction","analyzing-sources":"extraction",analysis:"extraction","report-drafting":"synthesis","drafting-report":"synthesis","finalizing-report":"synthesis"};function Ri(e){if("string"!=typeof e)return null;const n=e.trim();if(!n)return null;const r=Ni[n.toLowerCase()];return null!=r?r:n}function Fi(e){const n=function(e){if("string"!=typeof e)return null;const n=e.trim();return n?n.toLowerCase():null}(e);return!!n&&Ci.has(n)}function Ti(e){var n,r,o;if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.progress)&&void 0!==n?n:e.value)&&void 0!==r?r:e.percentage)&&void 0!==o?o:null;if(void 0!==t)return Ti(t)}return null}function Pi(e){return"number"==typeof e&&Number.isFinite(e)?e>=100?100:e<=0&&e<.5?0:e:null}function Li(e){if(!e)return null;const n=Pi(Ti(e.progress));return null!==n?n:e.progress_data?Pi(Ti(e.progress_data.progress)):null}const Hi=Re("div")`
+`;function Ni(e,n,r){return!(!e||!zi.has(e))||(!(!n||!Ci.has(n))||"questionnaire"===r)}const Ri={planning:"research-outline",outline:"research-outline","research-plan":"research-outline",brainstorming:"research-outline","collecting-sources":"search",collecting_sources:"search",sourcing:"search","source-collection":"search","source-analysis":"extraction","analyzing-sources":"extraction",analysis:"extraction","report-drafting":"synthesis","drafting-report":"synthesis","finalizing-report":"synthesis"};function Fi(e){if("string"!=typeof e)return null;const n=e.trim();if(!n)return null;const r=Ri[n.toLowerCase()];return null!=r?r:n}function Ti(e){const n=function(e){if("string"!=typeof e)return null;const n=e.trim();return n?n.toLowerCase():null}(e);return!!n&&$i.has(n)}function Pi(e){var n,r,o;if("number"==typeof e&&Number.isFinite(e))return e;if("string"==typeof e){const n=e.trim();if(!n)return null;const r=Number(n);return Number.isFinite(r)?r:null}if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.progress)&&void 0!==n?n:e.value)&&void 0!==r?r:e.percentage)&&void 0!==o?o:null;if(void 0!==t)return Pi(t)}return null}function Li(e){return"number"==typeof e&&Number.isFinite(e)?e>=100?100:e<=0&&e<.5?0:e:null}function Hi(e){if(!e)return null;const n=Li(Pi(e.progress));return null!==n?n:e.progress_data?Li(Pi(e.progress_data.progress)):null}const Ui=Re("div")`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
-`,Ui=Re("button")`
+`,Bi=Re("button")`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -2269,16 +2269,16 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.6;
     cursor: not-allowed;
   }
-`;function Bi(e){return e.replace(/,(?=\s*?[}\]])/g,"").trim()}function Ji(e){if(!e)return[];let n=e;if("string"==typeof n){const e=n.trim();if(!e)return[];try{n=JSON.parse(e)}catch(e){return[]}}return Array.isArray(n)?n.map(e=>{var n,r,o;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.prompt)&&void 0!==n?n:e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:"";return"string"==typeof t?t.trim():""}return""}).filter(e=>e.length>0):n&&"object"==typeof n&&Array.isArray(n.questions)?n.questions.map(e=>{var n,r,o;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.prompt)&&void 0!==n?n:e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:"";return"string"==typeof t?t.trim():""}return""}).filter(e=>e.length>0):[]}function Vi(e){if(!e)return null;if(e.includes(vi)){const n=e.split(vi)[1];if(!n)return null;const r=Bi(n.includes(bi)?n.split(bi)[0]:n);if(!r)return null;try{const e=JSON.parse(r);return JSON.stringify(e,null,2)}catch(e){return r}}if(e.includes(yi)){const n=function(e){const n=e.split(/\r?\n/).map(e=>e.trim()),r=[],o=[];let t=!1;if(n.forEach(e=>{if(!e||e===yi)return;const n=e.match(/^\d+[\.\)]\s*(.+)$/);n?(t=!0,o.push(n[1].trim())):t||r.push(e)}),!o.length)return null;const a={title:"フォローアップ質問",introduction:r.join(" ").trim()||"以下の質問にご回答ください。",estimatedCompletionTime:"5分",questions:o.map((e,n)=>({id:`legacy_follow_up_${n+1}`,text:e,type:"textarea",required:!1}))};return JSON.stringify(a,null,2)}(e);if(n)return n}const n=e.indexOf("{"),r=e.lastIndexOf("}");if(-1!==n&&-1!==r&&n<r){const o=Bi(e.slice(n,r+1));try{const e=JSON.parse(o);return JSON.stringify(e,null,2)}catch(e){return o||null}}return null}const Qi=Re("div")`
+`;function Ji(e){return e.replace(/,(?=\s*?[}\]])/g,"").trim()}function Vi(e){if(!e)return[];let n=e;if("string"==typeof n){const e=n.trim();if(!e)return[];try{n=JSON.parse(e)}catch(e){return[]}}return Array.isArray(n)?n.map(e=>{var n,r,o;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.prompt)&&void 0!==n?n:e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:"";return"string"==typeof t?t.trim():""}return""}).filter(e=>e.length>0):n&&"object"==typeof n&&Array.isArray(n.questions)?n.questions.map(e=>{var n,r,o;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const t=null!==(o=null!==(r=null!==(n=e.prompt)&&void 0!==n?n:e.text)&&void 0!==r?r:e.question)&&void 0!==o?o:"";return"string"==typeof t?t.trim():""}return""}).filter(e=>e.length>0):[]}function Qi(e){if(!e)return null;if(e.includes(bi)){const n=e.split(bi)[1];if(!n)return null;const r=Ji(n.includes(yi)?n.split(yi)[0]:n);if(!r)return null;try{const e=JSON.parse(r);return JSON.stringify(e,null,2)}catch(e){return r}}if(e.includes(ki)){const n=function(e){const n=e.split(/\r?\n/).map(e=>e.trim()),r=[],o=[];let t=!1;if(n.forEach(e=>{if(!e||e===ki)return;const n=e.match(/^\d+[\.\)]\s*(.+)$/);n?(t=!0,o.push(n[1].trim())):t||r.push(e)}),!o.length)return null;const a={title:"フォローアップ質問",introduction:r.join(" ").trim()||"以下の質問にご回答ください。",estimatedCompletionTime:"5分",questions:o.map((e,n)=>({id:`legacy_follow_up_${n+1}`,text:e,type:"textarea",required:!1}))};return JSON.stringify(a,null,2)}(e);if(n)return n}const n=e.indexOf("{"),r=e.lastIndexOf("}");if(-1!==n&&-1!==r&&n<r){const o=Ji(e.slice(n,r+1));try{const e=JSON.parse(o);return JSON.stringify(e,null,2)}catch(e){return o||null}}return null}const Wi=Re("div")`
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1.5rem 0.25rem;
   border-top: 1px solid var(--border-light);
-`,Wi=Re("div")`
+`,Zi=Re("div")`
   display: flex;
   gap: 0.5rem;
   align-items: center;
-`,Zi=Re("button")`
+`,Gi=Re("button")`
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -2296,17 +2296,17 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   }
 
   ${e=>e.active&&"\n    &::after {\n      content: '';\n      position: absolute;\n      bottom: -0.35rem;\n      left: 0;\n      right: 0;\n      height: 2px;\n      background: var(--askdona-tab-accent, var(--askdona-primary));\n    }\n  "}
-`,Gi=Re("div")`
+`,Ki=Re("div")`
   position: relative;
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--askdona-border);
   flex-shrink: 0;
   background: var(--askdona-surface, #ffffff);
-`,Ki=Re("div")`
+`,Yi=Re("div")`
   position: relative;
   display: flex;
   flex-direction: column;
-`,Yi=Re("div")`
+`,Xi=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -2320,18 +2320,18 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     border-color: var(--askdona-primary);
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--askdona-primary) 15%, transparent);
   }
-`,Xi=Re("div")`
+`,el=Re("div")`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-`,el=Re("div")`
+`,nl=Re("div")`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 0.5rem;
   width: 100%;
-`,nl=Re("textarea")`
+`,rl=Re("textarea")`
   flex: 1;
   width: auto;
   padding: 0 0.5rem;
@@ -2342,8 +2342,8 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   resize: none;
   outline: none;
-  min-height: ${ki}px;
-  line-height: ${ki}px;
+  min-height: ${xi}px;
+  line-height: ${xi}px;
   overflow-y: hidden;
   transition: color 0.2s ease;
 
@@ -2355,7 +2355,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 0.5;
     cursor: not-allowed;
   }
-`,rl=Re("button")`
+`,ol=Re("button")`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -2382,7 +2382,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: var(--askdona-primary-dark);
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--askdona-primary) 20%, transparent);
   }
-`,ol=Re("div")`
+`,tl=Re("div")`
   width: 16px;
   height: 16px;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -2395,7 +2395,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
       transform: rotate(360deg);
     }
   }
-`,tl=Re("div")`
+`,al=Re("div")`
   color: var(--askdona-error, #ef4444);
   background: rgba(var(--askdona-error-rgb, 239, 68, 68), 0.1);
   border: 1px solid rgba(var(--askdona-error-rgb, 239, 68, 68), 0.25);
@@ -2403,7 +2403,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   padding: 1rem;
   margin-bottom: 1rem;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
-`,al=Re("div")`
+`,il=Re("div")`
   margin-top: 1.5rem;
   padding: 1.5rem;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
@@ -2412,13 +2412,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-`,il=Re("div")`
+`,ll=Re("div")`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-`,ll=Re("div")`
+`,sl=Re("div")`
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
@@ -2428,17 +2428,17 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     margin: 0;
     font-size: var(--rag-dr-font-heading, 0.88rem);
   }
-`,sl=Re("div")`
+`,dl=Re("div")`
   font-size: var(--rag-dr-font-small, 0.7rem);
   color: var(--askdona-text-secondary, #64748b);
   display: flex;
   gap: 0.5rem;
   align-items: center;
-`,dl=Re("div")`
+`,cl=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-`,cl=Re("div")`
+`,ul=Re("div")`
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   border-radius: 12px;
   background: var(--askdona-surface, #ffffff);
@@ -2446,16 +2446,16 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`,ul=Re("div")`
+`,fl=Re("div")`
   font-weight: 600;
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   color: var(--askdona-text, #0f172a);
-`,fl=Re("div")`
+`,pl=Re("div")`
   font-size: var(--rag-dr-font-body, 0.76rem);
   color: var(--askdona-text-secondary, #475569);
   line-height: 1.6;
   white-space: pre-wrap;
-`,pl=Re("ol")`
+`,gl=Re("ol")`
   margin: 0;
   padding-left: 1.25rem;
   color: var(--askdona-text-secondary, #475569);
@@ -2465,7 +2465,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   li + li {
     margin-top: 0.25rem;
   }
-`,gl=Re("div")`
+`,hl=Re("div")`
   font-size: var(--rag-dr-font-body, 0.76rem);
   color: var(--askdona-text-secondary, #475569);
   line-height: 1.6;
@@ -2481,7 +2481,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   & > :first-child {
     margin-top: 0;
   }
-`,hl=Re("div")`
+`,ml=Re("div")`
   margin-top: 0.5rem;
   display: inline-flex;
   align-items: center;
@@ -2492,13 +2492,13 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   border: 1px solid var(--askdona-border);
   color: var(--askdona-text-secondary);
   background: var(--askdona-background);
-`,ml=Re("span")`
+`,vl=Re("span")`
   width: 0.35rem;
   height: 0.35rem;
   border-radius: 999px;
   background: var(--askdona-primary);
   display: inline-block;
-`,vl=Re("div")`
+`,bl=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -2506,11 +2506,11 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   border-radius: 16px;
   border: 1px solid var(--askdona-border, rgba(15, 23, 42, 0.12));
   background: rgba(var(--askdona-primary-rgb, 16, 49, 111), 0.06);
-`,bl=Re("div")`
+`,yl=Re("div")`
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-`,yl=Re("div")`
+`,kl=Re("div")`
   width: 48px;
   height: 48px;
   border-radius: 14px;
@@ -2525,20 +2525,20 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 22px;
     height: 22px;
   }
-`,kl=Re("div")`
+`,xl=Re("div")`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-`,xl=Re("div")`
+`,wl=Re("div")`
   font-size: var(--rag-dr-font-subheading, 0.8rem);
   font-weight: 600;
   color: var(--askdona-text, #0f172a);
-`,wl=Re("p")`
+`,Sl=Re("p")`
   margin: 0;
   font-size: var(--rag-dr-font-small, 0.7rem);
   color: var(--askdona-text-secondary, #64748b);
   line-height: 1.5;
-`,Sl=Re("div")`
+`,_l=Re("div")`
   color: var(--askdona-text, #0f172a);
   line-height: 1.6;
   font-size: var(--rag-dr-font-body, 0.76rem);
@@ -2567,7 +2567,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   & > :first-child {
     margin-top: 0;
   }
-`,_l=Re("div")`
+`,zl=Re("div")`
   padding: 1rem;
   border-radius: 10px;
   background: linear-gradient(
@@ -2580,7 +2580,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   gap: 0.75rem;
   align-items: flex-start;
   color: var(--askdona-text, #0f172a);
-`,zl=Re("div")`
+`,Cl=Re("div")`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -2590,7 +2590,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   justify-content: center;
   font-size: var(--rag-dr-font-title, 0.92rem);
   flex-shrink: 0;
-`,Cl=Re("div")`
+`,$l=Re("div")`
   font-size: var(--rag-dr-font-small, 0.7rem);
   line-height: 1.4;
   color: var(--askdona-text, #0f172a);
@@ -2600,14 +2600,14 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     font-size: var(--rag-dr-font-subheading, 0.8rem);
     margin-bottom: 0.15rem;
   }
-`;function $l({chatFlowId:e,sessionId:n,messages:r,onModeSwitch:o,currentMode:t,onSendMessage:a,baseUrl:i,config:l}){var s,d,c,u,f,p,g,h,m,v,b,y,x,w,S,_,z,C,$,M,A;const j=!!l.debug,[q]=de(()=>{if("undefined"==typeof window)return null;try{return function(e){const n=ti(e);return n.length?li(e,n[0].sessionId):null}(e)}catch(e){return null}}),[I,D]=de("execution"===(null==(E=q)?void 0:E.phase)||"questionnaire"===(null==E?void 0:E.phase)?E.phase:"input");var E;const[O,N]=de(null!==(s=null==q?void 0:q.userQuestion)&&void 0!==s?s:""),[R,F]=de(void 0!==(null==q?void 0:q.currentTask)?q.currentTask:null),T=fe(void 0!==(null==q?void 0:q.currentTask)?q.currentTask:null),[,P]=de(null!==(c=null===(d=null==q?void 0:q.currentTask)||void 0===d?void 0:d.id)&&void 0!==c?c:null),[L,H]=de(null),[U,J]=de(!1),[V,Q]=de(!1),[Z,G]=de(null!==(u=null==q?void 0:q.questionnaireJson)&&void 0!==u?u:""),[K,Y]=de(null),[X,ee]=de(!1),ne=void 0===(null==q?void 0:q.questionnaireSignature)?null:null!==(f=q.questionnaireSignature)&&void 0!==f?f:null,[re,oe]=de(ne),[te,ae]=de(null!==(p=null==q?void 0:q.questionnaireSummary)&&void 0!==p?p:null),[ie,le]=de(null!==(g=null==q?void 0:q.finalReport)&&void 0!==g?g:null),[se,ue]=de(Boolean(null==q?void 0:q.finalReport)),pe=fe(!1),he=fe(null),me=fe(new Ya),[ve,be]=de(null),ye=fe(null),ke=fe(r),xe=fe(!1),[we,Se]=de(()=>"undefined"==typeof window?[]:ui(e)),[_e,ze]=de(null),[Ce,$e]=de(()=>{var n,r;if("undefined"==typeof window)return null;return null!==(r=null===(n=ui(e)[0])||void 0===n?void 0:n.sessionId)&&void 0!==r?r:null}),[Me,Ae]=de(!1),[je,qe]=de(!1),[Ie,De]=de(null),[Ee,Oe]=de(null),[Ne,Re]=de(null),[Fe,Te]=de(null),[Pe,Le]=de(null),[He,Ue]=de(null),[Je,Ve]=de(null),[Qe,We]=de(null),[Ze,Ge]=de(null),[Ke,Ye]=de(null);ce(()=>{},[R]),ce(()=>{},[Ie,j]),ce(()=>{},[He,j]);const en=ge(()=>{if("undefined"!=typeof window)try{Se(ui(e))}catch(e){}},[e]);ce(()=>{ke.current=r},[r]),ce(()=>{T.current=R},[R]),ce(()=>{en()},[en]),ce(()=>{0===we.length&&Ae(!1)},[we.length]),ce(()=>{var e,n,r,o,t,a,i,l,s,d;if(!R)return De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),void Ye(null);const c=Li(R),u=Ri(null!==(r=null!==(n=null===(e=R.progress_data)||void 0===e?void 0:e.stage)&&void 0!==n?n:R.stage)&&void 0!==r?r:null),f=null!==(o=R.status)&&void 0!==o?o:null,p=null!==(i=null!==(t=R.message)&&void 0!==t?t:null===(a=R.progress_data)||void 0===a?void 0:a.message)&&void 0!==i?i:null,g=null!==(d=null!==(s=null===(l=R.progress_data)||void 0===l?void 0:l.timestamp)&&void 0!==s?s:R.updated_at)&&void 0!==d?d:null;Oi(f,u,I)?(De(c),Oe(u),Re(f),Te(p),Le(g)):(Ue(c),Ve(u),We(f),Ge(p),Ye(g))},[R,I]);const{getValidToken:nn,isInitializing:rn,session:on,initializeSession:tn,clearSession:an}=function(e){const[n,r]=de(null),[o,t]=de(!0),[a,i]=de(null),l=ge(e=>{try{const n=e.split(".");return 3!==n.length?null:JSON.parse(atob(n[1]))}catch(e){return null}},[]),s=ge(async()=>{i(null);try{const n=window.location.hostname+(window.location.port?":"+window.location.port:""),o=await fetch(`${B}/session/init/${e}`,{method:"POST",headers:{"Content-Type":"application/json",Origin:window.location.origin,"X-Widget-Version":"1.0.0"},body:JSON.stringify({domain:n,timestamp:Date.now(),userAgent:navigator.userAgent})});if(!o.ok){const e=await o.json().catch(()=>({message:"Session initialization failed"}));throw new Error(e.message||`HTTP ${o.status}`)}const{secureSessionToken:t}=await o.json();if(!t)throw new Error("No session token received");const a=l(t);if(!a)throw new Error("Invalid session token format");const i=`askdona_secure_session_${e}`;localStorage.setItem(i,t);const s={token:t,isValid:!0,expiresAt:1e3*a.exp,sessionId:a.sessionId,chatflowId:a.chatflowId};return r(s),t}catch(e){throw i(e.message),e}},[e,l]),d=ge(async()=>{t(!0),i(null);try{const n=`askdona_secure_session_${e}`,o=localStorage.getItem(n);if(o){const t=l(o),a=Date.now();if(t&&1e3*t.exp>a&&t.chatflowId===e){const e={token:o,isValid:!0,expiresAt:1e3*t.exp,sessionId:t.sessionId,chatflowId:t.chatflowId};return void r(e)}localStorage.removeItem(n)}await s()}catch(e){i(e.message)}finally{t(!1)}},[e,l,s]),c=ge(async()=>{if(n&&n.expiresAt-Date.now()<18e5)try{await s()}catch(e){}},[n,s]),u=ge(async()=>{if(!n||!n.isValid)return null;if(n.expiresAt<=Date.now())try{return await s(),(null==n?void 0:n.token)||null}catch(e){return null}return await c(),n.token},[n,s,c]),f=ge(()=>{const n=`askdona_secure_session_${e}`;localStorage.removeItem(n),r(null),i(null)},[e]);return ce(()=>{e&&d()},[e,d]),ce(()=>{if(!n)return;const e=setInterval(()=>{c()},3e5);return()=>clearInterval(e)},[n,c]),{session:n,isInitializing:o,error:a,initializeSession:s,getValidToken:u,clearSession:f,refreshSessionIfNeeded:c}}(e),ln=ge(async(n=!1)=>{try{const r=ye.current;if(!n&&r&&Date.now()-r.timestamp<3e4)return be(r.data),r.data;const o=await nn();if(!o)return null;const t=me.current.getBrowserFingerprint(),a=await fetch(`${B}/chat/${e}/deep-research/config`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({secureSessionToken:o,browserFingerprint:t})}),i=await a.json();if(!a.ok)throw new Error((null==i?void 0:i.error)||`Failed to load Deep Research config (${a.status})`);return ye.current={timestamp:Date.now(),data:i},be(i),i}catch(e){return null}},[e,nn]),sn=ge(e=>{var n,r,o,t,a;if(!e)return!1;const i=T.current,l=null!==(n=e.task)&&void 0!==n?n:null,s=function(e,n,r){const o=Pi(Ti(null==e?void 0:e.progress));if(null!==o)return o;if(null==e?void 0:e.progressData){const n=Pi(Ti(e.progressData.progress));if(null!==n)return n}if(n){const e=Li(n);if(null!==e)return e}return Li(r)}(e,l,i),d=function(e,n,r){var o,t,a;const i=[null==e?void 0:e.stage,null===(o=null==e?void 0:e.progressData)||void 0===o?void 0:o.stage,null===(t=null==n?void 0:n.progress_data)||void 0===t?void 0:t.stage,null==n?void 0:n.stage,null===(a=null==r?void 0:r.progress_data)||void 0===a?void 0:a.stage,null==r?void 0:r.stage];for(const e of i){const n=Ri(e);if(n)return n}return null}(e,l,i),c=function(e,n,r){var o,t,a,i;return null!==(i=null!==(a=null!==(t=null!==(o=null==e?void 0:e.status)&&void 0!==o?o:null==n?void 0:n.status)&&void 0!==t?t:null==r?void 0:r.status)&&void 0!==a?a:null)&&void 0!==i?i:null}(e,l,i),u=function(e,n,r){var o,t,a,i,l,s,d,c,u;const f=null!==(u=null!==(c=null!==(s=null!==(l=null!==(a=null!==(o=null==e?void 0:e.message)&&void 0!==o?o:null===(t=null==e?void 0:e.progressData)||void 0===t?void 0:t.message)&&void 0!==a?a:null===(i=null==n?void 0:n.progress_data)||void 0===i?void 0:i.message)&&void 0!==l?l:null==n?void 0:n.message)&&void 0!==s?s:null===(d=null==r?void 0:r.progress_data)||void 0===d?void 0:d.message)&&void 0!==c?c:null==r?void 0:r.message)&&void 0!==u?u:null;if("string"==typeof f)return f.trim()||null;return null}(e,l,i),f=function(e,n,r){var o,t,a,i,l,s,d,c,u;return(null!==(u=null!==(c=null!==(s=null!==(l=null!==(a=null!==(o=null==e?void 0:e.updatedAt)&&void 0!==o?o:null===(t=null==e?void 0:e.progressData)||void 0===t?void 0:t.timestamp)&&void 0!==a?a:null===(i=null==n?void 0:n.progress_data)||void 0===i?void 0:i.timestamp)&&void 0!==l?l:null==n?void 0:n.updated_at)&&void 0!==s?s:null===(d=null==r?void 0:r.progress_data)||void 0===d?void 0:d.timestamp)&&void 0!==c?c:null==r?void 0:r.updated_at)&&void 0!==u?u:null)||null}(e,l,i),p=function(e,n,r){var o,t,a,i;const l=null!==(a=null!==(t=null!==(o=null==e?void 0:e.progressData)&&void 0!==o?o:null==n?void 0:n.progress_data)&&void 0!==t?t:null==r?void 0:r.progress_data)&&void 0!==a?a:null;if(!l)return null;const s=Pi(Ti(l.progress)),d=Ri(l.stage);return null!==s&&s!==l.progress||null!==d&&d!==l.stage?{...l,progress:null!==s?s:null!==(i=l.progress)&&void 0!==i?i:null,stage:d}:l}(e,l,i);let g=!1;if(l){const e={...l,progress:null!==s?s:Li(l),stage:null!==(r=null!=d?d:l.stage)&&void 0!==r?r:null,status:null!=c?c:l.status,message:null!==(o=null!=u?u:l.message)&&void 0!==o?o:null,progress_data:p,updated_at:null!=f?f:l.updated_at};T.current=e,F(e),P(e.id),g=!0}else i&&F(e=>{var n;if(!e)return e;const r=null!==s?s:e.progress,o=null!=d?d:e.stage,t=null!=c?c:e.status,a=null!=u?u:e.message,i=null!=f?f:e.updated_at,l=null!==(n=null!=p?p:e.progress_data)&&void 0!==n?n:null;if(!(r!==e.progress||o!==e.stage||t!==e.status||a!==e.message||l!==e.progress_data||i!==e.updated_at))return e;const h={...e,progress:r,stage:o,status:t,message:a,progress_data:l,updated_at:i};return T.current=h,g=!0,h});const h=Oi(c,d,I);if(null!==s&&(h?De(e=>null===e?s:Math.max(e,s)):Ue(e=>null===e?s:Math.max(e,s))),h?(Oe(null!=d?d:null),Re(null!=c?c:null),Te(u),Le(null!=f?f:null)):(Ve(null!=d?d:null),We(null!=c?c:null),Ge(u),Ye(null!=f?f:null)),e.questionnairePayload){const n="string"==typeof e.questionnairePayload?e.questionnairePayload:JSON.stringify(e.questionnairePayload,null,2);G(n),Y(null),g=!0}else if(e.questionnaireMessage){const n=Vi(e.questionnaireMessage);n&&(G(n),Y(null),g=!0)}else if("questionnaire_ready"===(null===(t=e.task)||void 0===t?void 0:t.status)&&e.task.message){const n=Vi(e.task.message);n&&(G(n),Y(null),g=!0)}if(void 0!==e.questionnaireSignature&&(oe(null!==(a=e.questionnaireSignature)&&void 0!==a?a:null),g=!0),e.finalMessage){let n=e.finalMessage.doc_metadata;if("string"==typeof n)try{n=JSON.parse(n)}catch(e){}const r=function(e){if(!e)return{content:"",rawContent:"",completionMessage:null,visualizations:null};let n=e,r=null,o=null;if(n.includes(fi)&&(n=n.replace(fi,"").trim()),n.includes(pi)&&n.includes(gi)){const e=n.indexOf(pi)+pi.length,o=n.indexOf(gi);r=n.substring(e,o).trim();const t=n.substring(0,n.indexOf(pi)),a=n.substring(o+gi.length);n=`${t.trim()}\n\n${a.trim()}`.trim()}const t=n.indexOf(hi),a=n.indexOf(mi);if(-1!==t&&-1!==a&&a>t){const e=n.substring(t+hi.length,a).trim();try{const n=JSON.parse(e);Array.isArray(n)&&(o=n)}catch(e){}n=n.substring(0,t).trim()}return{content:n.trim(),rawContent:e,completionMessage:r,visualizations:o}}(e.finalMessage.content);ue(!1),le({content:r.content,rawContent:r.rawContent,completionMessage:r.completionMessage,visualizations:r.visualizations,docMetadata:n,createdAt:e.finalMessage.created_at}),g=!0}return g},[I,P,G,Y,oe,ue,le,De,Oe,Re,Te,Le,Ue,Ve,We,Ge,Ye,F,j]),dn=ge(async()=>{const r=(null==on?void 0:on.sessionId)||n;if(!r)return"error";try{const n=await fetch(`${B}/chat/${e}/deep-research/status?sessionId=${r}`);if(!n.ok){if(404===n.status)return"error";throw new Error(`Failed to fetch task status (${n.status})`)}const o=await n.json();return sn(o)?"updated":"no-change"}catch(e){return e instanceof TypeError&&String(e.message||"").includes("Failed to fetch")?"network-error":"error"}},[e,null==on?void 0:on.sessionId,n,sn,j,I]);ce(()=>{xe.current=!1},[e,null==on?void 0:on.sessionId]);const cn=ge(e=>{const n=e||he.current;if(!(n&&n instanceof HTMLTextAreaElement))return;n.style.height="auto";const r=Math.max(n.scrollHeight,ki);n.style.height=`${r}px`,n.style.lineHeight=r<=ki?"32px":"1.5"},[]);ce(()=>{var n,r,o,t,a;if(!(null==on?void 0:on.sessionId)||pe.current)return;const i=di(e,on.sessionId);i&&(i.userQuestion&&N(i.userQuestion),"execution"!==i.phase&&"questionnaire"!==i.phase||D(i.phase),void 0!==i.currentTask&&(F(i.currentTask),P(null!==(r=null===(n=i.currentTask)||void 0===n?void 0:n.id)&&void 0!==r?r:null)),i.questionnaireJson&&G(i.questionnaireJson),void 0!==i.questionnaireSignature&&oe(null!==(o=i.questionnaireSignature)&&void 0!==o?o:null),void 0!==i.finalReport&&(le(null!==(t=i.finalReport)&&void 0!==t?t:null),ue(Boolean(i.finalReport))),void 0!==i.questionnaireSummary&&ae(null!==(a=i.questionnaireSummary)&&void 0!==a?a:null)),pe.current=!0},[e,null==on?void 0:on.sessionId]),ce(()=>{(null==on?void 0:on.sessionId)&&pe.current&&(xe.current||(xe.current=!0,dn().catch(()=>{})))},[null==on?void 0:on.sessionId,dn]);const un=(null==on?void 0:on.sessionId)||n,fn=un,pn="completed"===(null==R?void 0:R.status)||"failed"===(null==R?void 0:R.status),gn="questionnaire"===I&&!!R&&!!fn&&!pn&&wi.has(R.status),hn="execution"===I&&!!R&&!!fn&&!pn&&Si.has(R.status),mn=gn||hn;ce(()=>{_e||un&&$e(e=>e===un?e:un)},[_e,un]),ce(()=>{if(!mn||!fn)return;let e=null,n=!1;const r="execution"===I?3e4:1e4,o=async()=>{if(n)return;n=!0;const r=await dn();n=!1,"network-error"===r&&e&&clearInterval(e)};return o(),e=setInterval(o,r),()=>{e&&clearInterval(e)}},[mn,fn,dn,null==R?void 0:R.id,I,j,null==R?void 0:R.status,null==R?void 0:R.progress]),ce(()=>{ln()},[ln]),ce(()=>{(null==on?void 0:on.sessionId)&&pe.current&&(!function(e,n,r){const o=di(e,n);si(e,n,{version:1,chatflowId:e,sessionId:n,lastUpdated:(new Date).toISOString(),...o?{userQuestion:o.userQuestion,phase:o.phase,questionnaireJson:o.questionnaireJson,questionnaireSignature:o.questionnaireSignature,questionnaireSummary:o.questionnaireSummary,finalReport:o.finalReport,currentTask:o.currentTask}:{},...r})}(e,on.sessionId,{userQuestion:O||void 0,phase:I,questionnaireJson:Z||void 0,questionnaireSignature:re||void 0,questionnaireSummary:te||void 0,finalReport:ie||void 0,currentTask:R}),en())},[e,null==on?void 0:on.sessionId,O,I,Z,re,te,ie,R,en]),ce(()=>{},[te]),ce(()=>{"input"===I&&cn()},[O,I,cn]),ce(()=>{if("input"===I)return;const e=he.current;e&&e instanceof HTMLTextAreaElement&&(e.style.height="32px",e.style.lineHeight="32px")},[I,j]),ce(()=>{var e;if("questionnaire_ready"===(null==R?void 0:R.status)&&R.questionnaire_payload){const n="string"==typeof R.questionnaire_payload?R.questionnaire_payload:JSON.stringify(R.questionnaire_payload,null,2);return G(n),oe(null!==(e=R.questionnaire_signature)&&void 0!==e?e:null),void Y(null)}if("questionnaire_ready"===(null==R?void 0:R.status)&&!R.questionnaire_payload&&!Z){const e=function(e){for(let n=e.length-1;n>=0;n-=1){const r=e[n];if("assistant"!==r.role)continue;const o=Vi(r.content);if(o)return o}return null}(ke.current);e&&G(e)}},[R,Z]),ce(()=>{R&&R.execution_results},[R]),ce(()=>{var e;R&&void 0!==R.questionnaire_signature&&oe(null!==(e=R.questionnaire_signature)&&void 0!==e?e:null)},[null==R?void 0:R.questionnaire_signature]),ce(()=>{var e,n,r,o,t,a,i;if(!R)return;const l=te,s=Ji(null!==(e=R.questionnaire_payload)&&void 0!==e?e:Z),d=s.length>0?s:Ji(Z),c=function(e){if(!e)return null;const n=["questionnaire_response_markdown","questionnaire_response_markdown_v2","questionnaire_response","questionnaire_response_markdown_combined","questionnaireResponsesMarkdown"];if("string"==typeof e){const n=e.trim();return n.length>0?n:null}if(e&&"object"==typeof e){for(const r of n){const n=e[r];if("string"==typeof n&&n.trim().length>0)return n.trim()}const r=e.questionnaire_responses;if(Array.isArray(r)&&r.length>0)return r.map(e=>{var n,r;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const o=null!==(r=null!==(n=e.answer)&&void 0!==n?n:e.response)&&void 0!==r?r:"";return"string"==typeof o?o.trim():""}return""}).filter(e=>e.length>0).join("\n\n")}return null}(R.execution_results),u=(null!==(n=null==l?void 0:l.formattedMarkdown)&&void 0!==n?n:"").trim(),f=d.length>0&&(!l||0===l.questions.length),p="string"==typeof c&&c.trim().length>0&&0===u.length;if(!f&&!p)return;const g={questions:f?d:null!==(r=null==l?void 0:l.questions)&&void 0!==r?r:d,answer:p?(null!=c?c:"").trim():null!==(o=null==l?void 0:l.answer)&&void 0!==o?o:(null!=c?c:"").trim(),formattedMarkdown:p?(null!=c?c:"").trim():null!==(t=null==l?void 0:l.formattedMarkdown)&&void 0!==t?t:(null!=c?c:"").trim(),submittedAt:null!==(i=null!==(a=null==l?void 0:l.submittedAt)&&void 0!==a?a:R.updated_at)&&void 0!==i?i:(new Date).toISOString()};(function(e,n){return e===n||!(!e||!n)&&e.answer===n.answer&&e.formattedMarkdown===n.formattedMarkdown&&e.submittedAt===n.submittedAt&&e.questions.length===n.questions.length&&e.questions.every((e,r)=>e===n.questions[r])})(null!=l?l:null,g)||ae(g)},[R,Z,te]),ce(()=>{const e=null==R?void 0:R.status;!Fi(null==R?void 0:R.stage)||"pending"!==e&&"in-progress"!==e&&"questionnaire_pending"!==e||Z?"questionnaire_ready"===e?("questionnaire"!==I&&D("questionnaire"),Z&&Y(null)):"questionnaire"===I&&R&&(D("execution"),G(""),Y(null),le(null),ue(!1)):"questionnaire"!==I&&D("questionnaire")},[R,Z,I,j]);const vn=ge(async(r,o,t)=>{var a,i,l,s,d,c,u;try{const f=await nn();if(!f)throw new Error("Failed to get valid session token");const p=await ln()||ve;if(!p||!p.canExecute)throw new Error("Deep Research is not available right now.");const g=p.visitor;if(!g)throw new Error("Deep Research visitor authorization missing. Please refresh and try again.");const h=(null==on?void 0:on.sessionId)||n,m={secureSessionToken:f,query:r,chatflowId:e,sessionId:h,browserFingerprint:me.current.getBrowserFingerprint(),visitor:g,messages:o};(null==t?void 0:t.questionnaireSignature)&&(m.questionnaireSignature=t.questionnaireSignature);const v=await fetch(`${B}/chat/${e}/deep-research/start`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(m)}),b=await v.json();if(!v.ok)throw new Error((null==b?void 0:b.error)||`Failed to start research: ${v.status}`);if((null==b?void 0:b.visitor)&&p){const e={...p,visitor:b.visitor};ye.current={timestamp:Date.now(),data:e},be(e)}const y=(null==b?void 0:b.taskId)||(null==b?void 0:b.jobId)||`embed-dr-${Date.now()}`;if("questionnaire_pending"===(null==b?void 0:b.status)){const e={id:y,session_id:h,status:"questionnaire_pending",stage:"questionnaire_pending",progress:0,message:(null==b?void 0:b.message)||"Deep Researchの質問票を準備しています...",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null,questionnaire_signature:null};return F(e),P(e.id),oe(null),G(""),Y(null),ae(null),le(null),D("questionnaire"),void ln(!0).catch(()=>{})}if("questionnaire_ready"===(null==b?void 0:b.status)){const e=null!==(a=null==b?void 0:b.task)&&void 0!==a?a:{id:y,session_id:h,status:"questionnaire_ready",stage:"questionnaire_ready",progress:100,message:(null==b?void 0:b.message)||"質問票の準備が完了しました。",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null!==(i=null==b?void 0:b.questionnairePayload)&&void 0!==i?i:null,questionnaire_signature:null!==(l=null==b?void 0:b.questionnaireSignature)&&void 0!==l?l:null};F(e),P(e.id);const n=null!==(d=null!==(s=null==b?void 0:b.questionnaireSignature)&&void 0!==s?s:e.questionnaire_signature)&&void 0!==d?d:null;if(oe(n),null==b?void 0:b.questionnairePayload){const e="string"==typeof b.questionnairePayload?b.questionnairePayload:JSON.stringify(b.questionnairePayload,null,2);G(e),Y(null)}else if(null==b?void 0:b.questionnaireMessage){const e=Vi(b.questionnaireMessage);e&&(G(e),Y(null))}return ae(null),D("questionnaire"),void ln(!0).catch(()=>{})}if(!(null==b?void 0:b.jobId))throw new Error("Deep Research job did not return an identifier.");const k=null!==(c=null==b?void 0:b.task)&&void 0!==c?c:{id:y,session_id:h,status:"pending",stage:"follow-up",progress:0,message:(null==b?void 0:b.message)||"Deep Researchを開始しています...",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null,questionnaire_signature:null!==(u=null==t?void 0:t.questionnaireSignature)&&void 0!==u?u:null};F(k),P(k.id),ae(null),le(null);const x=Fi(k.stage)?"questionnaire":"execution";"questionnaire"===x&&(G(""),Y(null)),D(x),ln(!0).catch(()=>{})}catch(e){throw e}finally{J(!1)}},[e,n,on,nn,ln,ve,j]),bn=ge(async()=>{if("input"===I&&O.trim()&&!V){Q(!0),J(!0),H(null);try{await vn(O,r)}catch(e){H(e instanceof Error?e.message:"Failed to start research")}finally{J(!1),Q(!1)}}},[I,O,r,vn,V]),yn=ge(e=>{(e.metaKey||e.ctrlKey)&&"Enter"===e.key&&(e.preventDefault(),bn())},[bn]),kn=ge(async e=>{Y(null),ee(!0);try{const n=re||(null==R?void 0:R.questionnaire_signature)||null;if(!n)return Y("質問票の検証情報を準備しています。数秒後に再度お試しください。"),await dn().catch(()=>{}),void ee(!1);const o=(new Date).toISOString(),t=function(e){const n=e.split(/\r?\n/),r=[],o=[];let t="none";return n.forEach(e=>{const n=e.trim();if(!n)return void("answers"===t&&o.push(""));const a=n.replace(/[*_`]/g,"").toLowerCase();if(a.startsWith("質問一覧")||a.startsWith("質問一覧:")||a.startsWith("questions"))t="questions";else if(a.startsWith("回答")||a.startsWith("回答:")||a.startsWith("answers"))t="answers";else{if("questions"===t){const e=n.match(/^\d+[\.\)]\s*(.+)$/);return void r.push(e&&e[1]?e[1].trim():n)}"answers"===t&&o.push(e)}}),{questions:r.filter(e=>e&&e.trim().length>0),answer:o.join("\n").trim()}}(e);ae({questions:t.questions,answer:t.answer,formattedMarkdown:e,submittedAt:o});const a=[...r,{role:"user",content:e,createdAt:o,id:`questionnaire-response-${Date.now()}`}],i=`${O}\n\nClarifications:\n\n${e}`;await vn(i,a,{questionnaireSignature:n})}catch(e){Y("回答の送信に失敗しました。時間をおいて再度お試しください。")}finally{ee(!1)}},[vn,r,re,null==R?void 0:R.questionnaire_signature,O,dn]);ge(n=>{const r=n.sessionId;if($e(r),r===un)return void ze(null);if("undefined"==typeof window)return;const o=function(e,n){return li(e,n)}(e,r);if(!o)return en(),void ze(null);ze(o)},[e,un,en]);const wn=ge(()=>{ze(null),un&&$e(un)},[un]);ge(()=>{var e,n,r,o;if(!_e)return;const t=_e;un&&$e(un),ze(null);const a="questionnaire"===t.phase&&t.questionnaireJson?"questionnaire":"input";D(a),N(null!==(e=t.userQuestion)&&void 0!==e?e:""),G(null!==(n=t.questionnaireJson)&&void 0!==n?n:""),oe(null!==(r=t.questionnaireSignature)&&void 0!==r?r:null),Y(null),le(null!==(o=t.finalReport)&&void 0!==o?o:null),ue(Boolean(t.finalReport)),F(null),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),P(null),H(null),J(!1),ee(!1),Q(!1),cn()},[_e,un,cn,P]);const Sn=ge(async()=>{if(!je){qe(!0);try{un&&ci(e,un),pe.current=!1,ye.current=null,D("input"),F(null),P(null),N(""),G(""),Y(null),oe(null),ae(null),le(null),ue(!1),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),ze(null),J(!1),ee(!1),Q(!1),H(null),Ae(!1),$e(null),an(),await tn(),en()}catch(e){const n="ja"===l.language?"新しいセッションの開始に失敗しました。時間をおいて再度お試しください。":"Failed to start a new session. Please try again in a moment.";H(e instanceof Error&&e.message?e.message:n)}finally{qe(!1)}}},[je,un,e,an,tn,en,l.language]),_n=ge(()=>{D("input"),F(null),P(null),H(null),N(""),G(""),Y(null),oe(null),ae(null),ue(!1),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),ci(e,un||void 0),wn(),en()},[e,un,wn,en]),zn="ja"===l.language,Cn=t||"deep-research",$n=l.enableDeepResearch||l.enableRagDeepResearch,Mn="input"===I&&!!O.trim()&&!U&&!V,An=Boolean(re||(null==R?void 0:R.questionnaire_signature)),jn=X||!An,qn=An?void 0:"質問票を検証しています...",In="ja"===l.language?"Ctrl+Enter または ⌘+Enter で送信":"Send with Ctrl+Enter or ⌘+Enter",Dn="ja"===l.language?"Deep Researchで調べたい内容を入力してください... (Ctrl+Enter または ⌘+Enter で送信)":"Describe what you would like Deep Research to investigate... (Ctrl+Enter or ⌘+Enter to send)",En=!!R&&xi.includes(R.status),On=Boolean(_e),Nn=je?zn?"新しいセッションを作成中...":"Starting new session...":zn?"新しいセッションを開始":"Start new session",Rn=null!==(m=null===(h=null==ve?void 0:ve.browserLimits)||void 0===h?void 0:h.limits)&&void 0!==m?m:[];null===(v=null==ve?void 0:ve.browserLimits)||void 0===v||v.allowed;const Fn=null!==(y=null===(b=null==ve?void 0:ve.browserLimits)||void 0===b?void 0:b.blockedBy)&&void 0!==y?y:null;Rn.length;const Tn=null==ve?void 0:ve.visitor,Pn=ge(e=>{if(!e)return zn?"利用制限":"Usage limit";if(e.startsWith("custom-")){const n=parseInt(e.replace("custom-","").replace("d",""),10);if(Number.isFinite(n))return zn?`直近${n}日`:`Last ${n} days`}return(zn?{daily:"1日あたり",weekly:"1週間あたり",monthly:"1か月あたり",yearly:"1年あたり"}:{daily:"Per day",weekly:"Per week",monthly:"Per month",yearly:"Per year"})[e]||e},[zn]),Ln=ge(e=>{if(!e)return null;const n=new Date(e);return Number.isNaN(n.getTime())?null:n.toLocaleString(zn?"ja-JP":void 0,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})},[zn]);"number"==typeof(null==Tn?void 0:Tn.remaining)&&Tn.remaining,"number"==typeof(null==Tn?void 0:Tn.limit)&&Tn.limit;const Hn=null==Tn?void 0:Tn.windowEnd;Fn&&Pn(Fn),Ln(Hn);const Un=!1,Bn=ge((e,n)=>e.hasFinalReport?zn?"完了":"Completed":n?zn?"進行中":"In progress":"execution"===e.phase?zn?"実行中":"Executing":"questionnaire"===e.phase?zn?"質問票対応中":"Awaiting questionnaire":zn?"入力中":"Draft",[zn]),Jn=null!==(x=null==_e?void 0:_e.finalReport)&&void 0!==x?x:ie,Vn=null!==(w=null==_e?void 0:_e.userQuestion)&&void 0!==w?w:O,Qn=null!==(S=null==_e?void 0:_e.questionnaireSummary)&&void 0!==S?S:te,Wn=Boolean(Jn)&&(!En||On),Zn=Wn&&(On||se),Gn=zn?On?"過去のDeep Research結果を表示しています":"前回のDeep Research結果を表示しています":On?"Viewing a previous Deep Research report":"Showing your previous Deep Research report",Kn=zn?"調査結果":"Research Findings",Yn=zn?"Deep Researchが生成したレポート本文です。":"Deep Research generated report summary.",Xn=null!==(z=null===(_=null==Qn?void 0:Qn.questions)||void 0===_?void 0:_.filter(e=>e&&e.trim().length>0))&&void 0!==z?z:[],er=Boolean((null==Qn?void 0:Qn.answer)&&Qn.answer.trim().length>0),nr=Qn?er?Qn.answer:zn?"回答は送信されませんでした。":"No answers were provided.":"",rr=Boolean(Vn&&Vn.trim().length>0||Xn.length>0||Qn);ce(()=>{},[Xn,er,nr,Qn,Vn,rr,Wn]);const or=_e?{sessionId:_e.sessionId,userQuestion:_e.userQuestion,lastUpdated:_e.lastUpdated,finalReportCreatedAt:null!==($=null===(C=_e.finalReport)||void 0===C?void 0:C.createdAt)&&void 0!==$?$:null,hasFinalReport:Boolean(_e.finalReport),phase:null!==(M=_e.phase)&&void 0!==M?M:null}:null,tr=!!or&&or.sessionId===un;return(null===(A=null==or?void 0:or.userQuestion)||void 0===A?void 0:A.trim())&&(or.userQuestion.trim().length>80?or.userQuestion.trim().slice(0,80):or.userQuestion.trim()),or&&Bn(or,tr),(null==or?void 0:or.lastUpdated)&&new Date(or.finalReportCreatedAt||or.lastUpdated).toLocaleString(zn?"ja-JP":void 0,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}),W($i,{children:[W(Mi,{children:[L&&W(tl,{children:L}),Un,false,W(Hi,{children:[W(Ui,{type:"button","data-variant":"primary",onClick:Sn,disabled:je||rn,children:Nn}),Un]}),Un,rn&&!Wn&&W(Ii,{children:"セッションを初期化しています..."}),!rn&&"input"===I&&W(Ai,{children:W(qi,{children:"調査したい背景や目的、特に知りたい観点などを入力し「送信」ボタンで Deep Research を開始してください。"})}),"questionnaire"===I&&W(ji,{children:[Z?W(Qt,{questionnaireJson:Z,onSubmit:kn,isSubmitLocked:jn,submitLockLabel:qn}):W($a,{task:R,isJapanese:zn,progressOverride:Ie,stageOverride:Ee,statusOverride:Ne,messageOverride:Fe,updatedAtOverride:Pe}),K&&W(Ei,{children:K}),Z?(null==R?void 0:R.message)?W(Di,{children:R.message}):An?null:W(Di,{children:zn?"質問票の準備を行っています。送信が可能になるまで少しお待ちください。":"Preparing the questionnaire. Please wait a few more seconds before submitting."}):null]}),"execution"===I&&R&&W(kt,{task:R,onRetry:_n,progressOverride:He,stageOverride:Je,statusOverride:Qe,messageOverride:Ze,updatedAtOverride:Ke}),Wn&&Jn&&W(al,{children:[W(il,{children:[W(ll,{children:[W("h3",{children:"調査レポート"}),Jn.createdAt&&W(sl,{children:new Date(Jn.createdAt).toLocaleString(zn?"ja-JP":void 0)})]}),Zn&&W(hl,{children:[W(ml,{}),Gn]})]}),Jn.completionMessage&&W(_l,{children:[W(zl,{children:"✅"}),W(Cl,{children:[W("strong",{children:"Deep Researchが完了しました"}),Jn.completionMessage]})]}),rr&&W(dl,{children:[Vn&&Vn.trim().length>0&&W(cl,{children:[W(ul,{children:zn?"Deep Research依頼文":"Deep Research request"}),W(fl,{children:Vn.trim()})]}),Xn.length>0&&W(cl,{children:[W(ul,{children:zn?"フォローアップ質問":"Follow-up questions"}),W(pl,{children:Xn.map((e,n)=>W("li",{children:e},`follow-up-question-${n}`))})]}),Qn&&W(cl,{children:[W(ul,{children:zn?"フォローアップ質問への回答":"Follow-up answers"}),W(gl,{children:xn(nr,!1)})]})]}),W(vl,{children:[W(bl,{children:[W(yl,{children:W(Xe,{className:"icon"})}),W(kl,{children:[W(xl,{children:Kn}),W(wl,{children:Yn})]})]}),W(Sl,{children:xn(Jn.content,!1,Array.isArray(Jn.docMetadata)?Jn.docMetadata:void 0)})]})]})]}),o&&W(k,{children:[W(Qi,{children:W(Wi,{children:[W(Zi,{type:"button",active:"ask-ai"===Cn,onClick:()=>o("ask-ai"),children:"ja"===l.language?"AIに質問":"Ask AI"}),W(Zi,{type:"button",active:"search"===Cn,onClick:()=>o("search"),children:"ja"===l.language?"検索":"Search"}),$n&&W(Zi,{type:"button",active:"deep-research"===Cn||"rag-deep-research"===Cn,onClick:()=>o("deep-research"),children:(l.language,"Deep Research")})]})}),W(Gi,{children:W(Ki,{children:W(Yi,{children:[W(Xi,{children:W(nl,{ref:he,value:O,onInput:e=>{const n=e.currentTarget;N(n.value),cn(n)},placeholder:Dn,disabled:"input"!==I||U||V,onKeyDown:yn,rows:1})}),W(el,{children:W(rl,{type:"button",onClick:bn,disabled:!Mn,"data-disabled":!Mn,title:In,"aria-label":In,children:U?W(ol,{}):W(Be,{size:16,color:"white"})})})]})})})]})]})}const Ml=Oe`
+`;function Ml({chatFlowId:e,sessionId:n,messages:r,onModeSwitch:o,currentMode:t,onSendMessage:a,baseUrl:i,config:l}){var s,d,c,u,f,p,g,h,m,v,b,y,x,w,S,_,z,C,$,M,A;const j=!!l.debug,[q]=de(()=>{if("undefined"==typeof window)return null;try{return function(e){const n=ai(e);return n.length?si(e,n[0].sessionId):null}(e)}catch(e){return null}}),[I,D]=de("execution"===(null==(E=q)?void 0:E.phase)||"questionnaire"===(null==E?void 0:E.phase)?E.phase:"input");var E;const[O,N]=de(null!==(s=null==q?void 0:q.userQuestion)&&void 0!==s?s:""),[R,F]=de(void 0!==(null==q?void 0:q.currentTask)?q.currentTask:null),T=fe(void 0!==(null==q?void 0:q.currentTask)?q.currentTask:null),[,P]=de(null!==(c=null===(d=null==q?void 0:q.currentTask)||void 0===d?void 0:d.id)&&void 0!==c?c:null),[L,H]=de(null),[U,J]=de(!1),[V,Q]=de(!1),[Z,G]=de(null!==(u=null==q?void 0:q.questionnaireJson)&&void 0!==u?u:""),[K,Y]=de(null),[X,ee]=de(!1),ne=void 0===(null==q?void 0:q.questionnaireSignature)?null:null!==(f=q.questionnaireSignature)&&void 0!==f?f:null,[re,oe]=de(ne),[te,ae]=de(null!==(p=null==q?void 0:q.questionnaireSummary)&&void 0!==p?p:null),[ie,le]=de(null!==(g=null==q?void 0:q.finalReport)&&void 0!==g?g:null),[se,ue]=de(Boolean(null==q?void 0:q.finalReport)),pe=fe(!1),he=fe(null),me=fe(new Xa),[ve,be]=de(null),ye=fe(null),ke=fe(r),xe=fe(!1),[we,Se]=de(()=>"undefined"==typeof window?[]:fi(e)),[_e,ze]=de(null),[Ce,$e]=de(()=>{var n,r;if("undefined"==typeof window)return null;return null!==(r=null===(n=fi(e)[0])||void 0===n?void 0:n.sessionId)&&void 0!==r?r:null}),[Me,Ae]=de(!1),[je,qe]=de(!1),[Ie,De]=de(null),[Ee,Oe]=de(null),[Ne,Re]=de(null),[Fe,Te]=de(null),[Pe,Le]=de(null),[He,Ue]=de(null),[Je,Ve]=de(null),[Qe,We]=de(null),[Ze,Ge]=de(null),[Ke,Ye]=de(null);ce(()=>{},[R]),ce(()=>{},[Ie,j]),ce(()=>{},[He,j]);const en=ge(()=>{if("undefined"!=typeof window)try{Se(fi(e))}catch(e){}},[e]);ce(()=>{ke.current=r},[r]),ce(()=>{T.current=R},[R]),ce(()=>{en()},[en]),ce(()=>{0===we.length&&Ae(!1)},[we.length]),ce(()=>{var e,n,r,o,t,a,i,l,s,d;if(!R)return De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),void Ye(null);const c=Hi(R),u=Fi(null!==(r=null!==(n=null===(e=R.progress_data)||void 0===e?void 0:e.stage)&&void 0!==n?n:R.stage)&&void 0!==r?r:null),f=null!==(o=R.status)&&void 0!==o?o:null,p=null!==(i=null!==(t=R.message)&&void 0!==t?t:null===(a=R.progress_data)||void 0===a?void 0:a.message)&&void 0!==i?i:null,g=null!==(d=null!==(s=null===(l=R.progress_data)||void 0===l?void 0:l.timestamp)&&void 0!==s?s:R.updated_at)&&void 0!==d?d:null;Ni(f,u,I)?(De(c),Oe(u),Re(f),Te(p),Le(g)):(Ue(c),Ve(u),We(f),Ge(p),Ye(g))},[R,I]);const{getValidToken:nn,isInitializing:rn,session:on,initializeSession:tn,clearSession:an}=function(e){const[n,r]=de(null),[o,t]=de(!0),[a,i]=de(null),l=ge(e=>{try{const n=e.split(".");return 3!==n.length?null:JSON.parse(atob(n[1]))}catch(e){return null}},[]),s=ge(async()=>{i(null);try{const n=window.location.hostname+(window.location.port?":"+window.location.port:""),o=await fetch(`${B}/session/init/${e}`,{method:"POST",headers:{"Content-Type":"application/json",Origin:window.location.origin,"X-Widget-Version":"1.0.0"},body:JSON.stringify({domain:n,timestamp:Date.now(),userAgent:navigator.userAgent})});if(!o.ok){const e=await o.json().catch(()=>({message:"Session initialization failed"}));throw new Error(e.message||`HTTP ${o.status}`)}const{secureSessionToken:t}=await o.json();if(!t)throw new Error("No session token received");const a=l(t);if(!a)throw new Error("Invalid session token format");const i=`askdona_secure_session_${e}`;localStorage.setItem(i,t);const s={token:t,isValid:!0,expiresAt:1e3*a.exp,sessionId:a.sessionId,chatflowId:a.chatflowId};return r(s),t}catch(e){throw i(e.message),e}},[e,l]),d=ge(async()=>{t(!0),i(null);try{const n=`askdona_secure_session_${e}`,o=localStorage.getItem(n);if(o){const t=l(o),a=Date.now();if(t&&1e3*t.exp>a&&t.chatflowId===e){const e={token:o,isValid:!0,expiresAt:1e3*t.exp,sessionId:t.sessionId,chatflowId:t.chatflowId};return void r(e)}localStorage.removeItem(n)}await s()}catch(e){i(e.message)}finally{t(!1)}},[e,l,s]),c=ge(async()=>{if(n&&n.expiresAt-Date.now()<18e5)try{await s()}catch(e){}},[n,s]),u=ge(async()=>{if(!n||!n.isValid)return null;if(n.expiresAt<=Date.now())try{return await s(),(null==n?void 0:n.token)||null}catch(e){return null}return await c(),n.token},[n,s,c]),f=ge(()=>{const n=`askdona_secure_session_${e}`;localStorage.removeItem(n),r(null),i(null)},[e]);return ce(()=>{e&&d()},[e,d]),ce(()=>{if(!n)return;const e=setInterval(()=>{c()},3e5);return()=>clearInterval(e)},[n,c]),{session:n,isInitializing:o,error:a,initializeSession:s,getValidToken:u,clearSession:f,refreshSessionIfNeeded:c}}(e),ln=ge(async(n=!1)=>{try{const r=ye.current;if(!n&&r&&Date.now()-r.timestamp<3e4)return be(r.data),r.data;const o=await nn();if(!o)return null;const t=me.current.getBrowserFingerprint(),a=await fetch(`${B}/chat/${e}/deep-research/config`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({secureSessionToken:o,browserFingerprint:t})}),i=await a.json();if(!a.ok)throw new Error((null==i?void 0:i.error)||`Failed to load Deep Research config (${a.status})`);return ye.current={timestamp:Date.now(),data:i},be(i),i}catch(e){return null}},[e,nn]),sn=ge(e=>{var n,r,o,t,a;if(!e)return!1;const i=T.current,l=null!==(n=e.task)&&void 0!==n?n:null,s=function(e,n,r){const o=Li(Pi(null==e?void 0:e.progress));if(null!==o)return o;if(null==e?void 0:e.progressData){const n=Li(Pi(e.progressData.progress));if(null!==n)return n}if(n){const e=Hi(n);if(null!==e)return e}return Hi(r)}(e,l,i),d=function(e,n,r){var o,t,a;const i=[null==e?void 0:e.stage,null===(o=null==e?void 0:e.progressData)||void 0===o?void 0:o.stage,null===(t=null==n?void 0:n.progress_data)||void 0===t?void 0:t.stage,null==n?void 0:n.stage,null===(a=null==r?void 0:r.progress_data)||void 0===a?void 0:a.stage,null==r?void 0:r.stage];for(const e of i){const n=Fi(e);if(n)return n}return null}(e,l,i),c=function(e,n,r){var o,t,a,i;return null!==(i=null!==(a=null!==(t=null!==(o=null==e?void 0:e.status)&&void 0!==o?o:null==n?void 0:n.status)&&void 0!==t?t:null==r?void 0:r.status)&&void 0!==a?a:null)&&void 0!==i?i:null}(e,l,i),u=function(e,n,r){var o,t,a,i,l,s,d,c,u;const f=null!==(u=null!==(c=null!==(s=null!==(l=null!==(a=null!==(o=null==e?void 0:e.message)&&void 0!==o?o:null===(t=null==e?void 0:e.progressData)||void 0===t?void 0:t.message)&&void 0!==a?a:null===(i=null==n?void 0:n.progress_data)||void 0===i?void 0:i.message)&&void 0!==l?l:null==n?void 0:n.message)&&void 0!==s?s:null===(d=null==r?void 0:r.progress_data)||void 0===d?void 0:d.message)&&void 0!==c?c:null==r?void 0:r.message)&&void 0!==u?u:null;if("string"==typeof f)return f.trim()||null;return null}(e,l,i),f=function(e,n,r){var o,t,a,i,l,s,d,c,u;return(null!==(u=null!==(c=null!==(s=null!==(l=null!==(a=null!==(o=null==e?void 0:e.updatedAt)&&void 0!==o?o:null===(t=null==e?void 0:e.progressData)||void 0===t?void 0:t.timestamp)&&void 0!==a?a:null===(i=null==n?void 0:n.progress_data)||void 0===i?void 0:i.timestamp)&&void 0!==l?l:null==n?void 0:n.updated_at)&&void 0!==s?s:null===(d=null==r?void 0:r.progress_data)||void 0===d?void 0:d.timestamp)&&void 0!==c?c:null==r?void 0:r.updated_at)&&void 0!==u?u:null)||null}(e,l,i),p=function(e,n,r){var o,t,a,i;const l=null!==(a=null!==(t=null!==(o=null==e?void 0:e.progressData)&&void 0!==o?o:null==n?void 0:n.progress_data)&&void 0!==t?t:null==r?void 0:r.progress_data)&&void 0!==a?a:null;if(!l)return null;const s=Li(Pi(l.progress)),d=Fi(l.stage);return null!==s&&s!==l.progress||null!==d&&d!==l.stage?{...l,progress:null!==s?s:null!==(i=l.progress)&&void 0!==i?i:null,stage:d}:l}(e,l,i);let g=!1;if(l){const e={...l,progress:null!==s?s:Hi(l),stage:null!==(r=null!=d?d:l.stage)&&void 0!==r?r:null,status:null!=c?c:l.status,message:null!==(o=null!=u?u:l.message)&&void 0!==o?o:null,progress_data:p,updated_at:null!=f?f:l.updated_at};T.current=e,F(e),P(e.id),g=!0}else i&&F(e=>{var n;if(!e)return e;const r=null!==s?s:e.progress,o=null!=d?d:e.stage,t=null!=c?c:e.status,a=null!=u?u:e.message,i=null!=f?f:e.updated_at,l=null!==(n=null!=p?p:e.progress_data)&&void 0!==n?n:null;if(!(r!==e.progress||o!==e.stage||t!==e.status||a!==e.message||l!==e.progress_data||i!==e.updated_at))return e;const h={...e,progress:r,stage:o,status:t,message:a,progress_data:l,updated_at:i};return T.current=h,g=!0,h});const h=Ni(c,d,I);if(null!==s&&(h?De(e=>null===e?s:Math.max(e,s)):Ue(e=>null===e?s:Math.max(e,s))),h?(Oe(null!=d?d:null),Re(null!=c?c:null),Te(u),Le(null!=f?f:null)):(Ve(null!=d?d:null),We(null!=c?c:null),Ge(u),Ye(null!=f?f:null)),e.questionnairePayload){const n="string"==typeof e.questionnairePayload?e.questionnairePayload:JSON.stringify(e.questionnairePayload,null,2);G(n),Y(null),g=!0}else if(e.questionnaireMessage){const n=Qi(e.questionnaireMessage);n&&(G(n),Y(null),g=!0)}else if("questionnaire_ready"===(null===(t=e.task)||void 0===t?void 0:t.status)&&e.task.message){const n=Qi(e.task.message);n&&(G(n),Y(null),g=!0)}if(void 0!==e.questionnaireSignature&&(oe(null!==(a=e.questionnaireSignature)&&void 0!==a?a:null),g=!0),e.finalMessage){let n=e.finalMessage.doc_metadata;if("string"==typeof n)try{n=JSON.parse(n)}catch(e){}const r=function(e){if(!e)return{content:"",rawContent:"",completionMessage:null,visualizations:null};let n=e,r=null,o=null;if(n.includes(pi)&&(n=n.replace(pi,"").trim()),n.includes(gi)&&n.includes(hi)){const e=n.indexOf(gi)+gi.length,o=n.indexOf(hi);r=n.substring(e,o).trim();const t=n.substring(0,n.indexOf(gi)),a=n.substring(o+hi.length);n=`${t.trim()}\n\n${a.trim()}`.trim()}const t=n.indexOf(mi),a=n.indexOf(vi);if(-1!==t&&-1!==a&&a>t){const e=n.substring(t+mi.length,a).trim();try{const n=JSON.parse(e);Array.isArray(n)&&(o=n)}catch(e){}n=n.substring(0,t).trim()}return{content:n.trim(),rawContent:e,completionMessage:r,visualizations:o}}(e.finalMessage.content);ue(!1),le({content:r.content,rawContent:r.rawContent,completionMessage:r.completionMessage,visualizations:r.visualizations,docMetadata:n,createdAt:e.finalMessage.created_at}),g=!0}return g},[I,P,G,Y,oe,ue,le,De,Oe,Re,Te,Le,Ue,Ve,We,Ge,Ye,F,j]),dn=ge(async()=>{const r=(null==on?void 0:on.sessionId)||n;if(!r)return"error";try{const n=await fetch(`${B}/chat/${e}/deep-research/status?sessionId=${r}`);if(!n.ok){if(404===n.status)return"error";throw new Error(`Failed to fetch task status (${n.status})`)}const o=await n.json();return sn(o)?"updated":"no-change"}catch(e){return e instanceof TypeError&&String(e.message||"").includes("Failed to fetch")?"network-error":"error"}},[e,null==on?void 0:on.sessionId,n,sn,j,I]);ce(()=>{xe.current=!1},[e,null==on?void 0:on.sessionId]);const cn=ge(e=>{const n=e||he.current;if(!(n&&n instanceof HTMLTextAreaElement))return;n.style.height="auto";const r=Math.max(n.scrollHeight,xi);n.style.height=`${r}px`,n.style.lineHeight=r<=xi?"32px":"1.5"},[]);ce(()=>{var n,r,o,t,a;if(!(null==on?void 0:on.sessionId)||pe.current)return;const i=ci(e,on.sessionId);i&&(i.userQuestion&&N(i.userQuestion),"execution"!==i.phase&&"questionnaire"!==i.phase||D(i.phase),void 0!==i.currentTask&&(F(i.currentTask),P(null!==(r=null===(n=i.currentTask)||void 0===n?void 0:n.id)&&void 0!==r?r:null)),i.questionnaireJson&&G(i.questionnaireJson),void 0!==i.questionnaireSignature&&oe(null!==(o=i.questionnaireSignature)&&void 0!==o?o:null),void 0!==i.finalReport&&(le(null!==(t=i.finalReport)&&void 0!==t?t:null),ue(Boolean(i.finalReport))),void 0!==i.questionnaireSummary&&ae(null!==(a=i.questionnaireSummary)&&void 0!==a?a:null)),pe.current=!0},[e,null==on?void 0:on.sessionId]),ce(()=>{(null==on?void 0:on.sessionId)&&pe.current&&(xe.current||(xe.current=!0,dn().catch(()=>{})))},[null==on?void 0:on.sessionId,dn]);const un=(null==on?void 0:on.sessionId)||n,fn=un,pn="completed"===(null==R?void 0:R.status)||"failed"===(null==R?void 0:R.status),gn="questionnaire"===I&&!!R&&!!fn&&!pn&&Si.has(R.status),hn="execution"===I&&!!R&&!!fn&&!pn&&_i.has(R.status),mn=gn||hn;ce(()=>{_e||un&&$e(e=>e===un?e:un)},[_e,un]),ce(()=>{if(!mn||!fn)return;let e=null,n=!1;const r="execution"===I?3e4:1e4,o=async()=>{if(n)return;n=!0;const r=await dn();n=!1,"network-error"===r&&e&&clearInterval(e)};return o(),e=setInterval(o,r),()=>{e&&clearInterval(e)}},[mn,fn,dn,null==R?void 0:R.id,I,j,null==R?void 0:R.status,null==R?void 0:R.progress]),ce(()=>{ln()},[ln]),ce(()=>{(null==on?void 0:on.sessionId)&&pe.current&&(!function(e,n,r){const o=ci(e,n);di(e,n,{version:1,chatflowId:e,sessionId:n,lastUpdated:(new Date).toISOString(),...o?{userQuestion:o.userQuestion,phase:o.phase,questionnaireJson:o.questionnaireJson,questionnaireSignature:o.questionnaireSignature,questionnaireSummary:o.questionnaireSummary,finalReport:o.finalReport,currentTask:o.currentTask}:{},...r})}(e,on.sessionId,{userQuestion:O||void 0,phase:I,questionnaireJson:Z||void 0,questionnaireSignature:re||void 0,questionnaireSummary:te||void 0,finalReport:ie||void 0,currentTask:R}),en())},[e,null==on?void 0:on.sessionId,O,I,Z,re,te,ie,R,en]),ce(()=>{},[te]),ce(()=>{"input"===I&&cn()},[O,I,cn]),ce(()=>{if("input"===I)return;const e=he.current;e&&e instanceof HTMLTextAreaElement&&(e.style.height="32px",e.style.lineHeight="32px")},[I,j]),ce(()=>{var e;if("questionnaire_ready"===(null==R?void 0:R.status)&&R.questionnaire_payload){const n="string"==typeof R.questionnaire_payload?R.questionnaire_payload:JSON.stringify(R.questionnaire_payload,null,2);return G(n),oe(null!==(e=R.questionnaire_signature)&&void 0!==e?e:null),void Y(null)}if("questionnaire_ready"===(null==R?void 0:R.status)&&!R.questionnaire_payload&&!Z){const e=function(e){for(let n=e.length-1;n>=0;n-=1){const r=e[n];if("assistant"!==r.role)continue;const o=Qi(r.content);if(o)return o}return null}(ke.current);e&&G(e)}},[R,Z]),ce(()=>{R&&R.execution_results},[R]),ce(()=>{var e;R&&void 0!==R.questionnaire_signature&&oe(null!==(e=R.questionnaire_signature)&&void 0!==e?e:null)},[null==R?void 0:R.questionnaire_signature]),ce(()=>{var e,n,r,o,t,a,i;if(!R)return;const l=te,s=Vi(null!==(e=R.questionnaire_payload)&&void 0!==e?e:Z),d=s.length>0?s:Vi(Z),c=function(e){if(!e)return null;const n=["questionnaire_response_markdown","questionnaire_response_markdown_v2","questionnaire_response","questionnaire_response_markdown_combined","questionnaireResponsesMarkdown"];if("string"==typeof e){const n=e.trim();return n.length>0?n:null}if(e&&"object"==typeof e){for(const r of n){const n=e[r];if("string"==typeof n&&n.trim().length>0)return n.trim()}const r=e.questionnaire_responses;if(Array.isArray(r)&&r.length>0)return r.map(e=>{var n,r;if("string"==typeof e)return e.trim();if(e&&"object"==typeof e){const o=null!==(r=null!==(n=e.answer)&&void 0!==n?n:e.response)&&void 0!==r?r:"";return"string"==typeof o?o.trim():""}return""}).filter(e=>e.length>0).join("\n\n")}return null}(R.execution_results),u=(null!==(n=null==l?void 0:l.formattedMarkdown)&&void 0!==n?n:"").trim(),f=d.length>0&&(!l||0===l.questions.length),p="string"==typeof c&&c.trim().length>0&&0===u.length;if(!f&&!p)return;const g={questions:f?d:null!==(r=null==l?void 0:l.questions)&&void 0!==r?r:d,answer:p?(null!=c?c:"").trim():null!==(o=null==l?void 0:l.answer)&&void 0!==o?o:(null!=c?c:"").trim(),formattedMarkdown:p?(null!=c?c:"").trim():null!==(t=null==l?void 0:l.formattedMarkdown)&&void 0!==t?t:(null!=c?c:"").trim(),submittedAt:null!==(i=null!==(a=null==l?void 0:l.submittedAt)&&void 0!==a?a:R.updated_at)&&void 0!==i?i:(new Date).toISOString()};(function(e,n){return e===n||!(!e||!n)&&e.answer===n.answer&&e.formattedMarkdown===n.formattedMarkdown&&e.submittedAt===n.submittedAt&&e.questions.length===n.questions.length&&e.questions.every((e,r)=>e===n.questions[r])})(null!=l?l:null,g)||ae(g)},[R,Z,te]),ce(()=>{const e=null==R?void 0:R.status;!Ti(null==R?void 0:R.stage)||"pending"!==e&&"in-progress"!==e&&"questionnaire_pending"!==e||Z?"questionnaire_ready"===e?("questionnaire"!==I&&D("questionnaire"),Z&&Y(null)):"questionnaire"===I&&R&&(D("execution"),G(""),Y(null),le(null),ue(!1)):"questionnaire"!==I&&D("questionnaire")},[R,Z,I,j]);const vn=ge(async(r,o,t)=>{var a,i,l,s,d,c,u;try{const f=await nn();if(!f)throw new Error("Failed to get valid session token");const p=await ln()||ve;if(!p||!p.canExecute)throw new Error("Deep Research is not available right now.");const g=p.visitor;if(!g)throw new Error("Deep Research visitor authorization missing. Please refresh and try again.");const h=(null==on?void 0:on.sessionId)||n,m={secureSessionToken:f,query:r,chatflowId:e,sessionId:h,browserFingerprint:me.current.getBrowserFingerprint(),visitor:g,messages:o};(null==t?void 0:t.questionnaireSignature)&&(m.questionnaireSignature=t.questionnaireSignature);const v=await fetch(`${B}/chat/${e}/deep-research/start`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(m)}),b=await v.json();if(!v.ok)throw new Error((null==b?void 0:b.error)||`Failed to start research: ${v.status}`);if((null==b?void 0:b.visitor)&&p){const e={...p,visitor:b.visitor};ye.current={timestamp:Date.now(),data:e},be(e)}const y=(null==b?void 0:b.taskId)||(null==b?void 0:b.jobId)||`embed-dr-${Date.now()}`;if("questionnaire_pending"===(null==b?void 0:b.status)){const e={id:y,session_id:h,status:"questionnaire_pending",stage:"questionnaire_pending",progress:0,message:(null==b?void 0:b.message)||"Deep Researchの質問票を準備しています...",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null,questionnaire_signature:null};return F(e),P(e.id),oe(null),G(""),Y(null),ae(null),le(null),D("questionnaire"),void ln(!0).catch(()=>{})}if("questionnaire_ready"===(null==b?void 0:b.status)){const e=null!==(a=null==b?void 0:b.task)&&void 0!==a?a:{id:y,session_id:h,status:"questionnaire_ready",stage:"questionnaire_ready",progress:100,message:(null==b?void 0:b.message)||"質問票の準備が完了しました。",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null!==(i=null==b?void 0:b.questionnairePayload)&&void 0!==i?i:null,questionnaire_signature:null!==(l=null==b?void 0:b.questionnaireSignature)&&void 0!==l?l:null};F(e),P(e.id);const n=null!==(d=null!==(s=null==b?void 0:b.questionnaireSignature)&&void 0!==s?s:e.questionnaire_signature)&&void 0!==d?d:null;if(oe(n),null==b?void 0:b.questionnairePayload){const e="string"==typeof b.questionnairePayload?b.questionnairePayload:JSON.stringify(b.questionnairePayload,null,2);G(e),Y(null)}else if(null==b?void 0:b.questionnaireMessage){const e=Qi(b.questionnaireMessage);e&&(G(e),Y(null))}return ae(null),D("questionnaire"),void ln(!0).catch(()=>{})}if(!(null==b?void 0:b.jobId))throw new Error("Deep Research job did not return an identifier.");const k=null!==(c=null==b?void 0:b.task)&&void 0!==c?c:{id:y,session_id:h,status:"pending",stage:"follow-up",progress:0,message:(null==b?void 0:b.message)||"Deep Researchを開始しています...",checksheet_markdown:null,tool_usage_plan:null,execution_results:null,final_report_message_id:null,summary_report:null,research_id:(null==b?void 0:b.researchId)||null,created_at:(new Date).toISOString(),updated_at:(new Date).toISOString(),report_settings:(null==b?void 0:b.report_settings)||{reportFormat:"business-report",internetEnabled:!0,language:"japanese"},questionnaire_payload:null,questionnaire_signature:null!==(u=null==t?void 0:t.questionnaireSignature)&&void 0!==u?u:null};F(k),P(k.id),ae(null),le(null);const x=Ti(k.stage)?"questionnaire":"execution";"questionnaire"===x&&(G(""),Y(null)),D(x),ln(!0).catch(()=>{})}catch(e){throw e}finally{J(!1)}},[e,n,on,nn,ln,ve,j]),bn=ge(async()=>{if("input"===I&&O.trim()&&!V){Q(!0),J(!0),H(null);try{await vn(O,r)}catch(e){H(e instanceof Error?e.message:"Failed to start research")}finally{J(!1),Q(!1)}}},[I,O,r,vn,V]),yn=ge(e=>{(e.metaKey||e.ctrlKey)&&"Enter"===e.key&&(e.preventDefault(),bn())},[bn]),kn=ge(async e=>{Y(null),ee(!0);try{const n=re||(null==R?void 0:R.questionnaire_signature)||null;if(!n)return Y("質問票の検証情報を準備しています。数秒後に再度お試しください。"),await dn().catch(()=>{}),void ee(!1);const o=(new Date).toISOString(),t=function(e){const n=e.split(/\r?\n/),r=[],o=[];let t="none";return n.forEach(e=>{const n=e.trim();if(!n)return void("answers"===t&&o.push(""));const a=n.replace(/[*_`]/g,"").toLowerCase();if(a.startsWith("質問一覧")||a.startsWith("質問一覧:")||a.startsWith("questions"))t="questions";else if(a.startsWith("回答")||a.startsWith("回答:")||a.startsWith("answers"))t="answers";else{if("questions"===t){const e=n.match(/^\d+[\.\)]\s*(.+)$/);return void r.push(e&&e[1]?e[1].trim():n)}"answers"===t&&o.push(e)}}),{questions:r.filter(e=>e&&e.trim().length>0),answer:o.join("\n").trim()}}(e);ae({questions:t.questions,answer:t.answer,formattedMarkdown:e,submittedAt:o});const a=[...r,{role:"user",content:e,createdAt:o,id:`questionnaire-response-${Date.now()}`}],i=`${O}\n\nClarifications:\n\n${e}`;await vn(i,a,{questionnaireSignature:n})}catch(e){Y("回答の送信に失敗しました。時間をおいて再度お試しください。")}finally{ee(!1)}},[vn,r,re,null==R?void 0:R.questionnaire_signature,O,dn]);ge(n=>{const r=n.sessionId;if($e(r),r===un)return void ze(null);if("undefined"==typeof window)return;const o=function(e,n){return si(e,n)}(e,r);if(!o)return en(),void ze(null);ze(o)},[e,un,en]);const wn=ge(()=>{ze(null),un&&$e(un)},[un]);ge(()=>{var e,n,r,o;if(!_e)return;const t=_e;un&&$e(un),ze(null);const a="questionnaire"===t.phase&&t.questionnaireJson?"questionnaire":"input";D(a),N(null!==(e=t.userQuestion)&&void 0!==e?e:""),G(null!==(n=t.questionnaireJson)&&void 0!==n?n:""),oe(null!==(r=t.questionnaireSignature)&&void 0!==r?r:null),Y(null),le(null!==(o=t.finalReport)&&void 0!==o?o:null),ue(Boolean(t.finalReport)),F(null),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),P(null),H(null),J(!1),ee(!1),Q(!1),cn()},[_e,un,cn,P]);const Sn=ge(async()=>{if(!je){qe(!0);try{un&&ui(e,un),pe.current=!1,ye.current=null,D("input"),F(null),P(null),N(""),G(""),Y(null),oe(null),ae(null),le(null),ue(!1),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),ze(null),J(!1),ee(!1),Q(!1),H(null),Ae(!1),$e(null),an(),await tn(),en()}catch(e){const n="ja"===l.language?"新しいセッションの開始に失敗しました。時間をおいて再度お試しください。":"Failed to start a new session. Please try again in a moment.";H(e instanceof Error&&e.message?e.message:n)}finally{qe(!1)}}},[je,un,e,an,tn,en,l.language]),_n=ge(()=>{D("input"),F(null),P(null),H(null),N(""),G(""),Y(null),oe(null),ae(null),ue(!1),De(null),Oe(null),Re(null),Te(null),Le(null),Ue(null),Ve(null),We(null),Ge(null),Ye(null),ui(e,un||void 0),wn(),en()},[e,un,wn,en]),zn="ja"===l.language,Cn=t||"deep-research",$n=l.enableDeepResearch||l.enableRagDeepResearch,Mn="input"===I&&!!O.trim()&&!U&&!V,An=Boolean(re||(null==R?void 0:R.questionnaire_signature)),jn=X||!An,qn=An?void 0:"質問票を検証しています...",In="ja"===l.language?"Ctrl+Enter または ⌘+Enter で送信":"Send with Ctrl+Enter or ⌘+Enter",Dn="ja"===l.language?"Deep Researchで調べたい内容を入力してください... (Ctrl+Enter または ⌘+Enter で送信)":"Describe what you would like Deep Research to investigate... (Ctrl+Enter or ⌘+Enter to send)",En=!!R&&wi.includes(R.status),On=Boolean(_e),Nn=je?zn?"新しいセッションを作成中...":"Starting new session...":zn?"新しいセッションを開始":"Start new session",Rn=null!==(m=null===(h=null==ve?void 0:ve.browserLimits)||void 0===h?void 0:h.limits)&&void 0!==m?m:[];null===(v=null==ve?void 0:ve.browserLimits)||void 0===v||v.allowed;const Fn=null!==(y=null===(b=null==ve?void 0:ve.browserLimits)||void 0===b?void 0:b.blockedBy)&&void 0!==y?y:null;Rn.length;const Tn=null==ve?void 0:ve.visitor,Pn=ge(e=>{if(!e)return zn?"利用制限":"Usage limit";if(e.startsWith("custom-")){const n=parseInt(e.replace("custom-","").replace("d",""),10);if(Number.isFinite(n))return zn?`直近${n}日`:`Last ${n} days`}return(zn?{daily:"1日あたり",weekly:"1週間あたり",monthly:"1か月あたり",yearly:"1年あたり"}:{daily:"Per day",weekly:"Per week",monthly:"Per month",yearly:"Per year"})[e]||e},[zn]),Ln=ge(e=>{if(!e)return null;const n=new Date(e);return Number.isNaN(n.getTime())?null:n.toLocaleString(zn?"ja-JP":void 0,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})},[zn]);"number"==typeof(null==Tn?void 0:Tn.remaining)&&Tn.remaining,"number"==typeof(null==Tn?void 0:Tn.limit)&&Tn.limit;const Hn=null==Tn?void 0:Tn.windowEnd;Fn&&Pn(Fn),Ln(Hn);const Un=!1,Bn=ge((e,n)=>e.hasFinalReport?zn?"完了":"Completed":n?zn?"進行中":"In progress":"execution"===e.phase?zn?"実行中":"Executing":"questionnaire"===e.phase?zn?"質問票対応中":"Awaiting questionnaire":zn?"入力中":"Draft",[zn]),Jn=null!==(x=null==_e?void 0:_e.finalReport)&&void 0!==x?x:ie,Vn=null!==(w=null==_e?void 0:_e.userQuestion)&&void 0!==w?w:O,Qn=null!==(S=null==_e?void 0:_e.questionnaireSummary)&&void 0!==S?S:te,Wn=Boolean(Jn)&&(!En||On),Zn=Wn&&(On||se),Gn=zn?On?"過去のDeep Research結果を表示しています":"前回のDeep Research結果を表示しています":On?"Viewing a previous Deep Research report":"Showing your previous Deep Research report",Kn=zn?"調査結果":"Research Findings",Yn=zn?"Deep Researchが生成したレポート本文です。":"Deep Research generated report summary.",Xn=null!==(z=null===(_=null==Qn?void 0:Qn.questions)||void 0===_?void 0:_.filter(e=>e&&e.trim().length>0))&&void 0!==z?z:[],er=Boolean((null==Qn?void 0:Qn.answer)&&Qn.answer.trim().length>0),nr=Qn?er?Qn.answer:zn?"回答は送信されませんでした。":"No answers were provided.":"",rr=Boolean(Vn&&Vn.trim().length>0||Xn.length>0||Qn);ce(()=>{},[Xn,er,nr,Qn,Vn,rr,Wn]);const or=_e?{sessionId:_e.sessionId,userQuestion:_e.userQuestion,lastUpdated:_e.lastUpdated,finalReportCreatedAt:null!==($=null===(C=_e.finalReport)||void 0===C?void 0:C.createdAt)&&void 0!==$?$:null,hasFinalReport:Boolean(_e.finalReport),phase:null!==(M=_e.phase)&&void 0!==M?M:null}:null,tr=!!or&&or.sessionId===un;return(null===(A=null==or?void 0:or.userQuestion)||void 0===A?void 0:A.trim())&&(or.userQuestion.trim().length>80?or.userQuestion.trim().slice(0,80):or.userQuestion.trim()),or&&Bn(or,tr),(null==or?void 0:or.lastUpdated)&&new Date(or.finalReportCreatedAt||or.lastUpdated).toLocaleString(zn?"ja-JP":void 0,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}),W(Mi,{children:[W(Ai,{children:[L&&W(al,{children:L}),Un,false,W(Ui,{children:[W(Bi,{type:"button","data-variant":"primary",onClick:Sn,disabled:je||rn,children:Nn}),Un]}),Un,rn&&!Wn&&W(Di,{children:"セッションを初期化しています..."}),!rn&&"input"===I&&W(ji,{children:W(Ii,{children:"調査したい背景や目的、特に知りたい観点などを入力し「送信」ボタンで Deep Research を開始してください。"})}),"questionnaire"===I&&W(qi,{children:[Z?W(Wt,{questionnaireJson:Z,onSubmit:kn,isSubmitLocked:jn,submitLockLabel:qn}):W(Ma,{task:R,isJapanese:zn,progressOverride:Ie,stageOverride:Ee,statusOverride:Ne,messageOverride:Fe,updatedAtOverride:Pe}),K&&W(Oi,{children:K}),Z?(null==R?void 0:R.message)?W(Ei,{children:R.message}):An?null:W(Ei,{children:zn?"質問票の準備を行っています。送信が可能になるまで少しお待ちください。":"Preparing the questionnaire. Please wait a few more seconds before submitting."}):null]}),"execution"===I&&R&&W(xt,{task:R,onRetry:_n,progressOverride:He,stageOverride:Je,statusOverride:Qe,messageOverride:Ze,updatedAtOverride:Ke}),Wn&&Jn&&W(il,{children:[W(ll,{children:[W(sl,{children:[W("h3",{children:"調査レポート"}),Jn.createdAt&&W(dl,{children:new Date(Jn.createdAt).toLocaleString(zn?"ja-JP":void 0)})]}),Zn&&W(ml,{children:[W(vl,{}),Gn]})]}),Jn.completionMessage&&W(zl,{children:[W(Cl,{children:"✅"}),W($l,{children:[W("strong",{children:"Deep Researchが完了しました"}),Jn.completionMessage]})]}),rr&&W(cl,{children:[Vn&&Vn.trim().length>0&&W(ul,{children:[W(fl,{children:zn?"Deep Research依頼文":"Deep Research request"}),W(pl,{children:Vn.trim()})]}),Xn.length>0&&W(ul,{children:[W(fl,{children:zn?"フォローアップ質問":"Follow-up questions"}),W(gl,{children:Xn.map((e,n)=>W("li",{children:e},`follow-up-question-${n}`))})]}),Qn&&W(ul,{children:[W(fl,{children:zn?"フォローアップ質問への回答":"Follow-up answers"}),W(hl,{children:xn(nr,!1)})]})]}),W(bl,{children:[W(yl,{children:[W(kl,{children:W(Xe,{className:"icon"})}),W(xl,{children:[W(wl,{children:Kn}),W(Sl,{children:Yn})]})]}),W(_l,{children:xn(Jn.content,!1,Array.isArray(Jn.docMetadata)?Jn.docMetadata:void 0)})]})]})]}),o&&W(k,{children:[W(Wi,{children:W(Zi,{children:[W(Gi,{type:"button",active:"ask-ai"===Cn,onClick:()=>o("ask-ai"),children:"ja"===l.language?"AIに質問":"Ask AI"}),W(Gi,{type:"button",active:"search"===Cn,onClick:()=>o("search"),children:"ja"===l.language?"検索":"Search"}),$n&&W(Gi,{type:"button",active:"deep-research"===Cn||"rag-deep-research"===Cn,onClick:()=>o("deep-research"),children:(l.language,"Deep Research")})]})}),W(Ki,{children:W(Yi,{children:W(Xi,{children:[W(el,{children:W(rl,{ref:he,value:O,onInput:e=>{const n=e.currentTarget;N(n.value),cn(n)},placeholder:Dn,disabled:"input"!==I||U||V,onKeyDown:yn,rows:1})}),W(nl,{children:W(ol,{type:"button",onClick:bn,disabled:!Mn,"data-disabled":!Mn,title:In,"aria-label":In,children:U?W(tl,{}):W(Be,{size:16,color:"white"})})})]})})})]})]})}const Al=Oe`
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-`,Al=Oe`
+`,jl=Oe`
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.95);
@@ -2616,7 +2616,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-`,jl=Oe`
+`,ql=Oe`
   0% {
     opacity: 0;
     transform: scale(0.3);
@@ -2631,7 +2631,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     opacity: 1;
     transform: scale(1);
   }
-`;function ql({isOpen:e,onClose:n,currentMode:r,onModeSwitch:o,messages:t,isLoading:a,streamingContent:i,onSendMessage:l,error:s,config:d,currentState:c,chatMode:u,onChatModeChange:f,sessionId:p,onFeedbackSubmit:g,onClearChat:h,showIntro:m,displayMode:v="modal",metadataFilters:b,onMetadataFiltersChange:y}){var x;const w=fe(null);if(ce(()=>{if(!e)return;const r=e=>{"Escape"===e.key&&n()},o=e=>{"fullscreen"!==v&&w.current&&w.current.contains&&"function"==typeof w.current.contains&&!w.current.contains(e.target)&&n()};return document.addEventListener("keydown",r),document.addEventListener("mousedown",o),()=>{document.removeEventListener("keydown",r),document.removeEventListener("mousedown",o)}},[e,n]),!e)return null;const S=(null===(x=d.chatbotTitle)||void 0===x?void 0:x.trim())||"AskDona";return W(Il,{onClick:e=>{"fullscreen"!==v&&e.target===e.currentTarget&&n()},displayMode:v,children:W(Dl,{ref:w,displayMode:v,children:[W(El,{children:[W(Ol,{children:S}),W(Nl,{children:"fullscreen"!==v&&W(Rl,{onClick:n,children:"×"})})]}),W(Fl,{children:"ask-ai"===r?W(Ur,{messages:t,isLoading:a,streamingContent:i,onSendMessage:l,error:s,config:d,currentState:c,chatMode:u,onChatModeChange:f,sessionId:p,onFeedbackSubmit:g,showIntro:m,metadataFilters:b,onMetadataFiltersChange:y,onClearChat:h,currentMode:r,onModeSwitch:e=>o(e)}):"search"===r?W(So,{config:d,currentMode:r,onModeSwitch:o},"search-view"):"deep-research"===r&&(d.enableDeepResearch||d.enableRagDeepResearch)||"rag-deep-research"===r&&d.enableRagDeepResearch?W($l,{chatFlowId:d.chatflowId,sessionId:p,messages:t.map(e=>({role:e.role,content:e.content,createdAt:e.createdAt,id:e.id})),onModeSwitch:o,currentMode:r,onSendMessage:e=>l(e),baseUrl:window.location.origin,config:d}):null}),W(Tl,{children:[W(Pl,{children:["Powered by ",W(Ll,{href:"https://askdona.com",target:"_blank",style:"color: inherit; text-decoration: none;",children:"AskDona"})]}),W(Hl,{children:"ja"===d.language?W(k,{children:[W("div",{children:"Boostモードは、より多角的な視点から多くの文書を分析して回答します。通常モードより回答生成までに時間がかかります。"}),W("div",{children:"RAGシステムは誤った情報を提供することがあります。重要な情報はご自身で確認してください。"})]}):W(k,{children:[W("div",{children:"Boost mode analyzes more documents from multiple perspectives. It takes longer than normal mode."}),W("div",{children:"RAG systems may provide incorrect information. Please verify important information yourself."})]})})]})]})})}Oe`
+`;function Il({isOpen:e,onClose:n,currentMode:r,onModeSwitch:o,messages:t,isLoading:a,streamingContent:i,onSendMessage:l,error:s,config:d,currentState:c,chatMode:u,onChatModeChange:f,sessionId:p,onFeedbackSubmit:g,onClearChat:h,showIntro:m,displayMode:v="modal",metadataFilters:b,onMetadataFiltersChange:y}){var x;const w=fe(null);if(ce(()=>{if(!e)return;const r=e=>{"Escape"===e.key&&n()},o=e=>{"fullscreen"!==v&&w.current&&w.current.contains&&"function"==typeof w.current.contains&&!w.current.contains(e.target)&&n()};return document.addEventListener("keydown",r),document.addEventListener("mousedown",o),()=>{document.removeEventListener("keydown",r),document.removeEventListener("mousedown",o)}},[e,n]),!e)return null;const S=(null===(x=d.chatbotTitle)||void 0===x?void 0:x.trim())||"AskDona";return W(Dl,{onClick:e=>{"fullscreen"!==v&&e.target===e.currentTarget&&n()},displayMode:v,children:W(El,{ref:w,displayMode:v,children:[W(Ol,{children:[W(Nl,{children:S}),W(Rl,{children:"fullscreen"!==v&&W(Fl,{onClick:n,children:"×"})})]}),W(Tl,{children:"ask-ai"===r?W(Br,{messages:t,isLoading:a,streamingContent:i,onSendMessage:l,error:s,config:d,currentState:c,chatMode:u,onChatModeChange:f,sessionId:p,onFeedbackSubmit:g,showIntro:m,metadataFilters:b,onMetadataFiltersChange:y,onClearChat:h,currentMode:r,onModeSwitch:e=>o(e)}):"search"===r?W(_o,{config:d,currentMode:r,onModeSwitch:o},"search-view"):"deep-research"===r&&(d.enableDeepResearch||d.enableRagDeepResearch)||"rag-deep-research"===r&&d.enableRagDeepResearch?W(Ml,{chatFlowId:d.chatflowId,sessionId:p,messages:t.map(e=>({role:e.role,content:e.content,createdAt:e.createdAt,id:e.id})),onModeSwitch:o,currentMode:r,onSendMessage:e=>l(e),baseUrl:window.location.origin,config:d}):null}),W(Pl,{children:[W(Ll,{children:["Powered by ",W(Hl,{href:"https://askdona.com",target:"_blank",style:"color: inherit; text-decoration: none;",children:"AskDona"})]}),W(Ul,{children:"ja"===d.language?W(k,{children:[W("div",{children:"Boostモードは、より多角的な視点から多くの文書を分析して回答します。通常モードより回答生成までに時間がかかります。"}),W("div",{children:"RAGシステムは誤った情報を提供することがあります。重要な情報はご自身で確認してください。"})]}):W(k,{children:[W("div",{children:"Boost mode analyzes more documents from multiple perspectives. It takes longer than normal mode."}),W("div",{children:"RAG systems may provide incorrect information. Please verify important information yourself."})]})})]})]})})}Oe`
   0% {
     transform: scale(1);
     opacity: 1;
@@ -2658,7 +2658,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   100% {
     background-position: 1000px 0;
   }
-`;const Il=Re("div")`
+`;const Dl=Re("div")`
   position: fixed;
   inset: 0;
   background: ${e=>"fullscreen"===e.displayMode?"transparent":"rgba(0, 0, 0, 0.5)"};
@@ -2668,8 +2668,8 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   justify-content: center;
   z-index: 999999;
   padding: ${e=>"fullscreen"===e.displayMode?"0":"1.25rem"};
-  animation: ${Ml} 0.2s ease-out;
-`,Dl=Re("div")`
+  animation: ${Al} 0.2s ease-out;
+`,El=Re("div")`
   background: var(--askdona-surface);
   border-radius: ${e=>"fullscreen"===e.displayMode?"0":"1rem"};
   width: ${e=>"fullscreen"===e.displayMode?"100vw":"100%"};
@@ -2679,27 +2679,27 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   box-shadow: ${e=>"fullscreen"===e.displayMode?"none":"0 25px 50px -12px rgba(0, 0, 0, 0.25)"};
   display: flex;
   flex-direction: column;
-  animation: ${e=>"fullscreen"===e.displayMode?"none":Al} 0.3s ease-out;
+  animation: ${e=>"fullscreen"===e.displayMode?"none":jl} 0.3s ease-out;
   overflow: hidden;
-`,El=Re("header")`
+`,Ol=Re("header")`
   padding: 0.75rem 1.5rem;
   border-bottom: 1px solid var(--askdona-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
-`,Ol=Re("h2")`
+`,Nl=Re("h2")`
   margin: 0;
   color: var(--askdona-text);
   font-size: 1rem;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   letter-spacing: 0.01em;
-`,Nl=Re("div")`
+`,Rl=Re("div")`
   display: flex;
   gap: 0.75rem;
   align-items: center;
-`,Rl=Re("button")`
+`,Fl=Re("button")`
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 0.375rem;
@@ -2717,12 +2717,12 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     background: var(--askdona-background);
     color: var(--askdona-text);
   }
-`,Fl=Re("main")`
+`,Tl=Re("main")`
   flex: 1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-`,Tl=Re("footer")`
+`,Pl=Re("footer")`
   padding: 0.75rem 1.5rem;
   border-top: 1px solid var(--askdona-border);
   display: flex;
@@ -2730,10 +2730,10 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   align-items: flex-start;
   gap: 1rem;
   flex-shrink: 0;
-`,Pl=Re("span")`
+`,Ll=Re("span")`
   font-size: 0.75rem;
   color: var(--askdona-text-secondary);
-`,Ll=Re("a")`
+`,Hl=Re("a")`
   font-size: 0.75rem;
   color: var(--askdona-primary);
   text-decoration: none;
@@ -2741,7 +2741,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   &:hover {
     text-decoration: underline;
   }
-`,Hl=Re("div")`
+`,Ul=Re("div")`
   font-size: 0.625rem;
   color: var(--askdona-text-secondary);
   line-height: 1.3;
@@ -2757,7 +2757,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   > div:last-child {
     margin-bottom: 0;
   }
-`;function Ul({onClick:e,position:n}){return W(Bl,{onClick:e,position:n,children:W("svg",{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",children:W("path",{d:"M8 12H8.01M12 12H12.01M16 12H16.01M21 12C21 16.9706 16.9706 21 12 21C10.4077 21 8.88275 20.5699 7.5389 19.7447L3 21L4.25553 16.4611C3.43012 15.1173 3 13.5923 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"})})})}const Bl=Re("button")`
+`;function Bl({onClick:e,position:n}){return W(Jl,{onClick:e,position:n,children:W("svg",{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",xmlns:"http://www.w3.org/2000/svg",children:W("path",{d:"M8 12H8.01M12 12H12.01M16 12H16.01M21 12C21 16.9706 16.9706 21 12 21C10.4077 21 8.88275 20.5699 7.5389 19.7447L3 21L4.25553 16.4611C3.43012 15.1173 3 13.5923 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"})})})}const Jl=Re("button")`
   position: fixed;
   bottom: 1.25rem;
   ${e=>"bottom-right"===e.position?"right: 1.25rem;":"left: 1.25rem;"}
@@ -2773,7 +2773,7 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
   justify-content: center;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
-  animation: ${jl} 0.5s ease-out;
+  animation: ${ql} 0.5s ease-out;
   z-index: 999998;
   
   &:hover {
@@ -2789,4 +2789,4 @@ var AskDona=function(e){"use strict";var n,r,o,t,a,i,l,s,d,c,u,f={},p=[],g=/acit
     width: 1.5rem;
     height: 1.5rem;
   }
-`;function Jl(e){const[n,r]=de({isValid:!1,error:null,config:null});return ce(()=>{const n=async()=>{try{const n=await async function(e){try{return await J(`/validate/${e}`,{method:"POST",body:JSON.stringify({origin:window.location.origin})})}catch(e){return{isValid:!1,error:e.message}}}(e);r({isValid:n.isValid,error:n.error?new Error(n.error):null,config:n.config||null})}catch(e){r({isValid:!1,error:e,config:null})}};e&&n()},[e]),n}const Vl="askdona_widget_",Ql=864e5;function Wl(e){return/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(e)}function Zl(e){const n=`${Vl}messages_${e}`;try{const e=localStorage.getItem(n);if(!e)return[];const r=JSON.parse(e);return Array.isArray(r)?r:r.messages||[]}catch(e){return[]}}function Gl(e){var n;const r=`${Vl}messages_${e}`;try{const e=localStorage.getItem(r);if(!e)return null;const o=JSON.parse(e);return!Array.isArray(o)&&o.sessionId&&(null===(n=o.messages)||void 0===n?void 0:n.length)>0?o.sessionId:null}catch(e){return null}}function Kl(e){const[n]=de(()=>{if(Zl(e).length>0){const n=Gl(e);if(n)return n}const n=function(e){const n=`${Vl}session_${e}`;try{const e=localStorage.getItem(n);if(e){const n=JSON.parse(e);if(n.expiresAt>Date.now()&&Wl(n.id))return n.id}}catch(e){}const r=Zl(e).length>0;if(r){const r=Gl(e);if(r&&Wl(r)){const e={id:r,createdAt:Date.now(),expiresAt:Date.now()+Ql};try{localStorage.setItem(n,JSON.stringify(e))}catch(e){}return r}}try{localStorage.removeItem(n),r||localStorage.removeItem(`${Vl}messages_${e}`)}catch(e){}const o={id:U(),createdAt:Date.now(),expiresAt:Date.now()+Ql};try{localStorage.setItem(n,JSON.stringify(o))}catch(e){}return o.id}(e);return n}),[r,o]=de(()=>Zl(e)),[t,a]=de(!1),[i,l]=de(""),[s,d]=de(null),[c,u]=de("idle"),f=fe(null),p=fe(null),g=fe(""),h=fe(null);ce(()=>{if(r.length>0){const o=r[r.length-1];!function(e,n,r){const o=`${Vl}messages_${e}`;try{const e=localStorage.getItem(o),t=e?JSON.parse(e):{sessionId:null,messages:[]};r&&!t.sessionId&&(t.sessionId=r);const a=t.messages||[],i=a.findIndex(e=>e.id===n.id);-1!==i?a[i]=n:a.push(n),a.length>50&&a.splice(0,a.length-50),t.messages=a,localStorage.setItem(o,JSON.stringify(t))}catch(e){}}(e,o,n)}},[r,e,n]);const m=ge(()=>{o([]),function(e){[`${Vl}session_${e}`,`${Vl}messages_${e}`].forEach(e=>{try{localStorage.removeItem(e)}catch(e){}})}(e)},[e]),v=ge(async(t,i="standard",s=null)=>{try{const c={id:U(),role:"user",content:t,createdAt:(new Date).toISOString(),metadata:{mode:i}};o(e=>[...e,c]),a(!0),d(null),l(""),u("thinking"),g.current="",h.current=null;const m={id:U(),role:"assistant",content:"",createdAt:(new Date).toISOString(),metadata:{mode:i}};p.current=m,f.current=new AbortController,await async function({chatflowId:e,sessionId:n,message:r,messages:o,mode:t="standard",userMessageId:a,assistantMessageId:i,metadataFilters:l,signal:s,onChunk:d}){var c,u;const f=`${B}/chat/${e}/${t}`,p=await fetch(f,{method:"POST",headers:{"Content-Type":"application/json","X-Widget-Version":"1.0.0"},body:JSON.stringify({userQuestion:r,sessionId:n,messages:o.map(e=>({role:e.role,content:e.content,createdAt:e.createdAt})),mode:t,boostMode:"boost"===t||void 0,userMessageId:a,assistantMessageId:i,metadataFilters:l}),signal:s}),g={};if(p.headers.forEach((e,n)=>{g[n]=e}),!p.ok){const e=await p.json().catch(()=>({message:"Request failed"}));throw new Error(e.message||`HTTP ${p.status}`)}const h=null===(c=p.body)||void 0===c?void 0:c.getReader();if(!h)throw new Error("No response body");const m=new TextDecoder;let v="",b=0;const y=/\S/,k=(e,n)=>{b+=1},x=e=>{e&&y.test(e)&&(k(),d({type:"content",data:e}))};try{for(;;){const{done:e,value:n}=await h.read();if(e)break;let r=m.decode(n,{stream:!0});if(v&&(r=v+r,v=""),r.includes("\0")){const e=r.split("\0");v=null!==(u=e.pop())&&void 0!==u?u:"";for(const n of e)if(n)if(n.startsWith("__STATE__:")){const e=n.substring(10).replace(/\n$/,"");k(),d({type:"state",data:e})}else if(n.startsWith("__SEARCH__:")){const e=n.substring(11).replace(/\n$/,"");k(),d({type:"search",data:e})}else if(n.startsWith("__METADATA__:")){const e=n.substring(13).replace(/\n$/,"");k(),d({type:"metadata",data:e})}else if(n.startsWith("__SEARCH_QUERIES__:")){const e=n.substring(19).replace(/\n$/,"");k(),d({type:"search-queries",data:e})}else if(n.startsWith("__SUMMARY__:"))try{JSON.parse(n.substring(13))}catch(e){}else x(n);v&&!v.startsWith("__")&&(x(v),v="")}else x(r)}v&&(v.startsWith("__")||x(v))}finally{h.releaseLock()}}({chatflowId:e,sessionId:n,message:t,messages:r,mode:i,userMessageId:c.id,assistantMessageId:m.id,metadataFilters:s,signal:f.current.signal,onChunk:e=>{if("content"===e.type)g.current+=e.data,l(g.current);else if("metadata"===e.type)try{const n=JSON.parse(e.data);h.current={...h.current,docMetadata:n,mode:i}}catch(e){}else"state"===e.type&&u(e.data)}})}catch(e){"AbortError"===e.name||d(e)}finally{p.current&&g.current.trim()&&o(e=>[...e,{...p.current,content:g.current.trim(),metadata:{...p.current.metadata,...h.current}}]),a(!1),l(""),u("idle"),f.current=null,p.current=null,g.current="",h.current=null}},[e,r]),b=ge(async(r,t,a)=>{try{o(e=>e.map(e=>e.id===r?{...e,metadata:{...e.metadata,feedback:{rating:t,content:a,submittedAt:(new Date).toISOString(),isSubmitted:!0}}}:e));const i={embedMessageId:r,embedSessionId:n,chatflowId:e,feedbackType:"combined",feedbackData:{rating:"THUMBS_UP"===t?"thumbs_up":"thumbs_down",content:a||null},metadata:{domain:window.location.hostname,url:window.location.href,userAgent:navigator.userAgent}},l=await fetch(`${B}/feedback`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(i)});if(!l.ok){const e=await l.text();throw new Error(`Failed to submit feedback: ${l.statusText} - ${e}`)}await l.json()}catch(e){throw o(e=>e.map(e=>e.id===r?{...e,metadata:{...e.metadata,feedback:void 0}}:e)),e}},[n,e]);return{messages:r,sendMessage:v,isLoading:t,streamingContent:i,error:s,currentState:c,sessionId:n,submitFeedback:b,clearChat:m}}function Yl(e,n){const r=parseInt(e.replace("#",""),16),o=Math.round(2.55*n),t=(r>>16)-o,a=(r>>8&255)-o,i=(255&r)-o;return"#"+(16777216+65536*(t<255?t<1?0:t:255)+256*(a<255?a<1?0:a:255)+(i<255?i<1?0:i:255)).toString(16).slice(1)}function Xl(e,n){const r=parseInt(e.replace("#",""),16),o=Math.round(2.55*n),t=(r>>16)+o,a=(r>>8&255)+o,i=(255&r)+o;return"#"+(16777216+65536*(t<255?t<1?0:t:255)+256*(a<255?a<1?0:a:255)+(i<255?i<1?0:i:255)).toString(16).slice(1)}"undefined"!=typeof window&&function(){try{const e=Object.keys(localStorage),n=Date.now();e.forEach(e=>{if(e.startsWith(`${Vl}session_`))try{const r=JSON.parse(localStorage.getItem(e)||"{}");if(r.expiresAt&&r.expiresAt<n){localStorage.removeItem(e);const n=e.replace(`${Vl}session_`,"");localStorage.removeItem(`${Vl}messages_${n}`)}}catch(n){localStorage.removeItem(e)}})}catch(e){}}();const es={colors:{primary:"#10316f",primaryDark:Yl("#10316f",10),primaryLight:Xl("#10316f",10),background:"#ffffff",surface:"#f8f9fa",text:"#353a5c",textSecondary:"#6b6f8a",border:"#e5e7eb",error:"#EF4444",success:"#10B981"},fonts:{base:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',mono:'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'},shadows:{sm:"0 1px 2px 0 rgba(0, 0, 0, 0.05)",md:"0 4px 6px -1px rgba(0, 0, 0, 0.1)",lg:"0 10px 15px -3px rgba(0, 0, 0, 0.1)",xl:"0 20px 25px -5px rgba(0, 0, 0, 0.1)"}},ns={colors:{primary:"#10316f",primaryDark:Yl("#10316f",10),primaryLight:Xl("#10316f",10),background:"#0f172a",surface:"#111827",text:"#e5e7eb",textSecondary:"#9ca3af",border:"#1f2937",error:"#F87171",success:"#34D399"},fonts:{base:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',mono:'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'},shadows:{sm:"0 1px 2px 0 rgba(0, 0, 0, 0.3)",md:"0 4px 6px -1px rgba(0, 0, 0, 0.4)",lg:"0 10px 15px -3px rgba(0, 0, 0, 0.5)",xl:"0 20px 25px -5px rgba(0, 0, 0, 0.6)"}};function rs(e,n){let r=es;if("dark"===e)r=ns;else if("auto"===e){r=window.matchMedia("(prefers-color-scheme: dark)").matches?ns:es}const o=function(e){if(!e)return null;let n=e.trim();if(!n)return null;"#"===n[0]&&(n=n.slice(1));3===n.length&&(n=n.split("").map(e=>e+e).join(""));if(!/^([0-9a-f]{6})$/i.test(n))return null;return`#${n.toLowerCase()}`}(n)||r.colors.primary;r={...r,colors:{...r.colors,primary:o,primaryDark:Yl(o,10),primaryLight:Xl(o,10)}};const t=function(e){const n=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);return n?`${parseInt(n[1],16)}, ${parseInt(n[2],16)}, ${parseInt(n[3],16)}`:"0, 0, 0"}(r.colors.primary);return document.documentElement.style.setProperty("--askdona-primary-rgb",t),r}function os(e,n){for(var r in n)e[r]=n[r];return e}function ts(e,n){for(var r in e)if("__source"!==r&&!(r in n))return!0;for(var o in n)if("__source"!==o&&e[o]!==n[o])return!0;return!1}function as(e,n){this.props=e,this.context=n}(as.prototype=new x).isPureReactComponent=!0,as.prototype.shouldComponentUpdate=function(e,n){return ts(this.props,e)||ts(this.state,n)};var is=r.v;r.v=function(e){e.type&&e.type.B&&e.ref&&(e.props.ref=e.ref,e.ref=null),is&&is(e)};var ls="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.forward_ref")||3911;var ss=r.S;r.S=function(e,n,r,o){if(e.then)for(var t,a=n;a=a.m;)if((t=a._)&&t._)return null==n.S&&(n.S=r.S,n.h=r.h),t._(e,n);ss(e,n,r,o)};var ds=r.unmount;function cs(e,n,r){return e&&(e._&&e._.H&&(e._.H.m.forEach(function(e){"function"==typeof e._&&e._()}),e._.H=null),null!=(e=os({},e))._&&(e._.q===r&&(e._.q=n),e._.S=!0,e._=null),e.h=e.h&&e.h.map(function(e){return cs(e,n,r)})),e}function us(e,n,r){return e&&r&&(e.C=null,e.h=e.h&&e.h.map(function(e){return us(e,n,r)}),e._&&e._.q===n&&(e.S&&r.appendChild(e.S),e._.S=!0,e._.q=r)),e}function fs(){this.M=0,this.o=null,this.v=null}function ps(e){var n=e.m._;return n&&n.J&&n.J(e)}function gs(){this.i=null,this.l=null}r.unmount=function(e){var n=e._;n&&n.V&&n.V(),n&&32&e.M&&(e.type=null),ds&&ds(e)},(fs.prototype=new x)._=function(e,n){var r=n._,o=this;null==o.o&&(o.o=[]),o.o.push(r);var t=ps(o.C),a=!1,i=function(){a||(a=!0,r.V=null,t?t(l):l())};r.V=i;var l=function(){if(! --o.M){if(o.state.J){var e=o.state.J;o.C.h[0]=us(e,e._.q,e._.W)}var n;for(o.setState({J:o.v=null});n=o.o.pop();)n.forceUpdate()}};o.M++||32&n.M||o.setState({J:o.v=o.C.h[0]}),e.then(i,i)},fs.prototype.componentWillUnmount=function(){this.o=[]},fs.prototype.render=function(e,n){if(this.v){if(this.C.h){var r=document.createElement("div"),o=this.C.h[0]._;this.C.h[0]=cs(this.v,r,o.W=o.q)}this.v=null}var t=n.J&&b(k,null,e.fallback);return t&&(t.M&=-33),[b(k,null,n.J?null:e.children),t]};var hs=function(e,n,r){if(++r[1]===r[0]&&e.l.delete(n),e.props.revealOrder&&("t"!==e.props.revealOrder[0]||!e.l.size))for(r=e.i;r;){for(;r.length>3;)r.pop()();if(r[1]<r[0])break;e.i=r=r[2]}};(gs.prototype=new x).J=function(e){var n=this,r=ps(n.C),o=n.l.get(e);return o[0]++,function(t){var a=function(){n.props.revealOrder?(o.push(t),hs(n,e,o)):t()};r?r(a):a()}},gs.prototype.render=function(e){this.i=null,this.l=new Map;var n=M(e.children);e.revealOrder&&"b"===e.revealOrder[0]&&n.reverse();for(var r=n.length;r--;)this.l.set(n[r],this.i=[1,0,this.i]);return e.children},gs.prototype.componentDidUpdate=gs.prototype.componentDidMount=function(){var e=this;this.l.forEach(function(n,r){hs(e,r,n)})};var ms="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103,vs=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,bs=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,ys=/[A-Z0-9]/g,ks="undefined"!=typeof document,xs=function(e){return("undefined"!=typeof Symbol&&"symbol"==typeof Symbol()?/fil|che|rad/:/fil|che|ra/).test(e)};x.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(e){Object.defineProperty(x.prototype,e,{configurable:!0,get:function(){return this["UNSAFE_"+e]},set:function(n){Object.defineProperty(this,e,{configurable:!0,writable:!0,value:n})}})});var ws=r.event;function Ss(){}function _s(){return this.cancelBubble}function zs(){return this.defaultPrevented}r.event=function(e){return ws&&(e=ws(e)),e.persist=Ss,e.isPropagationStopped=_s,e.isDefaultPrevented=zs,e.nativeEvent=e};var Cs={enumerable:!1,configurable:!0,get:function(){return this.class}},$s=r.vnode;r.vnode=function(e){"string"==typeof e.type&&function(e){var n=e.props,r=e.type,o={},t=-1===r.indexOf("-");for(var a in n){var i=n[a];if(!("value"===a&&"defaultValue"in n&&null==i||ks&&"children"===a&&"noscript"===r||"class"===a||"className"===a)){var l=a.toLowerCase();"defaultValue"===a&&"value"in n&&null==n.value?a="value":"download"===a&&!0===i?i="":"translate"===l&&"no"===i?i=!1:"o"===l[0]&&"n"===l[1]?"ondoubleclick"===l?a="ondblclick":"onchange"!==l||"input"!==r&&"textarea"!==r||xs(n.type)?"onfocus"===l?a="onfocusin":"onblur"===l?a="onfocusout":bs.test(a)&&(a=l):l=a="oninput":t&&vs.test(a)?a=a.replace(ys,"-$&").toLowerCase():null===i&&(i=void 0),"oninput"===l&&o[a=l]&&(a="oninputCapture"),o[a]=i}}"select"==r&&o.multiple&&Array.isArray(o.value)&&(o.value=M(n.children).forEach(function(e){e.props.selected=-1!=o.value.indexOf(e.props.value)})),"select"==r&&null!=o.defaultValue&&(o.value=M(n.children).forEach(function(e){e.props.selected=o.multiple?-1!=o.defaultValue.indexOf(e.props.value):o.defaultValue==e.props.value})),n.class&&!n.className?(o.class=n.class,Object.defineProperty(o,"className",Cs)):(n.className&&!n.class||n.class&&n.className)&&(o.class=o.className=n.className),e.props=o}(e),e.$$typeof=ms,$s&&$s(e)};var Ms=r.j;r.j=function(e){Ms&&Ms(e),e._};var As=r.diffed;r.diffed=function(e){As&&As(e);var n=e.props,r=e.S;null!=r&&"textarea"===e.type&&"value"in n&&n.value!==r.value&&(r.value=null==n.value?"":n.value)};const js=e=>Math.min(255,Math.max(0,e)),qs=e=>{if(!e)return null;let n=e.trim();return n?("#"===n[0]&&(n=n.slice(1)),3===n.length&&(n=n.split("").map(e=>e+e).join("")),/^([0-9a-f]{6})$/i.test(n)?`#${n.toLowerCase()}`:null):null},Is=(e,n)=>{const r=qs(e);if(!r)return e;const o=parseInt(r.slice(1),16),t=Math.round(2.55*n);return`#${((1<<24)+(js((o>>16)+t)<<16)+(js((o>>8&255)+t)<<8)+js((255&o)+t)).toString(16).slice(1)}`},Ds=e=>{const n=qs(e);if(!n)return null;const r=parseInt(n.slice(1),16);return`${r>>16&255}, ${r>>8&255}, ${255&r}`};Ne(b);const Es=function(e){function n(n){var r=os({},n);return delete r.ref,e(r,n.ref||null)}return n.$$typeof=ls,n.render=n,n.prototype.isReactComponent=n.B=!0,n.displayName="ForwardRef("+(e.displayName||e.name)+")",n}(({config:e},n)=>{const[r,o]=de({isOpen:"fullscreen"===e.displayMode,currentMode:"ask-ai",messages:[],isLoading:!1,streamingContent:"",error:null,chatMode:"standard",showIntro:!0,metadataFilters:null}),{isValid:t,error:a,config:i}=Jl(e.chatflowId),[l,s]=de(null);ce(()=>{V(e.chatflowId,e.language).then(e=>{e&&e.embedConfig&&s(e.embedConfig)}).catch(()=>{s(null)})},[e.chatflowId,e.language]);const d="boolean"!=typeof e.enableDeepResearch||e.enableDeepResearch,c="boolean"==typeof e.enableRagDeepResearch?e.enableRagDeepResearch:d,u={...e,enableDeepResearch:d,enableRagDeepResearch:c};if(l){if(l.introTitle&&(u.introTitle=l.introTitle),l.introMessage&&(u.introMessage=l.introMessage),l.exampleQuestions&&(u.exampleQuestions=l.exampleQuestions),l.appearanceSettings){const e=l.appearanceSettings.primaryColor||void 0,n=l.appearanceSettings.theme||void 0,r=l.appearanceSettings.position||void 0,o=l.appearanceSettings.displayMode||void 0,t=l.appearanceSettings.backgroundColor||void 0,a=l.appearanceSettings.borderColor||void 0,i=l.appearanceSettings.chatIconColor||void 0,s=l.appearanceSettings.tabAccentColor||void 0,d=l.appearanceSettings.modeActiveColor||void 0;u.primaryColor=u.primaryColor||e,u.theme=u.theme||n,u.position=u.position||r,u.displayMode=u.displayMode||o,u.backgroundColor=u.backgroundColor||t,u.borderColor=u.borderColor||a,u.chatIconColor=u.chatIconColor||i,u.tabAccentColor=u.tabAccentColor||s,u.modeActiveColor=u.modeActiveColor||d}l.featureFlags&&("boolean"==typeof l.featureFlags.enableBoostMode&&(u.defaultBoostMode=!!l.featureFlags.enableBoostMode),"boolean"==typeof l.featureFlags.allowBoostModeToggle&&(u.allowBoostModeToggle=!!l.featureFlags.allowBoostModeToggle),"boolean"==typeof l.featureFlags.enableRagDeepResearch&&(u.enableRagDeepResearch=!!l.featureFlags.enableRagDeepResearch),"boolean"==typeof l.featureFlags.enableDeepResearch&&(u.enableDeepResearch=!!l.featureFlags.enableDeepResearch))}else i&&(u.introTitle=i.introTitle,u.introMessage=i.introMessage,u.exampleQuestions=i.exampleQuestions,u.theme=i.theme,u.position=i.position,u.primaryColor=i.primaryColor,u.defaultBoostMode=i.defaultBoostMode,u.allowBoostModeToggle=i.allowBoostModeToggle,u.displayMode=e.displayMode);u.enableDeepResearch&&(u.enableRagDeepResearch=!0);const f=rs(u.theme||"light",u.primaryColor),p=!!u.debug,g=u.displayMode||"modal",h=r.isOpen,m=!h&&"fullscreen"!==g;ce(()=>{},[p,g,h,m]),ce(()=>{if("undefined"==typeof document)return;const e=document.querySelector("askdona-widget");e&&("fullscreen"!==g?"function"==typeof e.toggleAttribute?e.toggleAttribute("data-open",h):h?e.setAttribute("data-open",""):e.removeAttribute("data-open"):e.removeAttribute("data-open"))},[h,g,p]);const{messages:v,sendMessage:b,isLoading:y,streamingContent:k,error:x,currentState:w,sessionId:S,submitFeedback:_,clearChat:z}=Kl(e.chatflowId);ce(()=>{o(e=>({...e,messages:v,isLoading:y,streamingContent:k,error:a||x,showIntro:0===v.length&&e.showIntro}))},[v,y,k,a,x]),ce(()=>{if(i){const e=i.defaultBoostMode?"boost":"standard";o(n=>n.chatMode===e?n:{...n,chatMode:e})}},[i]),function(e,n,r){X=6,ue(function(){if("function"==typeof e){var r=e(n());return function(){e(null),r&&"function"==typeof r&&r()}}if(e)return e.current=n(),function(){return e.current=null}},null==r?r:r.concat(e))}(n,()=>({open:()=>{o(e=>({...e,isOpen:!0}))},close:()=>{o(e=>({...e,isOpen:!1}))},sendMessage:e=>{o(e=>({...e,isOpen:!0})),b(e)}}),[b]);const C=fe(null);if(ce(()=>{if(!C.current)return;const e=C.current;e.style.setProperty("--askdona-primary",f.colors.primary),e.style.setProperty("--askdona-primary-dark",f.colors.primaryDark),e.style.setProperty("--askdona-primary-light",f.colors.primaryLight);const n=Ds(f.colors.primary);n?e.style.setProperty("--askdona-primary-rgb",n):e.style.removeProperty("--askdona-primary-rgb"),e.style.setProperty("--askdona-background",f.colors.background),e.style.setProperty("--askdona-surface",f.colors.surface),e.style.setProperty("--askdona-text",f.colors.text),e.style.setProperty("--askdona-text-secondary",f.colors.textSecondary),e.style.setProperty("--askdona-border",f.colors.border),e.style.setProperty("--askdona-error",f.colors.error),e.style.setProperty("--askdona-success",f.colors.success);const r=Ds(f.colors.error);r?e.style.setProperty("--askdona-error-rgb",r):e.style.removeProperty("--askdona-error-rgb");const o=Ds(f.colors.success);if(o?e.style.setProperty("--askdona-success-rgb",o):e.style.removeProperty("--askdona-success-rgb"),e.style.setProperty("--askdona-font-base",f.fonts.base),e.style.setProperty("--askdona-font-mono",f.fonts.mono),e.style.setProperty("--askdona-bg-secondary",f.colors.surface),e.style.setProperty("--askdona-bg-hover",f.colors.primaryLight+"20"),e.style.setProperty("--askdona-surface-color",f.colors.background),e.style.setProperty("--askdona-border-color",f.colors.border),u.backgroundColor){const n=u.backgroundColor;e.style.setProperty("--askdona-background",n),e.style.setProperty("--askdona-surface",Is(n,-4)),e.style.setProperty("--askdona-bg-secondary",Is(n,-2)),e.style.setProperty("--askdona-surface-color",n)}u.borderColor&&(e.style.setProperty("--askdona-border",u.borderColor),e.style.setProperty("--askdona-border-color",u.borderColor));const t=u.chatIconColor||f.colors.primary;e.style.setProperty("--askdona-chat-icon",t);const a=u.tabAccentColor||f.colors.primary;e.style.setProperty("--askdona-tab-accent",a);const i=Ds(a);i?e.style.setProperty("--askdona-tab-accent-rgb",i):e.style.removeProperty("--askdona-tab-accent-rgb");const l=u.modeActiveColor||f.colors.primary;e.style.setProperty("--askdona-mode-active",l),e.style.setProperty("--askdona-mode-active-hover",Is(l,-12))},[f,u.backgroundColor,u.borderColor,u.chatIconColor,u.tabAccentColor,u.modeActiveColor]),!t)return null;return W("div",{ref:C,style:{fontFamily:"var(--askdona-font-base)",color:"var(--askdona-text)"},children:[m&&W(Ul,{onClick:()=>{o(e=>({...e,isOpen:!0}))},position:u.position||"bottom-right"}),(h||"fullscreen"===g)&&W(ql,{isOpen:h||"fullscreen"===g,onClose:()=>{"fullscreen"!==g&&o(e=>({...e,isOpen:!1}))},currentMode:r.currentMode,onModeSwitch:e=>{o(n=>({...n,currentMode:e}))},messages:r.messages,isLoading:r.isLoading,streamingContent:r.streamingContent,onSendMessage:(e,n,t)=>{const a=n||r.chatMode;b(e,a,t||r.metadataFilters),o(e=>({...e,showIntro:!1}))},error:r.error,config:u,currentState:w,chatMode:r.chatMode,onChatModeChange:e=>{o(n=>({...n,chatMode:e}))},sessionId:S,onFeedbackSubmit:_,onClearChat:()=>{z(),o(e=>({...e,showIntro:!0}))},showIntro:r.showIntro,displayMode:g,metadataFilters:r.metadataFilters,onMetadataFiltersChange:e=>{o(n=>({...n,metadataFilters:e}))}})]})});Es.displayName="Widget";const Os=["chatflow-id","theme","position","primary-color","background-color","border-color","chat-icon-color","tab-accent-color","mode-active-color","language","chatbot-title","display-mode","custom-css","debug","instrument-serif-regular","instrument-serif-600","data-open"];class Ns extends HTMLElement{constructor(){super(...arguments),this.widgetRef={current:null},this.initialised=!1,this.gooberReady=!1}static get observedAttributes(){return Os}connectedCallback(){if(this.initialised)return;this.initialised=!0,this.shadow=this.attachShadow({mode:"open"});const e=document.createElement("style");e.textContent="\n  /* Ensure font available within shadow */\n  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block');\n  :host {\n    all: initial;\n    position: fixed;\n    inset: auto;\n    z-index: 999999; /* Keep on top of most sites */\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  /* Scoped scrollbar styling */\n  *::-webkit-scrollbar { width: 6px; height: 6px; }\n  *::-webkit-scrollbar-track { background: transparent; }\n  *::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }\n  *::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.3); }\n\n  @media (prefers-reduced-motion: reduce) {\n    * { animation: none !important; transition: none !important; }\n  }\n",this.shadow.appendChild(e);const n="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",r=Array.from(this.shadow.querySelectorAll("link")).some(e=>e.getAttribute("href")===n);if(!r){const e=document.createElement("link");e.rel="stylesheet",e.href=n,this.shadow.appendChild(e)}const o=this.getAttribute("instrument-serif-regular"),t=this.getAttribute("instrument-serif-600");if(o||t){if(o){const e=document.createElement("link");e.rel="preload",e.as="font",e.href=o,e.type="font/woff2",e.crossOrigin="anonymous",this.shadow.appendChild(e)}if(t){const e=document.createElement("link");e.rel="preload",e.as="font",e.href=t,e.type="font/woff2",e.crossOrigin="anonymous",this.shadow.appendChild(e)}const e=document.createElement("style");e.textContent=`\n        ${o?`@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('${o}') format('woff2'); }`:""}\n        ${t?`@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 600; font-display: swap; src: url('${t}') format('woff2'); }`:""}\n      `,this.shadow.appendChild(e)}else{const e=document.createElement("link");e.rel="stylesheet",e.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",this.shadow.appendChild(e);const n="askdona-font-global";if(!document.getElementById(n)){const e=document.createElement("link");e.rel="preconnect",e.href="https://fonts.googleapis.com",document.head.appendChild(e);const r=document.createElement("link");r.rel="preconnect",r.href="https://fonts.gstatic.com",r.crossOrigin="anonymous",document.head.appendChild(r);const o=document.createElement("link");o.id=n,o.rel="stylesheet",o.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",document.head.appendChild(o)}}const a="askdona-font-global";if(!document.getElementById(a)){const e=document.createElement("link");e.rel="preconnect",e.href="https://fonts.googleapis.com",document.head.appendChild(e);const n=document.createElement("link");n.rel="preconnect",n.href="https://fonts.gstatic.com",n.crossOrigin="anonymous",document.head.appendChild(n);const r=document.createElement("link");r.id=a,r.rel="stylesheet",r.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",document.head.appendChild(r)}this.gooberStyleEl=document.createElement("style"),this.gooberStyleEl.id="_goober",this.gooberStyleEl.appendChild(document.createTextNode(" ")),this.shadow.appendChild(this.gooberStyleEl),window._goober=this.gooberStyleEl;try{Ne(b),this.gooberReady=!0}catch(e){this.gooberReady=!1}this.mountPoint=document.createElement("div"),this.shadow.appendChild(this.mountPoint),this.applyPosition();const i=this.getAttribute("custom-css");if(i){const e=document.createElement("link");e.rel="stylesheet",e.href=i,this.shadow.appendChild(e)}if(!window.katex){const e="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",n=Array.from(document.querySelectorAll("script")).some(n=>n.getAttribute("src")===e);if(!n){const n=document.createElement("script");n.src=e,n.async=!0,document.head.appendChild(n)}}try{this.gooberReady&&this.renderWidget()}catch(e){}}disconnectedCallback(){if(this.mountPoint&&P(null,this.mountPoint),window._goober===this.gooberStyleEl)try{delete window._goober}catch(e){window._goober=null}}attributeChangedCallback(e,n,r){try{this.applyPosition(),this.initialised&&this.gooberReady&&this.renderWidget()}catch(e){}}open(){var e;null===(e=this.widgetRef.current)||void 0===e||e.open()}close(){var e;null===(e=this.widgetRef.current)||void 0===e||e.close()}sendMessage(e){var n;null===(n=this.widgetRef.current)||void 0===n||n.sendMessage(e)}applyPosition(){const e=this.getAttribute("position")||"bottom-right",n=this.getAttribute("display-mode")||"modal",r=this.hasAttribute("data-open");return"fullscreen"===n?(this.style.position="fixed",this.style.inset="0",this.style.top="0",this.style.left="0",this.style.right="0",this.style.bottom="0",this.style.width="100%",void(this.style.height="100%")):(this.style.position="fixed","modal"===n&&r?(this.style.inset="0",this.style.top="0",this.style.left="0",this.style.right="0",this.style.bottom="0",this.style.width="100%",void(this.style.height="100%")):(this.style.inset="auto",this.style.top="",this.style.bottom="20px",this.style.left="bottom-left"===e?"20px":"",this.style.right="bottom-right"===e?"20px":"",this.style.width="",void(this.style.height="")))}getConfig(){const e=this.getAttribute("chatflow-id")||"";if(!e)return null;return{chatflowId:e,theme:this.getAttribute("theme")||void 0,position:this.getAttribute("position")||void 0,primaryColor:this.getAttribute("primary-color")||void 0,backgroundColor:this.getAttribute("background-color")||void 0,borderColor:this.getAttribute("border-color")||void 0,chatIconColor:this.getAttribute("chat-icon-color")||void 0,tabAccentColor:this.getAttribute("tab-accent-color")||void 0,modeActiveColor:this.getAttribute("mode-active-color")||void 0,language:this.getAttribute("language")||void 0,chatbotTitle:this.getAttribute("chatbot-title")||void 0,displayMode:this.getAttribute("display-mode")||void 0,debug:this.hasAttribute("debug")?"true"===this.getAttribute("debug"):void 0}}renderWidget(){const e=this.getConfig();if(e)try{P(W(Es,{ref:this.widgetRef,config:e}),this.mountPoint)}catch(e){throw e}}}function Rs(){customElements.get("askdona-widget")||customElements.define("askdona-widget",Ns)}let Fs={current:null};async function Ts(e){var n,r,o,t;try{const a=function(e){return e.chatflowId?e.theme&&!["light","dark","auto"].includes(e.theme)?{isValid:!1,error:'Invalid theme. Must be "light", "dark", or "auto"'}:e.position&&!["bottom-right","bottom-left"].includes(e.position)?{isValid:!1,error:'Invalid position. Must be "bottom-right" or "bottom-left"'}:e.language&&!["ja","en"].includes(e.language)?{isValid:!1,error:'Invalid language. Must be "ja" or "en"'}:{isValid:!0}:{isValid:!1,error:"chatflowId is required"}}(e);if(!a.isValid)throw new Error(a.error);!function(){if(!document.querySelector('meta[name="askdona-csp"]')){const e=document.createElement("meta");e.name="askdona-csp",e.content=["default-src 'self'","script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net","style-src 'self' 'unsafe-inline'","img-src 'self' data: https:","connect-src 'self' https://api.askdona.com wss://api.askdona.com","font-src 'self' data:","frame-ancestors 'none'"].join("; "),document.head.appendChild(e)}}();let i=null;try{i=await V(e.chatflowId,e.language)}catch(e){}let l={...e};if(null==i?void 0:i.embedConfig){const e=i.embedConfig.introTitle&&i.embedConfig.introMessage?{title:i.embedConfig.introTitle,message:i.embedConfig.introMessage}:null;e&&(l.introTitle=e.title,l.introMessage=e.message),i.embedConfig.exampleQuestions&&(l.exampleQuestions=i.embedConfig.exampleQuestions),i.embedConfig.featureFlags&&(l.defaultBoostMode=i.embedConfig.featureFlags.enableBoostMode,l.allowBoostModeToggle=i.embedConfig.featureFlags.allowBoostModeToggle,l.enableRagDeepResearch=i.embedConfig.featureFlags.enableRagDeepResearch),i.embedConfig.appearanceSettings&&(!l.primaryColor&&i.embedConfig.appearanceSettings.primaryColor&&(l.primaryColor=i.embedConfig.appearanceSettings.primaryColor),!l.theme&&i.embedConfig.appearanceSettings.theme&&(l.theme=i.embedConfig.appearanceSettings.theme),!l.position&&i.embedConfig.appearanceSettings.position&&(l.position=i.embedConfig.appearanceSettings.position),!l.displayMode&&i.embedConfig.appearanceSettings.displayMode&&(l.displayMode=i.embedConfig.appearanceSettings.displayMode),!l.backgroundColor&&i.embedConfig.appearanceSettings.backgroundColor&&(l.backgroundColor=i.embedConfig.appearanceSettings.backgroundColor),!l.borderColor&&i.embedConfig.appearanceSettings.borderColor&&(l.borderColor=i.embedConfig.appearanceSettings.borderColor),!l.chatIconColor&&i.embedConfig.appearanceSettings.chatIconColor&&(l.chatIconColor=i.embedConfig.appearanceSettings.chatIconColor),!l.tabAccentColor&&i.embedConfig.appearanceSettings.tabAccentColor&&(l.tabAccentColor=i.embedConfig.appearanceSettings.tabAccentColor),!l.modeActiveColor&&i.embedConfig.appearanceSettings.modeActiveColor&&(l.modeActiveColor=i.embedConfig.appearanceSettings.modeActiveColor))}Rs(),l.displayMode||(l.displayMode="modal");let s=document.querySelector("askdona-widget");if(s)s.setAttribute("chatflow-id",l.chatflowId),l.theme&&s.setAttribute("theme",l.theme),l.position&&s.setAttribute("position",l.position),l.primaryColor&&s.setAttribute("primary-color",l.primaryColor),l.language&&s.setAttribute("language",l.language),l.backgroundColor?s.setAttribute("background-color",l.backgroundColor):s.removeAttribute("background-color"),l.borderColor?s.setAttribute("border-color",l.borderColor):s.removeAttribute("border-color"),l.chatIconColor?s.setAttribute("chat-icon-color",l.chatIconColor):s.removeAttribute("chat-icon-color"),l.tabAccentColor?s.setAttribute("tab-accent-color",l.tabAccentColor):s.removeAttribute("tab-accent-color"),l.modeActiveColor?s.setAttribute("mode-active-color",l.modeActiveColor):s.removeAttribute("mode-active-color"),s.setAttribute("display-mode",l.displayMode||"modal"),l.customCSS&&s.setAttribute("custom-css",l.customCSS),l.chatbotTitle?s.setAttribute("chatbot-title",l.chatbotTitle):s.removeAttribute("chatbot-title"),(null===(o=l.instrumentSerif)||void 0===o?void 0:o.w400)&&s.setAttribute("instrument-serif-regular",l.instrumentSerif.w400),(null===(t=l.instrumentSerif)||void 0===t?void 0:t.w600)&&s.setAttribute("instrument-serif-600",l.instrumentSerif.w600),l.debug&&s.setAttribute("debug",String(!!l.debug));else{s=document.createElement("askdona-widget"),s.setAttribute("chatflow-id",l.chatflowId),l.theme&&s.setAttribute("theme",l.theme),l.position&&s.setAttribute("position",l.position),l.primaryColor&&s.setAttribute("primary-color",l.primaryColor),l.language&&s.setAttribute("language",l.language),l.backgroundColor&&s.setAttribute("background-color",l.backgroundColor),l.borderColor&&s.setAttribute("border-color",l.borderColor),l.chatIconColor&&s.setAttribute("chat-icon-color",l.chatIconColor),l.tabAccentColor&&s.setAttribute("tab-accent-color",l.tabAccentColor),l.modeActiveColor&&s.setAttribute("mode-active-color",l.modeActiveColor),s.setAttribute("display-mode",l.displayMode||"modal"),l.customCSS&&s.setAttribute("custom-css",l.customCSS),l.chatbotTitle&&s.setAttribute("chatbot-title",l.chatbotTitle),(null===(n=l.instrumentSerif)||void 0===n?void 0:n.w400)&&s.setAttribute("instrument-serif-regular",l.instrumentSerif.w400),(null===(r=l.instrumentSerif)||void 0===r?void 0:r.w600)&&s.setAttribute("instrument-serif-600",l.instrumentSerif.w600),l.debug&&s.setAttribute("debug",String(!!l.debug));(e=>{const n=document.body||document.documentElement;n?n.appendChild(e):window.addEventListener("DOMContentLoaded",()=>{const n=document.body||document.documentElement;!e.isConnected&&n&&n.appendChild(e)},{once:!0})})(s)}l.onReady&&setTimeout(()=>{l.onReady&&l.onReady()},0),l.debug}catch(n){e.onError&&e.onError(n)}}function Ps(){const e=document.querySelector("askdona-widget");e&&e.parentNode&&e.parentNode.removeChild(e),Fs={current:null}}function Ls(){const e=document.querySelector("askdona-widget");return e&&"function"==typeof e.open?e.open():Fs.current?Fs.current.open():void 0}function Hs(){const e=document.querySelector("askdona-widget");return e&&"function"==typeof e.close?e.close():Fs.current?Fs.current.close():void 0}function Us(e){const n=document.querySelector("askdona-widget");return n&&"function"==typeof n.sendMessage?n.sendMessage(e):Fs.current?Fs.current.sendMessage(e):void 0}if("undefined"!=typeof window){Rs();const e=document.currentScript;e&&e.dataset.chatflowId&&window.addEventListener("DOMContentLoaded",async()=>{const n=e.dataset.chatflowId;if(n)try{await Ts({chatflowId:n,theme:e.dataset.theme,position:e.dataset.position,primaryColor:e.dataset.primaryColor,language:e.dataset.language,displayMode:e.dataset.displayMode})}catch(e){}})}return window.AskDona={init:Ts,destroy:Ps,open:Ls,close:Hs,sendMessage:Us},e.close=Hs,e.destroy=Ps,e.init=Ts,e.open=Ls,e.sendMessage=Us,e}({});
+`;function Vl(e){const[n,r]=de({isValid:!1,error:null,config:null});return ce(()=>{const n=async()=>{try{const n=await async function(e){try{return await J(`/validate/${e}`,{method:"POST",body:JSON.stringify({origin:window.location.origin})})}catch(e){return{isValid:!1,error:e.message}}}(e);r({isValid:n.isValid,error:n.error?new Error(n.error):null,config:n.config||null})}catch(e){r({isValid:!1,error:e,config:null})}};e&&n()},[e]),n}const Ql="askdona_widget_",Wl=864e5;function Zl(e){return/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(e)}function Gl(e){const n=`${Ql}messages_${e}`;try{const e=localStorage.getItem(n);if(!e)return[];const r=JSON.parse(e);return Array.isArray(r)?r:r.messages||[]}catch(e){return[]}}function Kl(e){var n;const r=`${Ql}messages_${e}`;try{const e=localStorage.getItem(r);if(!e)return null;const o=JSON.parse(e);return!Array.isArray(o)&&o.sessionId&&(null===(n=o.messages)||void 0===n?void 0:n.length)>0?o.sessionId:null}catch(e){return null}}function Yl(e){const[n]=de(()=>{if(Gl(e).length>0){const n=Kl(e);if(n)return n}const n=function(e){const n=`${Ql}session_${e}`;try{const e=localStorage.getItem(n);if(e){const n=JSON.parse(e);if(n.expiresAt>Date.now()&&Zl(n.id))return n.id}}catch(e){}const r=Gl(e).length>0;if(r){const r=Kl(e);if(r&&Zl(r)){const e={id:r,createdAt:Date.now(),expiresAt:Date.now()+Wl};try{localStorage.setItem(n,JSON.stringify(e))}catch(e){}return r}}try{localStorage.removeItem(n),r||localStorage.removeItem(`${Ql}messages_${e}`)}catch(e){}const o={id:U(),createdAt:Date.now(),expiresAt:Date.now()+Wl};try{localStorage.setItem(n,JSON.stringify(o))}catch(e){}return o.id}(e);return n}),[r,o]=de(()=>Gl(e)),[t,a]=de(!1),[i,l]=de(""),[s,d]=de(null),[c,u]=de("idle"),f=fe(null),p=fe(null),g=fe(""),h=fe(null);ce(()=>{if(r.length>0){const o=r[r.length-1];!function(e,n,r){const o=`${Ql}messages_${e}`;try{const e=localStorage.getItem(o),t=e?JSON.parse(e):{sessionId:null,messages:[]};r&&!t.sessionId&&(t.sessionId=r);const a=t.messages||[],i=a.findIndex(e=>e.id===n.id);-1!==i?a[i]=n:a.push(n),a.length>50&&a.splice(0,a.length-50),t.messages=a,localStorage.setItem(o,JSON.stringify(t))}catch(e){}}(e,o,n)}},[r,e,n]);const m=ge(()=>{o([]),function(e){[`${Ql}session_${e}`,`${Ql}messages_${e}`].forEach(e=>{try{localStorage.removeItem(e)}catch(e){}})}(e)},[e]),v=ge(async(t,i="standard",s=null)=>{try{const c={id:U(),role:"user",content:t,createdAt:(new Date).toISOString(),metadata:{mode:i}};o(e=>[...e,c]),a(!0),d(null),l(""),u("thinking"),g.current="",h.current=null;const m={id:U(),role:"assistant",content:"",createdAt:(new Date).toISOString(),metadata:{mode:i}};p.current=m,f.current=new AbortController,await async function({chatflowId:e,sessionId:n,message:r,messages:o,mode:t="standard",userMessageId:a,assistantMessageId:i,metadataFilters:l,signal:s,onChunk:d}){var c,u;const f=`${B}/chat/${e}/${t}`,p=await fetch(f,{method:"POST",headers:{"Content-Type":"application/json","X-Widget-Version":"1.0.0"},body:JSON.stringify({userQuestion:r,sessionId:n,messages:o.map(e=>({role:e.role,content:e.content,createdAt:e.createdAt})),mode:t,boostMode:"boost"===t||void 0,userMessageId:a,assistantMessageId:i,metadataFilters:l}),signal:s}),g={};if(p.headers.forEach((e,n)=>{g[n]=e}),!p.ok){const e=await p.json().catch(()=>({message:"Request failed"}));throw new Error(e.message||`HTTP ${p.status}`)}const h=null===(c=p.body)||void 0===c?void 0:c.getReader();if(!h)throw new Error("No response body");const m=new TextDecoder;let v="",b=0;const y=/\S/,k=(e,n)=>{b+=1},x=e=>{e&&y.test(e)&&(k(),d({type:"content",data:e}))};try{for(;;){const{done:e,value:n}=await h.read();if(e)break;let r=m.decode(n,{stream:!0});if(v&&(r=v+r,v=""),r.includes("\0")){const e=r.split("\0");v=null!==(u=e.pop())&&void 0!==u?u:"";for(const n of e)if(n)if(n.startsWith("__STATE__:")){const e=n.substring(10).replace(/\n$/,"");k(),d({type:"state",data:e})}else if(n.startsWith("__SEARCH__:")){const e=n.substring(11).replace(/\n$/,"");k(),d({type:"search",data:e})}else if(n.startsWith("__METADATA__:")){const e=n.substring(13).replace(/\n$/,"");k(),d({type:"metadata",data:e})}else if(n.startsWith("__SEARCH_QUERIES__:")){const e=n.substring(19).replace(/\n$/,"");k(),d({type:"search-queries",data:e})}else if(n.startsWith("__SUMMARY__:"))try{JSON.parse(n.substring(13))}catch(e){}else x(n);v&&!v.startsWith("__")&&(x(v),v="")}else x(r)}v&&(v.startsWith("__")||x(v))}finally{h.releaseLock()}}({chatflowId:e,sessionId:n,message:t,messages:r,mode:i,userMessageId:c.id,assistantMessageId:m.id,metadataFilters:s,signal:f.current.signal,onChunk:e=>{if("content"===e.type)g.current+=e.data,l(g.current);else if("metadata"===e.type)try{const n=JSON.parse(e.data);h.current={...h.current,docMetadata:n,mode:i}}catch(e){}else"state"===e.type&&u(e.data)}})}catch(e){"AbortError"===e.name||d(e)}finally{p.current&&g.current.trim()&&o(e=>[...e,{...p.current,content:g.current.trim(),metadata:{...p.current.metadata,...h.current}}]),a(!1),l(""),u("idle"),f.current=null,p.current=null,g.current="",h.current=null}},[e,r]),b=ge(async(r,t,a)=>{try{o(e=>e.map(e=>e.id===r?{...e,metadata:{...e.metadata,feedback:{rating:t,content:a,submittedAt:(new Date).toISOString(),isSubmitted:!0}}}:e));const i={embedMessageId:r,embedSessionId:n,chatflowId:e,feedbackType:"combined",feedbackData:{rating:"THUMBS_UP"===t?"thumbs_up":"thumbs_down",content:a||null},metadata:{domain:window.location.hostname,url:window.location.href,userAgent:navigator.userAgent}},l=await fetch(`${B}/feedback`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(i)});if(!l.ok){const e=await l.text();throw new Error(`Failed to submit feedback: ${l.statusText} - ${e}`)}await l.json()}catch(e){throw o(e=>e.map(e=>e.id===r?{...e,metadata:{...e.metadata,feedback:void 0}}:e)),e}},[n,e]);return{messages:r,sendMessage:v,isLoading:t,streamingContent:i,error:s,currentState:c,sessionId:n,submitFeedback:b,clearChat:m}}function Xl(e,n){const r=parseInt(e.replace("#",""),16),o=Math.round(2.55*n),t=(r>>16)-o,a=(r>>8&255)-o,i=(255&r)-o;return"#"+(16777216+65536*(t<255?t<1?0:t:255)+256*(a<255?a<1?0:a:255)+(i<255?i<1?0:i:255)).toString(16).slice(1)}function es(e,n){const r=parseInt(e.replace("#",""),16),o=Math.round(2.55*n),t=(r>>16)+o,a=(r>>8&255)+o,i=(255&r)+o;return"#"+(16777216+65536*(t<255?t<1?0:t:255)+256*(a<255?a<1?0:a:255)+(i<255?i<1?0:i:255)).toString(16).slice(1)}"undefined"!=typeof window&&function(){try{const e=Object.keys(localStorage),n=Date.now();e.forEach(e=>{if(e.startsWith(`${Ql}session_`))try{const r=JSON.parse(localStorage.getItem(e)||"{}");if(r.expiresAt&&r.expiresAt<n){localStorage.removeItem(e);const n=e.replace(`${Ql}session_`,"");localStorage.removeItem(`${Ql}messages_${n}`)}}catch(n){localStorage.removeItem(e)}})}catch(e){}}();const ns={colors:{primary:"#10316f",primaryDark:Xl("#10316f",10),primaryLight:es("#10316f",10),background:"#ffffff",surface:"#f8f9fa",text:"#353a5c",textSecondary:"#6b6f8a",border:"#e5e7eb",error:"#EF4444",success:"#10B981"},fonts:{base:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',mono:'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'},shadows:{sm:"0 1px 2px 0 rgba(0, 0, 0, 0.05)",md:"0 4px 6px -1px rgba(0, 0, 0, 0.1)",lg:"0 10px 15px -3px rgba(0, 0, 0, 0.1)",xl:"0 20px 25px -5px rgba(0, 0, 0, 0.1)"}},rs={colors:{primary:"#10316f",primaryDark:Xl("#10316f",10),primaryLight:es("#10316f",10),background:"#0f172a",surface:"#111827",text:"#e5e7eb",textSecondary:"#9ca3af",border:"#1f2937",error:"#F87171",success:"#34D399"},fonts:{base:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',mono:'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'},shadows:{sm:"0 1px 2px 0 rgba(0, 0, 0, 0.3)",md:"0 4px 6px -1px rgba(0, 0, 0, 0.4)",lg:"0 10px 15px -3px rgba(0, 0, 0, 0.5)",xl:"0 20px 25px -5px rgba(0, 0, 0, 0.6)"}};function os(e,n){let r=ns;if("dark"===e)r=rs;else if("auto"===e){r=window.matchMedia("(prefers-color-scheme: dark)").matches?rs:ns}const o=function(e){if(!e)return null;let n=e.trim();if(!n)return null;"#"===n[0]&&(n=n.slice(1));3===n.length&&(n=n.split("").map(e=>e+e).join(""));if(!/^([0-9a-f]{6})$/i.test(n))return null;return`#${n.toLowerCase()}`}(n)||r.colors.primary;r={...r,colors:{...r.colors,primary:o,primaryDark:Xl(o,10),primaryLight:es(o,10)}};const t=function(e){const n=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);return n?`${parseInt(n[1],16)}, ${parseInt(n[2],16)}, ${parseInt(n[3],16)}`:"0, 0, 0"}(r.colors.primary);return document.documentElement.style.setProperty("--askdona-primary-rgb",t),r}function ts(e,n){for(var r in n)e[r]=n[r];return e}function as(e,n){for(var r in e)if("__source"!==r&&!(r in n))return!0;for(var o in n)if("__source"!==o&&e[o]!==n[o])return!0;return!1}function is(e,n){this.props=e,this.context=n}(is.prototype=new x).isPureReactComponent=!0,is.prototype.shouldComponentUpdate=function(e,n){return as(this.props,e)||as(this.state,n)};var ls=r.v;r.v=function(e){e.type&&e.type.B&&e.ref&&(e.props.ref=e.ref,e.ref=null),ls&&ls(e)};var ss="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.forward_ref")||3911;var ds=r.S;r.S=function(e,n,r,o){if(e.then)for(var t,a=n;a=a.m;)if((t=a._)&&t._)return null==n.S&&(n.S=r.S,n.h=r.h),t._(e,n);ds(e,n,r,o)};var cs=r.unmount;function us(e,n,r){return e&&(e._&&e._.H&&(e._.H.m.forEach(function(e){"function"==typeof e._&&e._()}),e._.H=null),null!=(e=ts({},e))._&&(e._.q===r&&(e._.q=n),e._.S=!0,e._=null),e.h=e.h&&e.h.map(function(e){return us(e,n,r)})),e}function fs(e,n,r){return e&&r&&(e.C=null,e.h=e.h&&e.h.map(function(e){return fs(e,n,r)}),e._&&e._.q===n&&(e.S&&r.appendChild(e.S),e._.S=!0,e._.q=r)),e}function ps(){this.M=0,this.o=null,this.v=null}function gs(e){var n=e.m._;return n&&n.J&&n.J(e)}function hs(){this.i=null,this.l=null}r.unmount=function(e){var n=e._;n&&n.V&&n.V(),n&&32&e.M&&(e.type=null),cs&&cs(e)},(ps.prototype=new x)._=function(e,n){var r=n._,o=this;null==o.o&&(o.o=[]),o.o.push(r);var t=gs(o.C),a=!1,i=function(){a||(a=!0,r.V=null,t?t(l):l())};r.V=i;var l=function(){if(! --o.M){if(o.state.J){var e=o.state.J;o.C.h[0]=fs(e,e._.q,e._.W)}var n;for(o.setState({J:o.v=null});n=o.o.pop();)n.forceUpdate()}};o.M++||32&n.M||o.setState({J:o.v=o.C.h[0]}),e.then(i,i)},ps.prototype.componentWillUnmount=function(){this.o=[]},ps.prototype.render=function(e,n){if(this.v){if(this.C.h){var r=document.createElement("div"),o=this.C.h[0]._;this.C.h[0]=us(this.v,r,o.W=o.q)}this.v=null}var t=n.J&&b(k,null,e.fallback);return t&&(t.M&=-33),[b(k,null,n.J?null:e.children),t]};var ms=function(e,n,r){if(++r[1]===r[0]&&e.l.delete(n),e.props.revealOrder&&("t"!==e.props.revealOrder[0]||!e.l.size))for(r=e.i;r;){for(;r.length>3;)r.pop()();if(r[1]<r[0])break;e.i=r=r[2]}};(hs.prototype=new x).J=function(e){var n=this,r=gs(n.C),o=n.l.get(e);return o[0]++,function(t){var a=function(){n.props.revealOrder?(o.push(t),ms(n,e,o)):t()};r?r(a):a()}},hs.prototype.render=function(e){this.i=null,this.l=new Map;var n=M(e.children);e.revealOrder&&"b"===e.revealOrder[0]&&n.reverse();for(var r=n.length;r--;)this.l.set(n[r],this.i=[1,0,this.i]);return e.children},hs.prototype.componentDidUpdate=hs.prototype.componentDidMount=function(){var e=this;this.l.forEach(function(n,r){ms(e,r,n)})};var vs="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103,bs=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,ys=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,ks=/[A-Z0-9]/g,xs="undefined"!=typeof document,ws=function(e){return("undefined"!=typeof Symbol&&"symbol"==typeof Symbol()?/fil|che|rad/:/fil|che|ra/).test(e)};x.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(e){Object.defineProperty(x.prototype,e,{configurable:!0,get:function(){return this["UNSAFE_"+e]},set:function(n){Object.defineProperty(this,e,{configurable:!0,writable:!0,value:n})}})});var Ss=r.event;function _s(){}function zs(){return this.cancelBubble}function Cs(){return this.defaultPrevented}r.event=function(e){return Ss&&(e=Ss(e)),e.persist=_s,e.isPropagationStopped=zs,e.isDefaultPrevented=Cs,e.nativeEvent=e};var $s={enumerable:!1,configurable:!0,get:function(){return this.class}},Ms=r.vnode;r.vnode=function(e){"string"==typeof e.type&&function(e){var n=e.props,r=e.type,o={},t=-1===r.indexOf("-");for(var a in n){var i=n[a];if(!("value"===a&&"defaultValue"in n&&null==i||xs&&"children"===a&&"noscript"===r||"class"===a||"className"===a)){var l=a.toLowerCase();"defaultValue"===a&&"value"in n&&null==n.value?a="value":"download"===a&&!0===i?i="":"translate"===l&&"no"===i?i=!1:"o"===l[0]&&"n"===l[1]?"ondoubleclick"===l?a="ondblclick":"onchange"!==l||"input"!==r&&"textarea"!==r||ws(n.type)?"onfocus"===l?a="onfocusin":"onblur"===l?a="onfocusout":ys.test(a)&&(a=l):l=a="oninput":t&&bs.test(a)?a=a.replace(ks,"-$&").toLowerCase():null===i&&(i=void 0),"oninput"===l&&o[a=l]&&(a="oninputCapture"),o[a]=i}}"select"==r&&o.multiple&&Array.isArray(o.value)&&(o.value=M(n.children).forEach(function(e){e.props.selected=-1!=o.value.indexOf(e.props.value)})),"select"==r&&null!=o.defaultValue&&(o.value=M(n.children).forEach(function(e){e.props.selected=o.multiple?-1!=o.defaultValue.indexOf(e.props.value):o.defaultValue==e.props.value})),n.class&&!n.className?(o.class=n.class,Object.defineProperty(o,"className",$s)):(n.className&&!n.class||n.class&&n.className)&&(o.class=o.className=n.className),e.props=o}(e),e.$$typeof=vs,Ms&&Ms(e)};var As=r.j;r.j=function(e){As&&As(e),e._};var js=r.diffed;r.diffed=function(e){js&&js(e);var n=e.props,r=e.S;null!=r&&"textarea"===e.type&&"value"in n&&n.value!==r.value&&(r.value=null==n.value?"":n.value)};const qs=e=>Math.min(255,Math.max(0,e)),Is=e=>{if(!e)return null;let n=e.trim();return n?("#"===n[0]&&(n=n.slice(1)),3===n.length&&(n=n.split("").map(e=>e+e).join("")),/^([0-9a-f]{6})$/i.test(n)?`#${n.toLowerCase()}`:null):null},Ds=(e,n)=>{const r=Is(e);if(!r)return e;const o=parseInt(r.slice(1),16),t=Math.round(2.55*n);return`#${((1<<24)+(qs((o>>16)+t)<<16)+(qs((o>>8&255)+t)<<8)+qs((255&o)+t)).toString(16).slice(1)}`},Es=e=>{const n=Is(e);if(!n)return null;const r=parseInt(n.slice(1),16);return`${r>>16&255}, ${r>>8&255}, ${255&r}`};Ne(b);const Os=function(e){function n(n){var r=ts({},n);return delete r.ref,e(r,n.ref||null)}return n.$$typeof=ss,n.render=n,n.prototype.isReactComponent=n.B=!0,n.displayName="ForwardRef("+(e.displayName||e.name)+")",n}(({config:e},n)=>{const[r,o]=de({isOpen:"fullscreen"===e.displayMode,currentMode:"ask-ai",messages:[],isLoading:!1,streamingContent:"",error:null,chatMode:"standard",showIntro:!0,metadataFilters:null}),{isValid:t,error:a,config:i}=Vl(e.chatflowId),[l,s]=de(null);ce(()=>{V(e.chatflowId,e.language).then(e=>{e&&e.embedConfig&&s(e.embedConfig)}).catch(()=>{s(null)})},[e.chatflowId,e.language]);const d="boolean"!=typeof e.enableDeepResearch||e.enableDeepResearch,c="boolean"==typeof e.enableRagDeepResearch?e.enableRagDeepResearch:d,u={...e,enableDeepResearch:d,enableRagDeepResearch:c};if(l){if(l.introTitle&&(u.introTitle=l.introTitle),l.introMessage&&(u.introMessage=l.introMessage),l.exampleQuestions&&(u.exampleQuestions=l.exampleQuestions),l.appearanceSettings){const e=l.appearanceSettings.primaryColor||void 0,n=l.appearanceSettings.theme||void 0,r=l.appearanceSettings.position||void 0,o=l.appearanceSettings.displayMode||void 0,t=l.appearanceSettings.backgroundColor||void 0,a=l.appearanceSettings.borderColor||void 0,i=l.appearanceSettings.chatIconColor||void 0,s=l.appearanceSettings.tabAccentColor||void 0,d=l.appearanceSettings.modeActiveColor||void 0;u.primaryColor=u.primaryColor||e,u.theme=u.theme||n,u.position=u.position||r,u.displayMode=u.displayMode||o,u.backgroundColor=u.backgroundColor||t,u.borderColor=u.borderColor||a,u.chatIconColor=u.chatIconColor||i,u.tabAccentColor=u.tabAccentColor||s,u.modeActiveColor=u.modeActiveColor||d}l.featureFlags&&("boolean"==typeof l.featureFlags.enableBoostMode&&(u.defaultBoostMode=!!l.featureFlags.enableBoostMode),"boolean"==typeof l.featureFlags.allowBoostModeToggle&&(u.allowBoostModeToggle=!!l.featureFlags.allowBoostModeToggle),"boolean"==typeof l.featureFlags.enableRagDeepResearch&&(u.enableRagDeepResearch=!!l.featureFlags.enableRagDeepResearch),"boolean"==typeof l.featureFlags.enableDeepResearch&&(u.enableDeepResearch=!!l.featureFlags.enableDeepResearch))}else i&&(u.introTitle=i.introTitle,u.introMessage=i.introMessage,u.exampleQuestions=i.exampleQuestions,u.theme=i.theme,u.position=i.position,u.primaryColor=i.primaryColor,u.defaultBoostMode=i.defaultBoostMode,u.allowBoostModeToggle=i.allowBoostModeToggle,u.displayMode=e.displayMode);u.enableDeepResearch&&(u.enableRagDeepResearch=!0);const f=os(u.theme||"light",u.primaryColor),p=!!u.debug,g=u.displayMode||"modal",h=r.isOpen,m=!h&&"fullscreen"!==g;ce(()=>{},[p,g,h,m]),ce(()=>{if("undefined"==typeof document)return;const e=document.querySelector("askdona-widget");e&&("fullscreen"!==g?"function"==typeof e.toggleAttribute?e.toggleAttribute("data-open",h):h?e.setAttribute("data-open",""):e.removeAttribute("data-open"):e.removeAttribute("data-open"))},[h,g,p]);const{messages:v,sendMessage:b,isLoading:y,streamingContent:k,error:x,currentState:w,sessionId:S,submitFeedback:_,clearChat:z}=Yl(e.chatflowId);ce(()=>{o(e=>({...e,messages:v,isLoading:y,streamingContent:k,error:a||x,showIntro:0===v.length&&e.showIntro}))},[v,y,k,a,x]),ce(()=>{if(i){const e=i.defaultBoostMode?"boost":"standard";o(n=>n.chatMode===e?n:{...n,chatMode:e})}},[i]),function(e,n,r){X=6,ue(function(){if("function"==typeof e){var r=e(n());return function(){e(null),r&&"function"==typeof r&&r()}}if(e)return e.current=n(),function(){return e.current=null}},null==r?r:r.concat(e))}(n,()=>({open:()=>{o(e=>({...e,isOpen:!0}))},close:()=>{o(e=>({...e,isOpen:!1}))},sendMessage:e=>{o(e=>({...e,isOpen:!0})),b(e)}}),[b]);const C=fe(null);if(ce(()=>{if(!C.current)return;const e=C.current;e.style.setProperty("--askdona-primary",f.colors.primary),e.style.setProperty("--askdona-primary-dark",f.colors.primaryDark),e.style.setProperty("--askdona-primary-light",f.colors.primaryLight);const n=Es(f.colors.primary);n?e.style.setProperty("--askdona-primary-rgb",n):e.style.removeProperty("--askdona-primary-rgb"),e.style.setProperty("--askdona-background",f.colors.background),e.style.setProperty("--askdona-surface",f.colors.surface),e.style.setProperty("--askdona-text",f.colors.text),e.style.setProperty("--askdona-text-secondary",f.colors.textSecondary),e.style.setProperty("--askdona-border",f.colors.border),e.style.setProperty("--askdona-error",f.colors.error),e.style.setProperty("--askdona-success",f.colors.success);const r=Es(f.colors.error);r?e.style.setProperty("--askdona-error-rgb",r):e.style.removeProperty("--askdona-error-rgb");const o=Es(f.colors.success);if(o?e.style.setProperty("--askdona-success-rgb",o):e.style.removeProperty("--askdona-success-rgb"),e.style.setProperty("--askdona-font-base",f.fonts.base),e.style.setProperty("--askdona-font-mono",f.fonts.mono),e.style.setProperty("--askdona-bg-secondary",f.colors.surface),e.style.setProperty("--askdona-bg-hover",f.colors.primaryLight+"20"),e.style.setProperty("--askdona-surface-color",f.colors.background),e.style.setProperty("--askdona-border-color",f.colors.border),u.backgroundColor){const n=u.backgroundColor;e.style.setProperty("--askdona-background",n),e.style.setProperty("--askdona-surface",Ds(n,-4)),e.style.setProperty("--askdona-bg-secondary",Ds(n,-2)),e.style.setProperty("--askdona-surface-color",n)}u.borderColor&&(e.style.setProperty("--askdona-border",u.borderColor),e.style.setProperty("--askdona-border-color",u.borderColor));const t=u.chatIconColor||f.colors.primary;e.style.setProperty("--askdona-chat-icon",t);const a=u.tabAccentColor||f.colors.primary;e.style.setProperty("--askdona-tab-accent",a);const i=Es(a);i?e.style.setProperty("--askdona-tab-accent-rgb",i):e.style.removeProperty("--askdona-tab-accent-rgb");const l=u.modeActiveColor||f.colors.primary;e.style.setProperty("--askdona-mode-active",l),e.style.setProperty("--askdona-mode-active-hover",Ds(l,-12))},[f,u.backgroundColor,u.borderColor,u.chatIconColor,u.tabAccentColor,u.modeActiveColor]),!t)return null;return W("div",{ref:C,style:{fontFamily:"var(--askdona-font-base)",color:"var(--askdona-text)"},children:[m&&W(Bl,{onClick:()=>{o(e=>({...e,isOpen:!0}))},position:u.position||"bottom-right"}),(h||"fullscreen"===g)&&W(Il,{isOpen:h||"fullscreen"===g,onClose:()=>{"fullscreen"!==g&&o(e=>({...e,isOpen:!1}))},currentMode:r.currentMode,onModeSwitch:e=>{o(n=>({...n,currentMode:e}))},messages:r.messages,isLoading:r.isLoading,streamingContent:r.streamingContent,onSendMessage:(e,n,t)=>{const a=n||r.chatMode;b(e,a,t||r.metadataFilters),o(e=>({...e,showIntro:!1}))},error:r.error,config:u,currentState:w,chatMode:r.chatMode,onChatModeChange:e=>{o(n=>({...n,chatMode:e}))},sessionId:S,onFeedbackSubmit:_,onClearChat:()=>{z(),o(e=>({...e,showIntro:!0}))},showIntro:r.showIntro,displayMode:g,metadataFilters:r.metadataFilters,onMetadataFiltersChange:e=>{o(n=>({...n,metadataFilters:e}))}})]})});Os.displayName="Widget";const Ns=["chatflow-id","theme","position","primary-color","background-color","border-color","chat-icon-color","tab-accent-color","mode-active-color","language","chatbot-title","display-mode","custom-css","debug","instrument-serif-regular","instrument-serif-600","data-open"];class Rs extends HTMLElement{constructor(){super(...arguments),this.widgetRef={current:null},this.initialised=!1,this.gooberReady=!1}static get observedAttributes(){return Ns}connectedCallback(){if(this.initialised)return;this.initialised=!0,this.shadow=this.attachShadow({mode:"open"});const e=document.createElement("style");e.textContent="\n  /* Ensure font available within shadow */\n  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block');\n  :host {\n    all: initial;\n    position: fixed;\n    inset: auto;\n    z-index: 999999; /* Keep on top of most sites */\n  }\n\n  *, *::before, *::after {\n    box-sizing: border-box;\n  }\n\n  /* Scoped scrollbar styling */\n  *::-webkit-scrollbar { width: 6px; height: 6px; }\n  *::-webkit-scrollbar-track { background: transparent; }\n  *::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }\n  *::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.3); }\n\n  @media (prefers-reduced-motion: reduce) {\n    * { animation: none !important; transition: none !important; }\n  }\n",this.shadow.appendChild(e);const n="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css",r=Array.from(this.shadow.querySelectorAll("link")).some(e=>e.getAttribute("href")===n);if(!r){const e=document.createElement("link");e.rel="stylesheet",e.href=n,this.shadow.appendChild(e)}const o=this.getAttribute("instrument-serif-regular"),t=this.getAttribute("instrument-serif-600");if(o||t){if(o){const e=document.createElement("link");e.rel="preload",e.as="font",e.href=o,e.type="font/woff2",e.crossOrigin="anonymous",this.shadow.appendChild(e)}if(t){const e=document.createElement("link");e.rel="preload",e.as="font",e.href=t,e.type="font/woff2",e.crossOrigin="anonymous",this.shadow.appendChild(e)}const e=document.createElement("style");e.textContent=`\n        ${o?`@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('${o}') format('woff2'); }`:""}\n        ${t?`@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 600; font-display: swap; src: url('${t}') format('woff2'); }`:""}\n      `,this.shadow.appendChild(e)}else{const e=document.createElement("link");e.rel="stylesheet",e.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",this.shadow.appendChild(e);const n="askdona-font-global";if(!document.getElementById(n)){const e=document.createElement("link");e.rel="preconnect",e.href="https://fonts.googleapis.com",document.head.appendChild(e);const r=document.createElement("link");r.rel="preconnect",r.href="https://fonts.gstatic.com",r.crossOrigin="anonymous",document.head.appendChild(r);const o=document.createElement("link");o.id=n,o.rel="stylesheet",o.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",document.head.appendChild(o)}}const a="askdona-font-global";if(!document.getElementById(a)){const e=document.createElement("link");e.rel="preconnect",e.href="https://fonts.googleapis.com",document.head.appendChild(e);const n=document.createElement("link");n.rel="preconnect",n.href="https://fonts.gstatic.com",n.crossOrigin="anonymous",document.head.appendChild(n);const r=document.createElement("link");r.id=a,r.rel="stylesheet",r.href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;600&display=block",document.head.appendChild(r)}this.gooberStyleEl=document.createElement("style"),this.gooberStyleEl.id="_goober",this.gooberStyleEl.appendChild(document.createTextNode(" ")),this.shadow.appendChild(this.gooberStyleEl),window._goober=this.gooberStyleEl;try{Ne(b),this.gooberReady=!0}catch(e){this.gooberReady=!1}this.mountPoint=document.createElement("div"),this.shadow.appendChild(this.mountPoint),this.applyPosition();const i=this.getAttribute("custom-css");if(i){const e=document.createElement("link");e.rel="stylesheet",e.href=i,this.shadow.appendChild(e)}if(!window.katex){const e="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",n=Array.from(document.querySelectorAll("script")).some(n=>n.getAttribute("src")===e);if(!n){const n=document.createElement("script");n.src=e,n.async=!0,document.head.appendChild(n)}}try{this.gooberReady&&this.renderWidget()}catch(e){}}disconnectedCallback(){if(this.mountPoint&&P(null,this.mountPoint),window._goober===this.gooberStyleEl)try{delete window._goober}catch(e){window._goober=null}}attributeChangedCallback(e,n,r){try{this.applyPosition(),this.initialised&&this.gooberReady&&this.renderWidget()}catch(e){}}open(){var e;null===(e=this.widgetRef.current)||void 0===e||e.open()}close(){var e;null===(e=this.widgetRef.current)||void 0===e||e.close()}sendMessage(e){var n;null===(n=this.widgetRef.current)||void 0===n||n.sendMessage(e)}applyPosition(){const e=this.getAttribute("position")||"bottom-right",n=this.getAttribute("display-mode")||"modal",r=this.hasAttribute("data-open");return"fullscreen"===n?(this.style.position="fixed",this.style.inset="0",this.style.top="0",this.style.left="0",this.style.right="0",this.style.bottom="0",this.style.width="100%",void(this.style.height="100%")):(this.style.position="fixed","modal"===n&&r?(this.style.inset="0",this.style.top="0",this.style.left="0",this.style.right="0",this.style.bottom="0",this.style.width="100%",void(this.style.height="100%")):(this.style.inset="auto",this.style.top="",this.style.bottom="20px",this.style.left="bottom-left"===e?"20px":"",this.style.right="bottom-right"===e?"20px":"",this.style.width="",void(this.style.height="")))}getConfig(){const e=this.getAttribute("chatflow-id")||"";if(!e)return null;return{chatflowId:e,theme:this.getAttribute("theme")||void 0,position:this.getAttribute("position")||void 0,primaryColor:this.getAttribute("primary-color")||void 0,backgroundColor:this.getAttribute("background-color")||void 0,borderColor:this.getAttribute("border-color")||void 0,chatIconColor:this.getAttribute("chat-icon-color")||void 0,tabAccentColor:this.getAttribute("tab-accent-color")||void 0,modeActiveColor:this.getAttribute("mode-active-color")||void 0,language:this.getAttribute("language")||void 0,chatbotTitle:this.getAttribute("chatbot-title")||void 0,displayMode:this.getAttribute("display-mode")||void 0,debug:this.hasAttribute("debug")?"true"===this.getAttribute("debug"):void 0}}renderWidget(){const e=this.getConfig();if(e)try{P(W(Os,{ref:this.widgetRef,config:e}),this.mountPoint)}catch(e){throw e}}}function Fs(){customElements.get("askdona-widget")||customElements.define("askdona-widget",Rs)}let Ts={current:null};async function Ps(e){var n,r,o,t;try{const a=function(e){return e.chatflowId?e.theme&&!["light","dark","auto"].includes(e.theme)?{isValid:!1,error:'Invalid theme. Must be "light", "dark", or "auto"'}:e.position&&!["bottom-right","bottom-left"].includes(e.position)?{isValid:!1,error:'Invalid position. Must be "bottom-right" or "bottom-left"'}:e.language&&!["ja","en"].includes(e.language)?{isValid:!1,error:'Invalid language. Must be "ja" or "en"'}:{isValid:!0}:{isValid:!1,error:"chatflowId is required"}}(e);if(!a.isValid)throw new Error(a.error);!function(){if(!document.querySelector('meta[name="askdona-csp"]')){const e=document.createElement("meta");e.name="askdona-csp",e.content=["default-src 'self'","script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net","style-src 'self' 'unsafe-inline'","img-src 'self' data: https:","connect-src 'self' https://api.askdona.com wss://api.askdona.com","font-src 'self' data:","frame-ancestors 'none'"].join("; "),document.head.appendChild(e)}}();let i=null;try{i=await V(e.chatflowId,e.language)}catch(e){}let l={...e};if(null==i?void 0:i.embedConfig){const e=i.embedConfig.introTitle&&i.embedConfig.introMessage?{title:i.embedConfig.introTitle,message:i.embedConfig.introMessage}:null;e&&(l.introTitle=e.title,l.introMessage=e.message),i.embedConfig.exampleQuestions&&(l.exampleQuestions=i.embedConfig.exampleQuestions),i.embedConfig.featureFlags&&(l.defaultBoostMode=i.embedConfig.featureFlags.enableBoostMode,l.allowBoostModeToggle=i.embedConfig.featureFlags.allowBoostModeToggle,l.enableRagDeepResearch=i.embedConfig.featureFlags.enableRagDeepResearch),i.embedConfig.appearanceSettings&&(!l.primaryColor&&i.embedConfig.appearanceSettings.primaryColor&&(l.primaryColor=i.embedConfig.appearanceSettings.primaryColor),!l.theme&&i.embedConfig.appearanceSettings.theme&&(l.theme=i.embedConfig.appearanceSettings.theme),!l.position&&i.embedConfig.appearanceSettings.position&&(l.position=i.embedConfig.appearanceSettings.position),!l.displayMode&&i.embedConfig.appearanceSettings.displayMode&&(l.displayMode=i.embedConfig.appearanceSettings.displayMode),!l.backgroundColor&&i.embedConfig.appearanceSettings.backgroundColor&&(l.backgroundColor=i.embedConfig.appearanceSettings.backgroundColor),!l.borderColor&&i.embedConfig.appearanceSettings.borderColor&&(l.borderColor=i.embedConfig.appearanceSettings.borderColor),!l.chatIconColor&&i.embedConfig.appearanceSettings.chatIconColor&&(l.chatIconColor=i.embedConfig.appearanceSettings.chatIconColor),!l.tabAccentColor&&i.embedConfig.appearanceSettings.tabAccentColor&&(l.tabAccentColor=i.embedConfig.appearanceSettings.tabAccentColor),!l.modeActiveColor&&i.embedConfig.appearanceSettings.modeActiveColor&&(l.modeActiveColor=i.embedConfig.appearanceSettings.modeActiveColor))}Fs(),l.displayMode||(l.displayMode="modal");let s=document.querySelector("askdona-widget");if(s)s.setAttribute("chatflow-id",l.chatflowId),l.theme&&s.setAttribute("theme",l.theme),l.position&&s.setAttribute("position",l.position),l.primaryColor&&s.setAttribute("primary-color",l.primaryColor),l.language&&s.setAttribute("language",l.language),l.backgroundColor?s.setAttribute("background-color",l.backgroundColor):s.removeAttribute("background-color"),l.borderColor?s.setAttribute("border-color",l.borderColor):s.removeAttribute("border-color"),l.chatIconColor?s.setAttribute("chat-icon-color",l.chatIconColor):s.removeAttribute("chat-icon-color"),l.tabAccentColor?s.setAttribute("tab-accent-color",l.tabAccentColor):s.removeAttribute("tab-accent-color"),l.modeActiveColor?s.setAttribute("mode-active-color",l.modeActiveColor):s.removeAttribute("mode-active-color"),s.setAttribute("display-mode",l.displayMode||"modal"),l.customCSS&&s.setAttribute("custom-css",l.customCSS),l.chatbotTitle?s.setAttribute("chatbot-title",l.chatbotTitle):s.removeAttribute("chatbot-title"),(null===(o=l.instrumentSerif)||void 0===o?void 0:o.w400)&&s.setAttribute("instrument-serif-regular",l.instrumentSerif.w400),(null===(t=l.instrumentSerif)||void 0===t?void 0:t.w600)&&s.setAttribute("instrument-serif-600",l.instrumentSerif.w600),l.debug&&s.setAttribute("debug",String(!!l.debug));else{s=document.createElement("askdona-widget"),s.setAttribute("chatflow-id",l.chatflowId),l.theme&&s.setAttribute("theme",l.theme),l.position&&s.setAttribute("position",l.position),l.primaryColor&&s.setAttribute("primary-color",l.primaryColor),l.language&&s.setAttribute("language",l.language),l.backgroundColor&&s.setAttribute("background-color",l.backgroundColor),l.borderColor&&s.setAttribute("border-color",l.borderColor),l.chatIconColor&&s.setAttribute("chat-icon-color",l.chatIconColor),l.tabAccentColor&&s.setAttribute("tab-accent-color",l.tabAccentColor),l.modeActiveColor&&s.setAttribute("mode-active-color",l.modeActiveColor),s.setAttribute("display-mode",l.displayMode||"modal"),l.customCSS&&s.setAttribute("custom-css",l.customCSS),l.chatbotTitle&&s.setAttribute("chatbot-title",l.chatbotTitle),(null===(n=l.instrumentSerif)||void 0===n?void 0:n.w400)&&s.setAttribute("instrument-serif-regular",l.instrumentSerif.w400),(null===(r=l.instrumentSerif)||void 0===r?void 0:r.w600)&&s.setAttribute("instrument-serif-600",l.instrumentSerif.w600),l.debug&&s.setAttribute("debug",String(!!l.debug));(e=>{const n=document.body||document.documentElement;n?n.appendChild(e):window.addEventListener("DOMContentLoaded",()=>{const n=document.body||document.documentElement;!e.isConnected&&n&&n.appendChild(e)},{once:!0})})(s)}l.onReady&&setTimeout(()=>{l.onReady&&l.onReady()},0),l.debug}catch(n){e.onError&&e.onError(n)}}function Ls(){const e=document.querySelector("askdona-widget");e&&e.parentNode&&e.parentNode.removeChild(e),Ts={current:null}}function Hs(){const e=document.querySelector("askdona-widget");return e&&"function"==typeof e.open?e.open():Ts.current?Ts.current.open():void 0}function Us(){const e=document.querySelector("askdona-widget");return e&&"function"==typeof e.close?e.close():Ts.current?Ts.current.close():void 0}function Bs(e){const n=document.querySelector("askdona-widget");return n&&"function"==typeof n.sendMessage?n.sendMessage(e):Ts.current?Ts.current.sendMessage(e):void 0}if("undefined"!=typeof window){Fs();const e=document.currentScript;e&&e.dataset.chatflowId&&window.addEventListener("DOMContentLoaded",async()=>{const n=e.dataset.chatflowId;if(n)try{await Ps({chatflowId:n,theme:e.dataset.theme,position:e.dataset.position,primaryColor:e.dataset.primaryColor,language:e.dataset.language,displayMode:e.dataset.displayMode})}catch(e){}})}return window.AskDona={init:Ps,destroy:Ls,open:Hs,close:Us,sendMessage:Bs},e.close=Us,e.destroy=Ls,e.init=Ps,e.open=Hs,e.sendMessage=Bs,e}({});
